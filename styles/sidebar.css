@@ -1,6 +1,5 @@
 body {
-    margin: 0;
-    font-family: sans-serif;
+    margin: 0;   
     box-sizing: border-box;
     font-size: small;
     width: 1440px;
@@ -20,7 +19,7 @@ body {
     width: 232px;
     height: 100vh;
     border-right: solid 1px lightgray;
-    filter: drop-shadow(0px 0px 4px 0px #0000001A);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
     background-color: #2A3647;
     overflow-y: auto;
 }
@@ -28,49 +27,34 @@ body {
 .logoimg {
     width: 100.03px;
     height: 121.97px;
-    margin: 50px;
 }
 
 .menu {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 100%;   
     gap: 15px;
-    padding-top: 56px;
-    padding-bottom: 56px;
-}
-
-ul {
-    list-style-type: none;
-    padding-inline-start: 0px;
-    padding-left: 0px;
-}
-
-li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .a-nav {
     display: flex;
     text-decoration: none;
     color: #CDCDCD;
-    justify-content: center;
+    justify-content: flex-start;
     vertical-align: middle;
     align-items: center;
+    font-weight: 400;
+    font-size: 16px;  
     width: 232px;
     height: 46px;
-    gap: 20px;
-
+    padding: 8px 56px 8px 56px;
+    gap: 12px;
 }
 
 .a-nav:hover {
     cursor: pointer;
     color: #FFFFFF;
     background-color: rgb(9, 25, 49);
-    height: 40px;
-
 }
 
 .a-nav:focus {
@@ -86,21 +70,20 @@ li {
 .footer {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    font-size: 16px;
-    position: absolute;
-    bottom: 0px;
-    right: 0;
-    width: 100%;
-    height: 317px;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 317px;
+    gap: 4px;
+    font-size: 16px;
+    font-weight: 400;     
 }
 
 .footer a {
     text-decoration: none;
-    color: #898C90;
+    color:  #A8A8A8;
     vertical-align: middle;
+    padding: 8px;
 }
 
 .footer a:hover {
