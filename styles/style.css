@@ -45,6 +45,15 @@ input {
     padding: 12px, 21px, 12px, 21px;
 }
 
+select {
+    border-radius: 10px;
+    width: 440px;
+    height: 48px;
+    border: 1px solid #D1D1D1;
+    gap: 10px;
+    padding: 12px, 21px, 12px, 21px;
+}
+
 textarea {
     border-radius: 10px;
     width: 440px;
@@ -61,15 +70,11 @@ textarea {
 }
 
 .seperator {
-    position: absolute;
     width: 0px;
     height: 424px;
-    top: 327px;
-    left: 816.25px;
     gap: 0px;
-    border: 1px 0px 0px 0px;
-    opacity: 0px;
-    angel: -0 deg;
-    background-color: #D1D1D1;
-
+    margin-left: 30px;
+    margin-right: 30px;
+    border: 1px solid #D1D1D1;
+    opacity: 1;
 }
