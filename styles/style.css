@@ -25,6 +25,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     margin-top: 20px;
+    margin-left: 100px;
 }
 
 .add-task-container h1 {
@@ -37,7 +38,15 @@ body {
     gap: 8px;
 }
 
-input {
+.add-task-container input {
+    border-radius: 10px;
+    width: 440px;
+    height: 48px;
+    border: 1px solid #D1D1D1;
+    padding: 12px, 21px, 12px, 21px;
+}
+
+.add-task-container select {
     border-radius: 10px;
     width: 440px;
     height: 48px;
@@ -46,16 +55,7 @@ input {
     padding: 12px, 21px, 12px, 21px;
 }
 
-select {
-    border-radius: 10px;
-    width: 440px;
-    height: 48px;
-    border: 1px solid #D1D1D1;
-    gap: 10px;
-    padding: 12px, 21px, 12px, 21px;
-}
-
-textarea {
+.add-task-container textarea {
     border-radius: 10px;
     width: 440px;
     border: 1px solid #D1D1D1;
@@ -67,7 +67,7 @@ textarea {
     font-size: 61px;
     font-weight: 700;
     margin-top: 200px;
-    margin-left: 280px;
+    margin-left: 300px;
 }
 
 .seperator {
@@ -84,21 +84,35 @@ textarea {
 .groupTask1-input{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     width: 440px;
-    height: 376px;
-    top: 327px;
-    left: 328px;
     gap: 16px;   
 }
 
 .groupTask2-input{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     width: 440px;
-    height: 416px;
-    top: 327px;
-    left: 864.25px;
-    gap: 24px; 
+    gap: 16px; 
+}
+
+.prio-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+}
+
+.prioBtn {
+    border-radius: 10px;
+    width: 136px;
+    height: 48px;
+    gap: 8px;
+    /* padding: 16px, 10px, 16px, 10px; */
+    border: none;
+    font-weight: bold;
+    background-color: #FFFFFF;
+}
+
+textarea {
+    resize: none;
 }
