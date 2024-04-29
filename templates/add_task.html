@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,28 +10,27 @@
     <script src="../js/header.js"></script>
     <title>Join</title>
 </head>
+
 <body onload="includeHTML()">
     <div w3-include-html="../templates/sidebar.html"></div>
     <div w3-include-html="../templates/header.html"></div>
     <h1 class="headline-task">Add Task</h1>
     <div class="add-task-container">
-        <div>
         <form class="form" action="">
-            <span>Title</span>
-            <input type="text">
-            <span>Description</span>
-            <textarea name="" id="" cols="30" rows="5"></textarea>
-            <span>Assigned to</span>
-            <select name="" id="">
-                <option value="">test</option>
-                <option value="">test</option>
-                <option value="">test</option>
-            </select>
+            <div class="groupTask1-input">
+                <span>Title</span>
+                <input type="text">
+                <span>Description</span>
+                <textarea name="" id="" cols="30" rows="5"></textarea>
+                <span>Assigned to</span>
+                <input type="text">
+            </div>
         </form>
-    </div>
-    <div class="seperator"></div>
-        <div>
-            <form class="form" action="">
+
+        <div class="seperator"></div>
+
+        <form class="form" action="">
+            <div class="groupTask2-input">
                 <label>Title</label>
                 <input type="date">
                 <label>Description</label>
@@ -47,9 +47,9 @@
                     <option value="">test</option>
                     <option value="">test</option>
                 </select>
-            </form>
-    </div>
+        </form>
     </div>
 
 </body>
+
 </html>
