@@ -23,7 +23,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 20px;
 }
 
@@ -34,6 +34,7 @@ body {
 .form {
     display: flex;
     flex-direction: column;
+    gap: 8px;
 }
 
 input {
@@ -77,4 +78,27 @@ textarea {
     margin-right: 30px;
     border: 1px solid #D1D1D1;
     opacity: 1;
+}
+/*Monica*/
+
+.groupTask1-input{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 440px;
+    height: 376px;
+    top: 327px;
+    left: 328px;
+    gap: 16px;   
+}
+
+.groupTask2-input{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 440px;
+    height: 416px;
+    top: 327px;
+    left: 864.25px;
+    gap: 24px; 
 }
