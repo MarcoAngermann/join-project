@@ -149,12 +149,13 @@ body {
 }
 
 .inputs {
-    width: 380px;
-    height: 24px;
+    outline: none;
+    border: none;
+    padding-left: 20px;
+    width: 100%;
+    color: black;   
     justify-content: space-between;
-    border: 0px;
-    color: #D1D1D1;
-
+    height: 24px;
 }
 
 .imgInputGroup {
@@ -224,12 +225,12 @@ form label {
 .headlineSignUp {
     display: flex;
     flex-direction: row;
-    align-items: center;      
-    width: 100%;        
+    align-items: center;
+    width: 100%;
 }
 
-.a_headlineSignUp{
-    margin-right: 60px; 
+.a_headlineSignUp {
+    margin-right: 60px;
     align-self: flex-start;
 }
 
@@ -274,7 +275,7 @@ form label {
 .box-rememberSignup {
     display: flex;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
     height: 24px;
     width: 90%;
     gap: 8px;
