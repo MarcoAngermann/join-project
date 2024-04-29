@@ -68,10 +68,6 @@
   transition: all 0.3s ease;
 }
 
-.hover-effect:hover {
-  /* Fügen Sie hier die gewünschten Effekte hinzu */
-}
-
 /* Display */
 .dnone {
   display: none;
