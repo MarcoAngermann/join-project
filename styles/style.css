@@ -4,6 +4,10 @@
     font-family: 'Inter';
 }
 
+body {
+    background-color: #f6f7f8;
+}
+
 @font-face {
     font-family: 'Inter';
     src: url('../assets/fonts/Inter-VariableFont_slnt,wght.ttf') format('truetype');
@@ -13,4 +17,59 @@
 
 .main-color {
     background-color: #2A3647;
+}
+
+.add-task-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.add-task-container h1 {
+    font-size: 48px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    border-radius: 10px;
+    width: 440px;
+    height: 48px;
+    border: 1px solid #D1D1D1;
+    gap: 10px;
+    padding: 12px, 21px, 12px, 21px;
+}
+
+textarea {
+    border-radius: 10px;
+    width: 440px;
+    border: 1px solid #D1D1D1;
+    gap: 10px;
+    padding: 12px, 21px, 12px, 21px;
+}
+
+.headline-task {
+    font-size: 61px;
+    font-weight: 700;
+    margin-top: 200px;
+    margin-left: 280px;
+}
+
+.seperator {
+    position: absolute;
+    width: 0px;
+    height: 424px;
+    top: 327px;
+    left: 816.25px;
+    gap: 0px;
+    border: 1px 0px 0px 0px;
+    opacity: 0px;
+    angel: -0 deg;
+    background-color: #D1D1D1;
+
 }
