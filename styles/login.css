@@ -12,7 +12,7 @@ body {
     flex-direction: column;
     justify-content: space-around;
     max-width: 1400px;
-    height: 1024px;
+    height: 100vh;
     background-color: #F6F7F8;
 }
 
@@ -119,7 +119,6 @@ body {
     font-weight: 700;
     line-height: 73.2px;
     text-align: center;
-
 }
 
 .underline {
@@ -148,23 +147,18 @@ body {
     padding: 12px 21px 12px 21px;
 }
 
-.inputs {
-    outline: none;
-    border: none;
-    padding-left: 20px;
-    width: 100%;
-    color: black;   
-    justify-content: space-between;
-    height: 24px;
+.inputs {    
+    background-repeat: no-repeat;
+    background-position: right 10px center;      
+    width: 100%;   
+    gap: 10px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 12px 21px 12px 21px;   
+    color: black;      
 }
 
-.imgInputGroup {
-    width: 20px;
-    height: 16px;
-    top: 4px;
-    left: 358px;
-    color: #A8A8A8;
-}
+
 
 .box-remember {
     display: flex;
