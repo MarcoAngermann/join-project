@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +9,6 @@
     <script src="../js/header.js"></script>
     <title>Join</title>
 </head>
-
 <body onload="includeHTML()">
     <div w3-include-html="../templates/sidebar.html"></div>
     <div w3-include-html="../templates/header.html"></div>
@@ -18,33 +16,32 @@
     <div class="add-task-container">
         <form class="form" action="">
             <div class="groupTask1-input">
-                <span>Title</span>
-                <input type="text">
+                <label>Title<span class="requierd-color">*</span></label>
+                <input type="text" required>
                 <span>Description</span>
                 <textarea name="" id="" cols="30" rows="5"></textarea>
-                <span>Assigned to</span>
+                <label>Assigned to</label>
                 <select name="" id="">
                     <option value="">test</option>
                     <option value="">test</option>
                     <option value="">test</option>
                 </select>
+                <p class="required-field-text"><span class="requierd-color">*</span>This field is required</p>
             </div>
         </form>
-
         <div class="seperator"></div>
-
         <form class="form" action="">
             <div class="groupTask2-input">
-                <label>Title</label>
-                <input type="date">
+                <label>Due date<span class="requierd-color">*</span></label>
+                <input type="date" required>
                 <label>Prio</label>
                 <div class="prio-container">
                     <button class="prioBtn">Urgent <img src="../assets/ico/urgent.svg"></button>
                     <button class="prioBtn midBtn-Color ">Medium <img src="../assets/ico/medium.svg"></button>
                     <button class="prioBtn">Low <img src="../assets/ico/low.svg"></button>
                     </div>
-                    <label>Category</label>
-                <select name="" id="">
+                    <label>Category<span class="requierd-color">*</span></label>
+                <select name="" id="" required>
                     <option value="">test</option>
                     <option value="">test</option>
                     <option value="">test</option>
@@ -57,8 +54,5 @@
             <button class="btnTask">Create Task <svg class="check-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="#FFFFFF" d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></button>
     </div>
     </div>
-
-
 </body>
-
 </html>
