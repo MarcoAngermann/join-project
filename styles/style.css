@@ -162,6 +162,10 @@ textarea {
     cursor: pointer;
 }
 
+.btnClear:hover .cancel-svg {
+    fill: #29ABE2;
+}
+
 .midBtn-Color {
     background-color:#FFA800;
     color: #FFFFFF;
