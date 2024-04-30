@@ -38,3 +38,47 @@ h1 {
   color: #ffffff;
   background-color: #2a3647;
 }
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.drag-area {
+  height: 100%;
+  width: 246px;
+  gap: 24px;
+}
+
+.todo-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inProgress-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.awaitFeedback-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.done-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main svg {
+  color: #2a3647;
+}
+
+.main svg:hover {
+  cursor: pointer;
+}
+.main svg:hover rect,
+.main svg:hover path {
+  stroke: #29abe2;
+}

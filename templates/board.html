@@ -27,8 +27,142 @@
           <button>Add task</button>
         </div>
       </section>
-      <section >
-
+      <section class="main">
+        <div class="todo">
+          <div class="todo-head">
+            <h2>To Do</h2>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="1"
+                y="1.5"
+                width="22"
+                height="22"
+                rx="7"
+                stroke="#2A3647"
+                stroke-width="2"
+              />
+              <path
+                d="M12 8.5V16.5"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M16 12.5754L8 12.5754"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <div
+            class="drag-area"
+            id="toDo"
+            ondrop="moveTo('toDo')"
+            ondragleave="removeHighlight('toDo')"
+            ondragover="allowDrop(event); highlight('toDo')"
+          ></div>
+        </div>
+        <div class="inProgress">
+          <div class="inProgress-head">
+            <h2>In Progress</h2>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="1"
+                y="1.5"
+                width="22"
+                height="22"
+                rx="7"
+                stroke="#2A3647"
+                stroke-width="2"
+              />
+              <path
+                d="M12 8.5V16.5"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M16 12.5754L8 12.5754"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <div
+            class="drag-area"
+            id="inProgress"
+            ondrop="moveTo('inProgress')"
+            ondragleave="removeHighlight('inProgress')"
+            ondragover="allowDrop(event); highlight('inProgress')"
+          ></div>
+        </div>
+        <div class="awaitFeedback">
+          <div class="awaitFeedback-head">
+            <h2>Await Feedback</h2>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="1"
+                y="1.5"
+                width="22"
+                height="22"
+                rx="7"
+                stroke="#2A3647"
+                stroke-width="2"
+              />
+              <path
+                d="M12 8.5V16.5"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M16 12.5754L8 12.5754"
+                stroke="#2A3647"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <div
+            class="drag-area"
+            id="awaitFeedback"
+            ondrop="moveTo('awaitFeedback')"
+            ondragleave="removeHighlight('awaitFeedback')"
+            ondragover="allowDrop(event); highlight('awaitFeedback')"
+          ></div>
+        </div>
+        <div class="done">
+          <div class="done-head">
+            <h2>Done</h2>
+          </div>
+          <div
+            class="drag-area"
+            id="done"
+            ondrop="moveTo('done')"
+            ondragleave="removeHighlight('done')"
+            ondragover="allowDrop(event); highlight('done')"
+          ></div>
+        </div>
       </section>
     </div>
   </body>
