@@ -105,12 +105,13 @@ body {
 .prioBtn {
     border-radius: 10px;
     width: 136px;
-    height: 48px;
+    height: 56px;
     gap: 8px;
-    /* padding: 16px, 10px, 16px, 10px; */
+    padding: 16px, 10px, 16px, 10px;
     border: none;
     font-weight: bold;
     background-color: #FFFFFF;
+    font-size: 21px;
 }
 
 textarea {
@@ -118,8 +119,11 @@ textarea {
 }
 
 .btnTask {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: #2A3647;
-    width: 183px;
+    width: 193px;
     height: 56px;
     border-radius: 10px;
     padding: 16px;
@@ -127,11 +131,15 @@ textarea {
     font-size: 21px;
     color: #FFFFFF;
     font-weight: 700;
+    line-height: 25.2px;
 }
 
 .btnClear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: #FFFFFF;
-    width: 110px;
+    width: 120px;
     height: 56px;
     border-radius: 10px;
     padding: 16px;
@@ -152,4 +160,18 @@ textarea {
     color: #29ABE2;
     border: 0.5px solid #29ABE2;
     cursor: pointer;
+}
+
+.midBtn-Color {
+    background-color:#FFA800;
+    color: #FFFFFF;
+}
+
+.addTaskBtn-Container {
+    margin-top: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
 }
