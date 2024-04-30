@@ -43,7 +43,7 @@ body {
     width: 440px;
     height: 48px;
     border: 1px solid #D1D1D1;
-    padding: 12px, 21px, 12px, 21px;
+    padding: 12px 21px 12px 21px;
 }
 
 .add-task-container select {
@@ -52,7 +52,7 @@ body {
     height: 48px;
     border: 1px solid #D1D1D1;
     gap: 10px;
-    padding: 12px, 21px, 12px, 21px;
+    padding: 12px 21px 12px 21px;
 }
 
 .add-task-container textarea {
@@ -60,7 +60,7 @@ body {
     width: 440px;
     border: 1px solid #D1D1D1;
     gap: 10px;
-    padding: 12px, 21px, 12px, 21px;
+    padding: 12px 21px 12px 21px;
 }
 
 .headline-task {
@@ -79,7 +79,6 @@ body {
     border: 1px solid #D1D1D1;
     opacity: 1;
 }
-/*Monica*/
 
 .groupTask1-input{
     display: flex;
@@ -103,11 +102,14 @@ body {
 }
 
 .prioBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 10px;
     width: 136px;
     height: 56px;
     gap: 8px;
-    padding: 16px, 10px, 16px, 10px;
+    padding: 16px 10px 16px 10px;
     border: none;
     font-weight: bold;
     background-color: #FFFFFF;
@@ -178,4 +180,13 @@ textarea {
     justify-content: center;
     align-items: center;
     gap: 16px;
+    margin-left: 100px;
+}
+
+.required-field-text {
+    margin-top: 230px;
+}
+
+.requierd-color {
+    color: red;
 }
