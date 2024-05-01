@@ -169,3 +169,7 @@ textarea {
 .requierd-color {
     color: red;
 }
+
+.selected {
+    color: white;
+}
