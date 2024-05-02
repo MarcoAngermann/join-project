@@ -11,12 +11,6 @@
   font-size: 48px;
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
 .add-task-container input {
   border-radius: 10px;
   width: 440px;
