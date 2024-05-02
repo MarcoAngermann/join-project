@@ -1,23 +1,13 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    font-family: 'Inter';
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Inter';
 }
 
 body {
-    background-color: #f6f7f8;
-}
-
-@font-face {
-    font-family: 'Inter';
-    src: url('../assets/fonts/Inter-VariableFont_slnt,wght.ttf') format('truetype');
-    font-weight: normal; 
-    font-style: normal;
+  background-color: #f6f7f8;
 }
 
 .main-color {
-    background-color: #2A3647;
+  background-color: #2a3647;
 }
-
-
-
