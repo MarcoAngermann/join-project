@@ -12,11 +12,8 @@
     align-items: center;
     background-color: white;
     width: 30%;
-    height: 100%;
-    top: 96px;
-    left: 232px;
-    box-shadow: 4px 0px 6px 0px #00000014;
-    overflow-y: scroll;
+    height: 100%;  
+    box-shadow: 4px 0px 6px 0px #00000014;  
 }
 
 .btnJoin {
@@ -30,8 +27,9 @@
     border: 0.5px solid #2A3647;
     padding: 0px 15px 0px 15px;
     margin-top: 120px;
-    gap: 16px;
+    margin-bottom: 16px;
 }
+   
 
 .btnJoin:hover {
     cursor: pointer;
@@ -50,6 +48,63 @@
     width: 29px;
     height: auto;
     vertical-align: middle;
+}
+
+.divList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.divAlphabet{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-self: center;
+    width: 90%;
+    height: 58px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    padding: 17px 36px 17px 36px;
+    
+}
+.divShortContact {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-self: center;
+    width: 95%;
+    height: 78px;
+    padding: 15px 24px 15px 24px;
+    gap: 35px;
+
+}
+
+.divShortContact:hover {
+    cursor: pointer;
+    background-color: #F6F7F8;
+    border-radius: 10px;
+}
+
+.divShortInfo {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.contactEmblem {
+    width: 42px;
+    height: 42px;
+    padding: 10px;
+    border-radius: 50%;    
+    color: white;
+    font-weight: 400;
+    align-content: center;   
 }
 
 .divContactDetails {
