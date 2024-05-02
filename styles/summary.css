@@ -1,0 +1,19 @@
+.titleContact {
+    font-size: 61px;
+    font-weight: 700;
+}
+
+.seperator {
+    width: 0px;
+    height: 60px;      
+    border: 1px solid #29ABE2;  
+  }
+
+.summaryTitleContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 200px;
+    margin-left: 300px;
+    gap: 24px;
+}
