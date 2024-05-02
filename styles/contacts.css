@@ -1,0 +1,86 @@
+.contactContainer {
+    display: flex;
+    flex-direction: row;
+    margin-left: 232px;
+    background-color: #F6F7F8;
+    height: 100vh;
+}
+
+.divContactList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    width: 30%;
+    height: 100%;
+    top: 96px;
+    left: 232px;
+    box-shadow: 4px 0px 6px 0px #00000014;
+    overflow-y: scroll;
+}
+
+.btnJoin {
+    position: sticky;
+    background-color: #2A3647;
+    color: #FFFFFF;
+    border-radius: 8px;
+    min-width: 90px;
+    max-width: max-content;
+    height: 49px;
+    border: 0.5px solid #2A3647;
+    padding: 0px 15px 0px 15px;
+    margin-top: 120px;
+    gap: 16px;
+}
+
+.btnJoin:hover {
+    cursor: pointer;
+    background-color: #29ABE2;
+    border: 0.5px solid #29ABE2;
+    text-decoration: none;
+}
+
+.style_BtnTypography1 {
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 24px;
+}
+
+.iconContact {
+    width: 29px;
+    height: auto;
+    vertical-align: middle;
+}
+
+.divContactDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 70%;
+}
+
+.divContactTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    margin-top: 150px;
+    margin-left: 50px;
+    width: 100%;
+    height: 73px;
+}
+
+.titleContact {
+    font-size: 61px;
+    font-weight: 700;
+    line-height: 73.2px;
+    text-align: start;
+}
+
+.seperator {
+    width: 0px;
+    height: 60px;      
+    border: 1px solid #29ABE2;  
+  }
+  
