@@ -74,13 +74,13 @@ body {
   height: 49px;
   border: 0.5px solid #2a3647;
   padding: 0px 15px 0px 15px;
+  text-decoration: none;
 }
 
 .btnJoin:hover {
   cursor: pointer;
   background-color: #29abe2;
   border: 0.5px solid #29abe2;
-  text-decoration: none;
 }
 
 .btnGuest {

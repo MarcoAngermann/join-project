@@ -2,10 +2,6 @@
   margin: 200px 100px 32px 300px;
 }
 
-h1 {
-  font-size: 47px;
-}
-
 .search {
   width: 312px;
 }
@@ -24,8 +20,8 @@ h1 {
 
 .main {
   display: flex;
-  justify-content: space-between;
   margin-top: 24px;
+  gap: 24px;
 }
 
 .drag-area {

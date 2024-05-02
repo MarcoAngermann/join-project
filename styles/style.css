@@ -11,3 +11,17 @@ body {
 .main-color {
   background-color: #2a3647;
 }
+
+h1 {
+  font-size: 61px;
+  font-weight: bold;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
