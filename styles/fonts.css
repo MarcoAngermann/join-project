@@ -4,11 +4,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 100;
-<<<<<<< HEAD
-  src: url('../fonts/inter-v13-latin-100.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-=======
   src: url('../assets/fonts/inter-v13-latin-100.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
->>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 /* inter-200 - latin */
 @font-face {
@@ -16,11 +12,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 200;
-<<<<<<< HEAD
-  src: url('../fonts/inter-v13-latin-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-=======
   src: url('../assets/fonts/inter-v13-latin-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
->>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 /* inter-300 - latin */
 @font-face {
@@ -28,11 +20,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 300;
-<<<<<<< HEAD
-  src: url('..//assets/fonts/inter-v13-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-=======
   src: url('../assets/fonts/inter-v13-latin-300.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
->>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 /* inter-regular - latin */
 @font-face {
@@ -40,11 +28,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-<<<<<<< HEAD
-  src: url('../fonts/inter-v13-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-=======
   src: url('../assets/fonts/inter-v13-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
->>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 /* inter-500 - latin */
 @font-face {
@@ -52,11 +36,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
-<<<<<<< HEAD
-  src: url('../fonts/inter-v13-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-=======
   src: url('../assets/fonts/inter-v13-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
->>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 /* inter-600 - latin */
 @font-face {
@@ -64,11 +44,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
-<<<<<<< HEAD
-  src: url('../fonts/inter-v13-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-=======
   src: url('../assets/fonts/inter-v13-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
->>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 /* inter-700 - latin */
 @font-face {
@@ -76,11 +52,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
-<<<<<<< HEAD
-  src: url('../fonts/inter-v13-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-=======
   src: url('../assets/fonts/inter-v13-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
->>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 /* inter-800 - latin */
 @font-face {
@@ -88,11 +60,7 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 800;
-<<<<<<< HEAD
-  src: url('../fonts/inter-v13-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-=======
   src: url('../assets/fonts/inter-v13-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
->>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 /* inter-900 - latin */
 @font-face {
@@ -100,9 +68,5 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 900;
-<<<<<<< HEAD
-  src: url('../fonts/inter-v13-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-=======
   src: url('../assets/fonts/inter-v13-latin-900.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
->>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
