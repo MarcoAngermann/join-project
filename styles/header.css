@@ -16,7 +16,10 @@ body {
   top: 0;
   height: 96px;
   width: 100%;
+<<<<<<< HEAD
   max-width: 1440px;
+=======
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 
 .header-left {
@@ -29,6 +32,10 @@ body {
 .header-right {
   display: flex;
   align-items: center;
+<<<<<<< HEAD
+=======
+  gap: 16px;
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 
 .help {
@@ -38,6 +45,7 @@ body {
   align-items: center;
 }
 
+<<<<<<< HEAD
 .help img:hover {
   cursor: pointer;
   scale: 1.5;
@@ -46,6 +54,16 @@ body {
 .headericon {
   height: 20px;
   width: 20px;
+=======
+.help svg:hover {
+  cursor: pointer;
+  scale: 1.2;
+}
+
+.headericon {
+  height: 30px;
+  width: 30px;
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 
 .useremblem {
@@ -55,6 +73,7 @@ body {
   border-radius: 50%;
   border: 3px solid #2a3647;
   color: #29abe2;
+<<<<<<< HEAD
   font-size: 20px;
   font-weight: bold;
   align-content: center;
@@ -69,11 +88,28 @@ body {
 .header-user {
   position: relative;
   display: inline-block;
+=======
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.useremblem:hover {
+  cursor: pointer;
+  background-color: #d2d2d2;
+}
+
+.dropdown {
+  float: right;
+  position: relative;
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 
 .dropdownContent {
   display: none;
   position: absolute;
+<<<<<<< HEAD
   top: 72px;
   right: 0;
   background-color: #2a3647;
@@ -83,11 +119,22 @@ body {
   border-radius: 20px 0px 20px 20px;
   padding: 10px;
   box-shadow: 0px 0px 4px 0px #0000001a;
+=======
+  background-color: #2a3647;
+  min-width: 140px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 20px 0px 20px 20px;
+  padding: 10px;
+  top: 96px;
+  right: 0;
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
   z-index: 1;
 }
 
 .dropdownContent a {
   color: #cdcdcd;
+<<<<<<< HEAD
   text-decoration: none;
   display: flex;
   width: 130px;
@@ -100,10 +147,22 @@ body {
 
 .dropdownContent a:hover {
   background-color: rgb(45, 61, 89);
+=======
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdownContent a:hover {
+  background-color: #2a3d59;
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 
 .show {
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   justify-content: center;
+=======
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }

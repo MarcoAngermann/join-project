@@ -1,5 +1,9 @@
 h1 {
   font-size: 61px;
+<<<<<<< HEAD
+=======
+  font-weight: bold;
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 
 h2 {
@@ -7,6 +11,10 @@ h2 {
 }
 
 h3 {
+<<<<<<< HEAD
+=======
+  font-size: 20px;
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
   font-weight: bold;
 }
 
@@ -60,6 +68,10 @@ h3 {
 .help-container li::before {
   content: counter(step) '.';
   counter-increment: step;
+<<<<<<< HEAD
+=======
+  font-weight: bold;
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 
 .privacy_policy {

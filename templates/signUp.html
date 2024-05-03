@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/login.js"></script>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../styles/fonts.css" />
+
+
+</head>
+
+<body>
+
+    <container class="containerLog" id="containerLog">
+        <div class="headlineLogin">
+            <img class="imgLogo" id="imgLogoID" src="../assets/icons/join_login.svg">           
+        </div>
+
+        <form class="formSignUp">
+           
+            <div class="headlineSignUp">
+                <a class="a_headlineSignUp" href="../templates/login.html"><img class="icoArrowLeft" src="../assets/icons/arrow-left-line.svg"></i></a>
+                <h1 class="title underline">Sign up</h1>
+            </div>
+            <div class="groupSignUp-input">
+               <input class="inputs style_InputTypography1" type="text" id="name" style="background-image: url(../assets/icons/personInput_icon.svg)"
+                        placeholder="Name" required>               
+               <input class="inputs style_InputTypography1" type="email" id="email" style="background-image: url(../assets/icons/mail_icon.svg)"
+                        placeholder="Email" required>
+                <input class="inputs style_InputTypography1" type="password" id="password" style="background-image: url(../assets/icons/lock_icon.svg)"
+                        placeholder="Password" required>
+                <input class="inputs style_InputTypography1" type="password" style="background-image: url(../assets/icons/lock_icon.svg)"
+                        id="passwordConfirm" placeholder="Confirm Password" required>
+            </div>
+            <div class="box-rememberSignup style_InputTypography2">
+                <input class="checkBox" type="checkbox" id="acepptRules">
+                <label for="remember"> I accept the &nbsp; <a class="a_formSignUp" href="#"> Privacy policy</a></label>
+            </div>
+     
+            <div class="divBtn">
+                <button class="btnJoin style_BtnTypography1" type="submit" id="btnSignUp">Sign up</button>
+            </div>
+        </form>
+        <div class="footerLogin">
+            <a class="a_footer style_InputTypography2" href="#">Privacy Policy</a>
+            <a class="a_footer style_InputTypography2" href="#">Legal notice</a>
+        </div>
+
+
+
+    </container>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<<<<<<< HEAD
+=======
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Inter';
+}
+
+body {
+  background-color: #f6f7f8;
+}
+
+.main-color {
+  background-color: #2a3647;
+}
+
+h1 {
+  font-size: 61px;
+  font-weight: bold;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed

@@ -1,8 +1,12 @@
 body {
   margin: 0;
+<<<<<<< HEAD
   font-family: sans-serif;
   box-sizing: border-box;
   font-size: small;
+=======
+  box-sizing: border-box;
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
   max-width: 1440px;
 }
 
@@ -12,7 +16,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+<<<<<<< HEAD
   justify-items: space-between;
+=======
+  justify-content: space-between;
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
   padding: 64px 0px 64px 0px;
   top: 0;
   left: 0;
@@ -20,7 +28,11 @@ body {
   width: 232px;
   height: 100vh;
   border-right: solid 1px lightgray;
+<<<<<<< HEAD
   filter: drop-shadow(0px 0px 4px 0px #0000001a);
+=======
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
   background-color: #2a3647;
   overflow-y: auto;
 }
@@ -28,7 +40,10 @@ body {
 .logoimg {
   width: 100.03px;
   height: 121.97px;
+<<<<<<< HEAD
   margin: 50px;
+=======
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 
 .menu {
@@ -36,6 +51,7 @@ body {
   flex-direction: column;
   width: 100%;
   gap: 15px;
+<<<<<<< HEAD
   padding-top: 56px;
   padding-bottom: 56px;
 }
@@ -50,25 +66,41 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
+=======
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 
 .a-nav {
   display: flex;
   text-decoration: none;
   color: #cdcdcd;
+<<<<<<< HEAD
   justify-content: center;
   vertical-align: middle;
   align-items: center;
   width: 232px;
   height: 46px;
   gap: 20px;
+=======
+  justify-content: flex-start;
+  vertical-align: middle;
+  align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+  height: 46px;
+  padding: 8px 56px 8px 56px;
+  gap: 12px;
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 
 .a-nav:hover {
   cursor: pointer;
   color: #ffffff;
   background-color: rgb(9, 25, 49);
+<<<<<<< HEAD
   height: 40px;
+=======
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 
 .a-nav:focus {
@@ -84,6 +116,7 @@ ul {
 .footer {
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   gap: 10px;
   font-size: 16px;
   position: absolute;
@@ -93,12 +126,26 @@ ul {
   height: 317px;
   align-items: center;
   justify-content: center;
+=======
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 4px;
+  font-size: 16px;
+  font-weight: 400;
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 
 .footer a {
   text-decoration: none;
+<<<<<<< HEAD
   color: #898c90;
   vertical-align: middle;
+=======
+  color: #a8a8a8;
+  vertical-align: middle;
+  padding: 8px;
+>>>>>>> 419af5b5ce5b26fcc83ab4e770f1f2d4263be2ed
 }
 
 .footer a:hover {
