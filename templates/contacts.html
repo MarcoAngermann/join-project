@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/style.css" />
@@ -11,9 +12,11 @@
     <script src="../js/header.js"></script>
     <script src="../js/script.js"></script>
     <script src="../js/contacts.js"></script>
+    <script src="../js/dummy_db.js"></script>
     <title>Join contacts</title>
-  </head>
-  <body onload="init()">
+</head>
+
+<body onload="init()">
     <div w3-include-html="../templates/sidebar.html"></div>
     <div w3-include-html="../templates/header.html"></div>
     <div class="contactContainer">
@@ -21,7 +24,7 @@
             <button class="btnJoin style_BtnTypography1" type="button" id="button"> Add new contact <img
                     class="iconContact" src="../assets/icons/person_add_icon.svg"></button>
             <div class="divList" id="divList">
-         
+
             </div>
         </div>
         <div class="divContactDetails">
@@ -30,11 +33,13 @@
                 <div class="seperator"></div>
                 <p class="style_BtnTypography1">Better with a team</p>
             </div>
-
+            <div class="divDetails" id="divDetails">
+            </div>
         </div>
 
     </div>
 
 
 </body>
+
 </html>
