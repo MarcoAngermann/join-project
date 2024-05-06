@@ -1,52 +1,57 @@
-
 function init() {
-    includeHTML();
-    renderListContact();
+  includeHTML();
+  renderListContact();
 }
 
 function renderListContact() {
-    let contentList = document.getElementById('divList');
-    contentList.innerHTML = "";
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        if (i == 0 || contact['name'].slice(0, 1) != contacts[i - 1]['name'].slice(0, 1)) {
-            contentList.innerHTML += `<div class="divAlphabet">${contact['name'].slice(0, 1)}</div>`
-        }
-        contentList.innerHTML += `
+  let contentList = document.getElementById('divList');
+  contentList.innerHTML = '';
+  for (let i = 0; i < contacts.length; i++) {
+    const contact = contacts[i];
+    if (
+      i == 0 ||
+      contact['name'].slice(0, 1) != contacts[i - 1]['name'].slice(0, 1)
+    ) {
+      contentList.innerHTML += `<div class="divAlphabet">${contact[
+        'name'
+      ].slice(0, 1)}</div>`;
+    }
+    contentList.innerHTML += `
             <div class="divShortContact" onclick="showDetailContact(${i})">
-            <div class="contactEmblem" style="background-color: ${contact['color']}"> ${renderEmblem(contact['name'])} </div>
+            <div class="contactEmblem" style="background-color: ${
+              contact['color']
+            }"> ${renderEmblem(contact['name'])} </div>
             <div class="divShortInfo">
                     <p>${contact['name']}</p>
                     <a>${contact['email']}</a>
             </div>
-            </div>`
-    };
+            </div>`;
+  }
 }
 
 function renderEmblem(name) {
-    let aux = name.split(' ');
-    let capital = "";
-    for (let j = 0; j < aux.length; j++) {
-        if (j <= 1) {
-            capital += aux[j].slice(0, 1);
-        }
+  let aux = name.split(' ');
+  let capital = '';
+  for (let j = 0; j < aux.length; j++) {
+    if (j <= 1) {
+      capital += aux[j].slice(0, 1);
     }
-    return capital;
+  }
+  return capital;
 }
 
 function colorRandom() {
-    return colors[Math.floor(Math.random() * colors.length)];
+  return colors[Math.floor(Math.random() * colors.length)];
 }
 
-
 function showDetailContact(i) {
-    contact = contacts[i];
-    let infoContact = document.getElementById('divDetails');
-    infoContact.innerHTML = " ";
-    infoContact.classList.remove('move-left');
-    infoContact.offsetWidth;
-    infoContact.classList.add('move-left');
-    infoContact.innerHTML += `
+  contact = contacts[i];
+  let infoContact = document.getElementById('divDetails');
+  infoContact.innerHTML = '';
+  infoContact.classList.remove('move-left');
+  infoContact.offsetWidth;
+  infoContact.classList.add('move-left');
+  infoContact.innerHTML += `
                 <div class="headlineContact">
                     <div class="emblemInfo" id="emblem" style="background-color: ${contact['color']}">${contact['emblem']}</div>
                     <div class="nameContact" id="nameContact">
@@ -65,5 +70,3 @@ function showDetailContact(i) {
                 <div id="phone_contact">${contact['phone']}</div>
                 </div>`;
 }
-
-
