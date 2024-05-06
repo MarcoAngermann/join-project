@@ -16,3 +16,63 @@
   align-items: center;
   width: 100%;
 }
+
+.showBigCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.dnone {
+  display: none;
+}
+
+.bigCard {
+  display: flex;
+  flex-direction: column;
+  width: 50vh;
+  max-height: 90%;
+  border-radius: 10px;
+  background-color: #ffffff;
+  padding: 48px 40px 48px 40px;
+}
+
+.big-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bigCard img {
+  height: 20px;
+  width: 20px;
+}
+
+.bigCard img:hover {
+  cursor: pointer;
+}
+
+.bigCard-edit {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.big-delete {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.big-edit {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
