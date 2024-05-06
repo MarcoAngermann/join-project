@@ -73,3 +73,16 @@
     justify-content: center;
     align-items: center;
 }
+
+.summaryIcons {
+    background-color: #2A3647;
+    height: 69px;
+    width: 69px;
+    border-radius: 100px;
+    padding: 10px;
+}
+
+.numberContainer {
+    font-size: 32px;
+    font-weight: bold;
+}
