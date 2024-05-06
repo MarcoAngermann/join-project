@@ -76,13 +76,32 @@
 
 .summaryIcons {
     background-color: #2A3647;
-    height: 69px;
-    width: 69px;
     border-radius: 100px;
-    padding: 10px;
+    padding: 8px;
+    margin-right: 6px;
 }
 
 .numberContainer {
-    font-size: 32px;
-    font-weight: bold;
+    font-size: 64px;
+    font-weight: 600;
+}
+
+.summaryCard:hover {
+    scale: 1.1;
+    background-color: #2A3647;
+    color: #FFFFFF;
+}
+
+.summaryCard:hover .summaryIcons {
+    background-color: #FFFFFF;
+}
+
+.summaryCard:hover .summaryIcons path {
+    fill: #2A3647; /* Ändere die Farbe hier nach deinen Wünschen */
+}
+
+.summaryCardSmall:hover {
+    scale: 1.1;
+    background-color: #2A3647;
+    color: #FFFFFF;
 }
