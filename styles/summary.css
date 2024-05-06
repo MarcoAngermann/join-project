@@ -19,6 +19,38 @@
 }
 
 .summaryContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin-left: 300px;
     margin-top: 20px;
+    gap: 24px;
+    width: 560px;
+    height: 562px;
+}
+
+.summaryCard {
+    width: 264px;
+    height: 168px;
+    border-radius: 30px;
+    padding: 38px 19px 38px 19px;
+    gap: 18px;
+    background-color: #FFFFFF;
+}
+
+.summaryCardBig {
+    width: 560px;
+    height: 168px;
+    background-color: #FFFFFF;
+    padding: 28px 48px 28px 48px;
+    border-radius: 30px;
+}
+
+.summaryCardSmall {
+    width: 168px;
+    height: 168px;
+    padding: 25px 0px 25px 0px;
+    border-radius: 30px;
+    background-color: #FFFFFF;
+    gap: 13px;
 }

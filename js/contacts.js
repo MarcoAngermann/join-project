@@ -1,36 +1,3 @@
-let contacts = [
-    {
-        name: "Ackermann Carl Anton",
-        email: "carl_ackermann@gmx.de",
-        phone: "015498753529"
-    },
-    {
-        name: "Ahlers Johann August",
-        email: "johann8989@gmx.de",
-        phone: "016998639293"
-    },
-    {
-        name: "Beckmann Antje",
-        email: "beckmann.antje@yahoo.com",
-        phone: "018569875352"
-    },
-    {
-        name: "Mueller Susanne",
-        email: "sussi_mueller@gmx.de",
-        phone: "014569986987"
-    },
-    {
-        name: "Wolfhope Theodor",
-        email: "theoHope1834@gmx.de",
-        phone: "014768932145"
-    }
-]
-
-
-let colors = ["#FF7A00", "#FF5EB3", "#6E52FF", "#9327FF", "#00BEE8", "#1FD7C1", "#FF745E", "#FFA35E", "#FC71FF",
-    "#FFC701", "#0038FF", "#C3FF2B", "#FFE62B", "#FF4646", "#FFBB2B"]
-
-
 
 function init() {
     includeHTML();
@@ -46,8 +13,8 @@ function renderListContact() {
             contentList.innerHTML += `<div class="divAlphabet">${contact['name'].slice(0, 1)}</div>`
         }
         contentList.innerHTML += `
-            <div class="divShortContact">
-            <div class="contactEmblem" style="background-color: ${colorRandom()}"> ${renderEmblem(contact['name'])} </div>
+            <div class="divShortContact" onclick="showDetailContact(${i})">
+            <div class="contactEmblem" style="background-color: ${contact['color']}"> ${renderEmblem(contact['name'])} </div>
             <div class="divShortInfo">
                     <p>${contact['name']}</p>
                     <a>${contact['email']}</a>
@@ -70,4 +37,33 @@ function renderEmblem(name) {
 function colorRandom() {
     return colors[Math.floor(Math.random() * colors.length)];
 }
+
+
+function showDetailContact(i) {
+    contact = contacts[i];
+    let infoContact = document.getElementById('divDetails');
+    infoContact.innerHTML = " ";
+    infoContact.classList.remove('move-left');
+    infoContact.offsetWidth;
+    infoContact.classList.add('move-left');
+    infoContact.innerHTML += `
+                <div class="headlineContact">
+                    <div class="emblemInfo" id="emblem" style="background-color: ${contact['color']}">${contact['emblem']}</div>
+                    <div class="nameContact" id="nameContact">
+                    ${contact['name']}
+                        <div class="a_nameContact">
+                            <a onclick="editContact(i)"><img src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
+                            <a onclick="deleteContact(id)"><img src="../assets/icons/delete_contact_icon.svg"> Delete</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="info">Contact Information</div>
+                <div class="styleDivinfo">
+                <div><b>Email</b></div>
+                <a id="email_contact">${contact['email']}</a>
+                <div><b>Phone</b></div>
+                <div id="phone_contact">${contact['phone']}</div>
+                </div>`;
+}
+
 
