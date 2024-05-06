@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../styles/bigcardPrototyp.css">
+    <link rel="stylesheet" href="../styles/style.css">
+  </head>
+  <body>
+    <div id="bigCard${i}" class="bigCard">
+      <div class="big-header">
+        <div><span>category</span></div>
+        <div>
+            <img
+            class="close"
+            onclick="closeBigCard()"
+            src="../assets/icons/close_icon.svg"
+            alt="schließen"
+            />
+        </div>
+      </div>
+      <h1>Title</h1>
+      <div><p>Description</p></div>
+      <div class="big-date">
+        <div><span>Due date:</span></div>
+        <div><span>10/05/2023</span></div>
+      </div>
+      <div class="big-priority">
+        <div><span>Priority:</span></div>
+        <div> <img src="../assets/icons/low.svg" ></div>
+      </div>
+      <div class="big-users">
+        <div><span>Assigned to:</span></div>
+        <div class="big-contact">
+            <div>
+                <img src="../assets/icons/person_icon.svg" alt="">
+                <span>test</span>
+            </div>
+            <div>
+                <img src="../assets/icons/person_icon.svg" alt="">
+                <span>test2</span></div>
+            <div>
+                <img src="../assets/icons/person_icon.svg" alt="">
+                <span>test3</span>
+            </div>
+        </div>
+        <div class="big-subtaks">
+            <div><span>Subtasks</span></div>
+            <div><span>Implement Recipe Recommendation</span></div>
+            <div><span>Start Page Layout</span></div>
+        </div>
+        <div class="big-edit">
+            <div class="big-delete">
+                <img src="../assets/icons/delete_contact_icon.svg" alt="">
+                <span>Delete</span>
+            </div>
+            <div class="seperator"></div>
+            <div class="big-edit">
+                <img src="../assets/icons/edit contacts_icon.svg" alt="">
+                <span>Edit</span>
+            </div>
+      </div>
+    </div>
+  </body>
+</html>
