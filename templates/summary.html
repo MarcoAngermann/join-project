@@ -1,109 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles/style.css" />
-    <link rel="stylesheet" href="../styles/sidebar.css" />
-    <link rel="stylesheet" href="../styles/fonts.css" />
-    <link rel="stylesheet" href="../styles/summary.css"">
 
-    <script src="../js/script.js"></script>
-    <script src="../js/header.js"></script>
-    <title>Join summary</title>
-  </head>
-  <body onload="includeHTML()">
-    <div w3-include-html="../templates/sidebar.html"></div>
-    <div w3-include-html="../templates/header.html"></div>
-      <div class="summaryTitleContainer">
-        <h1 class="titleContact">Join 360</h1>
-        <div class="seperator"></div>
-        <p>Key Metrics at a Glance</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styles/style.css" />
+  <link rel="stylesheet" href="../styles/sidebar.css" />
+  <link rel="stylesheet" href="../styles/fonts.css" />
+  <link rel="stylesheet" href="../styles/summary.css"">
+
+    <script src=" ../js/script.js">
+    </script>
+  <script src="../js/header.js"></script>
+  <title>Join summary</title>
+</head>
+
+<body onload="includeHTML()">
+  <div w3-include-html="../templates/sidebar.html"></div>
+  <div w3-include-html="../templates/header.html"></div>
+  <div class="summaryTitleContainer">
+    <h1 class="titleContact">Join 360</h1>
+    <div class="seperator"></div>
+    <p>Key Metrics at a Glance</p>
+  </div>
+  <div class="summaryContainer" id="summaryContainer">
+
+    <div class="summaryCard">
+      <div class="iconContainer">
+        <svg class="summaryIcons" width="69" height="69" viewBox="0 0 33 32" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0_172744_6093" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="33"
+            height="32">
+            <rect x="0.5" width="32" height="32" fill="#D9D9D9" />
+          </mask>
+          <g mask="url(#mask0_172744_6093)">
+            <path
+              d="M7.16667 25.3332H9.03333L20.5333 13.8332L18.6667 11.9665L7.16667 23.4665V25.3332ZM26.2333 11.8998L20.5667 6.29984L22.4333 4.43317C22.9444 3.92206 23.5722 3.6665 24.3167 3.6665C25.0611 3.6665 25.6889 3.92206 26.2 4.43317L28.0667 6.29984C28.5778 6.81095 28.8444 7.42761 28.8667 8.14984C28.8889 8.87206 28.6444 9.48873 28.1333 9.99984L26.2333 11.8998ZM24.3 13.8665L10.1667 27.9998H4.5V22.3332L18.6333 8.19984L24.3 13.8665Z"
+              fill="white" />
+          </g>
+        </svg>
+        <div class="textContainer">
+          <span class="numberContainer">1</span>
+          <span>To-do</span>
+        </div>
       </div>
-      <div class="summaryContainer" id="summaryContainer">
-       
-          <div class="summaryCard">
-            <div class="iconContainer">
-              <svg class="summaryIcons" width="69" height="69" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <mask id="mask0_172744_6093" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="33" height="32">
-                <rect x="0.5" width="32" height="32" fill="#D9D9D9"/>
-                </mask>
-                <g mask="url(#mask0_172744_6093)">
-                <path d="M7.16667 25.3332H9.03333L20.5333 13.8332L18.6667 11.9665L7.16667 23.4665V25.3332ZM26.2333 11.8998L20.5667 6.29984L22.4333 4.43317C22.9444 3.92206 23.5722 3.6665 24.3167 3.6665C25.0611 3.6665 25.6889 3.92206 26.2 4.43317L28.0667 6.29984C28.5778 6.81095 28.8444 7.42761 28.8667 8.14984C28.8889 8.87206 28.6444 9.48873 28.1333 9.99984L26.2333 11.8998ZM24.3 13.8665L10.1667 27.9998H4.5V22.3332L18.6333 8.19984L24.3 13.8665Z" fill="white"/>
-                </g>
-                </svg>
-              <div class="textContainer">
-              <span class="numberContainer">1</span>
-              <span>To-do</span>
-            </div>
-            </div>
-        </div>
+    </div>
 
-          <div class="summaryCard">
-            <div class="iconContainer">
-              <svg class="summaryIcons" width="69" height="69" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <mask id="mask0_170585_6105" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25" height="24">
-                <rect x="0.248535" width="24" height="24" fill="#D9D9D9"/>
-                </mask>
-                <g mask="url(#mask0_170585_6105)">
-                <path d="M9.79923 15.15L18.2742 6.675C18.4742 6.475 18.7117 6.375 18.9867 6.375C19.2617 6.375 19.4992 6.475 19.6992 6.675C19.8992 6.875 19.9992 7.1125 19.9992 7.3875C19.9992 7.6625 19.8992 7.9 19.6992 8.1L10.4992 17.3C10.2992 17.5 10.0659 17.6 9.79923 17.6C9.53256 17.6 9.29923 17.5 9.09923 17.3L4.79923 13C4.59923 12.8 4.5034 12.5625 4.51173 12.2875C4.52006 12.0125 4.62423 11.775 4.82423 11.575C5.02423 11.375 5.26173 11.275 5.53673 11.275C5.81173 11.275 6.04923 11.375 6.24923 11.575L9.79923 15.15Z" fill="white"/>
-                </g>
-                </svg>
-              <div class="textContainer">
-              <span class="numberContainer">1</span>
-              <span>Done</span>
-            </div>
-            </div>
+    <div class="summaryCard">
+      <div class="iconContainer">
+        <svg class="summaryIcons" width="69" height="69" viewBox="0 0 25 24" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0_170585_6105" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="25"
+            height="24">
+            <rect x="0.248535" width="24" height="24" fill="#D9D9D9" />
+          </mask>
+          <g mask="url(#mask0_170585_6105)">
+            <path
+              d="M9.79923 15.15L18.2742 6.675C18.4742 6.475 18.7117 6.375 18.9867 6.375C19.2617 6.375 19.4992 6.475 19.6992 6.675C19.8992 6.875 19.9992 7.1125 19.9992 7.3875C19.9992 7.6625 19.8992 7.9 19.6992 8.1L10.4992 17.3C10.2992 17.5 10.0659 17.6 9.79923 17.6C9.53256 17.6 9.29923 17.5 9.09923 17.3L4.79923 13C4.59923 12.8 4.5034 12.5625 4.51173 12.2875C4.52006 12.0125 4.62423 11.775 4.82423 11.575C5.02423 11.375 5.26173 11.275 5.53673 11.275C5.81173 11.275 6.04923 11.375 6.24923 11.575L9.79923 15.15Z"
+              fill="white" />
+          </g>
+        </svg>
+        <div class="textContainer">
+          <span class="numberContainer">1</span>
+          <span>Done</span>
         </div>
-      <div class="summaryCardBig">
-        <div class="iconContainer">
-          <svg width="69" height="69" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="30" cy="30" r="30" fill="#FF3D00"/>
-            <g clip-path="url(#clip0_172744_5754)">
-            <path d="M44.8709 41.1626C44.4699 41.1633 44.0792 41.0337 43.7563 40.7929L29.6511 30.263L15.5458 40.7929C15.3478 40.941 15.1229 41.0482 14.8839 41.1084C14.645 41.1685 14.3966 41.1805 14.1531 41.1435C13.9096 41.1066 13.6757 41.0214 13.4647 40.893C13.2536 40.7645 13.0697 40.5953 12.9233 40.3949C12.777 40.1945 12.6711 39.9669 12.6116 39.7251C12.5522 39.4832 12.5404 39.2319 12.5769 38.9855C12.6507 38.4878 12.9168 38.0402 13.3167 37.7411L28.5365 26.3677C28.8591 26.126 29.2498 25.9956 29.6511 25.9956C30.0524 25.9956 30.4431 26.126 30.7657 26.3677L45.9855 37.7411C46.3033 37.9781 46.5389 38.3106 46.6588 38.6912C46.7788 39.0718 46.7768 39.481 46.6532 39.8604C46.5296 40.2398 46.2907 40.57 45.9706 40.8039C45.6506 41.0377 45.2657 41.1633 44.8709 41.1626Z" fill="white"/>
-            <path d="M44.8708 31.2109C44.4697 31.2116 44.0791 31.082 43.7562 30.8413L29.651 20.3114L15.5457 30.8413C15.1458 31.1404 14.6448 31.2665 14.153 31.1919C13.6612 31.1172 13.2188 30.8479 12.9232 30.4432C12.6276 30.0385 12.503 29.5315 12.5768 29.0339C12.6506 28.5362 12.9167 28.0885 13.3166 27.7894L28.5364 16.416C28.859 16.1744 29.2497 16.0439 29.651 16.0439C30.0523 16.0439 30.443 16.1744 30.7655 16.416L45.9854 27.7894C46.3031 28.0264 46.5388 28.359 46.6587 28.7396C46.7786 29.1202 46.7767 29.5294 46.6531 29.9088C46.5295 30.2882 46.2906 30.6184 45.9705 30.8522C45.6505 31.0861 45.2656 31.2116 44.8708 31.2109Z" fill="white"/>
-            </g>
-            <defs>
+      </div>
+    </div>
+    <div class="summaryCardBig">
+      <div class="iconContainer">
+        <svg width="69" height="69" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="30" cy="30" r="30" fill="#FF3D00" />
+          <g clip-path="url(#clip0_172744_5754)">
+            <path
+              d="M44.8709 41.1626C44.4699 41.1633 44.0792 41.0337 43.7563 40.7929L29.6511 30.263L15.5458 40.7929C15.3478 40.941 15.1229 41.0482 14.8839 41.1084C14.645 41.1685 14.3966 41.1805 14.1531 41.1435C13.9096 41.1066 13.6757 41.0214 13.4647 40.893C13.2536 40.7645 13.0697 40.5953 12.9233 40.3949C12.777 40.1945 12.6711 39.9669 12.6116 39.7251C12.5522 39.4832 12.5404 39.2319 12.5769 38.9855C12.6507 38.4878 12.9168 38.0402 13.3167 37.7411L28.5365 26.3677C28.8591 26.126 29.2498 25.9956 29.6511 25.9956C30.0524 25.9956 30.4431 26.126 30.7657 26.3677L45.9855 37.7411C46.3033 37.9781 46.5389 38.3106 46.6588 38.6912C46.7788 39.0718 46.7768 39.481 46.6532 39.8604C46.5296 40.2398 46.2907 40.57 45.9706 40.8039C45.6506 41.0377 45.2657 41.1633 44.8709 41.1626Z"
+              fill="white" />
+            <path
+              d="M44.8708 31.2109C44.4697 31.2116 44.0791 31.082 43.7562 30.8413L29.651 20.3114L15.5457 30.8413C15.1458 31.1404 14.6448 31.2665 14.153 31.1919C13.6612 31.1172 13.2188 30.8479 12.9232 30.4432C12.6276 30.0385 12.503 29.5315 12.5768 29.0339C12.6506 28.5362 12.9167 28.0885 13.3166 27.7894L28.5364 16.416C28.859 16.1744 29.2497 16.0439 29.651 16.0439C30.0523 16.0439 30.443 16.1744 30.7655 16.416L45.9854 27.7894C46.3031 28.0264 46.5388 28.359 46.6587 28.7396C46.7786 29.1202 46.7767 29.5294 46.6531 29.9088C46.5295 30.2882 46.2906 30.6184 45.9705 30.8522C45.6505 31.0861 45.2656 31.2116 44.8708 31.2109Z"
+              fill="white" />
+          </g>
+          <defs>
             <clipPath id="clip0_172744_5754">
-            <rect width="34.186" height="25.1163" fill="white" transform="translate(12.5581 16.0464)"/>
+              <rect width="34.186" height="25.1163" fill="white" transform="translate(12.5581 16.0464)" />
             </clipPath>
-            </defs>
-            </svg>
-          <div class="textContainer">
+          </defs>
+        </svg>
+        <div class="textContainer">
           <span class="numberContainer">1</span>
           <span>Urgent</span>
         </div>
-        </div>
-        <div class="seperatorBigCard"></div>
-        <div class="textContainerBigCard">
-          <span>October 16, 2024</span>
-          <span>Upcomming Deadline</span>
-        </div>
+      </div>
+      <div class="seperatorBigCard"></div>
+      <div class="textContainerBigCard">
+        <span>October 16, 2024</span>
+        <span>Upcomming Deadline</span>
+      </div>
     </div>
     <div class="summaryCardSmall">
       <div class="iconContainer">
         <div class="textContainer">
-        <span class="numberContainer">5</span>
-        <span>Tasks in Board</span>
+          <span class="numberContainer">5</span>
+          <span>Tasks in Board</span>
+        </div>
       </div>
-      </div>
-  </div>
-  <div class="summaryCardSmall">
-    <div class="iconContainer">
-      <div class="textContainer">
-      <span class="numberContainer">2</span>
-      <span>Tasks in Progress</span>
     </div>
-    </div>
-</div>
-<div class="summaryCardSmall">
-  <div class="iconContainer">
-    <div class="textContainer">
-    <span class="numberContainer">2</span>
-    <span>Awaiting Feedback</span>
-  </div>
-  </div>
-</div>
+    <div class="summaryCardSmall">
+      <div class="iconContainer">
+        <div class="textContainer">
+          <span class="numberContainer">2</span>
+          <span>Tasks in Progress</span>
+        </div>
       </div>
-  </body>
+    </div>
+    <div class="summaryCardSmall">
+      <div class="iconContainer">
+        <div class="textContainer">
+          <span class="numberContainer">2</span>
+          <span>Awaiting Feedback</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
 </html>
