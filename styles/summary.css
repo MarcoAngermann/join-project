@@ -43,6 +43,9 @@
 }
 
 .summaryCardBig {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     width: 560px;
     height: 168px;
     background-color: #FFFFFF;
@@ -97,11 +100,32 @@
 }
 
 .summaryCard:hover .summaryIcons path {
-    fill: #2A3647; /* Ändere die Farbe hier nach deinen Wünschen */
+    fill: #2A3647;
 }
 
 .summaryCardSmall:hover {
     scale: 1.1;
     background-color: #2A3647;
     color: #FFFFFF;
+}
+
+.summaryCardBig:hover {
+    scale: 1.1;
+    background-color: #2A3647;
+    color: #FFFFFF;
+}
+
+.seperatorBigCard {
+    width: 0px;
+    height: 60px;      
+    border: 1px solid #d1d1d1;  
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.textContainerBigCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
 }
