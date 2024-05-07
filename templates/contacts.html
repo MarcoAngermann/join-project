@@ -1,39 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles/style.css" />
-    <link rel="stylesheet" href="../styles/contacts.css" />
-    <link rel="stylesheet" href="../styles/sidebar.css" />
-    <link rel="stylesheet" href="../styles/fonts.css" />
 
-    <script src="../js/header.js"></script>
-    <script src="../js/script.js"></script>
-    <script src="../js/contacts.js"></script>
-    <script src="../js/dummy_db.js"></script>
-    <title>Join contacts</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styles/style.css" />
+  <link rel="stylesheet" href="../styles/contacts.css" />
+  <link rel="stylesheet" href="../styles/sidebar.css" />
+  <link rel="stylesheet" href="../styles/fonts.css" />
 
-  <body onload="init()">
-    <div w3-include-html="../templates/sidebar.html"></div>
-    <div w3-include-html="../templates/header.html"></div>
-    <div class="contactContainer">
-      <div class="divContactList">
-        <button class="btnJoin style_BtnTypography1" type="button" id="button">
-          Add new contact
-          <img class="iconContact" src="../assets/icons/person_add_icon.svg" />
-        </button>
-        <div class="divList" id="divList"></div>
+  <script src="../js/header.js"></script>
+  <script src="../js/script.js"></script>
+  <script src="../js/contacts.js"></script>
+  <script src="../js/dummy_db.js"></script>
+  <title>Join contacts</title>
+</head>
+
+<body onload="init()">
+  <div w3-include-html="../templates/sidebar.html"></div>
+  <div w3-include-html="../templates/header.html"></div>
+  <div class="contactContainer">
+    <div class="divContactList">
+      <button class="btnJoin marginbtnJoin style_BtnTypography1" type="button" id="button" onclick="openDialog()">
+        Add new contact
+        <img class="iconContact" src="../assets/icons/person_add_icon.svg" />
+      </button>
+      <div class="divList" id="divList"></div>
+    </div>
+    <div class="divContactDetails">
+      <div class="divContactTitle">
+        <h1 class="titleContact">Contacts</h1>
+        <div class="seperator"></div>
+        <p class="style_BtnTypography1">Better with a team</p>
       </div>
-      <div class="divContactDetails">
-        <div class="divContactTitle">
-          <h1 class="titleContact">Contacts</h1>
-          <div class="seperator"></div>
-          <p class="style_BtnTypography1">Better with a team</p>
-        </div>
-        <div id="divDetails""></div>
+      <div class="divDetails" id="divDetails">
       </div>
     </div>
-  </body>
+
+    <div id="dialog" class="dialog-bg d-none">
+      <div class="dialog">
+        <div class="joinAddContact">
+          <img class="iconJoinContact" src="../assets/icons/joinWhite.svg">
+          <div class="titleContact">Add contact </div>
+          <div class="textAdd">Task are better with a team</div>
+          <div class="seperatorAdd"></div>
+        </div>
+        <div class="emblemInfo"><img src="../assets/icons/person_icon.svg">
+        </div>
+        <div style="height: 100%;">
+          <button class="btnClose" onclick="closeDialog()"><img class="imgBtns"
+              src="../assets/icons/cancel.svg"></button>
+          <form class="addcontactForm" onsubmit="newContact(event)">
+            <div class="groupContact-input">
+              <input class="inputsContact style_InputTypography1" type="text" id="nameContact"
+                style="background-image: url(../assets/icons/personInput_icon.svg)" placeholder="Name"
+                oninvalid="this.setCustomValidity('Please, write a surname and name')" required>
+              <input class="inputsContact style_InputTypography1" type="email" id="emailContact"
+                style="background-image: url(../assets/icons/mail_icon.svg)" placeholder="Email"
+                oninvalid="this.setCustomValidity('Invalid email address')" required>
+              <input class="inputsContact style_InputTypography1" type="tel" id="phoneContact"
+                style="background-image: url(../assets/icons/call_icon.svg)" placeholder="Phone"
+                oninvalid="this.setCustomValidity('Please enter a phonenumber')" required>
+              <div class="divBtnForm">
+                <button class="btnGuest style_InputTypography1" onclick="closeDialog()">Cancel <img class="imgBtns"
+                    src="../assets/icons/cancel.svg"></button>
+                <button class="btnJoin style_BtnTypography1" type="submit">Create Contact <img class="imgBtns"
+                    src="../assets/icons/check.svg"></button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</body>
+
 </html>
