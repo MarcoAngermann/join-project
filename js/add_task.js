@@ -79,8 +79,8 @@ function renderAssignees() {
     const contact = contacts[i];
     assignee.innerHTML += `
       <option class="assignee">
-        <div class="emblem" style="background-color: ${contact['color']}">${contact['emblem']}</div> 
-        <div>${contact['name']}</div>
+        <span class="emblem" style="background-color: ${contact['color']}">${contact['emblem']}</span> 
+        <span>${contact['name']}</span>
       </option>`;
   }
 }
