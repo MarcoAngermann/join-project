@@ -171,3 +171,7 @@ textarea {
 .selected {
   color: white;
 }
+
+.emblem {
+  font-weight: bold;
+}

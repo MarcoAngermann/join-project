@@ -59,16 +59,30 @@ window.onload = function () {
   }
 };
 
-let = checkedPrio;
+// let = checkedPrio;
 
-let createTask = [
-  {
-  "title": title.value,
-  "description": description.value,
-  "assignees": [],
-  "date": date.value,
-  "priority": checkedPrio,
-  "category": category.value,
-  "subtask": [],  
+// let createTask = [
+//   {
+//   "title": title.value,
+//   "description": description.value,
+//   "assignees": [],
+//   "date": date.value,
+//   "priority": checkedPrio,
+//   "category": category.value,
+//   "subtask": [],  
+// }
+// ];
+function renderAssignees() {
+  let assignee = document.getElementById('assignees');
+
+  for (let i = 0; i < contacts.length; i++) {
+    const contact = contacts[i];
+    assignee.innerHTML += `
+      <option class="assignee">
+        <div class="emblem" style="background-color: ${contact['color']}">${contact['emblem']}</div> 
+        <div>${contact['name']}</div>
+      </option>`;
+  }
 }
-];
+
+
