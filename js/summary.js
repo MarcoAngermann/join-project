@@ -9,10 +9,8 @@ function getGreeting() {
     } else {
         greeting = "Good Evening,";
     }
-
     return greeting;
 }
-
 function displayGreeting() {
     document.getElementById("greetText").innerHTML = getGreeting();
 }
