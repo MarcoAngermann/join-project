@@ -40,6 +40,8 @@
     padding: 38px 19px 38px 19px;
     gap: 18px;
     background-color: #FFFFFF;
+    text-decoration: none;
+    color: black;
 }
 
 .summaryCardBig {
@@ -51,6 +53,8 @@
     background-color: #FFFFFF;
     padding: 28px 48px 28px 48px;
     border-radius: 30px;
+    text-decoration: none;
+    color: black;
 }
 
 .summaryCardSmall {
@@ -60,6 +64,8 @@
     border-radius: 30px;
     background-color: #FFFFFF;
     gap: 13px;
+    text-decoration: none;
+    color: black;
 }
 
 .iconContainer {
