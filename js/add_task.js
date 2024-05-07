@@ -61,7 +61,8 @@ window.onload = function () {
 
 let = checkedPrio;
 
-let food = [{
+let createTask = [
+  {
   "title": title.value,
   "description": description.value,
   "assignees": [],
