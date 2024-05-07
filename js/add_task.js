@@ -59,3 +59,15 @@ window.onload = function () {
   }
 };
 
+let = checkedPrio;
+
+let food = [{
+  "title": title.value,
+  "description": description.value,
+  "assignees": [],
+  "date": date.value,
+  "priority": checkedPrio,
+  "category": category.value,
+  "subtask": [],  
+}
+];
