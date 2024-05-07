@@ -10,7 +10,7 @@ function renderListContact() {
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     if (i == 0 || contact['name'].slice(0, 1) != contacts[i - 1]['name'].slice(0, 1)) {
-      contentList.innerHTML += `<div class="divAlphabet">${contact['name'].slice(0, 1)}</div>`;
+      contentList.innerHTML += `<div class="divAlphabet">${contact['name'].slice(0, 1).toUpperCase()}</div>`;
     }
     contentList.innerHTML += `
             <div class="divShortContact" onclick="showDetailContact(${i})">
@@ -38,18 +38,18 @@ function showDetailContact(i) {
   infoContact.classList.remove('move-left');
   infoContact.offsetWidth;
   infoContact.classList.add('move-left');
-  infoContact.innerHTML += renderContactinList();
+  infoContact.innerHTML += renderContactinList(i);
 }
 
-function renderContactinList() {
+function renderContactinList(i) {
   return ` 
   <div class="headlineContact">
       <div class="emblemInfo" id="emblem" style="background-color: ${contact['color']}">${contact['emblem']}</div>
-      <div class="nameContact" id="nameContact">
+      <div class="nameContact">
           ${contact['name']}
         <div class="a_nameContact">
-            <a onclick="editContact(i)"><img src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
-            <a onclick="deleteContact(id)"><img src="../assets/icons/delete_contact_icon.svg"> Delete</a>
+            <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
+            <a onclick="deleteContact(${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
         </div>
       </div>
   </div>
@@ -62,10 +62,57 @@ function renderContactinList() {
   </div>`;
 }
 
-
-function openDialog() {
+function openDialog(newContact, i) {
   let dialog = document.getElementById('dialog');
   dialog.classList.remove('d-none');
+  if (newContact == true){
+  let title1 = "Add contact";
+  let functionNew = "newContact(event)";
+  let btnText = "Create Contact";
+  dialog.innerHTML = renderContactDialog(title1, functionNew, btnText);}
+  else {
+    let contact = contacts[i];       
+    let title1 = "Edit contact";
+    let functionNew = "editContact(event," + i +")";
+    let btnText = "Save";
+    dialog.innerHTML = renderContactDialog(title1, functionNew, btnText);
+    document.getElementById('textAdd').classList.add('d-none');
+    document.getElementById('nameContact').value = contact['name'] ;
+    document.getElementById('emailContact').value = contact['email'];
+    document.getElementById('phoneContact').value = contact['phone'];
+  }
+}
+
+
+function renderContactDialog(title1, functionNew, btnText) {
+  return `
+<div class="dialog">
+<div class="joinAddContact">
+  <img class="iconJoinContact" src="../assets/icons/joinWhite.svg">
+  <div class="titleContact">${title1}</div>
+  <div id="textAdd" class="textAdd">Task are better with a team</div>
+  <div class="seperatorAdd"></div>
+</div>
+<div style="margin: 30px;"><img src="../assets/icons/person_icon.svg">
+</div>
+<div style="height: 100%;">
+  <button class="btnClose" onclick="closeDialog()"><img class="imgBtns"
+      src="../assets/icons/cancel.svg"></button>
+  <form class="addcontactForm" onsubmit=${functionNew}>
+    <div class="groupContact-input">
+      <input class="inputsContact style_InputTypography1" type="text" id="nameContact"
+        style="background-image: url(../assets/icons/personInput_icon.svg)" placeholder="Name" required>
+      <input class="inputsContact style_InputTypography1" type="email" id="emailContact"
+        style="background-image: url(../assets/icons/mail_icon.svg)" placeholder="Email" required>
+      <input class="inputsContact style_InputTypography1" type="tel" id="phoneContact"
+        style="background-image: url(../assets/icons/call_icon.svg)" placeholder="Phone" required>
+      <div class="divBtnForm">
+        <button class="btnGuest style_InputTypography1" onclick="closeDialog()">Cancel <b>X</b></button>
+        <button class="btnJoin style_BtnTypography1" type="submit">${btnText}<img class="imgBtns" src="../assets/icons/check.svg"></button>
+      </div>
+  </form>
+</div>
+</div>`;
 }
 
 function closeDialog() {
@@ -78,7 +125,7 @@ function renderEmblem(name) {
   let capital = '';
   for (let j = 0; j < aux.length; j++) {
     if (j <= 1) {
-      capital += aux[j].slice(0, 1);
+      capital += aux[j].slice(0, 1).toUpperCase();
     }
   }
   return capital;
@@ -91,8 +138,10 @@ function colorRandom() {
 function newContact(event) {
   event.preventDefault();
   let nameContact = document.getElementById('nameContact').value;
-  let newContact = {   
-    "name": nameContact,
+  let nameContactUpper = nameContact[0].toUpperCase() + nameContact.slice(1);
+
+  let newContact = {
+    "name": nameContactUpper,
     "email": document.getElementById('emailContact').value,
     "phone": document.getElementById('phoneContact').value,
     "emblem": renderEmblem(nameContact),
@@ -108,4 +157,27 @@ function cleanContactControls() {
   document.getElementById('nameContact').value = "";
   document.getElementById('emailContact').value = "";
   document.getElementById('phoneContact').value = "";
+}
+
+
+function editContact(event, i) {
+  event.preventDefault();
+  contact = contacts[i];
+  contact['name'] = document.getElementById('nameContact').value;
+  contact['email'] = document.getElementById('emailContact').value;
+  contact['phone'] = document.getElementById('phoneContact').value; 
+  contact['emblem'] = renderEmblem(document.getElementById('nameContact').value);
+
+  closeDialog();
+  cleanContactControls();
+  renderListContact();
+  showDetailContact(i);
+}
+
+function deleteContact(i){
+  contact = contacts[i];
+  contacts.splice(i, 1);
+  document.getElementById('divDetails').innerHTML = "";
+  renderListContact();
+
 }

@@ -21,7 +21,7 @@
   <div w3-include-html="../templates/header.html"></div>
   <div class="contactContainer">
     <div class="divContactList">
-      <button class="btnJoin marginbtnJoin style_BtnTypography1" type="button" id="button" onclick="openDialog()">
+      <button class="btnJoin marginbtnJoin style_BtnTypography1" type="button" id="button" onclick="openDialog(true, -1)">
         Add new contact
         <img class="iconContact" src="../assets/icons/person_add_icon.svg" />
       </button>
@@ -33,43 +33,13 @@
         <div class="seperator"></div>
         <p class="style_BtnTypography1">Better with a team</p>
       </div>
+     
       <div class="divDetails" id="divDetails">
       </div>
     </div>
-
+    
     <div id="dialog" class="dialog-bg d-none">
-      <div class="dialog">
-        <div class="joinAddContact">
-          <img class="iconJoinContact" src="../assets/icons/joinWhite.svg">
-          <div class="titleContact">Add contact </div>
-          <div class="textAdd">Task are better with a team</div>
-          <div class="seperatorAdd"></div>
-        </div>
-        <div class="emblemInfo"><img src="../assets/icons/person_icon.svg">
-        </div>
-        <div style="height: 100%;">
-          <button class="btnClose" onclick="closeDialog()"><img class="imgBtns"
-              src="../assets/icons/cancel.svg"></button>
-          <form class="addcontactForm" onsubmit="newContact(event)">
-            <div class="groupContact-input">
-              <input class="inputsContact style_InputTypography1" type="text" id="nameContact"
-                style="background-image: url(../assets/icons/personInput_icon.svg)" placeholder="Name"
-                oninvalid="this.setCustomValidity('Please, write a surname and name')" required>
-              <input class="inputsContact style_InputTypography1" type="email" id="emailContact"
-                style="background-image: url(../assets/icons/mail_icon.svg)" placeholder="Email"
-                oninvalid="this.setCustomValidity('Invalid email address')" required>
-              <input class="inputsContact style_InputTypography1" type="tel" id="phoneContact"
-                style="background-image: url(../assets/icons/call_icon.svg)" placeholder="Phone"
-                oninvalid="this.setCustomValidity('Please enter a phonenumber')" required>
-              <div class="divBtnForm">
-                <button class="btnGuest style_InputTypography1" onclick="closeDialog()">Cancel <img class="imgBtns"
-                    src="../assets/icons/cancel.svg"></button>
-                <button class="btnJoin style_BtnTypography1" type="submit">Create Contact <img class="imgBtns"
-                    src="../assets/icons/check.svg"></button>
-              </div>
-          </form>
-        </div>
-      </div>
+     
     </div>
 
 

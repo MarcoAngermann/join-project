@@ -131,13 +131,15 @@
 }
 
 .contactEmblem {
+    display: flex;
     width: 42px;
     height: 42px;
     padding: 10px;
     border-radius: 50%;
     color: white;
     font-weight: 400;
-    align-content: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .divContactDetails {
@@ -192,16 +194,15 @@
         margin-left: 0%;
     }
 }
-
 .move-left {
     animation: move-left 1s ease-in-out;
-
 }
 
 .headlineContact {
     display: flex;
     flex-direction: row;
-    gap: 54px;
+    align-items: center;
+    gap: 21px;
 }
 
 .emblemInfo {
@@ -212,8 +213,10 @@
     color: white;
     font-weight: 400;   
     font-size: 57px;
-    text-align: center;
-    margin: 50px;
+    text-align: center;    
+    justify-items: center;
+    align-content: center;
+    margin: 35px 35px 35px 0px;
 }
 
 .nameContact {
@@ -236,6 +239,16 @@
     width: 24px;
     height: 24px;
     vertical-align: bottom;
+}
+
+.a_nameContact a:hover{
+    cursor: pointer;
+    color: #29ABE2;
+    font-weight: 600;
+}
+
+.a_nameContact a:hover .imgBtns{
+    filter: invert(60%) sepia(88%) saturate(1665%) hue-rotate(165deg) brightness(93%) contrast(89%);
 }
 
 .info {
@@ -306,7 +319,6 @@
     font-weight: 400;
     line-height: 32.4px;
     margin: 16px 0px 16px 0px;
-
 }
 
 .seperatorAdd {
@@ -375,7 +387,4 @@
     border-radius: 50%;
 }
 
-.btnGuest:hover .imgBtns {    
-    fill: #29ABE2;
-    transition: all 0.5s;
-}
+
