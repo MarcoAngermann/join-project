@@ -223,7 +223,7 @@ textarea {
 }
 
 .assignees {
-  height: 200px;
+  height: 150px;
   overflow-y: auto;
   position: sticky;
   z-index: 99;
@@ -232,4 +232,8 @@ textarea {
 input[type="checkbox"]{
   height: 14px;
   width: 14px;
+}
+
+.contactName {
+  width: 280px;
 }

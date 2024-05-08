@@ -82,7 +82,7 @@ function renderAssignees() {
         <div class="emblem" style="background-color: ${contact['color']}">
           ${contact['emblem']}
         </div> 
-        <div>${contact['name']}</div> 
+        <div class="contactName" >${contact['name']}</div> 
         <input type="checkbox">
         </li>
         
