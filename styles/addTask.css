@@ -161,7 +161,13 @@ textarea {
 }
 
 .required-field-text {
-  margin-top: 230px;
+  z-index: 1;
+  position: absolute;
+  top: 887px;
+  left: 328px;
+  right: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .requierd-color {
@@ -174,4 +180,56 @@ textarea {
 
 .assignee span{
   font-weight: bold;
+}
+
+.emblem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #29abe2;
+  color: white;
+  font-size: 12px;
+}
+
+.contactList {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.contactContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 440px;
+  height: 48px;
+  background-color: #ffffff;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  padding: 12px 21px 12px 21px;
+}
+
+.contactContainer span {
+  font-size: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.assignees {
+  height: 200px;
+  overflow-y: auto;
+  position: sticky;
+  z-index: 99;
+}
+
+input[type="checkbox"]{
+  height: 14px;
+  width: 14px;
 }

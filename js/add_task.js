@@ -78,11 +78,21 @@ function renderAssignees() {
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     assignee.innerHTML += `
-      <option class="assignee">
-        <span class="emblem" style="background-color: ${contact['color']}">${contact['emblem']}</span> 
-        <span>${contact['name']}</span>
-      </option>`;
+      <li class="contactList">
+        <div class="emblem" style="background-color: ${contact['color']}">
+          ${contact['emblem']}
+        </div> 
+        <div>${contact['name']}</div> 
+        <input type="checkbox">
+        </li>
+        
+     `;
   }
+}
+
+function toggleAssignees() {
+  let assigneesList = document.getElementById('assignees');
+  assigneesList.classList.toggle('hidden');
 }
 
 
