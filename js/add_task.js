@@ -85,14 +85,13 @@ function renderAssignees() {
         <div class="contactName" >${contact['name']}</div> 
         <input type="checkbox">
         </li>
-        
      `;
   }
 }
 
 function toggleAssignees() {
   let assigneesList = document.getElementById('assignees');
-  assigneesList.classList.toggle('hidden');
+  assigneesList.classList.toggle('show');
 }
 
 
