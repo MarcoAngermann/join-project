@@ -97,7 +97,7 @@ function allowDrop(ev) {
 }
 
 function moveTo(category) {
-  todos[currentDraggedElement]['category'] = category;
+  dummyCards[currentDraggedElement]['category'] = category;
   updateHTML();
 }
 

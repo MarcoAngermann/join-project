@@ -23,7 +23,12 @@ function resetElements(elements) {
   }
 }
 
-function setPriorityStyles(selectedElement, backgroundColor, textColor, svgColor) {
+function setPriorityStyles(
+  selectedElement,
+  backgroundColor,
+  textColor,
+  svgColor
+) {
   if (selectedElement) {
     selectedElement.classList.add('selected');
     selectedElement.style.backgroundColor = backgroundColor;
@@ -75,7 +80,7 @@ window.onload = function () {
 //   "date": date.value,
 //   "priority": checkedPrio,
 //   "category": category.value,
-//   "subtask": [],  
+//   "subtask": [],
 // }
 // ];
 function renderAssignees() {
@@ -83,14 +88,16 @@ function renderAssignees() {
 
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
-    assignee.innerHTML += `
+    assignee.innerHTML += /*html*/ `
       <li class="contactList">
-        <div class="emblem" style="background-color: ${contact['color']}">
-          ${contact['emblem']}
-        </div> 
-        <div class="contactName" >${contact['name']}</div> 
-        <input type="checkbox">
-        </li>
+        <label for="checkbox${i}">
+          <div class="emblem" style="background-color: ${contact['color']}">
+            ${contact['emblem']}
+          </div> 
+          <div class="contactName" >${contact['name']}</div> 
+          <input type="checkbox" id="checkbox${i}">
+        </label>
+      </li>
      `;
   }
 }
@@ -101,10 +108,7 @@ function toggleAssignees() {
 }
 
 function restrictPastDate() {
-  let dateInput = document.getElementById("date");
+  let dateInput = document.getElementById('date');
   let today = new Date().toISOString().split('T')[0];
-  dateInput.setAttribute("min", today);
+  dateInput.setAttribute('min', today);
 }
-
-
-
