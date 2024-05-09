@@ -1,3 +1,9 @@
+function init() {
+  restrictPastDate();
+  includeHTML();
+  renderAssignees();
+}
+
 function resetElements(elements) {
   for (let i = 0; i < elements.length; i++) {
     elements[i].classList.remove('selected');
@@ -93,5 +99,12 @@ function toggleAssignees() {
   let assigneesList = document.getElementById('assignees');
   assigneesList.classList.toggle('show');
 }
+
+function restrictPastDate() {
+  let dateInput = document.getElementById("date");
+  let today = new Date().toISOString().split('T')[0];
+  dateInput.setAttribute("min", today);
+}
+
 
 
