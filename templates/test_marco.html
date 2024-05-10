@@ -19,11 +19,11 @@
     <h1 class="headline-task">Add Task</h1>
     <form class="add-task-container form" onsubmit="createNewTask()">
       <div class="groupTask1-input">
-        <label>Title<span class="requierd-color">*</span></label>
+        <span>Title<span class="required-color">*</span></span>
         <input id="title" type="text" required />
         <span>Description</span>
         <textarea name="" id="description" cols="30" rows="5"></textarea>
-        <label>Assigned to</label>
+        <span>Assigned to</span>
 
         <div
           class="contactContainer"
@@ -46,7 +46,7 @@
       </div>
       <div class="seperator"></div>
       <div class="groupTask2-input">
-        <label>Due date<span class="requierd-color">*</span></label>
+        <span>Due date<span class="required-color">*</span></span>
         <input id="date" type="date" required />
         <span>Prio</span>
         <div class="prio-container">
@@ -108,7 +108,7 @@
             </svg>
           </div>
         </div>
-        <span>Category<span class="requierd-color">*</span></span>
+        <span>Category<span class="required-color">*</span></span>
 
         <div
           class="contactContainer"
@@ -211,7 +211,7 @@
           </div>
         </div>
         <p class="required-field-text">
-          <span class="requierd-color">*</span>This field is required
+          <span class="required-color">*</span>This field is required
         </p>
         <div class="addTaskBtn-Container">
           <button class="btnClear">
