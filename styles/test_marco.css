@@ -247,6 +247,10 @@ textarea {
   display: flex;
 }
 
+.close{
+  display: none;
+}
+
 .assignees {
   display: none;
   height: 150px;

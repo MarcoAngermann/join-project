@@ -167,7 +167,6 @@ function editContact(event, i) {
   contact['email'] = document.getElementById('emailContact').value;
   contact['phone'] = document.getElementById('phoneContact').value; 
   contact['emblem'] = renderEmblem(document.getElementById('nameContact').value);
-
   closeDialog();
   cleanContactControls();
   renderListContact();

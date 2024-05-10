@@ -90,14 +90,12 @@ function renderAssignees() {
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     assignee.innerHTML += /*html*/ `
-        <li>
-          <span  class="contactList" for="checkbox${i}">
+        <li class="contactList">        
             <div tabindex="0" class="emblem" style="background-color: ${contact['color']}">
               ${contact['emblem']}
             </div> 
             <div class="contactName" >${contact['name']}</div> 
-            <input type="checkbox" id="checkbox${i}">
-          </span>
+            <input type="checkbox" id="checkbox${i}">          
         </li>
        `;
   }
@@ -139,4 +137,27 @@ function restrictPastDate() {
   let dateInput = document.getElementById('date');
   let today = new Date().toISOString().split('T')[0];
   dateInput.setAttribute('min', today);
+}
+
+
+//Mónica New Funktion
+
+
+function renderEmblemAssignees(emblem, color) {
+  let assignesEmblem = document.getElementById('assignesEmblem');
+  assignesEmblem.innerHTML += `
+    <div class="emblem" style="background-color: ${contact['color']}">
+      ${contact['emblem']}
+    </div>  `
+}
+
+function showAssigneesEmblem() {    
+  for (let i = 0; i < contacts.length; i++) {
+    contact = contacts[i];
+    let checkedContact = document.getElementById(`checkbox${i}`);
+    if (checkedContact.checked == true) {   
+      renderEmblemAssignees(contact['emblem'], contact['color']);
+    }
+  }
+  document.getElementById('assignees').classList.toggle('close');
 }
