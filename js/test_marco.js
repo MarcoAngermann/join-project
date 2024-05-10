@@ -84,6 +84,7 @@ window.onload = function () {
 //   "subtask": [],
 // }
 // ];
+
 function renderAssignees() {
   let assignee = document.getElementById('assignees');
 
@@ -146,16 +147,18 @@ function restrictPastDate() {
 function renderEmblemAssignees(emblem, color) {
   let assignesEmblem = document.getElementById('assignesEmblem');
   assignesEmblem.innerHTML += `
-    <div class="emblem" style="background-color: ${contact['color']}">
+    <div class="emblem" style="background-color: ${contact['color']}" id="${contact['id']}">
       ${contact['emblem']}
     </div>  `
 }
 
-function showAssigneesEmblem() {    
+function showAssigneesEmblem() {
+  let assignesEmblem = document.getElementById('assignesEmblem');
+  assignesEmblem.innerHTML = "";
   for (let i = 0; i < contacts.length; i++) {
     contact = contacts[i];
     let checkedContact = document.getElementById(`checkbox${i}`);
-    if (checkedContact.checked == true) {   
+    if (checkedContact.checked == true) {
       renderEmblemAssignees(contact['emblem'], contact['color']);
     }
   }
