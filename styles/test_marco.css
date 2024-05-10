@@ -151,6 +151,8 @@ textarea {
 }
 
 .addTaskBtn-Container {
+  position: absolute;
+  top: 700px;
   margin-top: 150px;
   display: flex;
   flex-direction: row;
@@ -284,6 +286,10 @@ input[type='checkbox'] {
 }
 
 .subtask-container {
+  position: absolute;
+  top: 638px;
+  left: 800px;
+  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -321,4 +327,10 @@ input[type='checkbox'] {
 
 .dnone {
   display: none;
+}
+
+.subtaskLabel {
+  position: absolute;
+  top: 600px;
+  left:800px;
 }
