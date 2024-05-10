@@ -91,13 +91,13 @@ function renderAssignees() {
     const contact = contacts[i];
     assignee.innerHTML += /*html*/ `
         <li>
-          <span  class="contactList" for="checkbox${i}">
+          <label  class="contactList" for="checkbox${i}">
             <div tabindex="0" class="emblem" style="background-color: ${contact['color']}">
               ${contact['emblem']}
             </div> 
             <div class="contactName" >${contact['name']}</div> 
             <input type="checkbox" id="checkbox${i}">
-          </span>
+          </label>
         </li>
        `;
   }
