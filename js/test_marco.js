@@ -91,13 +91,13 @@ function renderAssignees() {
     const contact = contacts[i];
     assignee.innerHTML += /*html*/ `
         <li>
-          <label  class="contactList" for="checkbox${i}">
+          <span  class="contactList" for="checkbox${i}">
             <div tabindex="0" class="emblem" style="background-color: ${contact['color']}">
               ${contact['emblem']}
             </div> 
             <div class="contactName" >${contact['name']}</div> 
             <input type="checkbox" id="checkbox${i}">
-          </label>
+          </span>
         </li>
        `;
   }
@@ -114,11 +114,11 @@ function renderCategorys() {
   for (let i = 0; i < categorys.length; i++) {
     task.innerHTML += /*html*/ `
             <li class="contactList">
-                <label for="">
+                <span for="">
                     <div tabindex="0" onclick="selectCategory(${i})">
                       ${categorys[i]}
                     </div>
-                </label>
+                </span>
             </li>
            `;
   }

@@ -17,7 +17,7 @@
     <div w3-include-html="../templates/sidebar.html"></div>
     <div w3-include-html="../templates/header.html"></div>
     <h1 class="headline-task">Add Task</h1>
-    <form class="add-task-container form">
+    <form class="add-task-container form" onsubmit="createNewTask()">
       <div class="groupTask1-input">
         <label>Title<span class="requierd-color">*</span></label>
         <input id="title" type="text" required />
@@ -46,9 +46,9 @@
       <div class="groupTask2-input">
         <label>Due date<span class="requierd-color">*</span></label>
         <input id="date" type="date" required />
-        <label>Prio</label>
+        <span>Prio</span>
         <div class="prio-container">
-          <div class="prioBtn" onclick="togglePriority('urgent')">
+          <div class="prioBtn" id="urgentPrio" onclick="togglePriority('urgent')">
             Urgent
             <svg
               width="21"
@@ -67,7 +67,7 @@
               />
             </svg>
           </div>
-          <div class="prioBtn midBtn-Color" onclick="togglePriority('medium')">
+          <div class="prioBtn midBtn-Color" id="midPrio" onclick="togglePriority('medium')">
             Medium
             <svg
               width="21"
@@ -86,7 +86,7 @@
               />
             </svg>
           </div>
-          <div class="prioBtn" onclick="togglePriority('low')">
+          <div class="prioBtn" id="lowPrio" onclick="togglePriority('low')">
             Low
             <svg
               width="21"
@@ -106,7 +106,7 @@
             </svg>
           </div>
         </div>
-        <label>Category<span class="requierd-color">*</span></label>
+        <span>Category<span class="requierd-color">*</span></span>
 
         <div
           class="contactContainer"
@@ -123,11 +123,8 @@
             </g>
             </svg>
         </div>
-
         <ul id="tasks" class="tasks"></ul>
-
-        <label class="subtaskLabel">Subtask</label>
-
+        <span class="subtaskLabel">Subtask</span>
         <div class="subtask-container">
           <input type="text" id="subtask" placeholder="Add new subtask" />
           <div class="subtask-right">

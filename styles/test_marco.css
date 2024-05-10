@@ -203,6 +203,7 @@ textarea {
   gap: 8px;
   margin-bottom: 8px;
   cursor: pointer;
+  margin-top: 8px;
 }
 
 .contactList:hover {
