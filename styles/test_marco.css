@@ -151,9 +151,7 @@ textarea {
 }
 
 .addTaskBtn-Container {
-  position: absolute;
-  top: 700px;
-  margin-top: 150px;
+  margin-top: 130px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -164,10 +162,7 @@ textarea {
 
 .required-field-text {
   z-index: 1;
-  position: absolute;
-  top: 887px;
-  left: 328px;
-  right: 0;
+  margin-top: 200px;
   align-items: center;
   justify-content: center;
 }
@@ -247,7 +242,7 @@ textarea {
   display: flex;
 }
 
-.close{
+.close {
   display: none;
 }
 
@@ -291,9 +286,6 @@ input[type='checkbox'] {
 }
 
 .subtask-container {
-  position: absolute;
-  top: 638px;
-  left: 800px;
   right: 0;
   display: flex;
   justify-content: space-between;
@@ -332,10 +324,4 @@ input[type='checkbox'] {
 
 .dnone {
   display: none;
-}
-
-.subtaskLabel {
-  position: absolute;
-  top: 600px;
-  left:800px;
 }
