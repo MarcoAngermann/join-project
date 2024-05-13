@@ -2,6 +2,7 @@ function init() {
   restrictPastDate();
   includeHTML();
   renderAssignees();
+  renderCategorys();
 }
 
 function resetElements(elements) {
@@ -83,23 +84,23 @@ window.onload = function () {
 //   "subtask": [],
 // }
 // ];
+
 function renderAssignees() {
   let assignee = document.getElementById('assignees');
 
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     assignee.innerHTML += /*html*/ `
-    <label for="checkbox${i}">  
-      <li class="contactList">
-          <div class="emblem" style="background-color: ${contact['color']}">
-            ${contact['emblem']}
-          </div> 
-          <div class="contactName" >${contact['name']}</div> 
-          <input type="checkbox" id="checkbox${i}">
-        
-      </li>
-      </label>
-     `;
+    <label for="checkbox${i}">
+        <li class="contactList">        
+            <div tabindex="0" class="emblem" style="background-color: ${contact['color']}">
+              ${contact['emblem']}
+            </div> 
+            <div class="contactName" >${contact['name']}</div> 
+            <input type="checkbox" id="checkbox${i}">          
+        </li>
+        </label>
+       `;
   }
 }
 
@@ -108,8 +109,60 @@ function toggleAssignees() {
   assigneesList.classList.toggle('show');
 }
 
+function renderCategorys() {
+  let task = document.getElementById('tasks');
+
+  for (let i = 0; i < categorys.length; i++) {
+    task.innerHTML += /*html*/ `
+            <li class="contactList">
+                <span for="">
+                    <div tabindex="0" onclick="selectCategory(${i})">
+                      ${categorys[i]}
+                    </div>
+                </span>
+            </li>
+           `;
+  }
+}
+
+function toggleCategorys() {
+  let taskList = document.getElementById('tasks');
+  taskList.classList.toggle('show');
+}
+
+function selectCategory(index) {
+  let selectedCategory = categorys[index];
+  document.getElementById('selectedCategory').innerText = selectedCategory;
+  toggleCategorys(); // Hide the category list after selection
+}
+
 function restrictPastDate() {
   let dateInput = document.getElementById('date');
   let today = new Date().toISOString().split('T')[0];
   dateInput.setAttribute('min', today);
+}
+
+
+//Mónica New Funktion
+
+
+function renderEmblemAssignees(emblem, color) {
+  let assignesEmblem = document.getElementById('assignesEmblem');
+  assignesEmblem.innerHTML += `
+    <div class="emblem" style="background-color: ${contact['color']}" id="${contact['id']}">
+      ${contact['emblem']}
+    </div>  `
+}
+
+function showAssigneesEmblem() {
+  let assignesEmblem = document.getElementById('assignesEmblem');
+  assignesEmblem.innerHTML = "";
+  for (let i = 0; i < contacts.length; i++) {
+    contact = contacts[i];
+    let checkedContact = document.getElementById(`checkbox${i}`);
+    if (checkedContact.checked == true) {
+      renderEmblemAssignees(contact['emblem'], contact['color']);
+    }
+  }
+  document.getElementById('assignees').classList.toggle('close');
 }

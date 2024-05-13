@@ -1,71 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="../styles/addTask.css">
-    <link rel="stylesheet" href="../styles/sidebar.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/test_marco.css" />
+    <link rel="stylesheet" href="../styles/sidebar.css" />
     <link rel="stylesheet" href="../styles/fonts.css" />
     <script src="../js/dummy_db.js"></script>
     <script src="../js/script.js"></script>
-    <script src="../js/add_task.js"></script>
+    <script src="../js/test_marco.js"></script>
     <script src="../js/header.js"></script>
     <title>Join add-task</title>
-</head>
-<body onload="init();">
+  </head>
+  <body onload="init();">
     <div w3-include-html="../templates/sidebar.html"></div>
     <div w3-include-html="../templates/header.html"></div>
     <h1 class="headline-task">Add Task</h1>
-    <form  class="add-task-container form">
-            <div class="groupTask1-input">
-                <label>Title<span class="requierd-color">*</span></label>
-                <input id="title" type="text" required>
-                <span>Description</span>
-                <textarea name="" id="description" cols="30" rows="5"></textarea>
-                <label>Assigned to</label>
-                <div class="contactContainer" id="toggleAssign" onclick="toggleAssignees()">
-                    <span>Select contacts to assign</span>
-                    <img src="../assets/icons/cancel.svg">
-                </div>
-                <ul id="assignees" class="assignees" >
-                </ul>
-                <p class="required-field-text"><span class="required-color">*</span>This field is required</p>
+    <form class="add-task-container form" onsubmit="createNewTask()">
+      <div class="groupTask1-input">
+        <span>Title<span class="required-color">*</span></span>
+        <input id="title" type="text" required />
+        <span>Description</span>
+        <textarea name="" id="description" cols="30" rows="5"></textarea>
+        <span>Assigned to</span>
+        <div
+          class="contactContainer"
+          id="toggleAssign"
+          onclick="toggleAssignees()"
+        >
+          <span>Select contacts to assign</span>
+          <svg
+            width="25"
+            height="24"
+            viewBox="0 0 25 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <mask
+              id="mask0_170614_1872"
+              style="mask-type: alpha"
+              maskUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+              width="25"
+              height="24"
+            >
+              <rect x="0.248535" width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_170614_1872)">
+              <path
+                d="M11.5485 14.3L8.94854 11.7C8.63187 11.3833 8.56104 11.0208 8.73604 10.6125C8.91104 10.2042 9.22354 10 9.67354 10H14.8235C15.2735 10 15.586 10.2042 15.761 10.6125C15.936 11.0208 15.8652 11.3833 15.5485 11.7L12.9485 14.3C12.8485 14.4 12.7402 14.475 12.6235 14.525C12.5069 14.575 12.3819 14.6 12.2485 14.6C12.1152 14.6 11.9902 14.575 11.8735 14.525C11.7569 14.475 11.6485 14.4 11.5485 14.3Z"
+                fill="#2A3647"
+              />
+            </g>
+          </svg>
+          <span onclick="showAssigneesEmblem()"><b>X</b></span>
+        </div>
+        <div id="assignesEmblem" style="display: inline-flex"></div>
+        <ul id="assignees" class="assignees"></ul>
+        <div>
+          <p class="required-field-text">
+            <span class="required-color">*</span>This field is required
+          </p>
+        </div>
+      </div>
+      <div class="seperator"></div>
+      <div class="groupTask2-input">
+        <span>Due date<span class="required-color">*</span></span>
+        <input id="date" type="date" required />
+        <span>Prio</span>
+        <div class="prio-container">
+          <div
+            class="prioBtn"
+            id="urgentPrio"
+            onclick="togglePriority('urgent')"
+          >
+            Urgent
+            <svg
+              width="21"
+              height="16"
+              viewBox="0 0 21 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19.6528 15.2547C19.4182 15.2551 19.1896 15.1803 19.0007 15.0412L10.7487 8.958L2.49663 15.0412C2.38078 15.1267 2.24919 15.1887 2.10939 15.2234C1.96959 15.2582 1.82431 15.2651 1.68184 15.2437C1.53937 15.2223 1.40251 15.1732 1.27906 15.099C1.15562 15.0247 1.04801 14.927 0.96238 14.8112C0.876751 14.6954 0.814779 14.5639 0.780002 14.4243C0.745226 14.2846 0.738325 14.1394 0.759696 13.997C0.802855 13.7095 0.958545 13.4509 1.19252 13.2781L10.0966 6.70761C10.2853 6.56802 10.5139 6.49268 10.7487 6.49268C10.9835 6.49268 11.212 6.56802 11.4007 6.70761L20.3048 13.2781C20.4908 13.415 20.6286 13.6071 20.6988 13.827C20.7689 14.0469 20.7678 14.2833 20.6955 14.5025C20.6232 14.7216 20.4834 14.9124 20.2962 15.0475C20.1089 15.1826 19.8837 15.2551 19.6528 15.2547Z"
+                fill="#FF3D00"
+              />
+              <path
+                d="M19.6528 9.50568C19.4182 9.50609 19.1896 9.43124 19.0007 9.29214L10.7487 3.20898L2.49663 9.29214C2.26266 9.46495 1.96957 9.5378 1.68184 9.49468C1.39412 9.45155 1.13532 9.29597 0.962385 9.06218C0.789449 8.82838 0.716541 8.53551 0.7597 8.24799C0.802859 7.96048 0.95855 7.70187 1.19252 7.52906L10.0966 0.958588C10.2853 0.818997 10.5139 0.743652 10.7487 0.743652C10.9835 0.743652 11.212 0.818997 11.4007 0.958588L20.3048 7.52906C20.4908 7.66598 20.6286 7.85809 20.6988 8.07797C20.769 8.29785 20.7678 8.53426 20.6955 8.75344C20.6232 8.97262 20.4834 9.16338 20.2962 9.29847C20.1089 9.43356 19.8837 9.50608 19.6528 9.50568Z"
+                fill="#FF3D00"
+              />
+            </svg>
+          </div>
+          <div
+            class="prioBtn midBtn-Color"
+            id="midPrio"
+            onclick="togglePriority('medium')"
+          >
+            Medium
+            <svg
+              width="21"
+              height="8"
+              viewBox="0 0 21 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19.1526 7.72528H1.34443C1.05378 7.72528 0.775033 7.60898 0.569514 7.40197C0.363995 7.19495 0.248535 6.91419 0.248535 6.62143C0.248535 6.32867 0.363995 6.0479 0.569514 5.84089C0.775033 5.63388 1.05378 5.51758 1.34443 5.51758H19.1526C19.4433 5.51758 19.722 5.63388 19.9276 5.84089C20.1331 6.0479 20.2485 6.32867 20.2485 6.62143C20.2485 6.91419 20.1331 7.19495 19.9276 7.40197C19.722 7.60898 19.4433 7.72528 19.1526 7.72528Z"
+                fill="white"
+              />
+              <path
+                d="M19.1526 2.48211H1.34443C1.05378 2.48211 0.775033 2.36581 0.569514 2.1588C0.363995 1.95179 0.248535 1.67102 0.248535 1.37826C0.248535 1.0855 0.363995 0.804736 0.569514 0.597724C0.775033 0.390712 1.05378 0.274414 1.34443 0.274414L19.1526 0.274414C19.4433 0.274414 19.722 0.390712 19.9276 0.597724C20.1331 0.804736 20.2485 1.0855 20.2485 1.37826C20.2485 1.67102 20.1331 1.95179 19.9276 2.1588C19.722 2.36581 19.4433 2.48211 19.1526 2.48211Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <div class="prioBtn" id="lowPrio" onclick="togglePriority('low')">
+            Low
+            <svg
+              width="21"
+              height="16"
+              viewBox="0 0 21 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.2485 9.50589C10.0139 9.5063 9.7854 9.43145 9.59655 9.29238L0.693448 2.72264C0.57761 2.63708 0.47977 2.52957 0.405515 2.40623C0.33126 2.28289 0.282043 2.14614 0.260675 2.00379C0.217521 1.71631 0.290421 1.42347 0.463337 1.1897C0.636253 0.955928 0.895022 0.800371 1.18272 0.757248C1.47041 0.714126 1.76347 0.786972 1.99741 0.95976L10.2485 7.04224L18.4997 0.95976C18.6155 0.874204 18.7471 0.812285 18.8869 0.777538C19.0266 0.742791 19.1719 0.735896 19.3144 0.757248C19.4568 0.7786 19.5937 0.82778 19.7171 0.901981C19.8405 0.976181 19.9481 1.07395 20.0337 1.1897C20.1194 1.30545 20.1813 1.43692 20.2161 1.57661C20.2509 1.71629 20.2578 1.86145 20.2364 2.00379C20.215 2.14614 20.1658 2.28289 20.0916 2.40623C20.0173 2.52957 19.9195 2.63708 19.8036 2.72264L10.9005 9.29238C10.7117 9.43145 10.4831 9.5063 10.2485 9.50589Z"
+                fill="#7AE229"
+              />
+              <path
+                d="M10.2485 15.2544C10.0139 15.2548 9.7854 15.18 9.59655 15.0409L0.693448 8.47117C0.459502 8.29839 0.30383 8.03981 0.260675 7.75233C0.217521 7.46485 0.290421 7.17201 0.463337 6.93824C0.636253 6.70446 0.895021 6.54891 1.18272 6.50578C1.47041 6.46266 1.76347 6.53551 1.99741 6.7083L10.2485 12.7908L18.4997 6.7083C18.7336 6.53551 19.0267 6.46266 19.3144 6.50578C19.602 6.54891 19.8608 6.70446 20.0337 6.93824C20.2066 7.17201 20.2795 7.46485 20.2364 7.75233C20.1932 8.03981 20.0376 8.29839 19.8036 8.47117L10.9005 15.0409C10.7117 15.18 10.4831 15.2548 10.2485 15.2544Z"
+                fill="#7AE229"
+              />
+            </svg>
+          </div>
+        </div>
+        <span>Category<span class="required-color">*</span></span>
+
+        <div
+          class="contactContainer"
+          id="toggleCategory"
+          onclick="toggleCategorys()"
+        >
+          <span id="selectedCategory">Select contacts to assign</span>
+          <svg
+            width="25"
+            height="24"
+            viewBox="0 0 25 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <mask
+              id="mask0_170614_1872"
+              style="mask-type: alpha"
+              maskUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+              width="25"
+              height="24"
+            >
+              <rect x="0.248535" width="24" height="24" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_170614_1872)">
+              <path
+                d="M11.5485 14.3L8.94854 11.7C8.63187 11.3833 8.56104 11.0208 8.73604 10.6125C8.91104 10.2042 9.22354 10 9.67354 10H14.8235C15.2735 10 15.586 10.2042 15.761 10.6125C15.936 11.0208 15.8652 11.3833 15.5485 11.7L12.9485 14.3C12.8485 14.4 12.7402 14.475 12.6235 14.525C12.5069 14.575 12.3819 14.6 12.2485 14.6C12.1152 14.6 11.9902 14.575 11.8735 14.525C11.7569 14.475 11.6485 14.4 11.5485 14.3Z"
+                fill="#2A3647"
+              />
+            </g>
+          </svg>
+        </div>
+        <ul id="tasks" class="tasks"></ul>
+        <span class="subtaskLabel">Subtask</span>
+
+        <div class="subtask-container">
+          <input type="text" id="subtask" placeholder="Add new subtask" />
+          <div class="subtask-right">
+            <div class="subtask-right-picked dnone">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <mask
+                  id="mask0_170614_3937"
+                  style="mask-type: alpha"
+                  maskUnits="userSpaceOnUse"
+                  x="0"
+                  y="0"
+                  width="32"
+                  height="32"
+                >
+                  <rect width="32" height="32" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_170614_3937)">
+                  <path
+                    d="M14.666 17.3327H6.66602V14.666H14.666V6.66602H17.3327V14.666H25.3327V17.3327H17.3327V25.3327H14.666V17.3327Z"
+                    fill="#2A3647"
+                  />
+                </g>
+              </svg>
+              <div class="subtask-right-picked-seperator"></div>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 25 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <mask
+                  id="mask0_170585_6105"
+                  style="mask-type: alpha"
+                  maskUnits="userSpaceOnUse"
+                  x="0"
+                  y="0"
+                  width="25"
+                  height="24"
+                >
+                  <rect x="0.248535" width="24" height="24" fill="#D9D9D9" />
+                </mask>
+                <g mask="url(#mask0_170585_6105)">
+                  <path
+                    d="M9.79923 15.15L18.2742 6.675C18.4742 6.475 18.7117 6.375 18.9867 6.375C19.2617 6.375 19.4992 6.475 19.6992 6.675C19.8992 6.875 19.9992 7.1125 19.9992 7.3875C19.9992 7.6625 19.8992 7.9 19.6992 8.1L10.4992 17.3C10.2992 17.5 10.0659 17.6 9.79923 17.6C9.53256 17.6 9.29923 17.5 9.09923 17.3L4.79923 13C4.59923 12.8 4.5034 12.5625 4.51173 12.2875C4.52006 12.0125 4.62423 11.775 4.82423 11.575C5.02423 11.375 5.26173 11.275 5.53673 11.275C5.81173 11.275 6.04923 11.375 6.24923 11.575L9.79923 15.15Z"
+                    fill="#2A3647"
+                  />
+                </g>
+              </svg>
             </div>
-        <div class="seperator"></div>
-            <div class="groupTask2-input">
-                <label>Due date<span class="required-color">*</span></label>
-                <input id="date" type="date" required>
-                <label>Prio</label>
-                <div class="prio-container">
-                    <div class="prioBtn" onclick="togglePriority('urgent')">Urgent<svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19.6528 15.2547C19.4182 15.2551 19.1896 15.1803 19.0007 15.0412L10.7487 8.958L2.49663 15.0412C2.38078 15.1267 2.24919 15.1887 2.10939 15.2234C1.96959 15.2582 1.82431 15.2651 1.68184 15.2437C1.53937 15.2223 1.40251 15.1732 1.27906 15.099C1.15562 15.0247 1.04801 14.927 0.96238 14.8112C0.876751 14.6954 0.814779 14.5639 0.780002 14.4243C0.745226 14.2846 0.738325 14.1394 0.759696 13.997C0.802855 13.7095 0.958545 13.4509 1.19252 13.2781L10.0966 6.70761C10.2853 6.56802 10.5139 6.49268 10.7487 6.49268C10.9835 6.49268 11.212 6.56802 11.4007 6.70761L20.3048 13.2781C20.4908 13.415 20.6286 13.6071 20.6988 13.827C20.7689 14.0469 20.7678 14.2833 20.6955 14.5025C20.6232 14.7216 20.4834 14.9124 20.2962 15.0475C20.1089 15.1826 19.8837 15.2551 19.6528 15.2547Z" fill="#FF3D00"/>
-                        <path d="M19.6528 9.50568C19.4182 9.50609 19.1896 9.43124 19.0007 9.29214L10.7487 3.20898L2.49663 9.29214C2.26266 9.46495 1.96957 9.5378 1.68184 9.49468C1.39412 9.45155 1.13532 9.29597 0.962385 9.06218C0.789449 8.82838 0.716541 8.53551 0.7597 8.24799C0.802859 7.96048 0.95855 7.70187 1.19252 7.52906L10.0966 0.958588C10.2853 0.818997 10.5139 0.743652 10.7487 0.743652C10.9835 0.743652 11.212 0.818997 11.4007 0.958588L20.3048 7.52906C20.4908 7.66598 20.6286 7.85809 20.6988 8.07797C20.769 8.29785 20.7678 8.53426 20.6955 8.75344C20.6232 8.97262 20.4834 9.16338 20.2962 9.29847C20.1089 9.43356 19.8837 9.50608 19.6528 9.50568Z" fill="#FF3D00"/>
-                        </svg>
-                    </div>
-                    <div class="prioBtn midBtn-Color" onclick="togglePriority('medium')">Medium <svg width="21" height="8" viewBox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M19.1526 7.72528H1.34443C1.05378 7.72528 0.775033 7.60898 0.569514 7.40197C0.363995 7.19495 0.248535 6.91419 0.248535 6.62143C0.248535 6.32867 0.363995 6.0479 0.569514 5.84089C0.775033 5.63388 1.05378 5.51758 1.34443 5.51758H19.1526C19.4433 5.51758 19.722 5.63388 19.9276 5.84089C20.1331 6.0479 20.2485 6.32867 20.2485 6.62143C20.2485 6.91419 20.1331 7.19495 19.9276 7.40197C19.722 7.60898 19.4433 7.72528 19.1526 7.72528Z" fill="white"/>
-                        <path d="M19.1526 2.48211H1.34443C1.05378 2.48211 0.775033 2.36581 0.569514 2.1588C0.363995 1.95179 0.248535 1.67102 0.248535 1.37826C0.248535 1.0855 0.363995 0.804736 0.569514 0.597724C0.775033 0.390712 1.05378 0.274414 1.34443 0.274414L19.1526 0.274414C19.4433 0.274414 19.722 0.390712 19.9276 0.597724C20.1331 0.804736 20.2485 1.0855 20.2485 1.37826C20.2485 1.67102 20.1331 1.95179 19.9276 2.1588C19.722 2.36581 19.4433 2.48211 19.1526 2.48211Z" fill="white"/>
-                        </svg>
-                    </div>
-                    <div class="prioBtn" onclick="togglePriority('low')">Low <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10.2485 9.50589C10.0139 9.5063 9.7854 9.43145 9.59655 9.29238L0.693448 2.72264C0.57761 2.63708 0.47977 2.52957 0.405515 2.40623C0.33126 2.28289 0.282043 2.14614 0.260675 2.00379C0.217521 1.71631 0.290421 1.42347 0.463337 1.1897C0.636253 0.955928 0.895022 0.800371 1.18272 0.757248C1.47041 0.714126 1.76347 0.786972 1.99741 0.95976L10.2485 7.04224L18.4997 0.95976C18.6155 0.874204 18.7471 0.812285 18.8869 0.777538C19.0266 0.742791 19.1719 0.735896 19.3144 0.757248C19.4568 0.7786 19.5937 0.82778 19.7171 0.901981C19.8405 0.976181 19.9481 1.07395 20.0337 1.1897C20.1194 1.30545 20.1813 1.43692 20.2161 1.57661C20.2509 1.71629 20.2578 1.86145 20.2364 2.00379C20.215 2.14614 20.1658 2.28289 20.0916 2.40623C20.0173 2.52957 19.9195 2.63708 19.8036 2.72264L10.9005 9.29238C10.7117 9.43145 10.4831 9.5063 10.2485 9.50589Z" fill="#7AE229"/>
-                        <path d="M10.2485 15.2544C10.0139 15.2548 9.7854 15.18 9.59655 15.0409L0.693448 8.47117C0.459502 8.29839 0.30383 8.03981 0.260675 7.75233C0.217521 7.46485 0.290421 7.17201 0.463337 6.93824C0.636253 6.70446 0.895021 6.54891 1.18272 6.50578C1.47041 6.46266 1.76347 6.53551 1.99741 6.7083L10.2485 12.7908L18.4997 6.7083C18.7336 6.53551 19.0267 6.46266 19.3144 6.50578C19.602 6.54891 19.8608 6.70446 20.0337 6.93824C20.2066 7.17201 20.2795 7.46485 20.2364 7.75233C20.1932 8.03981 20.0376 8.29839 19.8036 8.47117L10.9005 15.0409C10.7117 15.18 10.4831 15.2548 10.2485 15.2544Z" fill="#7AE229"/>
-                        </svg>
-                    </div>
-                </div>
-                    <label>Category<span class="required-color">*</span></label>
-                <select name="" id="" required>
-                    <option value="">test</option>
-                    <option value="">test</option>
-                    <option value="">test</option>
-                </select>
-                <label>Subtask</label>
-                <input type="text" name="" id="">
-            <div class="addTaskBtn-Container">
-            <button class="btnClear">Clear <svg class="cancel-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg></button>
-            <button class="btnTask">Create Task <svg class="check-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path fill="#FFFFFF" d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></button>
-    </div>
-</form>
-</body>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <mask
+                id="mask0_170614_3937"
+                style="mask-type: alpha"
+                maskUnits="userSpaceOnUse"
+                x="0"
+                y="0"
+                width="32"
+                height="32"
+              >
+                <rect width="32" height="32" fill="#D9D9D9" />
+              </mask>
+              <g mask="url(#mask0_170614_3937)">
+                <path
+                  d="M14.666 17.3327H6.66602V14.666H14.666V6.66602H17.3327V14.666H25.3327V17.3327H17.3327V25.3327H14.666V17.3327Z"
+                  fill="#2A3647"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="addTaskBtn-Container">
+          <button class="btnClear">
+            Clear
+            <svg
+              class="cancel-svg"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+              />
+            </svg>
+          </button>
+          <button class="btnTask">
+            Create Task
+            <svg
+              class="check-svg"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+            >
+              <path
+                fill="#FFFFFF"
+                d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </form>
+  </body>
 </html>
+
+<!--
+    function submitForm(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Get createTask object
+    const task = createTask[0];
+
+    // Update task object with form data
+    task.title = document.getElementById('title').value;
+    task.description = document.getElementById('description').value;
+    task.date = document.getElementById('date').value;
+    task.priority = document.querySelector('input[name="priority"]:checked').value;
+    task.category = document.getElementById('category').value;
+
+    // Get selected assignees
+    const assigneeCheckboxes = document.querySelectorAll('input[name="selectedContacts"]:checked');
+    task.assignees = Array.from(assigneeCheckboxes).map(checkbox => checkbox.value);
+
+    // Send data to server
+    sendDataToServer(createTask);
+}
+
+function sendDataToServer(data) {
+    // Here you would implement code to send data to your server
+    // For example, using fetch API or XMLHttpRequest
+}
+-->
