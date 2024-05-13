@@ -30,31 +30,8 @@
           onclick="toggleAssignees()"
         >
           <span>Select contacts to assign</span>
-          <svg
-            width="25"
-            height="24"
-            viewBox="0 0 25 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <mask
-              id="mask0_170614_1872"
-              style="mask-type: alpha"
-              maskUnits="userSpaceOnUse"
-              x="0"
-              y="0"
-              width="25"
-              height="24"
-            >
-              <rect x="0.248535" width="24" height="24" fill="#D9D9D9" />
-            </mask>
-            <g mask="url(#mask0_170614_1872)">
-              <path
-                d="M11.5485 14.3L8.94854 11.7C8.63187 11.3833 8.56104 11.0208 8.73604 10.6125C8.91104 10.2042 9.22354 10 9.67354 10H14.8235C15.2735 10 15.586 10.2042 15.761 10.6125C15.936 11.0208 15.8652 11.3833 15.5485 11.7L12.9485 14.3C12.8485 14.4 12.7402 14.475 12.6235 14.525C12.5069 14.575 12.3819 14.6 12.2485 14.6C12.1152 14.6 11.9902 14.575 11.8735 14.525C11.7569 14.475 11.6485 14.4 11.5485 14.3Z"
-                fill="#2A3647"
-              />
-            </g>
-          </svg>
+          <img class="iconSelectSvg" src="../assets/icons/arrow_dropdown_icon.svg">
+          
           <span onclick="showAssigneesEmblem()"><b>X</b></span>
         </div>
         <div id="assignesEmblem" style="display: inline-flex"></div>
@@ -76,7 +53,7 @@
             id="urgentPrio"
             onclick="togglePriority('urgent')"
           >
-            Urgent
+            Urgent          
             <svg
               width="21"
               height="16"
@@ -145,31 +122,8 @@
           onclick="toggleCategorys()"
         >
           <span id="selectedCategory">Select contacts to assign</span>
-          <svg
-            width="25"
-            height="24"
-            viewBox="0 0 25 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <mask
-              id="mask0_170614_1872"
-              style="mask-type: alpha"
-              maskUnits="userSpaceOnUse"
-              x="0"
-              y="0"
-              width="25"
-              height="24"
-            >
-              <rect x="0.248535" width="24" height="24" fill="#D9D9D9" />
-            </mask>
-            <g mask="url(#mask0_170614_1872)">
-              <path
-                d="M11.5485 14.3L8.94854 11.7C8.63187 11.3833 8.56104 11.0208 8.73604 10.6125C8.91104 10.2042 9.22354 10 9.67354 10H14.8235C15.2735 10 15.586 10.2042 15.761 10.6125C15.936 11.0208 15.8652 11.3833 15.5485 11.7L12.9485 14.3C12.8485 14.4 12.7402 14.475 12.6235 14.525C12.5069 14.575 12.3819 14.6 12.2485 14.6C12.1152 14.6 11.9902 14.575 11.8735 14.525C11.7569 14.475 11.6485 14.4 11.5485 14.3Z"
-                fill="#2A3647"
-              />
-            </g>
-          </svg>
+          <img class="iconSelectSvg" src="../assets/icons/arrow_dropdown_icon.svg">
+         
         </div>
         <ul id="tasks" class="tasks"></ul>
         <span class="subtaskLabel">Subtask</span>
@@ -178,113 +132,23 @@
           <input type="text" id="subtask" placeholder="Add new subtask" />
           <div class="subtask-right">
             <div class="subtask-right-picked dnone">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 32 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <mask
-                  id="mask0_170614_3937"
-                  style="mask-type: alpha"
-                  maskUnits="userSpaceOnUse"
-                  x="0"
-                  y="0"
-                  width="32"
-                  height="32"
-                >
-                  <rect width="32" height="32" fill="#D9D9D9" />
-                </mask>
-                <g mask="url(#mask0_170614_3937)">
-                  <path
-                    d="M14.666 17.3327H6.66602V14.666H14.666V6.66602H17.3327V14.666H25.3327V17.3327H17.3327V25.3327H14.666V17.3327Z"
-                    fill="#2A3647"
-                  />
-                </g>
-              </svg>
+              <img class="iconSubtaksSvg" src="..//assets/icons/add.svg">
+             
               <div class="subtask-right-picked-seperator"></div>
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 25 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <mask
-                  id="mask0_170585_6105"
-                  style="mask-type: alpha"
-                  maskUnits="userSpaceOnUse"
-                  x="0"
-                  y="0"
-                  width="25"
-                  height="24"
-                >
-                  <rect x="0.248535" width="24" height="24" fill="#D9D9D9" />
-                </mask>
-                <g mask="url(#mask0_170585_6105)">
-                  <path
-                    d="M9.79923 15.15L18.2742 6.675C18.4742 6.475 18.7117 6.375 18.9867 6.375C19.2617 6.375 19.4992 6.475 19.6992 6.675C19.8992 6.875 19.9992 7.1125 19.9992 7.3875C19.9992 7.6625 19.8992 7.9 19.6992 8.1L10.4992 17.3C10.2992 17.5 10.0659 17.6 9.79923 17.6C9.53256 17.6 9.29923 17.5 9.09923 17.3L4.79923 13C4.59923 12.8 4.5034 12.5625 4.51173 12.2875C4.52006 12.0125 4.62423 11.775 4.82423 11.575C5.02423 11.375 5.26173 11.275 5.53673 11.275C5.81173 11.275 6.04923 11.375 6.24923 11.575L9.79923 15.15Z"
-                    fill="#2A3647"
-                  />
-                </g>
-              </svg>
+              <img class="iconSubtaksSvg" src="..//assets/icons/check.svg">              
             </div>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <mask
-                id="mask0_170614_3937"
-                style="mask-type: alpha"
-                maskUnits="userSpaceOnUse"
-                x="0"
-                y="0"
-                width="32"
-                height="32"
-              >
-                <rect width="32" height="32" fill="#D9D9D9" />
-              </mask>
-              <g mask="url(#mask0_170614_3937)">
-                <path
-                  d="M14.666 17.3327H6.66602V14.666H14.666V6.66602H17.3327V14.666H25.3327V17.3327H17.3327V25.3327H14.666V17.3327Z"
-                  fill="#2A3647"
-                />
-              </g>
-            </svg>
+            <img class="iconSubtaksSvg" src="..//assets/icons/add.svg">
           </div>
         </div>
 
         <div class="addTaskBtn-Container">
           <button class="btnClear">
             Clear
-            <svg
-              class="cancel-svg"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
-              />
-            </svg>
+            <img class="iconCancelSvg" src="../assets/icons/cancel.svg">           
           </button>
           <button class="btnTask">
             Create Task
-            <svg
-              class="check-svg"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="20"
-              height="20"
-            >
-              <path
-                fill="#FFFFFF"
-                d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"
-              />
-            </svg>
+            <img src="..//assets/icons/checkWhite.svg">           
           </button>
         </div>
       </div>
