@@ -14,7 +14,7 @@
     <title>Join add-task</title>
   </head>
   <body onload="init();">
-    <div w3-include-html="../templates/sidebar.html"></div>
+    <!--div w3-include-html="../templates/sidebar.html"></div>-->
     <div w3-include-html="../templates/header.html"></div>
     <h1 class="headline-task">Add Task</h1>
     <form class="add-task-container form" onsubmit="createNewTask()">
@@ -30,7 +30,6 @@
           onclick="toggleAssignees()"
         >
           <span>Select contacts to assign</span>
-          <img class="iconSelectSvg" src="../assets/icons/arrow_dropdown_icon.svg">
           
           <span onclick="showAssigneesEmblem()"><b>X</b></span>
         </div>
@@ -159,8 +158,6 @@
         </div>
 
         <div id="subtask" class="subtask"></div>
-        </div>
-
         <div class="addTaskBtn-Container">
           <button class="btnClear">
             Clear
@@ -170,6 +167,7 @@
             Create Task
             <img src="..//assets/icons/checkWhite.svg">           
           </button>
+        </div>
         </div>
       </div>
     </form>

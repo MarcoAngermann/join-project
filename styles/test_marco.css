@@ -205,6 +205,10 @@ textarea {
   background-color: #f6f7f8;
 }
 
+.contactList span {
+  width: 100%;
+}
+
 /*
 .contactList:focus {
   color: white;
@@ -316,11 +320,21 @@ input[type='checkbox'] {
   display: flex;
 }
 
+.subtask-right-add img {
+  width: 24px;
+  height: 24px;
+}
+
 .subtask-right-seperator {
   height: 24px;
   width: 1px;
   margin: 0px 4px;
   background-color: #d1d1d1;
+}
+
+.subtask-right-regular img {
+  height: 24px;
+  width: 24px;
 }
 
 .subtask-right-regular img:hover {

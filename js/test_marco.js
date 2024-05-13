@@ -190,6 +190,12 @@ function deleteSubtask(i) {
   renderSubtask();
 }
 
+function checkSubtask(i) {
+  editSubtaskInput = document.getElementById(`editSubtaskInput${i}`).value;
+  subtaskList[i] = editSubtaskInput;
+  renderSubtask();
+}
+
 function renderSubtask() {
   let subtask = document.getElementById('subtask');
   subtask.innerHTML = '';
@@ -211,16 +217,16 @@ function editSubtask(i) {
   let subtask = document.getElementById(`subtaskList${i}`);
   subtask.innerHTML = /*html*/ `
             <div class="editSubtaskInput">
-            <input
-            type="text"
-            id="editSubtaskInput${i}"
-            value="${subtaskList[i]}"
-          />
-                <div class="edit-images">
-                <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
-                <div class="edit-seperator"></div>
-                  <img  onclick="editSubtask(${i})" id="editSubtask${i}" src="../assets/icons/check.svg" alt="">
-                </div>
+              <input
+              type="text"
+              id="editSubtaskInput${i}"
+              value="${subtaskList[i]}"
+              />
+                  <div class="edit-images">
+                    <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
+                    <div class="edit-seperator"></div>
+                    <img  onclick="checkSubtask(${i})" id="checkSubtask${i}" src="../assets/icons/check.svg" alt="">
+                  </div>
             </div>
     `;
 }
