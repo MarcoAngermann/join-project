@@ -325,3 +325,25 @@ input[type='checkbox'] {
 .dnone {
   display: none;
 }
+
+.iconSelectSvg {
+  width: 25px;
+  height: 24px;
+  filter: invert(17%) sepia(33%) saturate(544%) hue-rotate(175deg) brightness(96%) contrast(90%);
+}
+
+.iconSubtaksSvg{
+  width: 24px;
+  height: 24px;
+  padding: 5px;
+}
+
+.iconSubtaksSvg:hover {
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #D9D9D9;
+}
+
+.btnClear:hover .iconCancelSvg{
+  filter: invert(60%) sepia(88%) saturate(1665%) hue-rotate(165deg) brightness(93%) contrast(89%);
+}
