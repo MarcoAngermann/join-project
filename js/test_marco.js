@@ -100,7 +100,7 @@ function renderAssignees() {
             <input type="checkbox" id="checkbox${i}">          
         </li>
         </label>
-       `;
+      `;
   }
 }
 
@@ -190,43 +190,68 @@ function deleteSubtask(i) {
   renderSubtask();
 }
 
-function checkSubtask(i) {
-  editSubtaskInput = document.getElementById(`editSubtaskInput${i}`).value;
-  subtaskList[i] = editSubtaskInput;
-  renderSubtask();
-}
-
 function renderSubtask() {
   let subtask = document.getElementById('subtask');
   subtask.innerHTML = '';
   for (let i = 0; i < subtaskList.length; i++) {
-    subtask.innerHTML += /*html*/ `
-            <div id="subtaskList${i}" class="subtaskList">
-                ${subtaskList[i]}
-                <div class="edit-images">
+    subtask.innerHTML += renderSubtaskHTML(i);
+  }
+}
+
+function renderSubtaskHTML(i) {
+  return /*html*/ `
+    <div class="subtaskList" id="mainSubtask-container${i}">
+            <input
+              readonly
+              type="text"
+              id="subtaskList${i}"
+              value="${subtaskList[i]}"
+              />
+                <div class="edit-images" id="edit-images${i}">
                   <img onclick="editSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
                   <div class="edit-seperator"></div>
                   <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
                 </div>
             </div>
-    `;
-  }
+        </div>
+  `;
 }
 
 function editSubtask(i) {
-  let subtask = document.getElementById(`subtaskList${i}`);
-  subtask.innerHTML = /*html*/ `
-            <div class="editSubtaskInput">
-              <input
-              type="text"
-              id="editSubtaskInput${i}"
-              value="${subtaskList[i]}"
-              />
-                  <div class="edit-images">
-                    <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
-                    <div class="edit-seperator"></div>
-                    <img  onclick="checkSubtask(${i})" id="checkSubtask${i}" src="../assets/icons/check.svg" alt="">
-                  </div>
-            </div>
-    `;
+  document.getElementById(`subtaskList${i}`).readOnly = false;
+  edit = document.getElementById(`edit-images${i}`);
+  edit.innerHTML = editSubtaskHTML(i);
+  document
+    .getElementById(`mainSubtask-container${i}`)
+    .classList.remove('subtaskList');
+  document
+    .getElementById(`mainSubtask-container${i}`)
+    .classList.add('editsubtaskList');
+}
+
+function checkSubtask(i) {
+  document.getElementById(`subtaskList${i}`).readOnly = true;
+  edit = document.getElementById(`edit-images${i}`);
+  edit.innerHTML = checkSubtaskHTML(i);
+  document
+    .getElementById(`mainSubtask-container${i}`)
+    .classList.add('subtaskList');
+  document
+    .getElementById(`mainSubtask-container${i}`)
+    .classList.remove('editsubtaskList');
+}
+
+function editSubtaskHTML(i) {
+  return /*html*/ `
+    <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
+    <div class="edit-seperator"></div>
+    <img  onclick="checkSubtask(${i})" id="checkSubtask${i}" src="../assets/icons/check.svg" alt="">
+  `;
+}
+function checkSubtaskHTML(i) {
+  return /*html*/ `
+    <img onclick="editSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
+    <div class="edit-seperator"></div>
+    <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
+  `;
 }
