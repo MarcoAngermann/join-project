@@ -16,7 +16,7 @@
 </head>
 
 <body onload="init();">
-  <div w3-include-html="../templates/sidebar.html"></div>
+  <!--<div w3-include-html="../templates/sidebar.html"></div>-->
   <div w3-include-html="../templates/header.html"></div>
   <h1 class="headline-task">Add Task</h1>
   <form class="add-task-container form" onsubmit="createNewTask(event)">
@@ -26,14 +26,33 @@
       <span>Description</span>
       <textarea name="" id="description" cols="30" rows="5"></textarea>
       <span>Assigned to</span>
+
+
+
+      <div onclick="showAssignees()" class="contactContainer">
+        <span>Select contacts to assign</span>
+        <img id="arrowDown" src="../assets/icons/arrow_down_icon.svg" alt="">
+      </div>
+      <ul id="assignees" class="assignees"></ul>
+<!--
+  showAssigneesEmblem(); fehlt noch
+  das Arrow Down auf Arrow up und zurück rendert fehlt noch
+-->
+
+
+      
+      <!--
       <div class="contactContainer" id="toggleAssign" onclick="toggleAssignees()">
         <span>Select contacts to assign</span>
-        <img class="iconSelectSvg" src="../assets/icons/arrow_dropdown_icon.svg">
 
         <span onclick="showAssigneesEmblem()"><b>X</b></span>
       </div>
       <div id="assignesEmblem" style="display: inline-flex"></div>
       <ul id="assignees" class="assignees"></ul>
+      -->
+
+
+
       <div>
         <p class="required-field-text">
           <span class="required-color">*</span>This field is required
@@ -82,12 +101,28 @@
       </div>
       <span>Category<span class="required-color">*</span></span>
 
-      <div class="contactContainer" id="toggleCategory" onclick="toggleCategorys()">
-        <span id="selectedCategory">Select contacts to assign</span>
-        <img class="iconSelectSvg" src="../assets/icons/arrow_dropdown_icon.svg">
 
+
+
+      <div onclick="showCategories()" class="contactContainer">
+        <span id="selectedCategory">Select task category</span>
+        <img id="arrowDown" src="../assets/icons/arrow_down_icon.svg" alt="">
       </div>
       <ul id="tasks" class="tasks"></ul>
+
+      <!--
+      <div class="contactContainer" id="toggleCategory" onclick="toggleCategorys()">
+        <span id="selectedCategory">Select contacts to assign</span>
+        <img class="iconSelectSvg" src="../assets/icons/arrow_down_icon.svg">
+      </div>
+      <ul id="tasks" class="tasks"></ul>
+      -->
+
+
+
+
+
+      
       <span class="subtaskLabel">Subtask</span>
 
         <div class="subtask-container">
@@ -135,34 +170,6 @@
         </div>
       </div>
     </form>
- 
+    
   </body>
 </html>
-
-<!--
-    function submitForm(event) {
-    event.preventDefault(); // Prevent default form submission
-
-    // Get createTask object
-    const task = createTask[0];
-
-    // Update task object with form data
-    task.title = document.getElementById('title').value;
-    task.description = document.getElementById('description').value;
-    task.date = document.getElementById('date').value;
-    task.priority = document.querySelector('input[name="priority"]:checked').value;
-    task.category = document.getElementById('category').value;
-
-    // Get selected assignees
-    const assigneeCheckboxes = document.querySelectorAll('input[name="selectedContacts"]:checked');
-    task.assignees = Array.from(assigneeCheckboxes).map(checkbox => checkbox.value);
-
-    // Send data to server
-    sendDataToServer(createTask);
-}
-
-function sendDataToServer(data) {
-    // Here you would implement code to send data to your server
-    // For example, using fetch API or XMLHttpRequest
-}
--->

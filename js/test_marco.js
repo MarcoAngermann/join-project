@@ -71,19 +71,22 @@ window.onload = function () {
   }
 };
 
-/*  let = checkedPrio;
+function showAssignees() {
+  document.getElementById('assignees').classList.toggle('show');
+}
 
- let createTask = [
-  {
-  "title": title.value,
-   "description": description.value,
-   "assignees": [],
-   "date": date.value,
-  "priority": checkedPrio,
-   "category": category.value,
-   "subtask": [],
- }
- ]; */
+window.onclick = function (event) {
+  if (!event.target.matches('.contactContainer')) {
+    let dropdowns = document.getElementsByClassName('assignees');
+    let i;
+    for (i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+};
 
 function renderAssignees() {
   let assignee = document.getElementById('assignees');
@@ -120,10 +123,26 @@ function renderCategorys() {
                     </div>
                 </span>
             </li>
-           `;
+        `;
   }
 }
 
+function showCategories() {
+  document.getElementById('tasks').classList.toggle('show');
+}
+
+window.onclick = function (event) {
+  if (!event.target.matches('.contactContainer')) {
+    let dropdowns = document.getElementsByClassName('tasks');
+    let i;
+    for (i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+};
 function toggleCategorys() {
   let taskList = document.getElementById('tasks');
   taskList.classList.toggle('show');
