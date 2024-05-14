@@ -60,6 +60,7 @@ let colors = [
 ];
 
 let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];
+let subtaskList = [];
 
 let status = ["To do", "In progress", "Await feedback", "Done"];
 

@@ -90,33 +90,52 @@
       <ul id="tasks" class="tasks"></ul>
       <span class="subtaskLabel">Subtask</span>
 
-      <div class="subtask-container">
-        <input type="text" id="subtask" placeholder="Add new subtask" />
-        <div class="subtask-right">
-          <div class="subtask-right-picked dnone">
-            <img class="iconSubtaksSvg" src="..//assets/icons/add.svg">
-
-            <div class="subtask-right-picked-seperator"></div>
-            <img class="iconSubtaksSvg" src="..//assets/icons/check.svg">
+        <div class="subtask-container">
+          <input
+            type="text"
+            id="subtaskInput"
+            placeholder="Add new subtask"
+            onclick="changeButtonsSubtask()"
+          />
+          <div class="subtask-right">
+            <div id="subtask-right-add" class="subtask-right-add dnone">
+              <img
+                onclick="removeSubtask()"
+                src="../assets/icons/cancel.svg"
+                alt=""
+              />
+              <div class="subtask-right-seperator"></div>
+              <img
+                onclick="addSubtask()"
+                src="../assets/icons/check.svg"
+                alt=""
+              />
+            </div>
+            <div id="subtask-right-regular" class="subtask-right-regular">
+              <img
+                onclick="changeButtonsSubtask()"
+                src="../assets/icons/add.svg"
+                alt=""
+              />
+            </div>
           </div>
-          <img class="iconSubtaksSvg" src="..//assets/icons/add.svg">
+        </div>
+
+        <div id="subtask" class="subtask"></div>
+        <div class="addTaskBtn-Container">
+          <button class="btnClear">
+            Clear
+            <img class="iconCancelSvg" src="../assets/icons/cancel.svg">           
+          </button>
+          <button class="btnTask">
+            Create Task
+            <img src="..//assets/icons/checkWhite.svg">           
+          </button>
+        </div>
         </div>
       </div>
-
-      <div class="addTaskBtn-Container">
-        <button class="btnClear">
-          Clear
-          <img class="iconCancelSvg" src="../assets/icons/cancel.svg">
-        </button>
-        <button class="btnTask">
-          Create Task
-          <img src="..//assets/icons/checkWhite.svg">
-        </button>
-      </div>
-    </div>
-  </form>
-</body>
-
+    </form>
+  </body>
 </html>
 
 <!--

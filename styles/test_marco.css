@@ -16,7 +16,7 @@
   width: 440px;
   height: 48px;
   border: 1px solid #d1d1d1;
-  padding: 12px 21px 12px 21px;
+  padding: 12px 16px 12px 16px;
 }
 
 .add-task-container select {
@@ -25,7 +25,7 @@
   height: 48px;
   border: 1px solid #d1d1d1;
   gap: 10px;
-  padding: 12px 21px 12px 21px;
+  padding: 12px 16px 12px 16px;
 }
 
 .add-task-container textarea {
@@ -33,7 +33,7 @@
   width: 440px;
   border: 1px solid #d1d1d1;
   gap: 10px;
-  padding: 12px 21px 12px 21px;
+  padding: 12px 16px 12px 16px;
 }
 
 .headline-task {
@@ -205,6 +205,10 @@ textarea {
   background-color: #f6f7f8;
 }
 
+.contactList span {
+  width: 100%;
+}
+
 /*
 .contactList:focus {
   color: white;
@@ -226,7 +230,7 @@ textarea {
   background-color: #ffffff;
   border: 1px solid #d1d1d1;
   border-radius: 10px;
-  padding: 12px 21px 12px 21px;
+  padding: 12px 16px 12px 16px;
   cursor: pointer;
 }
 
@@ -294,7 +298,7 @@ input[type='checkbox'] {
   width: 440px;
   height: 48px;
   border: 1px solid #d1d1d1;
-  padding: 12px 21px 12px 21px;
+  padding: 12px 16px 12px 16px;
   background-color: #ffffff;
 }
 
@@ -306,44 +310,68 @@ input[type='checkbox'] {
   width: 100%;
 }
 
-.subtask-right svg:hover {
+.subtask-right-add img:hover {
   cursor: pointer;
   background-color: #d2d2d2;
   border-radius: 50%;
 }
 
-.subtask-right-picked {
+.subtask-right-add {
   display: flex;
 }
 
-.subtask-right-picked-seperator {
+.subtask-right-add img {
+  width: 24px;
+  height: 24px;
+}
+
+.subtask-right-seperator {
   height: 24px;
   width: 1px;
+  margin: 0px 4px;
   background-color: #d1d1d1;
+}
+
+.subtask-right-regular img {
+  height: 24px;
+  width: 24px;
+}
+
+.subtask-right-regular img:hover {
+  cursor: pointer;
+  background-color: #d2d2d2;
+  border-radius: 50%;
+}
+
+.subtaskList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 16px 4px 16px;
+}
+
+.subtaskList:hover {
+  background-color: #dcdcdc;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.edit-images {
+  display: flex;
+}
+
+.edit-seperator {
+  height: 24px;
+  width: 1px;
+  margin: 0px 4px;
+  background-color: #d1d1d1;
+}
+
+.editSubtaskInput {
+  display: flex;
+  align-items: center;
 }
 
 .dnone {
   display: none;
-}
-
-.iconSelectSvg {
-  width: 25px;
-  height: 24px;
-  filter: invert(17%) sepia(33%) saturate(544%) hue-rotate(175deg) brightness(96%) contrast(90%);
-}
-
-.iconSubtaksSvg{
-  width: 24px;
-  height: 24px;
-  padding: 5px;
-}
-
-.iconSubtaksSvg:hover {
-  cursor: pointer;
-  border-radius: 50%;
-  background-color: #D9D9D9;
-}
-
-.btnClear:hover .iconCancelSvg{
-  filter: invert(60%) sepia(88%) saturate(1665%) hue-rotate(165deg) brightness(93%) contrast(89%);
 }
