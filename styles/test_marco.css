@@ -142,7 +142,8 @@ textarea {
 }
 
 .btnClear:hover .iconCancelSvg {
-  filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg) brightness(91%) contrast(106%);
+  filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg)
+    brightness(91%) contrast(106%);
 }
 
 .midBtn-Color {
@@ -343,6 +344,11 @@ input[type='checkbox'] {
   border-radius: 50%;
 }
 
+.subtask {
+  height: 90px;
+  overflow-y: auto;
+}
+
 .subtaskList {
   display: flex;
   justify-content: space-between;
@@ -414,7 +420,7 @@ input[type='checkbox'] {
   display: none;
 }
 
-.btnEdit-svg:hover{
+.btnEdit-svg:hover {
   cursor: pointer;
   border-radius: 50%;
   background-color: #d2d2d2;
