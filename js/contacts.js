@@ -65,19 +65,20 @@ function renderContactinList(i) {
 function openDialog(newContact, i) {
   let dialog = document.getElementById('dialog');
   dialog.classList.remove('d-none');
-  if (newContact == true){
-  let title1 = "Add contact";
-  let functionNew = "newContact(event)";
-  let btnText = "Create Contact";
-  dialog.innerHTML = renderContactDialog(title1, functionNew, btnText);}
+  if (newContact == true) {
+    let title1 = "Add contact";
+    let functionNew = "newContact(event)";
+    let btnText = "Create Contact";
+    dialog.innerHTML = renderContactDialog(title1, functionNew, btnText);
+  }
   else {
-    let contact = contacts[i];       
+    let contact = contacts[i];
     let title1 = "Edit contact";
-    let functionNew = "editContact(event," + i +")";
+    let functionNew = "editContact(event," + i + ")";
     let btnText = "Save";
     dialog.innerHTML = renderContactDialog(title1, functionNew, btnText);
     document.getElementById('textAdd').classList.add('d-none');
-    document.getElementById('nameContact').value = contact['name'] ;
+    document.getElementById('nameContact').value = contact['name'];
     document.getElementById('emailContact').value = contact['email'];
     document.getElementById('phoneContact').value = contact['phone'];
   }
@@ -108,7 +109,7 @@ function renderContactDialog(title1, functionNew, btnText) {
         style="background-image: url(../assets/icons/call_icon.svg)" placeholder="Phone" required>
       <div class="divBtnForm">
         <button class="btnGuest style_InputTypography1" onclick="closeDialog()">Cancel <b>X</b></button>
-        <button class="btnJoin style_BtnTypography1" type="submit">${btnText}<img class="imgBtns" src="../assets/icons/check.svg"></button>
+        <button class="btnJoin style_BtnTypography1" type="submit">${btnText} <img class="imgBtns" src="../assets/icons/checkWhite.svg"></button>
       </div>
   </form>
 </div>
@@ -135,12 +136,24 @@ function colorRandom() {
   return colors[Math.floor(Math.random() * colors.length)];
 }
 
+function findLastContactId(contacts) {
+  let lastId = 1;
+  for (let i = 1; i < contacts.length; i++) {
+    if (contacts[i].id > lastId) {
+      lastId = contacts[i].id;
+    }
+  }
+  return lastId;   // found the last contact.id
+}
+
 function newContact(event) {
   event.preventDefault();
+  let lastContactId = findLastContactId(contacts);
   let nameContact = document.getElementById('nameContact').value;
   let nameContactUpper = nameContact[0].toUpperCase() + nameContact.slice(1);
 
   let newContact = {
+    "id": lastContactId + 1,
     "name": nameContactUpper,
     "email": document.getElementById('emailContact').value,
     "phone": document.getElementById('phoneContact').value,
@@ -165,7 +178,7 @@ function editContact(event, i) {
   contact = contacts[i];
   contact['name'] = document.getElementById('nameContact').value;
   contact['email'] = document.getElementById('emailContact').value;
-  contact['phone'] = document.getElementById('phoneContact').value; 
+  contact['phone'] = document.getElementById('phoneContact').value;
   contact['emblem'] = renderEmblem(document.getElementById('nameContact').value);
   closeDialog();
   cleanContactControls();
@@ -173,10 +186,9 @@ function editContact(event, i) {
   showDetailContact(i);
 }
 
-function deleteContact(i){
+function deleteContact(i) {
   contact = contacts[i];
   contacts.splice(i, 1);
   document.getElementById('divDetails').innerHTML = "";
   renderListContact();
-
 }

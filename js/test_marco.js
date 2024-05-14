@@ -71,23 +71,24 @@ window.onload = function () {
   }
 };
 
-// let = checkedPrio;
 
-// let createTask = [
-//   {
-//   "title": title.value,
-//   "description": description.value,
-//   "assignees": [],
-//   "date": date.value,
-//   "priority": checkedPrio,
-//   "category": category.value,
-//   "subtask": [],
-// }
-// ];
+
+/*  let = checkedPrio;
+
+ let createTask = [
+  {
+  "title": title.value,
+   "description": description.value,
+   "assignees": [],
+   "date": date.value,
+  "priority": checkedPrio,
+   "category": category.value,
+   "subtask": [],
+ }
+ ]; */
 
 function renderAssignees() {
   let assignee = document.getElementById('assignees');
-
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     assignee.innerHTML += /*html*/ `
@@ -255,3 +256,110 @@ function checkSubtaskHTML(i) {
     <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
   `;
 }
+
+function changeButtonsSubtask() {
+  document.getElementById('subtask-right-regular').classList.add('dnone');
+  document.getElementById('subtask-right-add').classList.remove('dnone');
+}
+
+function removeSubtask() {
+  subtask = document.getElementById('subtaskInput');
+  subtask.value = '';
+  document.getElementById('subtask-right-regular').classList.remove('dnone');
+  document.getElementById('subtask-right-add').classList.add('dnone');
+}
+
+function addSubtask() {
+  let input = document.getElementById('subtaskInput').value;
+  subtaskList.push(input);
+  renderSubtask();
+  document.getElementById('subtaskInput').value = '';
+  removeSubtask();
+}
+
+function deleteSubtask(i) {
+  subtaskList.splice(i, 1);
+  renderSubtask();
+}
+
+function checkSubtask(i) {
+  editSubtaskInput = document.getElementById(`editSubtaskInput${i}`).value;
+  subtaskList[i] = editSubtaskInput;
+  renderSubtask();
+}
+
+function renderSubtask() {
+  let subtask = document.getElementById('subtask');
+  subtask.innerHTML = '';
+  for (let i = 0; i < subtaskList.length; i++) {
+    subtask.innerHTML += /*html*/ `
+            <div id="subtaskList${i}" class="subtaskList">
+                ${subtaskList[i]}
+                <div class="edit-images">
+                  <img class="btnEdit-svg" onclick="editSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
+                  <div class="edit-seperator"></div>
+                  <img class="btnEdit-svg" onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
+                </div>
+            </div>
+    `;
+  }
+}
+
+function editSubtask(i) {
+  let subtask = document.getElementById(`subtaskList${i}`);
+  subtask.innerHTML = /*html*/ `
+            <div class="editSubtaskInput">
+              <input
+              type="text"
+              id="editSubtaskInput${i}"
+              value="${subtaskList[i]}"
+              />
+                  <div class="edit-images">
+                    <img class="btnEdit-svg" onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
+                    <div class="edit-seperator"></div>
+                    <img class="btnEdit-svg" onclick="checkSubtask(${i})" id="checkSubtask${i}" src="../assets/icons/check.svg" alt="">
+                  </div>
+            </div> `;
+}
+
+function getSelectedPrio() {
+  let urgentBtn = document.getElementById('urgentPrio');
+  let lowprioBtn = document.getElementById('lowPrio');
+  if (urgentBtn.classList.contains('selected')) {
+    return "urgent";
+  }
+  else if (lowprioBtn.classList.contains('selected')) {
+    return "low";
+  }
+  else {
+    return "medium";
+  }
+}
+
+function getAssigneedContact(){
+  let assignesEmblem = document.getElementById('assignesEmblem');  
+  let divs = assignesEmblem.getElementsByTagName('div');
+  let idsList= [];
+  for ( let i=0; i<divs.length; i++){
+    idsList.push(divs[i].id);
+  }
+  return idsList;
+}
+
+function createNewTask(event){
+  event.preventDefault();
+  let task = tasks[0];
+  task={
+    title : document.getElementById('title').value,
+    description: document.getElementById('description').value,
+    assigneeIds : getAssigneedContact(),
+    date: document.getElementById('date').value,
+    priority : getSelectedPrio(),
+    category: document.getElementById('selectedCategory').value,
+    subtask: "",
+    status:"To do"
+  }
+  tasks.push(task);  
+}
+
+
