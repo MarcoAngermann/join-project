@@ -80,7 +80,7 @@ function renderSmallCardHTML(element, i) {
         <h3>${element['title']}</h3>
       </div>
       <div class="description">
-        <p">description</p>
+        <p>description</p>
       </div>
       <div class="information">
         <div class="users" id="users">User1</div>

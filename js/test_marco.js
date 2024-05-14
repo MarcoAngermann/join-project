@@ -71,11 +71,10 @@ window.onload = function () {
   }
 };
 
-function showAssignees() {
-  document.getElementById('assignees').classList.toggle('show');
-}
 
-window.onclick = function (event) {
+
+
+/* window.onclick = function (event) {
   if (!event.target.matches('.contactContainer')) {
     let dropdowns = document.getElementsByClassName('assignees');
     let i;
@@ -86,7 +85,7 @@ window.onclick = function (event) {
       }
     }
   }
-};
+}; */
 
 function renderAssignees() {
   let assignee = document.getElementById('assignees');
@@ -183,6 +182,24 @@ function showAssigneesEmblem() {
   document.getElementById('assignees').classList.toggle('close');
 }
 
+function showAssignees() {
+  if (document.getElementById('assignees').classList.contains('show')) {
+    showAssigneesEmblem();
+    document.getElementById('assignees').classList.remove('show');
+    document.getElementById('arrowDown').style.display = 'block';
+    document.getElementById('arrowUp').style.display = 'none';   
+  }
+  else {
+    document.getElementById('assignees').classList.add('show');
+    document.getElementById('arrowDown').style.display = 'none';
+    document.getElementById('arrowUp').style.display = 'block';
+
+  }
+}
+
+
+
+// Max Subtaks Functions
 function changeButtonsSubtask() {
   document.getElementById('subtask-right-regular').classList.add('dnone');
   document.getElementById('subtask-right-add').classList.remove('dnone');
@@ -312,7 +329,7 @@ function createNewTask(event) {
     date: document.getElementById('date').value,
     priority: getSelectedPrio(),
     category: document.getElementById('selectedCategory').value,
-    subtask: '',
+    subtask: subtaskList,
     status: 'To do',
   };
   tasks.push(task);
