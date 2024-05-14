@@ -141,8 +141,8 @@ textarea {
   cursor: pointer;
 }
 
-.btnClear:hover .cancel-svg {
-  fill: #29abe2;
+.btnClear:hover .iconCancelSvg {
+  filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg) brightness(91%) contrast(106%);
 }
 
 .midBtn-Color {
@@ -374,4 +374,10 @@ input[type='checkbox'] {
 
 .dnone {
   display: none;
+}
+
+.btnEdit-svg:hover{
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #d2d2d2;
 }

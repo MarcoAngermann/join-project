@@ -51,6 +51,7 @@
 .main svg:hover {
   cursor: pointer;
 }
+
 .main svg:hover rect,
 .main svg:hover path {
   stroke: #29abe2;
@@ -141,4 +142,16 @@
 .category img {
   height: 28px;
   width: 28px;
+}
+
+/* icons change */
+.search-svg:hover {
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #d2d2d2;
+}
+
+.plusBtn-svg:hover {
+  cursor: pointer;
+  filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg) brightness(91%) contrast(106%);
 }

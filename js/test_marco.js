@@ -271,9 +271,9 @@ function renderSubtask() {
             <div id="subtaskList${i}" class="subtaskList">
                 ${subtaskList[i]}
                 <div class="edit-images">
-                  <img onclick="editSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
+                  <img class="btnEdit-svg" onclick="editSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
                   <div class="edit-seperator"></div>
-                  <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
+                  <img class="btnEdit-svg" onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
                 </div>
             </div>
     `;
@@ -290,12 +290,11 @@ function editSubtask(i) {
               value="${subtaskList[i]}"
               />
                   <div class="edit-images">
-                    <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
+                    <img class="btnEdit-svg" onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
                     <div class="edit-seperator"></div>
-                    <img  onclick="checkSubtask(${i})" id="checkSubtask${i}" src="../assets/icons/check.svg" alt="">
+                    <img class="btnEdit-svg" onclick="checkSubtask(${i})" id="checkSubtask${i}" src="../assets/icons/check.svg" alt="">
                   </div>
-            </div>
-    `;
+            </div> `;
 }
 
 function getSelectedPrio() {
