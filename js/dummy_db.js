@@ -60,3 +60,28 @@ let colors = [
 ];
 
 let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];
+
+let status = ["To do", "In progress", "Await feedback", "Done"];
+
+let tasks = [
+  {
+    title: "Join Add Taskt",
+    description: "Building a website that generates tasks to visualize the distribution of work.",
+    assigneeIds: [2, 4, 5],
+    date: "2022-10-06",
+    priority: "medium",
+    category: "Technical Task",
+    subtask: ["Assigned to JS", "Categories JS"],
+    status: ["To do"]
+  },
+  {
+    title: "Add Taskt Design",
+    description: "Create a webpage with a design that is pleasant and easy for our users.",
+    assigneeIds: [1, 3, 5],
+    date: "2022-10-06",
+    priority: "urgent",
+    category: "User Story",
+    subtask: ["CSS form", "Decided Colors"],
+    status: ["In progress"]
+  },
+];

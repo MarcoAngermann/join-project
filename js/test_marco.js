@@ -71,23 +71,24 @@ window.onload = function () {
   }
 };
 
-// let = checkedPrio;
 
-// let createTask = [
-//   {
-//   "title": title.value,
-//   "description": description.value,
-//   "assignees": [],
-//   "date": date.value,
-//   "priority": checkedPrio,
-//   "category": category.value,
-//   "subtask": [],
-// }
-// ];
+
+/*  let = checkedPrio;
+
+ let createTask = [
+  {
+  "title": title.value,
+   "description": description.value,
+   "assignees": [],
+   "date": date.value,
+  "priority": checkedPrio,
+   "category": category.value,
+   "subtask": [],
+ }
+ ]; */
 
 function renderAssignees() {
   let assignee = document.getElementById('assignees');
-
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
     assignee.innerHTML += /*html*/ `
@@ -165,4 +166,44 @@ function showAssigneesEmblem() {
     }
   }
   document.getElementById('assignees').classList.toggle('close');
+}
+
+function getSelectedPrio() {
+  let urgentBtn = document.getElementById('urgentPrio');
+  let lowprioBtn = document.getElementById('lowPrio');
+  if (urgentBtn.classList.contains('selected')) {
+    return "urgent";
+  }
+  else if (lowprioBtn.classList.contains('selected')) {
+    return "low";
+  }
+  else {
+    return "medium";
+  }
+}
+
+function getAssigneedContact(){
+  let assignesEmblem = document.getElementById('assignesEmblem');  
+  let divs = assignesEmblem.getElementsByTagName('div');
+  let idsList= [];
+  for ( let i=0; i<divs.length; i++){
+    idsList.push(divs[i].id);
+  }
+  return idsList;
+}
+
+function createNewTask(event){
+  event.preventDefault();
+  let task = tasks[0];
+  task={
+    title : document.getElementById('title').value,
+    description: document.getElementById('description').value,
+    assigneeIds : getAssigneedContact(),
+    date: document.getElementById('date').value,
+    priority : getSelectedPrio(),
+    category: document.getElementById('selectedCategory').value,
+    subtask: "",
+    status:"To do"
+  }
+  tasks.push(task);  
 }
