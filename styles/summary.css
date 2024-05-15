@@ -178,14 +178,13 @@
 .joinContainer {
     flex-direction: column;
 }
-.testContainer {
-    margin-left: 0px !important;
-    margin-top: 130px !important;
-}
 .greetingContainer {
     margin-top: 50px;
+    display: none;
 }
-
+.greetingContainer span{
+    display: none;
+}
   }
 
   .testContainer {
