@@ -1,5 +1,6 @@
 function init(){
     includeHTML();
+   
     getGreeting();
 }
 
@@ -19,3 +20,4 @@ function getGreeting() {
 function displayGreeting() {
     document.getElementById("greetText").innerHTML = getGreeting();
 }
+

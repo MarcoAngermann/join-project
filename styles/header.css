@@ -38,7 +38,7 @@ body {
   align-items: center;
 }
 
-.help svg:hover {
+.help:hover {
   cursor: pointer;
   scale: 1.2;
 }

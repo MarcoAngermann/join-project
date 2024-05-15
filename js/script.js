@@ -1,5 +1,6 @@
 async function init() {
     await includeHTML();
+   
 }
 
 async function includeHTML() {
@@ -14,7 +15,8 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
-    focusSidebar()
+    focusSidebar();
+    getuseremblem();
 }
 
 async function init() {
@@ -27,16 +29,33 @@ function errorFunction() {
 }
 
 /*function zum focus() in der Sidebar zu generieren*/
-function focusSidebar(){
+function focusSidebar() {
     let currentPage = window.location.href.split('/').pop();
     let menu = document.getElementById('menu');
     let links = menu.getElementsByTagName('a');
     for (let i = 0; i < links.length; i++) {
         let linkHref = links[i].getAttribute('href');
-        if (linkHref.replace("./","") === currentPage.replace("?","")) {
+        if (linkHref.replace("./", "") === currentPage.replace("?", "")) {
             links[i].focus();
             break; //Endet der Loop, wenn der href gefunde wird.
         }
     }
 
+}
+
+
+function getUserLogin() {
+    let userID = window.sessionStorage.getItem("userId");
+    for (let i = 0; i < users.length; i++) {
+        if (users[i].id.toString() == userID) {            
+            return users[i];
+        }
+    }
+    return null;
+}
+
+function getuseremblem() {
+    let currentUser = getUserLogin();
+    let emblemUser = document.getElementById('emblemUser');
+    emblemUser.innerHTML = currentUser.Emblem;
 }
