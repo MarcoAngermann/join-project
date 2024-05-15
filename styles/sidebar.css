@@ -46,11 +46,13 @@
 .a-nav:hover {
   cursor: pointer;
   color: #ffffff;
-  background-color: rgb(9, 25, 49);
+  background-color: rgb(9, 25, 49,1);
 }
 
 .a-nav:focus {
   background-color: rgb(9, 25, 49);
+  border: none;
+  outline: rgb(9, 25, 49);
 }
 
 .icon {

@@ -33,7 +33,7 @@ function focusSidebar(){
     let links = menu.getElementsByTagName('a');
     for (let i = 0; i < links.length; i++) {
         let linkHref = links[i].getAttribute('href');
-        if (linkHref.replace("./","") === currentPage) {
+        if (linkHref.replace("./","") === currentPage.replace("?","")) {
             links[i].focus();
             break; //Endet der Loop, wenn der href gefunde wird.
         }

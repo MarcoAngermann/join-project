@@ -1,3 +1,8 @@
+function init(){
+    includeHTML();
+    getGreeting();
+}
+
 function getGreeting() {
     let time = new Date().getHours();
     let greeting;
