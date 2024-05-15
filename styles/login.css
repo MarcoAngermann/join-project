@@ -6,6 +6,14 @@ body {
   box-sizing: border-box;
 }
 
+.overlay {
+  display: flex;
+  max-width: 100%;
+  height: 100vh;
+  background-color: #F6F7F8;
+  position: relative;
+}
+
 .containerLog {
   display: flex;
   align-items: center;
@@ -13,7 +21,8 @@ body {
   justify-content: space-around;
   max-width: 1400px;
   height: 100vh;
-  background-color: #f6f7f8;
+  background-color: #F6F7F8;
+  position: relative;
 }
 
 .headlineLogin {
@@ -99,6 +108,16 @@ body {
   border: 0.5px solid #29abe2;
 }
 
+.btnDisabled {
+  background-color: #F6F7F8;
+  color: #89898a;
+  border-radius: 8px;
+  min-width: 90px;
+  height: 49px;
+  border: 0.5px solid #F6F7F8;
+  padding: 0px 15px 0px 15px;
+}
+
 .formLogin {
   display: flex;
   justify-content: center;
@@ -108,9 +127,9 @@ body {
   height: 493px;
   padding: 48px 115px 48px 115px;
   gap: 32px;
-  border-radius: 30px;
-  box-shadow: 0px 0px 14px 3px #0000000a;
-  background: #ffffff;
+  border-radius: 30px;  
+  box-shadow: 0px 0px 14px 3px #0000000A;
+  background: #FFFFFF;
 }
 
 .title {
@@ -121,7 +140,7 @@ body {
 }
 
 .underline {
-  border-bottom: 3px solid #29abe2;
+  border-bottom: 3px solid #29ABE2;
   padding-bottom: 15px;
 }
 
@@ -141,7 +160,7 @@ body {
   width: 422px;
   height: 48px;
   gap: 10px;
-  border: 1px solid #d1d1d1;
+  border: 1px solid #D1D1D1;
   border-radius: 10px;
   padding: 12px 21px 12px 21px;
 }
@@ -151,7 +170,7 @@ body {
   background-position: right 10px center;
   width: 100%;
   gap: 10px;
-  border: 1px solid #d1d1d1;
+  border: 1px solid #D1D1D1;
   border-radius: 10px;
   padding: 12px 21px 12px 21px;
   color: black;
@@ -175,7 +194,7 @@ body {
   left: 4px;
   border-radius: 3px 0px 0px 0px;
   border: 2px;
-  border: 2px solid #2a3647;
+  border: 2px solid #2A3647;
 }
 
 form label {
@@ -208,7 +227,7 @@ form label {
 }
 
 .a_footer:hover {
-  color: #29abe2;
+  color: #29ABE2;
   font-weight: bold;
 }
 
@@ -227,7 +246,7 @@ form label {
 }
 
 .a_headlineSignUp:hover {
-  background-color: #ece0e0;
+  background-color: #ECE0E0;
   border-radius: 50%;
   padding: 0;
 }
@@ -235,7 +254,7 @@ form label {
 .icoArrowLeft {
   width: 32px;
   height: 32px;
-  color: #29abe2;
+  color: #29ABE2;
   padding: 0;
 }
 
@@ -248,9 +267,9 @@ form label {
   height: 630px;
   padding: 48px 88px 48px 88px;
   border-radius: 30px;
-  box-shadow: 0px 0px 14px 3px #0000000a;
+  box-shadow: 0px 0px 14px 3px #0000000A;
   gap: 32px;
-  background: #ffffff;
+  background: #FFFFFF;
 }
 
 .groupSignUp-input {
@@ -272,7 +291,7 @@ form label {
 }
 
 .a_formSignUp {
-  color: #29abe2;
+  color: #29ABE2;
   text-decoration: none;
 }
 
@@ -280,21 +299,82 @@ form label {
   text-decoration: underline;
 }
 
+/* Login animation */
 @keyframes moveLogo {
   0% {
-    margin-left: 50%;
-    margin-top: 50%;
-    scale: 2.5;
+      transform: translateX(200%) translateY(150%);
+        
+      scale: 2.5;
   }
 
   100% {
-    scale: 1;
-    top: 80px;
-    left: 77px;
+      scale: 1.0;
+      transform: translateX(0%) translateY(0%);
+       
   }
 }
 
-.animation {
-  animation: moveLogo 5s ease-in-out;
-  animation-fill-mode: backwards;
+@keyframes opacity {
+  0% {
+      opacity: 1;
+      display: flex;
+  }
+
+  100% {
+      display: none;
+  }
 }
+
+.imgLogoMove {
+  display: flex;
+  justify-content: center;
+  width: 100.03px;
+  height: 121.97px;
+  position: relative;
+}
+
+.animation1 {
+  animation: moveLogo 2s ease-in-out;
+}
+
+.animation2 {
+  animation: opacity 1s ease-in-out;
+  display: none;
+}
+
+.d-none {
+  display: none;
+}
+
+.dialog-bg {
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;    
+}
+
+.dialog {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  align-items: center;
+  justify-items: center;    
+  animation: moveSignUp 1s ease-in-out;
+}
+/* Signup successfull animation*/
+@keyframes moveSignUp {
+  0% {
+      transform: translateY(1000px);
+  }
+  100% {
+      transform: translateY(50%);        
+  }
+}
+
+

@@ -14,6 +14,7 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
+    focusSidebar()
 }
 
 async function init() {
@@ -23,4 +24,19 @@ async function init() {
 
 function errorFunction() {
     console.log('Fehler aufgetreten');
+}
+
+/*function zum focus() in der Sidebar zu generieren*/
+function focusSidebar(){
+    let currentPage = window.location.href.split('/').pop();
+    let menu = document.getElementById('menu');
+    let links = menu.getElementsByTagName('a');
+    for (let i = 0; i < links.length; i++) {
+        let linkHref = links[i].getAttribute('href');
+        if (linkHref.replace("./","") === currentPage) {
+            links[i].focus();
+            break; //Endet der Loop, wenn der href gefunde wird.
+        }
+    }
+
 }

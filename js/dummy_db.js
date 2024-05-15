@@ -86,3 +86,36 @@ let tasks = [
     status: ["In progress"]
   },
 ];
+
+
+let users = [
+  {
+      "id": 0,
+      "Name": "Guest",
+      "Email": "",
+      "Password": "",
+      "Emblem": "G"
+  },
+  {
+      "id": 1,
+      "Name": "Andrea Bauer",
+      "Email": "andrea6315@yahoo.com",
+      "Password": "1234",
+      "Emblem": "AB"
+  },
+  {
+      "id": 2,
+      "Name": "Peter Ludwig",
+      "Email": "p_Ludwig23@google.com",
+      "Password": "1234",
+      "Emblem": "PL"
+  },
+  {
+      "id": 3,
+      "Name": "Alfred Mueller",
+      "Email": "mueller_Alf92@gmail.com",
+      "Password": "1234",
+      "Emblem": "AM"
+  }
+
+];

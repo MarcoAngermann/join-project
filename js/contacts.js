@@ -1,6 +1,7 @@
 function init() {
   includeHTML();
   renderListContact();
+  
 }
 
 function renderListContact() {
