@@ -187,8 +187,9 @@ function addSubtask() {
     document.getElementById('subtaskInput').value = '';
     removeSubtask();
   } else {
-    // Wenn bereits 5 Subtasks vorhanden sind, gib eine Warnung aus oder führe andere geeignete Aktionen durch
-    alert('Maximal 5 Subtasks sind erlaubt.');
+    document.getElementById('subtaskInput').style =
+      'color:red; font-weight:bold;';
+    document.getElementById('subtaskInput').value = 'Maximal 5 Subtasks!';
   }
 }
 
@@ -213,6 +214,7 @@ function renderSubtaskHTML(i) {
               type="text"
               id="subtaskList${i}"
               value="${subtaskList[i]}"
+              minlength="10"
               />
                 <div class="edit-images" id="edit-images${i}">
                   <img onclick="editSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
