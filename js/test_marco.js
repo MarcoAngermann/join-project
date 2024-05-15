@@ -189,6 +189,7 @@ function addSubtask() {
   } else {
     document.getElementById('subtaskInput').style =
       'color:red; font-weight:bold;';
+    document.getElementById('subtaskInput').readOnly = true;
     document.getElementById('subtaskInput').value = 'Maximal 5 Subtasks!';
   }
 }
@@ -196,6 +197,9 @@ function addSubtask() {
 function deleteSubtask(i) {
   subtaskList.splice(i, 1);
   renderSubtask();
+  document.getElementById('subtaskInput').value = '';
+  document.getElementById('subtaskInput').readOnly = false;
+  document.getElementById('subtaskInput').style = 'color:black;';
 }
 
 function renderSubtask() {
