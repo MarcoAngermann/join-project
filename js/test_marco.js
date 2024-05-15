@@ -71,22 +71,6 @@ window.onload = function () {
   }
 };
 
-
-
-
-/* window.onclick = function (event) {
-  if (!event.target.matches('.contactContainer')) {
-    let dropdowns = document.getElementsByClassName('assignees');
-    let i;
-    for (i = 0; i < dropdowns.length; i++) {
-      let openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}; */
-
 function renderAssignees() {
   let assignee = document.getElementById('assignees');
   for (let i = 0; i < contacts.length; i++) {
@@ -103,11 +87,6 @@ function renderAssignees() {
         </label>
       `;
   }
-}
-
-function toggleAssignees() {
-  let assigneesList = document.getElementById('assignees');
-  assigneesList.classList.toggle('show');
 }
 
 function renderCategorys() {
@@ -127,30 +106,21 @@ function renderCategorys() {
 }
 
 function showCategories() {
-  document.getElementById('tasks').classList.toggle('show');
-}
-
-window.onclick = function (event) {
-  if (!event.target.matches('.contactContainer')) {
-    let dropdowns = document.getElementsByClassName('tasks');
-    let i;
-    for (i = 0; i < dropdowns.length; i++) {
-      let openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
+  if (document.getElementById('tasks').classList.contains('show')) {
+    document.getElementById('tasks').classList.remove('show');
+    document.getElementById('arrowDownCategory').style.display = 'block';
+    document.getElementById('arrowUpCategory').style.display = 'none';
+  } else {
+    document.getElementById('tasks').classList.add('show');
+    document.getElementById('arrowDownCategory').style.display = 'none';
+    document.getElementById('arrowUpCategory').style.display = 'block';
   }
-};
-function toggleCategorys() {
-  let taskList = document.getElementById('tasks');
-  taskList.classList.toggle('show');
 }
 
 function selectCategory(index) {
   let selectedCategory = categorys[index];
   document.getElementById('selectedCategory').innerText = selectedCategory;
-  toggleCategorys(); // Hide the category list after selection
+  showCategories(); // Hide the category list after selection
 }
 
 function restrictPastDate() {
@@ -186,18 +156,14 @@ function showAssignees() {
   if (document.getElementById('assignees').classList.contains('show')) {
     showAssigneesEmblem();
     document.getElementById('assignees').classList.remove('show');
-    document.getElementById('arrowDown').style.display = 'block';
-    document.getElementById('arrowUp').style.display = 'none';   
-  }
-  else {
+    document.getElementById('arrowDownAssignee').style.display = 'block';
+    document.getElementById('arrowUpAssignee').style.display = 'none';
+  } else {
     document.getElementById('assignees').classList.add('show');
-    document.getElementById('arrowDown').style.display = 'none';
-    document.getElementById('arrowUp').style.display = 'block';
-
+    document.getElementById('arrowDownAssignee').style.display = 'none';
+    document.getElementById('arrowUpAssignee').style.display = 'block';
   }
 }
-
-
 
 // Max Subtaks Functions
 function changeButtonsSubtask() {
