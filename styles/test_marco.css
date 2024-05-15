@@ -209,7 +209,6 @@ textarea {
   width: 100%;
 }
 
-/*
 .contactList:focus {
   color: white;
   background-color: #2a3647;
@@ -219,7 +218,6 @@ textarea {
 .contactList:focus:hover {
   background-color: #091931;
 }
-*/
 
 .contactContainer {
   display: flex;
@@ -264,20 +262,6 @@ textarea {
   z-index: 1;
 }
 
-/*
-.assignees {
-  display: none;
-  height: 150px;
-  overflow-y: auto;
-  position: sticky;
-  z-index: 99;
-  list-style: none;
-  padding-inline-start: 16px;
-  background-color: #ffffff;
-  border-radius: 10px;
-}
-*/
-
 input[type='checkbox'] {
   height: 14px;
   width: 14px;
@@ -298,22 +282,6 @@ input[type='checkbox'] {
   top: 583px;
   z-index: 1;
 }
-
-/*
-.tasks {
-  display: none;
-  justify-content: center;
-  height: 150px;
-  overflow-y: auto;
-  position: sticky;
-  z-index: 99;
-  list-style: none;
-  padding-inline-start: 16px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  cursor: pointer;
-}
-*/
 
 .tasks li:hover {
   background-color: #f6f7f8;

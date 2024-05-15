@@ -94,17 +94,6 @@
       </div>
       <ul id="tasks" class="tasks"></ul>
 
-      <!--
-      <div class="contactContainer" id="toggleCategory" onclick="toggleCategorys()">
-        <span id="selectedCategory">Select contacts to assign</span>
-        <img class="iconSelectSvg" src="../assets/icons/arrow_down_icon.svg">
-      </div>
-      <ul id="tasks" class="tasks"></ul>
-      -->
-
-
-
-
 
       
       <span class="subtaskLabel">Subtask</span>
@@ -142,7 +131,7 @@
 
         <div id="subtask" class="subtask"></div>
         <div class="addTaskBtn-Container">
-          <button class="btnClear">
+          <button formnovalidate class="btnClear" onclick="clearAllTasks()">
             Clear
             <img class="iconCancelSvg" src="../assets/icons/cancel.svg">           
           </button>

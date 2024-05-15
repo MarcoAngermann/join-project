@@ -300,3 +300,24 @@ function createNewTask(event) {
   };
   tasks.push(task);
 }
+
+function clearAllTasks() {
+  document.getElementById('title').value = '';
+  document.getElementById('description').value = '';
+  clearAllCheckbox();
+  showAssigneesEmblem();
+  document.getElementById('date').value = '';
+  togglePriority('medium');
+  document.getElementById('selectedCategory').innerHTML =
+    'Select task category';
+  subtaskList = []; // Wenn `subtaskList` eine globale Variable ist
+  document.getElementById('subtaskInput').value = '';
+  renderSubtask();
+}
+
+function clearAllCheckbox() {
+  let checkboxes = document.querySelectorAll("input[type='checkbox']");
+  for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].checked = false;
+  }
+}
