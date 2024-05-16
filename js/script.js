@@ -41,11 +41,13 @@ function focusSidebar() {
   }
 }
 
-function getUserLogin() {
+async function getUserLogin() {
   let userID = window.sessionStorage.getItem('userId');
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].id.toString() == userID) {
-      return users[i];
+  let usersJson = await loadData('users');
+  for (item in usersJson){  
+    let user = usersJson[item];
+    if (user.id.toString() == userID) {
+      return user;
     }
   }
   return null;

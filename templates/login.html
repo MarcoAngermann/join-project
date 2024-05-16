@@ -4,21 +4,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login</title>
-  <script src="../js/firebaseAPI.js"></script>
-  <script src="../js/login.js"></script>  
-  <link rel="stylesheet" href="../styles/style.css" />
-  <link rel="stylesheet" href="../styles/login.css" />
-  <link rel="stylesheet" href="../styles/fonts.css" />
+  <title>Login</title>  
+  <script src="../js/login.js"></script>
+    <script src="../js/firebaseAPI.js"></script>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <link rel="icons" href="./assets/icons/join_icon.svg" />
+ 
 </head>
 
   <body onload="initLogin()">
     <div class="overlay" id="overlay">
-      <img
-        class="imgLogoMove"
-        id="imgLogoID"
-        src="../assets/icons/join_login.svg"
-      />
+        <img class="imgLogoMove"  id="imgLogoID" src="../assets/icons/join_login.svg" />
     </div>
 
     <div class="containerLog" id="containerLog">
@@ -27,15 +25,13 @@
 
         <div class="divSignUp">
           <p class="styleTypography1">Not a Join user?</p>
-          <a
-            class="btnJoin style_BtnTypography2"
-            type="button"
+          <a class="btnJoin style_BtnTypography2" type="button"
             href="../templates/signUp.html"
             >Sign up</a
           >
         </div>
       </div>
-    </div>
+   
 
     <form class="formLogin" onsubmit="return doLogin()" action="..//templates/summary.html">
       <h1 class="title underline">Log in</h1>
@@ -61,6 +57,7 @@
       <a class="a_footer style_InputTypography2" href="#">Legal notice</a>
     </div>
   </div>
+</div>
 </body>
 
 </html>
