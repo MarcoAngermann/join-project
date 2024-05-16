@@ -107,7 +107,7 @@ function doLogin() {
 function getGuestLogin() {
     let userId = 0;
     window.sessionStorage.setItem("userId", userId);
-    return true;
+    location.href ="..//templates/summary.html";
 }
 
 function keyDown() {

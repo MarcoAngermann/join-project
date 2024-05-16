@@ -1,7 +1,7 @@
-function init(){
+function init() {
     includeHTML();
-   
-    getGreeting();
+    displayGreeting();
+    displayUser();
 }
 
 function getGreeting() {
@@ -18,6 +18,16 @@ function getGreeting() {
     return greeting;
 }
 function displayGreeting() {
-    document.getElementById("greetText").innerHTML = getGreeting();
+    document.getElementById('greetText').innerHTML = getGreeting();
 }
 
+function displayUser() {
+    let currentUser = getUserLogin();
+    let currentUserName = document.getElementById('greetUserName');
+    if (currentUser.id == 0) {
+        currentUserName.innerHTML = " ";
+    }
+    else{
+    currentUserName.innerHTML = currentUser.Name;
+    }
+}
