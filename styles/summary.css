@@ -80,12 +80,21 @@
     justify-content: center;
     align-items: center;
 }
-
-.summaryIcons {
+ 
+.divSummaryIcons {
     background-color: #2A3647;
-    border-radius: 100px;
-    padding: 8px;
+    border-radius: 50%;
+    padding: 5px;
     margin-right: 6px;
+    height: 69px;
+    width: 69px;    
+    text-align: center;   
+    align-content: center;
+} 
+
+.summaryIcons{       
+    height: 35px;
+    width: 35px;        
 }
 
 .numberContainer {
@@ -99,12 +108,12 @@
     color: #FFFFFF;
 }
 
-.summaryCard:hover .summaryIcons {
+.summaryCard:hover .divSummaryIcons {
     background-color: #FFFFFF;
 }
 
-.summaryCard:hover .summaryIcons path {
-    fill: #2A3647;
+.summaryCard:hover .summaryIcons {
+    filter: invert(19%) sepia(13%) saturate(1304%) hue-rotate(176deg) brightness(18%) contrast(90%);
 }
 
 .summaryCardSmall:hover {
@@ -112,6 +121,17 @@
     background-color: #2A3647;
     color: #FFFFFF;
 }
+
+.divCardBigIcons {
+    background-color: #FF3D00;
+    border-radius: 50%;
+    padding: 5px;
+    margin-right: 6px;
+    height: 69px;
+    width: 69px;    
+    text-align: center;   
+    align-content: center;
+} 
 
 .summaryCardBig:hover {
     scale: 1.1;
