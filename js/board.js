@@ -1,3 +1,8 @@
+function init() {
+  includeHTML();
+  updateHTML();
+}
+
 let dummyCards = [
   {
     id: 0,
@@ -20,7 +25,6 @@ let dummyCards = [
     category: 'done',
   },
 ];
-
 
 let currentDraggedElement;
 
@@ -110,11 +114,6 @@ function removeHighlight(id) {
   document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
-//
-//
-//
-//
-//
 function showBigCard(i) {
   document.getElementById('showBigCard').classList.remove('dnone');
   content = document.getElementById('showBigCard');

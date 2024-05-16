@@ -1,53 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <script src="../js/login.js"></script>
+    <script src="../js/dummy_db.js"></script>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/login.css" />
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <link rel="icons" href="./assets/icons/join_icon.svg" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login</title>
-  <script src="../js/login.js"></script>
-  <script src="../js/dummy_db.js"></script>
-  <link rel="stylesheet" href="../styles/style.css" />
-  <link rel="stylesheet" href="../styles/login.css" />
-  <link rel="stylesheet" href="../styles/fonts.css" />
-</head>
+  <body onload="initLogin()">
+    <div class="overlay" id="overlay">
+      <img
+        class="imgLogoMove"
+        id="imgLogoID"
+        src="../assets/icons/join_login.svg"
+      />
+    </div>
 
-<body onload="initLogin()">
+    <div class="containerLog" id="containerLog">
+      <div class="headlineLogin">
+        <img class="imgLogo" src="../assets/icons/join_login.svg" />
 
-  <div class="overlay" id="overlay"><img class="imgLogoMove" id="imgLogoID" src="../assets/icons/join_login.svg"></div>
+        <div class="divSignUp">
+          <p class="styleTypography1">Not a Join user?</p>
+          <a
+            class="btnJoin style_BtnTypography2"
+            type="button"
+            href="../templates/signUp.html"
+            >Sign up</a
+          >
+        </div>
+      </div>
+      <form
+        class="formLogin"
+        onsubmit="return doLogin()"
+        action="..//templates/summary.html"
+      >
+        <h1 class="title underline">Log in</h1>
+        <div class="groupLogin-input">
+          <input
+            class="inputs style_InputTypography1"
+            type="email"
+            id="email"
+            style="background-image: url(../assets/icons/mail_icon.svg)"
+            placeholder="Email"
+            required
+          />
+          <input
+            class="inputs style_InputTypography1"
+            id="password"
+            onkeydown="keyDown()"
+            onclick="showPassword()"
+            style="background-image: url(../assets/icons/lock_icon.svg)"
+            placeholder="Password"
+            required
+          />
+        </div>
+        <div class="box-remember style_InputTypography2">
+          <input class="checkBox" type="checkbox" id="remember" />
+          <label for="remember"> Remember me</label>
+        </div>
 
-  <div class="containerLog" id="containerLog">
-    <div class="headlineLogin">
-      <img class="imgLogo" src="../assets/icons/join_login.svg" />
-
-      <div class="divSignUp">
-        <p class="styleTypography1">Not a Join user?</p>
-        <a class="btnJoin style_BtnTypography2" type="button" href="../templates/signUp.html">Sign up</a>
+        <div class="divBtn">
+          <button class="btnJoin style_BtnTypography1" type="submit">
+            Log in
+          </button>
+          <button
+            class="btnGuest style_BtnTypography1"
+            id="Guest_Login"
+            type="button"
+            onclick="getGuestLogin()"
+          >
+            Guest Log in
+          </button>
+        </div>
+      </form>
+      <div class="footerLogin">
+        <a class="a_footer style_InputTypography2" href="#">Privacy Policy</a>
+        <a class="a_footer style_InputTypography2" href="#">Legal notice</a>
       </div>
     </div>
-    <form class="formLogin" onsubmit="return doLogin()" action="..//templates/summary.html">
-      <h1 class="title underline">Log in</h1>
-      <div class="groupLogin-input">
-        <input class="inputs style_InputTypography1" type="email" id="email"
-          style="background-image: url(../assets/icons/mail_icon.svg)" placeholder="Email" required />
-        <input class="inputs style_InputTypography1" id="password" onkeydown="keyDown()" onclick="showPassword()"
-          style="background-image: url(../assets/icons/lock_icon.svg)" placeholder="Password" required />
-      </div>
-      <div class="box-remember style_InputTypography2">
-        <input class="checkBox" type="checkbox" id="remember" />
-        <label for="remember"> Remember me</label>
-      </div>
-
-      <div class="divBtn">
-        <button class="btnJoin style_BtnTypography1" type="submit">Log in</button>
-        <button class="btnGuest style_BtnTypography1" id="Guest_Login" type="button" onclick="getGuestLogin()"> Guest Log in </button>
-      </div>
-    </form>
-    <div class="footerLogin">
-      <a class="a_footer style_InputTypography2" href="#">Privacy Policy</a>
-      <a class="a_footer style_InputTypography2" href="#">Legal notice</a>
-    </div>
-  </div>
-</body>
-
+  </body>
 </html>
