@@ -12,17 +12,28 @@
   <link rel="stylesheet" href="../styles/fonts.css" />
 </head>
 
-<body onload="initLogin()">
+  <body onload="initLogin()">
+    <div class="overlay" id="overlay">
+      <img
+        class="imgLogoMove"
+        id="imgLogoID"
+        src="../assets/icons/join_login.svg"
+      />
+    </div>
 
-  <div class="overlay" id="overlay"><img class="imgLogoMove" id="imgLogoID" src="../assets/icons/join_login.svg"></div>
+    <div class="containerLog" id="containerLog">
+      <div class="headlineLogin">
+        <img class="imgLogo" src="../assets/icons/join_login.svg" />
 
-  <div class="containerLog" id="containerLog">
-    <div class="headlineLogin">
-      <img class="imgLogo" src="../assets/icons/join_login.svg" />
-
-      <div class="divSignUp">
-        <p class="styleTypography1">Not a Join user?</p>
-        <a class="btnJoin style_BtnTypography2" type="button" href="../templates/signUp.html">Sign up</a>
+        <div class="divSignUp">
+          <p class="styleTypography1">Not a Join user?</p>
+          <a
+            class="btnJoin style_BtnTypography2"
+            type="button"
+            href="../templates/signUp.html"
+            >Sign up</a
+          >
+        </div>
       </div>
     </div>
 

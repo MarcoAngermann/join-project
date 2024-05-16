@@ -6,13 +6,16 @@
     <link rel="stylesheet" href="../styles/style.css" />
     <link rel="stylesheet" href="../styles/sidebar.css" />
     <link rel="stylesheet" href="../styles/board.css" />
-    <link rel="stylesheet" href="../styles/smallcardPrototype.css" />   
+    <link rel="stylesheet" href="../styles/smallcardPrototype.css" />
+    <link rel="icons" href="./assets/icons/join_icon.svg" />
+    <script src="../js/dummy_db.js"></script>
     <script src="../js/script.js"></script>
     <script src="../js/header.js"></script>
-    <script src="../js/test_max.js"></script>
+    <script src="../js/board.js"></script>
+    <!--<script src="../js/add_task.js"></script>-->
     <title>Join board</title>
   </head>
-  <body onload="includeHTML(), updateHTML()">
+  <body onload="init()">
     <div w3-include-html="../templates/sidebar.html"></div>
     <div w3-include-html="../templates/header.html"></div>
 
@@ -29,13 +32,13 @@
             />
             <div class="input-area-right">
               <div class="input-area-right-seperator"></div>
-              <img class="search-svg" src="../assets/icons/search.svg">       
+              <img class="search-svg" src="../assets/icons/search.svg" />
             </div>
           </div>
 
           <button>
             Add task
-            <img src="..//assets/icons/add_icon_white.svg">            
+            <img src="..//assets/icons/add_icon_white.svg" />
           </button>
         </div>
       </section>
@@ -43,7 +46,10 @@
         <div class="todo">
           <div class="todo-head">
             <h3>To Do</h3>
-            <img class="plusBtn-svg" src="..//assets/icons/plusbuttonBoard.svg">            
+            <img
+              class="plusBtn-svg"
+              src="..//assets/icons/plusbuttonBoard.svg"
+            />
           </div>
           <div
             class="drag-area"
@@ -56,7 +62,10 @@
         <div class="inProgress">
           <div class="inProgress-head">
             <h3>In Progress</h3>
-            <img class="plusBtn-svg" src="..//assets/icons/plusbuttonBoard.svg">                       
+            <img
+              class="plusBtn-svg"
+              src="..//assets/icons/plusbuttonBoard.svg"
+            />
           </div>
           <div
             class="drag-area"
@@ -69,8 +78,10 @@
         <div class="awaitFeedback">
           <div class="awaitFeedback-head">
             <h3>Await Feedback</h3>
-            <img class="plusBtn-svg" src="..//assets/icons/plusbuttonBoard.svg">           
-           
+            <img
+              class="plusBtn-svg"
+              src="..//assets/icons/plusbuttonBoard.svg"
+            />
           </div>
           <div
             class="drag-area"
