@@ -167,8 +167,15 @@ function showAssignees() {
 
 // Max Subtaks Functions
 function changeButtonsSubtask() {
-  document.getElementById('subtask-right-regular').classList.add('dnone');
-  document.getElementById('subtask-right-add').classList.remove('dnone');
+  if (subtaskList.length < 5) {
+    document.getElementById('subtask-right-regular').classList.add('dnone');
+    document.getElementById('subtask-right-add').classList.remove('dnone');
+  } else {
+    document.getElementById('subtaskInput').style =
+      'color:red; font-weight:bold;';
+    document.getElementById('subtaskInput').readOnly = true;
+    document.getElementById('subtaskInput').value = 'Maximal 5 Subtasks!';
+  }
 }
 
 function removeSubtask() {
@@ -178,19 +185,25 @@ function removeSubtask() {
   document.getElementById('subtask-right-add').classList.add('dnone');
 }
 
+function removeIcons() {
+  document.getElementById('subtask-right-regular').classList.remove('dnone');
+  document.getElementById('subtask-right-add').classList.add('dnone');
+}
+
 function addSubtask() {
   let input = document.getElementById('subtaskInput').value;
+  if (input == '') {
+    document.getElementById('subtaskInput').placeholder =
+      'Bitte etwas eingeben!';
+    return;
+  }
   // Überprüfe, ob bereits 5 Subtasks vorhanden sind
   if (subtaskList.length < 5) {
+    document.getElementById('subtaskInput').placeholder = 'Add new Subtask';
     subtaskList.push(input);
     renderSubtask();
     document.getElementById('subtaskInput').value = '';
     removeSubtask();
-  } else {
-    document.getElementById('subtaskInput').style =
-      'color:red; font-weight:bold;';
-    document.getElementById('subtaskInput').readOnly = true;
-    document.getElementById('subtaskInput').value = 'Maximal 5 Subtasks!';
   }
 }
 
@@ -218,7 +231,6 @@ function renderSubtaskHTML(i) {
               type="text"
               id="subtaskList${i}"
               value="${subtaskList[i]}"
-              minlength="10"
               />
                 <div class="edit-images" id="edit-images${i}">
                   <img onclick="editSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
