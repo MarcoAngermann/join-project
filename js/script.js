@@ -1,6 +1,5 @@
 async function init() {
-    await includeHTML();
-   
+    await includeHTML();   
 }
 
 async function includeHTML() {
@@ -45,7 +44,7 @@ function focusSidebar() {
 
 
 function getUserLogin() {
-    let userID = window.sessionStorage.getItem("userId");
+    let userID = window.sessionStorage.getItem("userId");    
     for (let i = 0; i < users.length; i++) {
         if (users[i].id.toString() == userID) {            
             return users[i];

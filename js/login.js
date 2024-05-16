@@ -33,15 +33,14 @@ async function AddUser(event) {
         return false;
     }
     let user = {
-        "id": findLastUserId(users) + 1,
+        "id": await findLastUserId() + 1,
         "Name": name,
         "Email": email,
         "Password": password,
         "Emblem": getEmblemUser(name)
     }
-    users.push(user);
+    await postData('users', user);
     document.getElementById('dialogSingUp').style.display = 'flex';
-    console.log(users);
     await sleep(3000);
     cleanContactControls();
     backToLogin();
@@ -51,18 +50,20 @@ function getEmblemUser(name) {
     let aux = name.split(' ');
     let capital = '';
     for (let j = 0; j < aux.length; j++) {
-      if (j <= 1) {
-        capital += aux[j].slice(0, 1).toUpperCase();
-      }
+        if (j <= 1) {
+            capital += aux[j].slice(0, 1).toUpperCase();
+        }
     }
     return capital;
-  }
+}
 
-function findLastUserId(users) {
+async function findLastUserId() {
+    let usersJson = await loadData('users');
     let lastId = 1;
-    for (let i = 1; i < users.length; i++) {
-        if (users[i].id > lastId) {
-            lastId = users[i].id;
+    for (item in usersJson) {
+        let user = usersJson[item];
+        if (user.id > lastId) {
+            lastId = user.id;
         }
     }
     return lastId;   // found the last contact.id
@@ -88,31 +89,30 @@ function moveIcon() {
     document.getElementById('overlay').classList.add('animation2');
 }
 
-function doLogin() {
+async function doLogin() {
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
-
-    for (let i = 0; i < users.length; i++) {
-        if (email == users[i].Email && password == users[i].Password) {
-            let userId = users[i].id;
+    let usersJson = await loadData('users');
+    for (item in usersJson) {
+        user = usersJson[item];
+        if (email == user.Email && password == user.Password) {
+            let userId = user.id;
             window.sessionStorage.setItem("userId", userId);
             return true;
-        }
-    }
-    console.log("Incorrect email or password");
+        };
+    };    
     return false;
-
 }
 
 function getGuestLogin() {
     let userId = 0;
     window.sessionStorage.setItem("userId", userId);
-    location.href ="..//templates/summary.html";
+    location.href = "..//templates/summary.html";
 }
 
 function keyDown() {
     let image = document.getElementById('password');
-    image.style.backgroundImage = "url('../assets/icons/visibility_off.svg')";    
+    image.style.backgroundImage = "url('../assets/icons/visibility_off.svg')";
 }
 
 function showPassword() {
