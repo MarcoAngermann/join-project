@@ -1,4 +1,4 @@
-function init() {
+function initSummary() {
     includeHTML();
     displayGreeting();
     displayUser();
@@ -21,8 +21,8 @@ function displayGreeting() {
     document.getElementById('greetText').innerHTML = getGreeting();
 }
 
-function displayUser() {
-    let currentUser = getUserLogin();
+async function displayUser() {
+    let currentUser = await getUserLogin();
     let currentUserName = document.getElementById('greetUserName');
     if (currentUser.id == 0) {
         currentUserName.innerHTML = " ";

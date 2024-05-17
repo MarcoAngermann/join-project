@@ -1,6 +1,8 @@
-async function init() {
-  await includeHTML();
+async function init() {  
+  await includeHTML(); 
 }
+
+
 
 async function includeHTML() {
   let includeElements = document.querySelectorAll('[w3-include-html]');
@@ -16,11 +18,6 @@ async function includeHTML() {
   }
   focusSidebar();
   getuseremblem();
-}
-
-async function init() {
-  await fetch('script.json').catch(errorFunction);
-  console.log('Fertig');
 }
 
 function errorFunction() {
@@ -42,7 +39,7 @@ function focusSidebar() {
 }
 
 async function getUserLogin() {
-  let userID = window.sessionStorage.getItem('userId');
+  let userID = window.sessionStorage.getItem('userId');  
   let usersJson = await loadData('users');
   for (item in usersJson){  
     let user = usersJson[item];
@@ -53,8 +50,8 @@ async function getUserLogin() {
   return null;
 }
 
-function getuseremblem() {
-  let currentUser = getUserLogin();
+async function getuseremblem() {
+  let currentUser = await getUserLogin();
   let emblemUser = document.getElementById('emblemUser');
   emblemUser.innerHTML = currentUser.Emblem;
 }

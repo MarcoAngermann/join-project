@@ -1,6 +1,8 @@
-function initLogin() {
+async function initLogin() {
     moveIcon();
+    usersJson = await loadData('users');
 }
+let usersJson;
 
 function init() {
     let btn = document.getElementById('btnSignUp');
@@ -89,10 +91,9 @@ function moveIcon() {
     document.getElementById('overlay').classList.add('animation2');
 }
 
-async function doLogin() {
+function doLogin() {
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
-    let usersJson = await loadData('users');
     for (item in usersJson) {
         user = usersJson[item];
         if (email == user.Email && password == user.Password) {
@@ -100,7 +101,7 @@ async function doLogin() {
             window.sessionStorage.setItem("userId", userId);
             return true;
         };
-    };    
+    };
     return false;
 }
 
