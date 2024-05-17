@@ -1,9 +1,25 @@
-function init() {
+async function initAdd() {
   restrictPastDate();
   includeHTML();
+  await contactsArray();
   renderAssignees();
   renderCategorys();
 }
+
+let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];
+let subtaskList = [];
+let status = ['To do', 'In progress', 'Await feedback', 'Done'];
+let contacts = [];
+
+
+async function contactsArray() {
+  let contactsJson = await loadData('contacts');
+  for (item in contactsJson) {
+    let contact = contactsJson[item];
+    contacts.push(contact);
+  }
+}
+
 
 function resetElements(elements) {
   for (let i = 0; i < elements.length; i++) {
@@ -303,9 +319,9 @@ function getAssigneedContact() {
   return idsList;
 }
 
-function createNewTask(event) {
+async function createNewTask(event) {
   event.preventDefault();
-  let task = tasks[0];
+  /*let task = tasks[0];*/
   task = {
     title: document.getElementById('title').value,
     description: document.getElementById('description').value,
@@ -316,7 +332,9 @@ function createNewTask(event) {
     subtask: subtaskList,
     status: 'To do',
   };
-  tasks.push(task);
+  /*tasks.push(task);*/
+  await postData('tasks', task);
+  clearAllTasks();
 }
 
 function clearAllTasks() {

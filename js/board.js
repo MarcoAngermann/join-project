@@ -1,6 +1,31 @@
-function init() {
+async function initBoard() {
   includeHTML();
   updateHTML();
+  await contactsArray();
+  await tasksArray();
+}
+
+let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];
+let subtaskList = [];
+let status = ['To do', 'In progress', 'Await feedback', 'Done'];
+let contacts = [];
+let tasks = [];
+
+
+async function contactsArray() {
+  let contactsJson = await loadData('contacts');
+  for (item in contactsJson) {
+    let contact = contactsJson[item];
+    contacts.push(contact);
+  }
+}
+
+async function tasksArray() {
+  let tasksJson = await loadData('tasks');
+  for (item in tasksJson) {
+    let task = tasksJson[item];
+    contacts.push(task);
+  }
 }
 
 let dummyCards = [

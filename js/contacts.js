@@ -1,7 +1,36 @@
-function init() {
-  includeHTML();
+async function initContact() {
+  await includeHTML();
+  await contactsArray();
   renderListContact();
-  
+
+}
+
+let colors = [
+  '#FF7A00',
+  '#FF5EB3',
+  '#6E52FF',
+  '#9327FF',
+  '#00BEE8',
+  '#1FD7C1',
+  '#FF745E',
+  '#FFA35E',
+  '#FC71FF',
+  '#FFC701',
+  '#0038FF',
+  '#C3FF2B',
+  '#FFE62B',
+  '#FF4646',
+  '#FFBB2B',
+];
+
+let contacts = [];
+
+async function contactsArray() {
+  let contactsJson = await loadData('contacts');
+  for (item in contactsJson) {
+    let contact = contactsJson[item];
+    contacts.push(contact);
+  }
 }
 
 function renderListContact() {
@@ -147,7 +176,7 @@ function findLastContactId(contacts) {
   return lastId;   // found the last contact.id
 }
 
-function newContact(event) {
+async function newContact(event) {
   event.preventDefault();
   let lastContactId = findLastContactId(contacts);
   let nameContact = document.getElementById('nameContact').value;
@@ -162,6 +191,7 @@ function newContact(event) {
     "color": colorRandom()
   }
   contacts.push(newContact);
+  await postData('contacts', newContact);
   closeDialog();
   cleanContactControls();
   renderListContact();
@@ -174,22 +204,45 @@ function cleanContactControls() {
 }
 
 
-function editContact(event, i) {
+async function editContact(event, i) {
   event.preventDefault();
-  contact = contacts[i];
-  contact['name'] = document.getElementById('nameContact').value;
-  contact['email'] = document.getElementById('emailContact').value;
-  contact['phone'] = document.getElementById('phoneContact').value;
-  contact['emblem'] = renderEmblem(document.getElementById('nameContact').value);
+  contactEdit = contacts[i];
+  contactEdit['name'] = document.getElementById('nameContact').value;
+  contactEdit['email'] = document.getElementById('emailContact').value;
+  contactEdit['phone'] = document.getElementById('phoneContact').value;
+  contactEdit['emblem'] = renderEmblem(document.getElementById('nameContact').value);
+  await firebaseUpdate(contactEdit);
   closeDialog();
   cleanContactControls();
   renderListContact();
   showDetailContact(i);
 }
 
-function deleteContact(i) {
-  contact = contacts[i];
+async function firebaseUpdate(contactEdit) {
+  let contactsJson = await loadData('contacts');
+  for (item in contactsJson) {
+    let contactDB = contactsJson[item];
+    if (contactDB.id == contactEdit.id) {
+      let x = { [item]: contactEdit };
+      putData('contacts/' + [item], contactEdit);
+    }
+  }
+}
+
+async function deleteContact(i) {
+  let contactDelete = contacts[i];
   contacts.splice(i, 1);
   document.getElementById('divDetails').innerHTML = "";
+  await firebaseDelete(contactDelete);
   renderListContact();
+}
+
+async function firebaseDelete(contactDelete) {
+  let contactsJson = await loadData('contacts');
+  for (item in contactsJson) {
+    let contactDB = contactsJson[item];
+    if (contactDB.id == contactDelete.id) {     
+      deleteData('contacts/' + [item]);
+    }
+  }
 }
