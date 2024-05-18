@@ -175,7 +175,7 @@ textarea {
   color: white;
 }
 
-.assignee span {
+.user span {
   font-weight: bold;
 }
 
@@ -251,7 +251,7 @@ textarea {
   display: none;
 }
 
-.assignees {
+.users {
   display: none;
   position: absolute;
   background-color: #ffffff;
