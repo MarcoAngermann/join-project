@@ -328,7 +328,7 @@ function getUser() {
   let divs = userEmblem.getElementsByTagName('div');
   let idsList = [];
   for (let i = 0; i < divs.length; i++) {
-    idsList.push(divs[i].userId);
+    idsList.push(divs[i].id);
   }
   return idsList;
 }
