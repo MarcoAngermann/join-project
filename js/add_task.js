@@ -160,14 +160,6 @@ function restrictPastDate() {
 
 //Mónica New Funktion
 
-function renderEmblemUsers(emblem, color) {
-  let usersEmblem = document.getElementById('usersEmblem');
-  usersEmblem.innerHTML += `
-    <div class="emblem" style="background-color: ${contact['color']}" id="${contact['id']}">
-      ${contact['emblem']}
-    </div>  `;
-}
-
 function showUsersEmblem() {
   let usersEmblem = document.getElementById('usersEmblem');
   usersEmblem.innerHTML = '';
@@ -176,10 +168,18 @@ function showUsersEmblem() {
     contact = users[i];
     let checkedContact = document.getElementById(`checkbox${i}`);
     if (checkedContact.checked == true) {
-      renderEmblemUsers(contact['emblem'], contact['color']);
+      renderEmblemUsers();
     }
   }
   document.getElementById('users').classList.toggle('close');
+}
+
+function renderEmblemUsers() {
+  let usersEmblem = document.getElementById('usersEmblem');
+  usersEmblem.innerHTML += `
+    <div class="emblem" style="background-color: ${contact['color']}" id="${contact['userId']}">
+      ${contact['emblem']}
+    </div>  `;
 }
 
 function showUsers() {
