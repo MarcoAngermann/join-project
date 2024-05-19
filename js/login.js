@@ -4,24 +4,6 @@ async function initLogin() {
 }
 let usersJson;
 
-let colors = [
-  '#FF7A00',
-  '#FF5EB3',
-  '#6E52FF',
-  '#9327FF',
-  '#00BEE8',
-  '#1FD7C1',
-  '#FF745E',
-  '#FFA35E',
-  '#FC71FF',
-  '#FFC701',
-  '#0038FF',
-  '#C3FF2B',
-  '#FFE62B',
-  '#FF4646',
-  '#FFBB2B',
-];
-
 function init() {
   let btn = document.getElementById('btnSignUp');
   btn.setAttribute('disabled', '');
@@ -52,7 +34,7 @@ async function AddUser(event) {
     return false;
   }
   let user = {
-    id: (await findLastUserId()) + 1,
+    userId: (await findLastUserId()) + 1,
     name: name,
     email: email,
     password: password,
@@ -86,8 +68,8 @@ async function findLastUserId() {
   let lastId = 1;
   for (item in usersJson) {
     let user = usersJson[item];
-    if (user.id > lastId) {
-      lastId = user.id;
+    if (user.userId > lastId) {
+      lastId = user.userId;
     }
   }
   return lastId; // found the last contact.id
@@ -119,12 +101,12 @@ function doLogin() {
   for (item in usersJson) {
     user = usersJson[item];
     if (email == user.email && password == user.password) {
-      let userId = user.id;
+      let userId = user.userId;
       window.sessionStorage.setItem('userId', userId);
-      return true;
+      console.log('true');
     }
   }
-  return false;
+  location.href = '..//templates/summary.html';
 }
 
 function getGuestLogin() {

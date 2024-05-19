@@ -2,20 +2,29 @@ async function initAdd() {
   restrictPastDate();
   includeHTML();
   await usersArray();
+  await tasksArray();
   renderUsers();
   renderCategorys();
 }
 
 let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];
 let subtaskList = [];
-let status = ['To do', 'In progress', 'Await feedback', 'Done'];
 let users = [];
+let tasks = [];
 
 async function usersArray() {
   let usersJson = await loadData('users');
   for (item in usersJson) {
     let user = usersJson[item];
     users.push(user);
+  }
+}
+
+async function tasksArray() {
+  let tasksJson = await loadData('tasks');
+  for (item in tasksJson) {
+    let task = tasksJson[item];
+    tasks.push(task);
   }
 }
 
@@ -87,20 +96,26 @@ window.onload = function () {
 
 function renderUsers() {
   let user = document.getElementById('users');
+
   for (let i = 0; i < users.length; i++) {
+    if (users[i]['userId'] == 0) continue;
     const contact = users[i];
-    user.innerHTML += /*html*/ `
-    <label for="checkbox${i}">
-        <li class="contactList">        
-            <div tabindex="0" class="emblem" style="background-color: ${contact['color']}">
-              ${contact['emblem']}
-            </div> 
-            <div class="contactName" >${contact['name']}</div> 
-            <input type="checkbox" id="checkbox${i}">          
-        </li>
-        </label>
-      `;
+    user.innerHTML += renderUsersHTML(contact, i);
   }
+}
+
+function renderUsersHTML(contact, i) {
+  return /*html*/ `
+      <label for="checkbox${i}">
+          <li class="contactList">        
+              <div tabindex="0" class="emblem" style="background-color: ${contact['color']}">
+                ${contact['emblem']}
+              </div> 
+              <div class="contactName" >${contact['name']}</div> 
+              <input type="checkbox" id="checkbox${i}">          
+          </li>
+          </label>
+        `;
 }
 
 function renderCategorys() {
@@ -145,11 +160,11 @@ function restrictPastDate() {
 
 //Mónica New Funktion
 
-function renderEmblemUsers(Emblem, color) {
+function renderEmblemUsers(emblem, color) {
   let usersEmblem = document.getElementById('usersEmblem');
   usersEmblem.innerHTML += `
     <div class="emblem" style="background-color: ${contact['color']}" id="${contact['id']}">
-      ${contact['Emblem']}
+      ${contact['emblem']}
     </div>  `;
 }
 
@@ -157,10 +172,11 @@ function showUsersEmblem() {
   let usersEmblem = document.getElementById('usersEmblem');
   usersEmblem.innerHTML = '';
   for (let i = 0; i < users.length; i++) {
+    if (users[i]['userId'] == 0) continue;
     contact = users[i];
     let checkedContact = document.getElementById(`checkbox${i}`);
     if (checkedContact.checked == true) {
-      renderEmblemUsers(contact['Emblem'], contact['color']);
+      renderEmblemUsers(contact['emblem'], contact['color']);
     }
   }
   document.getElementById('users').classList.toggle('close');
@@ -307,31 +323,40 @@ function getSelectedPrio() {
   }
 }
 
-function getUserContact() {
-  // umändern taskID
-  let userEmblem = document.getElementById('userEmblem');
+function getUser() {
+  let userEmblem = document.getElementById('usersEmblem');
   let divs = userEmblem.getElementsByTagName('div');
   let idsList = [];
   for (let i = 0; i < divs.length; i++) {
-    idsList.push(divs[i].id);
+    idsList.push(divs[i].userId);
   }
   return idsList;
 }
 
+function createCardId(tasks) {
+  let lastCardId = 1;
+  for (let i = 1; i < tasks.length; i++) {
+    if (tasks[i].cardId > lastCardId) {
+      lastCardId = tasks[i].cardId;
+    }
+  }
+  return lastCardId; //
+}
+
 async function createNewTask(event) {
   event.preventDefault();
-  /*let task = tasks[0];*/
+  let lastCardId = createCardId(tasks);
   task = {
     title: document.getElementById('title').value,
     description: document.getElementById('description').value,
-    assigneeIds: getUserContact(), //umänderung taskID
+    userId: getUser(),
     date: document.getElementById('date').value,
     priority: getSelectedPrio(),
     category: document.getElementById('selectedCategory').value,
     subtask: subtaskList,
     status: 'To do',
+    cardId: lastCardId + 1,
   };
-  /*tasks.push(task);*/
   await postData('tasks', task);
   clearAllTasks();
 }
