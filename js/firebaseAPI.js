@@ -44,6 +44,35 @@ async function putData(path = '', data = {}) {
   return (responseToJson = await response.json());
 }
 function initUsers() {
+<<<<<<< HEAD
+  postData('users', id, {
+    id: 0,
+    Name: 'Guest',
+    Email: '',
+    Password: '',
+    Emblem: 'G',
+  });
+  postData('users', id, {
+    id: 1,
+    Name: 'Andrea Bauer',
+    Email: 'andrea6315@yahoo.com',
+    Password: '1234',
+    Emblem: 'AB',
+  });
+  postData('users', id, {
+    id: 2,
+    Name: 'Peter Ludwig',
+    Email: 'p_Ludwig23@google.com',
+    Password: '1234',
+    Emblem: 'PL',
+  });
+  postData('users', id, {
+    id: 3,
+    Name: 'Alfred Mueller',
+    Email: 'mueller_Alf92@gmail.com',
+    Password: '1234',
+    Emblem: 'AM',
+=======
   postData('users', {
     userId: 0,
     name: 'Guest',
@@ -74,6 +103,7 @@ function initUsers() {
     password: '1234',
     emblem: 'AM',
     color: '#FFA35E',
+>>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
   });
 }
 
@@ -88,7 +118,11 @@ function initContacts() {
   });
 
   postData('contacts', {
+<<<<<<< HEAD
+    id: 2,
+=======
     contactId: 1,
+>>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
     name: 'Ahlers Johann August',
     email: 'johann8989@gmx.de',
     phone: '016998639293',
@@ -96,7 +130,11 @@ function initContacts() {
     color: '#FF4646',
   });
   postData('contacts', {
+<<<<<<< HEAD
+    id: 3,
+=======
     contactId: 2,
+>>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
     name: 'Beckmann Antje',
     email: 'beckmann.antje@yahoo.com',
     phone: '018569875352',
@@ -104,7 +142,11 @@ function initContacts() {
     color: '#FFA35E',
   });
   postData('contacts', {
+<<<<<<< HEAD
+    id: 4,
+=======
     contactId: 3,
+>>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
     name: 'Mueller Susanne',
     email: 'sussi_mueller@gmx.de',
     phone: '014569986987',
@@ -112,7 +154,11 @@ function initContacts() {
     color: '#C3FF2B',
   });
   postData('contacts', {
+<<<<<<< HEAD
+    id: 5,
+=======
     contactId: 4,
+>>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
     name: 'Wolfhope Theodor',
     email: 'theoHope1834@gmx.de',
     phone: '014768932145',
@@ -120,6 +166,8 @@ function initContacts() {
     color: '#FF7A00',
   });
 }
+<<<<<<< HEAD
+=======
 
 function initTasks() {
   postData('tasks', {
@@ -200,3 +248,4 @@ async function createNewTask(event) {
   await postData('tasks', task);
   clearAllTasks();
 }
+>>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e

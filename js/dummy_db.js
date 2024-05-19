@@ -91,7 +91,11 @@ let tasks = [
 
 let users = [
   {
+<<<<<<< HEAD
+    id: 0,
+=======
     id: 8,
+>>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
     name: 'Andrea Bauer',
     email: 'andrea6315@yahoo.com',
     password: '1234',
