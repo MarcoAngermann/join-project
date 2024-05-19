@@ -2,23 +2,15 @@ async function initAdd() {
   restrictPastDate();
   includeHTML();
   await usersArray();
-<<<<<<< HEAD
-=======
   await tasksArray();
->>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
   renderUsers();
   renderCategorys();
 }
 
 let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];
 let subtaskList = [];
-<<<<<<< HEAD
-let status = ['To do', 'In progress', 'Await feedback', 'Done'];
-let users = [];
-=======
 let users = [];
 let tasks = [];
->>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
 
 async function usersArray() {
   let usersJson = await loadData('users');
@@ -28,8 +20,6 @@ async function usersArray() {
   }
 }
 
-<<<<<<< HEAD
-=======
 async function tasksArray() {
   let tasksJson = await loadData('tasks');
   for (item in tasksJson) {
@@ -38,7 +28,6 @@ async function tasksArray() {
   }
 }
 
->>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
 function resetElements(elements) {
   for (let i = 0; i < elements.length; i++) {
     elements[i].classList.remove('selected');
@@ -107,27 +96,11 @@ window.onload = function () {
 
 function renderUsers() {
   let user = document.getElementById('users');
-<<<<<<< HEAD
-  for (let i = 0; i < users.length; i++) {
-    const contact = users[i];
-    user.innerHTML += /*html*/ `
-    <label for="checkbox${i}">
-        <li class="contactList">        
-            <div tabindex="0" class="emblem" style="background-color: ${contact['color']}">
-              ${contact['emblem']}
-            </div> 
-            <div class="contactName" >${contact['name']}</div> 
-            <input type="checkbox" id="checkbox${i}">          
-        </li>
-        </label>
-      `;
-=======
 
   for (let i = 0; i < users.length; i++) {
     if (users[i]['userId'] == 0) continue;
     const contact = users[i];
     user.innerHTML += renderUsersHTML(contact, i);
->>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
   }
 }
 
@@ -187,15 +160,11 @@ function restrictPastDate() {
 
 //Mónica New Funktion
 
-<<<<<<< HEAD
-function renderEmblemUsers(Emblem, color) {
-=======
 function renderEmblemUsers(emblem, color) {
->>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
   let usersEmblem = document.getElementById('usersEmblem');
   usersEmblem.innerHTML += `
     <div class="emblem" style="background-color: ${contact['color']}" id="${contact['id']}">
-      ${contact['Emblem']}
+      ${contact['emblem']}
     </div>  `;
 }
 
@@ -203,18 +172,11 @@ function showUsersEmblem() {
   let usersEmblem = document.getElementById('usersEmblem');
   usersEmblem.innerHTML = '';
   for (let i = 0; i < users.length; i++) {
-<<<<<<< HEAD
-    contact = users[i];
-    let checkedContact = document.getElementById(`checkbox${i}`);
-    if (checkedContact.checked == true) {
-      renderEmblemUsers(contact['Emblem'], contact['color']);
-=======
     if (users[i]['userId'] == 0) continue;
     contact = users[i];
     let checkedContact = document.getElementById(`checkbox${i}`);
     if (checkedContact.checked == true) {
       renderEmblemUsers(contact['emblem'], contact['color']);
->>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
     }
   }
   document.getElementById('users').classList.toggle('close');
@@ -361,14 +323,8 @@ function getSelectedPrio() {
   }
 }
 
-<<<<<<< HEAD
-function getUserContact() {
-  // umändern taskID
-  let userEmblem = document.getElementById('userEmblem');
-=======
 function getUser() {
   let userEmblem = document.getElementById('usersEmblem');
->>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
   let divs = userEmblem.getElementsByTagName('div');
   let idsList = [];
   for (let i = 0; i < divs.length; i++) {
@@ -393,11 +349,7 @@ async function createNewTask(event) {
   task = {
     title: document.getElementById('title').value,
     description: document.getElementById('description').value,
-<<<<<<< HEAD
-    assigneeIds: getUserContact(), //umänderung taskID
-=======
     userId: getUser(),
->>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
     date: document.getElementById('date').value,
     priority: getSelectedPrio(),
     category: document.getElementById('selectedCategory').value,

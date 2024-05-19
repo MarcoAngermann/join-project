@@ -1,15 +1,11 @@
 async function initBoard() {
-  includeHTML(); 
-  await contactsArray();
-  await tasksArray();
+  includeHTML();
   updateHTML();
+  await usersArray();
+  await tasksArray();
 }
 
 let users = [];
-<<<<<<< HEAD
-let contacts = [];
-=======
->>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
 let tasks = [];
 let status = ['To do', 'In progress', 'Await feedback', 'Done'];
 let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];
