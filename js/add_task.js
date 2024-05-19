@@ -148,7 +148,7 @@ function showCategories() {
 
 function selectCategory(index) {
   let selectedCategory = categorys[index];
-  document.getElementById('selectedCategory').innerText = selectedCategory;
+  document.getElementById('selectedCategory').innerHTML = selectedCategory;
   showCategories(); // Hide the category list after selection
 }
 
@@ -352,7 +352,7 @@ async function createNewTask(event) {
     userId: getUser(),
     date: document.getElementById('date').value,
     priority: getSelectedPrio(),
-    category: document.getElementById('selectedCategory').value,
+    category: document.getElementById('selectedCategory').innerHTML,
     subtask: subtaskList,
     status: 'To do',
     cardId: lastCardId + 1,
