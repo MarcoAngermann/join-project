@@ -1,8 +1,8 @@
 async function initBoard() {
-  includeHTML();
-  updateHTML();
+  includeHTML(); 
   await contactsArray();
   await tasksArray();
+  updateHTML();
 }
 
 let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];

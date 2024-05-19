@@ -4,7 +4,7 @@ async function initLogin() {
 }
 let usersJson;
 
-function init() {
+function initSignup() {
     let btn = document.getElementById('btnSignUp');
     btn.setAttribute("disabled", "");
     btn.classList.remove('btnJoin');
