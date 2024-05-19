@@ -1,25 +1,23 @@
 async function initAdd() {
   restrictPastDate();
   includeHTML();
-  await contactsArray();
-  renderAssignees();
+  await usersArray();
+  renderUsers();
   renderCategorys();
 }
 
 let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];
 let subtaskList = [];
 let status = ['To do', 'In progress', 'Await feedback', 'Done'];
-let contacts = [];
+let users = [];
 
-
-async function contactsArray() {
-  let contactsJson = await loadData('contacts');
-  for (item in contactsJson) {
-    let contact = contactsJson[item];
-    contacts.push(contact);
+async function usersArray() {
+  let usersJson = await loadData('users');
+  for (item in usersJson) {
+    let user = usersJson[item];
+    users.push(user);
   }
 }
-
 
 function resetElements(elements) {
   for (let i = 0; i < elements.length; i++) {
@@ -87,11 +85,11 @@ window.onload = function () {
   }
 };
 
-function renderAssignees() {
-  let assignee = document.getElementById('assignees');
-  for (let i = 0; i < contacts.length; i++) {
-    const contact = contacts[i];
-    assignee.innerHTML += /*html*/ `
+function renderUsers() {
+  let user = document.getElementById('users');
+  for (let i = 0; i < users.length; i++) {
+    const contact = users[i];
+    user.innerHTML += /*html*/ `
     <label for="checkbox${i}">
         <li class="contactList">        
             <div tabindex="0" class="emblem" style="background-color: ${contact['color']}">
@@ -147,37 +145,37 @@ function restrictPastDate() {
 
 //Mónica New Funktion
 
-function renderEmblemAssignees(emblem, color) {
-  let assignesEmblem = document.getElementById('assignesEmblem');
-  assignesEmblem.innerHTML += `
+function renderEmblemUsers(Emblem, color) {
+  let usersEmblem = document.getElementById('usersEmblem');
+  usersEmblem.innerHTML += `
     <div class="emblem" style="background-color: ${contact['color']}" id="${contact['id']}">
-      ${contact['emblem']}
+      ${contact['Emblem']}
     </div>  `;
 }
 
-function showAssigneesEmblem() {
-  let assignesEmblem = document.getElementById('assignesEmblem');
-  assignesEmblem.innerHTML = '';
-  for (let i = 0; i < contacts.length; i++) {
-    contact = contacts[i];
+function showUsersEmblem() {
+  let usersEmblem = document.getElementById('usersEmblem');
+  usersEmblem.innerHTML = '';
+  for (let i = 0; i < users.length; i++) {
+    contact = users[i];
     let checkedContact = document.getElementById(`checkbox${i}`);
     if (checkedContact.checked == true) {
-      renderEmblemAssignees(contact['emblem'], contact['color']);
+      renderEmblemUsers(contact['Emblem'], contact['color']);
     }
   }
-  document.getElementById('assignees').classList.toggle('close');
+  document.getElementById('users').classList.toggle('close');
 }
 
-function showAssignees() {
-  if (document.getElementById('assignees').classList.contains('show')) {
-    showAssigneesEmblem();
-    document.getElementById('assignees').classList.remove('show');
-    document.getElementById('arrowDownAssignee').style.display = 'block';
-    document.getElementById('arrowUpAssignee').style.display = 'none';
+function showUsers() {
+  if (document.getElementById('users').classList.contains('show')) {
+    showUsersEmblem();
+    document.getElementById('users').classList.remove('show');
+    document.getElementById('arrowDownUser').style.display = 'block';
+    document.getElementById('arrowUpUser').style.display = 'none';
   } else {
-    document.getElementById('assignees').classList.add('show');
-    document.getElementById('arrowDownAssignee').style.display = 'none';
-    document.getElementById('arrowUpAssignee').style.display = 'block';
+    document.getElementById('users').classList.add('show');
+    document.getElementById('arrowDownUser').style.display = 'none';
+    document.getElementById('arrowUpUser').style.display = 'block';
   }
 }
 
@@ -309,9 +307,10 @@ function getSelectedPrio() {
   }
 }
 
-function getAssigneedContact() {
-  let assignesEmblem = document.getElementById('assignesEmblem');
-  let divs = assignesEmblem.getElementsByTagName('div');
+function getUserContact() {
+  // umändern taskID
+  let userEmblem = document.getElementById('userEmblem');
+  let divs = userEmblem.getElementsByTagName('div');
   let idsList = [];
   for (let i = 0; i < divs.length; i++) {
     idsList.push(divs[i].id);
@@ -325,7 +324,7 @@ async function createNewTask(event) {
   task = {
     title: document.getElementById('title').value,
     description: document.getElementById('description').value,
-    assigneeIds: getAssigneedContact(),
+    assigneeIds: getUserContact(), //umänderung taskID
     date: document.getElementById('date').value,
     priority: getSelectedPrio(),
     category: document.getElementById('selectedCategory').value,
@@ -341,7 +340,7 @@ function clearAllTasks() {
   document.getElementById('title').value = '';
   document.getElementById('description').value = '';
   clearAllCheckbox();
-  showAssigneesEmblem();
+  showUsersEmblem();
   document.getElementById('date').value = '';
   togglePriority('medium');
   document.getElementById('selectedCategory').innerHTML =

@@ -5,26 +5,22 @@ async function initBoard() {
   updateHTML();
 }
 
-let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];
-let subtaskList = [];
-let status = ['To do', 'In progress', 'Await feedback', 'Done'];
+let users = [];
 let contacts = [];
 let tasks = [];
-
-
-async function contactsArray() {
-  let contactsJson = await loadData('contacts');
-  for (item in contactsJson) {
-    let contact = contactsJson[item];
-    contacts.push(contact);
-  }
-}
 
 async function tasksArray() {
   let tasksJson = await loadData('tasks');
   for (item in tasksJson) {
     let task = tasksJson[item];
-    contacts.push(task);
+    tasks.push(task);
+  }
+}
+async function contactsArray() {
+  let contactsJson = await loadData('contacts');
+  for (item in contactsJson) {
+    let contact = contactsJson[item];
+    contacts.push(contact);
   }
 }
 
@@ -47,7 +43,17 @@ let dummyCards = [
   {
     id: 3,
     title: 'Verkaufen',
-    category: 'done',
+    category: 'toDo',
+  },
+  {
+    id: 4,
+    title: 'Verkaufen',
+    category: 'toDo',
+  },
+  {
+    id: 5,
+    title: 'Putzen',
+    category: 'toDo',
   },
 ];
 
@@ -59,8 +65,8 @@ function updateHTML() {
   document.getElementById('toDo').innerHTML = '';
 
   for (let i = 0; i < toDo.length; i++) {
-    const element = toDo[i];
-    document.getElementById('toDo').innerHTML += renderSmallCardHTML(element);
+    const status = toDo[i];
+    document.getElementById('toDo').innerHTML += renderSmallCardHTML(status);
   }
 
   let inProgress = dummyCards.filter((t) => t['category'] == 'inProgress');
@@ -68,9 +74,9 @@ function updateHTML() {
   document.getElementById('inProgress').innerHTML = '';
 
   for (let i = 0; i < inProgress.length; i++) {
-    const element = inProgress[i];
+    const status = inProgress[i];
     document.getElementById('inProgress').innerHTML +=
-      renderSmallCardHTML(element);
+      renderSmallCardHTML(status);
   }
 
   let awaitFeedback = dummyCards.filter(
@@ -80,9 +86,9 @@ function updateHTML() {
   document.getElementById('awaitFeedback').innerHTML = '';
 
   for (let i = 0; i < awaitFeedback.length; i++) {
-    const element = awaitFeedback[i];
+    const status = awaitFeedback[i];
     document.getElementById('awaitFeedback').innerHTML +=
-      renderSmallCardHTML(element);
+      renderSmallCardHTML(status);
   }
 
   let done = dummyCards.filter((t) => t['category'] == 'done');
@@ -90,8 +96,8 @@ function updateHTML() {
   document.getElementById('done').innerHTML = '';
 
   for (let i = 0; i < done.length; i++) {
-    const element = done[i];
-    document.getElementById('done').innerHTML += renderSmallCardHTML(element);
+    const status = done[i];
+    document.getElementById('done').innerHTML += renderSmallCardHTML(status);
   }
 }
 
@@ -99,15 +105,15 @@ function startDragging(id) {
   currentDraggedElement = id;
 }
 
-function renderSmallCardHTML(element, i) {
+function renderSmallCardHTML(status, i) {
   return /*html*/ `
-    <div draggable="true" ondragstart="startDragging(${element['id']})" id="smallCard${i}" class="smallcard" onclick="showBigCard(${i})">
+    <div draggable="true" ondragstart="startDragging(${status['id']})" id="smallCard${i}" class="smallcard" onclick="showBigCard(${i})">
       <div class="category">
-        <h2>${element['category']}</h2>
+        <h2>${status['category']}</h2>
         <img src="../assets/icons/more_vert_icon.svg" alt="">
       </div>
       <div class="title">
-        <h3>${element['title']}</h3>
+        <h3>${status['title']}</h3>
       </div>
       <div class="description">
         <p>description</p>

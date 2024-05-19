@@ -8,7 +8,8 @@ function onloadFunc() {
   //putData("/name", {titel: "test"}); //verändert das Objekt in einer ID
 }
 
-const BASE_URL = 'https://join-179-default-rtdb.europe-west1.firebasedatabase.app/';
+const BASE_URL =
+  'https://join-179-default-rtdb.europe-west1.firebasedatabase.app/';
 
 async function loadData(path = '') {
   let response = await fetch(BASE_URL + path + '.json');
@@ -47,34 +48,33 @@ async function putData(path = '', data = {}) {
 
 function initUsers() {
   postData('users', id, {
-    "id": 0,
-    "Name": "Guest",
-    "Email": "",
-    "Password": "",
-    "Emblem": "G"
+    id: 0,
+    Name: 'Guest',
+    Email: '',
+    Password: '',
+    Emblem: 'G',
   });
   postData('users', id, {
-    "id": 1,
-    "Name": "Andrea Bauer",
-    "Email": "andrea6315@yahoo.com",
-    "Password": "1234",
-    "Emblem": "AB"
+    id: 1,
+    Name: 'Andrea Bauer',
+    Email: 'andrea6315@yahoo.com',
+    Password: '1234',
+    Emblem: 'AB',
   });
   postData('users', id, {
-    "id": 2,
-    "Name": "Peter Ludwig",
-    "Email": "p_Ludwig23@google.com",
-    "Password": "1234",
-    "Emblem": "PL"
+    id: 2,
+    Name: 'Peter Ludwig',
+    Email: 'p_Ludwig23@google.com',
+    Password: '1234',
+    Emblem: 'PL',
   });
   postData('users', id, {
-    "id": 3,
-    "Name": "Alfred Mueller",
-    "Email": "mueller_Alf92@gmail.com",
-    "Password": "1234",
-    "Emblem": "AM"
+    id: 3,
+    Name: 'Alfred Mueller',
+    Email: 'mueller_Alf92@gmail.com',
+    Password: '1234',
+    Emblem: 'AM',
   });
-
 }
 
 function initContacts() {
@@ -87,40 +87,36 @@ function initContacts() {
     color: '#FF7A00',
   });
 
-  postData('contacts',
-    {
-      id: 2,
-      name: 'Ahlers Johann August',
-      email: 'johann8989@gmx.de',
-      phone: '016998639293',
-      emblem: 'AJ',
-      color: '#FF4646',
-    });
-  postData('contacts',
-    {
-      id: 3,
-      name: 'Beckmann Antje',
-      email: 'beckmann.antje@yahoo.com',
-      phone: '018569875352',
-      emblem: 'BA',
-      color: '#FFA35E',
-    });
-  postData('contacts',
-    {
-      id: 4,
-      name: 'Mueller Susanne',
-      email: 'sussi_mueller@gmx.de',
-      phone: '014569986987',
-      emblem: 'MS',
-      color: '#C3FF2B',
-    });
-  postData('contacts',
-    {
-      id: 5,
-      name: 'Wolfhope Theodor',
-      email: 'theoHope1834@gmx.de',
-      phone: '014768932145',
-      emblem: 'WT',
-      color: '#FF7A00',
-    });
+  postData('contacts', {
+    id: 2,
+    name: 'Ahlers Johann August',
+    email: 'johann8989@gmx.de',
+    phone: '016998639293',
+    emblem: 'AJ',
+    color: '#FF4646',
+  });
+  postData('contacts', {
+    id: 3,
+    name: 'Beckmann Antje',
+    email: 'beckmann.antje@yahoo.com',
+    phone: '018569875352',
+    emblem: 'BA',
+    color: '#FFA35E',
+  });
+  postData('contacts', {
+    id: 4,
+    name: 'Mueller Susanne',
+    email: 'sussi_mueller@gmx.de',
+    phone: '014569986987',
+    emblem: 'MS',
+    color: '#C3FF2B',
+  });
+  postData('contacts', {
+    id: 5,
+    name: 'Wolfhope Theodor',
+    email: 'theoHope1834@gmx.de',
+    phone: '014768932145',
+    emblem: 'WT',
+    color: '#FF7A00',
+  });
 }

@@ -64,6 +64,7 @@
   width: 312px;
   height: 48px;
   border: 1px solid #a8a8a8;
+  background-color: #ffffff;
   border-radius: 10px;
   padding: 8px 16px 8px 16px;
 }
@@ -119,7 +120,8 @@
 }
 
 .drag-area {
-  height: 300px;
+  height: 100%;
+  width: 300px;
   background-color: rgba(0, 0, 0, 0.1);
   margin-bottom: 50px;
   display: flex;
@@ -153,5 +155,6 @@
 
 .plusBtn-svg:hover {
   cursor: pointer;
-  filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg) brightness(91%) contrast(106%);
+  filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg)
+    brightness(91%) contrast(106%);
 }

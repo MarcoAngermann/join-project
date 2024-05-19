@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="../styles/board.css" />
     <link rel="stylesheet" href="../styles/smallcardPrototype.css" />
     <link rel="icons" href="./assets/icons/join_icon.svg" />
-    <script src="../js/dummy_db.js"></script>
+    <!-- <script src="../js/dummy_db.js"></script> -->
     <script src="../js/script.js"></script>
     <script src="../js/header.js"></script>
     <script src="../js/board.js"></script>
+    <script src="../js/firebaseAPI.js"></script>
     <!--<script src="../js/add_task.js"></script>-->
     <title>Join board</title>
   </head>
-  <body onload="init()">
-    <div w3-include-html="../templates/sidebar.html"></div>
+  <body onload="initBoard()">
+    <!--<div w3-include-html="../templates/sidebar.html"></div>-->
     <div w3-include-html="../templates/header.html"></div>
 
     <div class="board-container">
@@ -42,6 +43,7 @@
           </button>
         </div>
       </section>
+
       <section class="main">
         <div class="todo">
           <div class="todo-head">
@@ -75,6 +77,7 @@
             ondragover="allowDrop(event); highlight('inProgress')"
           ></div>
         </div>
+
         <div class="awaitFeedback">
           <div class="awaitFeedback-head">
             <h3>Await Feedback</h3>
@@ -91,6 +94,7 @@
             ondragover="allowDrop(event); highlight('awaitFeedback')"
           ></div>
         </div>
+
         <div class="done">
           <div class="done-head">
             <h3>Done</h3>

@@ -92,30 +92,35 @@ let tasks = [
 let users = [
   {
     id: 0,
-    Name: 'Guest',
-    Email: '',
-    Password: '',
-    Emblem: 'G',
+    name: 'Andrea Bauer',
+    email: 'andrea6315@yahoo.com',
+    password: '1234',
+    emblem: 'AB',
+    color: '#c7651a',
   },
   {
     id: 1,
-    Name: 'Andrea Bauer',
-    Email: 'andrea6315@yahoo.com',
-    Password: '1234',
-    Emblem: 'AB',
+    name: 'Peter Ludwig',
+    email: 'p_Ludwig23@google.com',
+    password: '1234',
+    emblem: 'PL',
+    color: '#C3FF2B',
   },
   {
     id: 2,
-    Name: 'Peter Ludwig',
-    Email: 'p_Ludwig23@google.com',
-    Password: '1234',
-    Emblem: 'PL',
+    name: 'Alfred Mueller',
+    email: 'mueller_Alf92@gmail.com',
+    password: '1234',
+    emblem: 'AM',
+    color: '#FFA35E',
   },
+];
+
+let guest = [
   {
-    id: 3,
-    Name: 'Alfred Mueller',
-    Email: 'mueller_Alf92@gmail.com',
-    Password: '1234',
-    Emblem: 'AM',
+    id: 0,
+    name: 'Guest',
+    Emblem: 'G',
+    color: '#c7651a',
   },
 ];

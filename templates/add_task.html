@@ -16,7 +16,7 @@
 </head>
 
 <body onload="initAdd()">
-  <div w3-include-html="../templates/sidebar.html"></div>
+  <!--<div w3-include-html="../templates/sidebar.html"></div>-->
   <div w3-include-html="../templates/header.html"></div>
   <h1 class="headline-task">Add Task</h1>
   <form class="add-task-container form" onsubmit="createNewTask(event)">
@@ -29,13 +29,13 @@
 
 
 
-      <div onclick="showAssignees()" class="contactContainer">
-        <span>Select contacts to assign</span>
-        <img id="arrowDownAssignee" src="../assets/icons/arrow_down_icon.svg" alt="">
-        <img id="arrowUpAssignee" src="../assets/icons/arrow_up_icon.svg" style="display: none;">
+      <div onclick="showUsers()" class="contactContainer">
+        <span>Select User to assign</span>
+        <img id="arrowDownUser" src="../assets/icons/arrow_down_icon.svg" alt="">
+        <img id="arrowUpUser" src="../assets/icons/arrow_up_icon.svg" style="display: none;">
       </div>
-      <div id="assignesEmblem" style="display: inline-flex"></div>
-      <ul id="assignees" class="assignees"></ul>
+      <div id="userEmblem" style="display: inline-flex"></div>
+      <ul id="users" class="users"></ul>
       <div>
         <p class="required-field-text">
           <span class="required-color">*</span>This field is required

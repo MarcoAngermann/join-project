@@ -2,7 +2,6 @@ async function initContact() {
   await includeHTML();
   await contactsArray();
   renderListContact();
-
 }
 
 let colors = [
@@ -39,24 +38,35 @@ function renderListContact() {
   sortContacts();
   for (let i = 0; i < contacts.length; i++) {
     const contact = contacts[i];
-    if (i == 0 || contact['name'].slice(0, 1) != contacts[i - 1]['name'].slice(0, 1)) {
-      contentList.innerHTML += `<div class="divAlphabet">${contact['name'].slice(0, 1).toUpperCase()}</div>`;
+    if (
+      i == 0 ||
+      contact['name'].slice(0, 1) != contacts[i - 1]['name'].slice(0, 1)
+    ) {
+      contentList.innerHTML += `<div class="divAlphabet">${contact['name']
+        .slice(0, 1)
+        .toUpperCase()}</div>`;
     }
     contentList.innerHTML += `
             <div class="divShortContact" onclick="showDetailContact(${i})">
-            <div class="contactEmblem" style="background-color: ${contact['color']}"> ${renderEmblem(contact['name'])} </div>
+            <div class="contactEmblem" style="background-color: ${
+              contact['color']
+            }"> ${renderEmblem(contact['name'])} </div>
             <div class="divShortInfo">
                     <p>${contact['name']}</p>
                     <a>${contact['email']}</a>
             </div>
             </div>`;
-  };
+  }
 }
 
 function sortContacts() {
   contacts = contacts.sort((a, b) => {
-    if (a.name > b.name) { return 1; }
-    if (a.name < b.name) { return -1; }
+    if (a.name > b.name) {
+      return 1;
+    }
+    if (a.name < b.name) {
+      return -1;
+    }
     return 0;
   });
 }
@@ -64,7 +74,7 @@ function sortContacts() {
 function showDetailContact(i) {
   contact = contacts[i];
   let infoContact = document.getElementById('divDetails');
-  infoContact.innerHTML = " ";
+  infoContact.innerHTML = ' ';
   infoContact.classList.remove('move-left');
   infoContact.offsetWidth;
   infoContact.classList.add('move-left');
@@ -96,16 +106,15 @@ function openDialog(newContact, i) {
   let dialog = document.getElementById('dialog');
   dialog.classList.remove('d-none');
   if (newContact == true) {
-    let title1 = "Add contact";
-    let functionNew = "newContact(event)";
-    let btnText = "Create Contact";
+    let title1 = 'Add contact';
+    let functionNew = 'newContact(event)';
+    let btnText = 'Create Contact';
     dialog.innerHTML = renderContactDialog(title1, functionNew, btnText);
-  }
-  else {
+  } else {
     let contact = contacts[i];
-    let title1 = "Edit contact";
-    let functionNew = "editContact(event," + i + ")";
-    let btnText = "Save";
+    let title1 = 'Edit contact';
+    let functionNew = 'editContact(event,' + i + ')';
+    let btnText = 'Save';
     dialog.innerHTML = renderContactDialog(title1, functionNew, btnText);
     document.getElementById('textAdd').classList.add('d-none');
     document.getElementById('nameContact').value = contact['name'];
@@ -113,7 +122,6 @@ function openDialog(newContact, i) {
     document.getElementById('phoneContact').value = contact['phone'];
   }
 }
-
 
 function renderContactDialog(title1, functionNew, btnText) {
   return `
@@ -173,7 +181,7 @@ function findLastContactId(contacts) {
       lastId = contacts[i].id;
     }
   }
-  return lastId;   // found the last contact.id
+  return lastId; // found the last contact.id
 }
 
 async function newContact(event) {
@@ -183,13 +191,13 @@ async function newContact(event) {
   let nameContactUpper = nameContact[0].toUpperCase() + nameContact.slice(1);
 
   let newContact = {
-    "id": lastContactId + 1,
-    "name": nameContactUpper,
-    "email": document.getElementById('emailContact').value,
-    "phone": document.getElementById('phoneContact').value,
-    "emblem": renderEmblem(nameContact),
-    "color": colorRandom()
-  }
+    id: lastContactId + 1,
+    name: nameContactUpper,
+    email: document.getElementById('emailContact').value,
+    phone: document.getElementById('phoneContact').value,
+    emblem: renderEmblem(nameContact),
+    color: colorRandom(),
+  };
   contacts.push(newContact);
   await postData('contacts', newContact);
   closeDialog();
@@ -198,11 +206,10 @@ async function newContact(event) {
 }
 
 function cleanContactControls() {
-  document.getElementById('nameContact').value = "";
-  document.getElementById('emailContact').value = "";
-  document.getElementById('phoneContact').value = "";
+  document.getElementById('nameContact').value = '';
+  document.getElementById('emailContact').value = '';
+  document.getElementById('phoneContact').value = '';
 }
-
 
 async function editContact(event, i) {
   event.preventDefault();
@@ -210,7 +217,9 @@ async function editContact(event, i) {
   contactEdit['name'] = document.getElementById('nameContact').value;
   contactEdit['email'] = document.getElementById('emailContact').value;
   contactEdit['phone'] = document.getElementById('phoneContact').value;
-  contactEdit['emblem'] = renderEmblem(document.getElementById('nameContact').value);
+  contactEdit['emblem'] = renderEmblem(
+    document.getElementById('nameContact').value
+  );
   await firebaseUpdate(contactEdit);
   closeDialog();
   cleanContactControls();
@@ -220,11 +229,10 @@ async function editContact(event, i) {
 
 async function firebaseUpdate(contactEdit) {
   let contactsJson = await loadData('contacts');
-  for (item in contactsJson) {
-    let contactDB = contactsJson[item];
+  for (key in contactsJson) {
+    let contactDB = contactsJson[key];
     if (contactDB.id == contactEdit.id) {
-      let x = { [item]: contactEdit };
-      putData('contacts/' + [item], contactEdit);
+      putData('contacts/' + [key], contactEdit);
     }
   }
 }
@@ -232,17 +240,17 @@ async function firebaseUpdate(contactEdit) {
 async function deleteContact(i) {
   let contactDelete = contacts[i];
   contacts.splice(i, 1);
-  document.getElementById('divDetails').innerHTML = "";
+  document.getElementById('divDetails').innerHTML = '';
   await firebaseDelete(contactDelete);
   renderListContact();
 }
 
 async function firebaseDelete(contactDelete) {
   let contactsJson = await loadData('contacts');
-  for (item in contactsJson) {
-    let contactDB = contactsJson[item];
-    if (contactDB.id == contactDelete.id) {     
-      deleteData('contacts/' + [item]);
+  for (key in contactsJson) {
+    let contactDB = contactsJson[key];
+    if (contactDB.id == contactDelete.id) {
+      deleteData('contacts/' + [key]);
     }
   }
 }
