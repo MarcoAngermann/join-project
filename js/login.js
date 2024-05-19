@@ -52,7 +52,11 @@ async function AddUser(event) {
     return false;
   }
   let user = {
+<<<<<<< HEAD
     id: (await findLastUserId()) + 1,
+=======
+    userId: (await findLastUserId()) + 1,
+>>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
     name: name,
     email: email,
     password: password,
@@ -86,8 +90,13 @@ async function findLastUserId() {
   let lastId = 1;
   for (item in usersJson) {
     let user = usersJson[item];
+<<<<<<< HEAD
     if (user.id > lastId) {
       lastId = user.id;
+=======
+    if (user.userId > lastId) {
+      lastId = user.userId;
+>>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
     }
   }
   return lastId; // found the last contact.id
@@ -119,12 +128,21 @@ function doLogin() {
   for (item in usersJson) {
     user = usersJson[item];
     if (email == user.email && password == user.password) {
+<<<<<<< HEAD
       let userId = user.id;
       window.sessionStorage.setItem('userId', userId);
       return true;
     }
   }
   return false;
+=======
+      let userId = user.userId;
+      window.sessionStorage.setItem('userId', userId);
+      console.log('true');
+    }
+  }
+  location.href = '..//templates/summary.html';
+>>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
 }
 
 function getGuestLogin() {

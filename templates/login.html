@@ -7,7 +7,10 @@
   <title>Login</title>  
   <script src="../js/login.js"></script>
   <script src="../js/firebaseAPI.js"></script>
+<<<<<<< HEAD
   <script src="../js/dummy_db.js"></script>
+=======
+>>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="../styles/fonts.css" />
@@ -34,7 +37,7 @@
       </div>
    
 
-    <form class="formLogin" onsubmit="return doLogin()" action="..//templates/summary.html">
+    <form class="formLogin" onsubmit= "return false;" action="..//templates/summary.html">
       <h1 class="title underline">Log in</h1>
       <div class="groupLogin-input">
         <input class="inputs style_InputTypography1" type="email" id="email"
@@ -48,7 +51,7 @@
       </div>
 
       <div class="divBtn">
-        <button class="btnJoin style_BtnTypography1" type="submit">Log in</button>
+        <button class="btnJoin style_BtnTypography1" type="submit" onclick="doLogin()">Log in</button>
         <button class="btnGuest style_BtnTypography1" id="Guest_Login" type="button" onclick="getGuestLogin()"> Guest
           Log in </button>
       </div>

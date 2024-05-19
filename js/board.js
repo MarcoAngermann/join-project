@@ -1,13 +1,24 @@
 async function initBoard() {
+<<<<<<< HEAD
   includeHTML();
   updateHTML();
+  await usersArray();
+=======
+  includeHTML(); 
   await contactsArray();
+>>>>>>> b2c220f8c58572db0b55d5b86f527cd4bc909b06
   await tasksArray();
+  updateHTML();
 }
 
 let users = [];
+<<<<<<< HEAD
 let contacts = [];
+=======
+>>>>>>> 512b8892d1e4f31b07615dc3dba75a2b0611475e
 let tasks = [];
+let status = ['To do', 'In progress', 'Await feedback', 'Done'];
+let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];
 
 async function tasksArray() {
   let tasksJson = await loadData('tasks');
@@ -16,11 +27,11 @@ async function tasksArray() {
     tasks.push(task);
   }
 }
-async function contactsArray() {
-  let contactsJson = await loadData('contacts');
-  for (item in contactsJson) {
-    let contact = contactsJson[item];
-    contacts.push(contact);
+async function usersArray() {
+  let usersJson = await loadData('users');
+  for (item in usersJson) {
+    let user = usersJson[item];
+    users.push(user);
   }
 }
 
@@ -60,7 +71,7 @@ let dummyCards = [
 let currentDraggedElement;
 
 function updateHTML() {
-  let toDo = dummyCards.filter((t) => t['category'] == 'toDo');
+  let toDo = tasks.filter((t) => t[key + 'status'] == 'toDo');
 
   document.getElementById('toDo').innerHTML = '';
 
@@ -69,7 +80,7 @@ function updateHTML() {
     document.getElementById('toDo').innerHTML += renderSmallCardHTML(status);
   }
 
-  let inProgress = dummyCards.filter((t) => t['category'] == 'inProgress');
+  let inProgress = tasks.filter((t) => t[key + 'status'] == 'inProgress');
 
   document.getElementById('inProgress').innerHTML = '';
 
@@ -79,9 +90,7 @@ function updateHTML() {
       renderSmallCardHTML(status);
   }
 
-  let awaitFeedback = dummyCards.filter(
-    (t) => t['category'] == 'awaitFeedback'
-  );
+  let awaitFeedback = tasks.filter((t) => t[key + 'status'] == 'awaitFeedback');
 
   document.getElementById('awaitFeedback').innerHTML = '';
 
@@ -91,7 +100,7 @@ function updateHTML() {
       renderSmallCardHTML(status);
   }
 
-  let done = dummyCards.filter((t) => t['category'] == 'done');
+  let done = tasks.filter((t) => t[key + 'status'] == 'done');
 
   document.getElementById('done').innerHTML = '';
 
