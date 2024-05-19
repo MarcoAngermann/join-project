@@ -4,11 +4,37 @@ async function initLogin() {
 }
 let usersJson;
 
+<<<<<<< HEAD
 function init() {
   let btn = document.getElementById('btnSignUp');
   btn.setAttribute('disabled', '');
   btn.classList.remove('btnJoin');
   btn.classList.add('btnDisabled');
+=======
+let colors = [
+  '#FF7A00',
+  '#FF5EB3',
+  '#6E52FF',
+  '#9327FF',
+  '#00BEE8',
+  '#1FD7C1',
+  '#FF745E',
+  '#FFA35E',
+  '#FC71FF',
+  '#FFC701',
+  '#0038FF',
+  '#C3FF2B',
+  '#FFE62B',
+  '#FF4646',
+  '#FFBB2B',
+];
+
+function initSignup() {
+    let btn = document.getElementById('btnSignUp');
+    btn.setAttribute("disabled", "");
+    btn.classList.remove('btnJoin');
+    btn.classList.add('btnDisabled');
+>>>>>>> b2c220f8c58572db0b55d5b86f527cd4bc909b06
 }
 
 function isChecked() {

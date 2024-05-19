@@ -1,8 +1,14 @@
 async function initBoard() {
+<<<<<<< HEAD
   includeHTML();
   updateHTML();
   await usersArray();
+=======
+  includeHTML(); 
+  await contactsArray();
+>>>>>>> b2c220f8c58572db0b55d5b86f527cd4bc909b06
   await tasksArray();
+  updateHTML();
 }
 
 let users = [];
