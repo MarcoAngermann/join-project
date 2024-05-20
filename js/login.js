@@ -49,6 +49,54 @@ async function AddUser(event) {
   backToLogin();
 }
 
+// Funktion, um zu überprüfen, ob die E-Mail bereits existiert
+async function emailExists(email) {
+  let usersJson = await loadData('users');
+  for (let key in usersJson) {
+    if (usersJson[key].email === email) {
+      return true; // E-Mail existiert bereits
+    }
+  }
+  return false; // E-Mail existiert nicht
+}
+
+// Erweiterte AddUser-Funktion
+async function AddUser(event) {
+  event.preventDefault();
+  let name = document.getElementById('name').value;
+  let email = document.getElementById('email').value;
+  let password = document.getElementById('password').value;
+  let confirmpassword = document.getElementById('passwordConfirm').value;
+
+  // Überprüfen, ob die Passwörter übereinstimmen
+  if (password !== confirmpassword) {
+    document.getElementById('inputLabel').style.display = 'flex';
+    return false;
+  }
+
+  // Überprüfen, ob die E-Mail bereits existiert
+  if (await emailExists(email)) {
+    console.log('Die E-Mail-Adresse wird bereits verwendet.');
+    return false; // Abbruch, da E-Mail bereits existiert
+  }
+
+  // Wenn die E-Mail nicht existiert, fahren Sie mit der Erstellung des Benutzers fort
+  let user = {
+    userId: (await findLastUserId()) + 1,
+    name: name,
+    email: email,
+    password: password,
+    emblem: getEmblemUser(name),
+    color: colorRandom(),
+  };
+
+  await postData('users', user);
+  document.getElementById('dialogSingUp').style.display = 'flex';
+  await sleep(3000);
+  cleanContactControls();
+  backToLogin();
+}
+
 function colorRandom() {
   return colors[Math.floor(Math.random() * colors.length)];
 }
