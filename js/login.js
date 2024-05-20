@@ -24,35 +24,7 @@ function isChecked() {
   }
 }
 
-<<<<<<< HEAD
-=======
-// async function AddUser(event) {
-//   event.preventDefault();
-//   let name = document.getElementById('name').value;
-//   let email = document.getElementById('email').value;
-//   let password = document.getElementById('password').value;
-//   let confirmpassword = document.getElementById('passwordConfirm').value;
-//   if (password != confirmpassword) {
-//     document.getElementById('inputLabel').style.display = 'flex';
-//     return false;
-//   }
-//   let user = {
-//     userId: (await findLastUserId()) + 1,
-//     name: name,
-//     email: email,
-//     password: password,
-//     emblem: getEmblemUser(name),
-//     color: colorRandom(),
-//   };
-//   await postData('users', user);
-//   document.getElementById('dialogSingUp').style.display = 'flex';
-//   await sleep(3000);
-//   cleanContactControls();
-//   backToLogin();
-// }
-
 // Funktion, um zu überprüfen, ob die E-Mail bereits existiert
->>>>>>> 1109ffe7544c7490f0a62a2872c65b3627aae728
 async function emailExists(email) {
   let usersJson = await loadData('users');
   for (let key in usersJson) {
@@ -69,35 +41,24 @@ async function AddUser(event) {
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
   let confirmpassword = document.getElementById('passwordConfirm').value;
-<<<<<<< HEAD
-  if (password != confirmpassword) {
-    document.getElementById('pwErrorCheck').style.display = 'flex';
-    return false;
-  }
-  if (await emailExists(email)) {
-    console.log('Die E-Mail-Adresse wird bereits verwendet.');
-    return false; // Abbruch, da E-Mail bereits existiert
-  }
-=======
-  
+
   // Überprüfen, ob das Passwort mit der Bestätigung übereinstimmt
   if (password !== confirmpassword) {
     document.getElementById('inputLabel').style.display = 'flex';
     return false;
   }
-  
+
   // Überprüfen, ob die E-Mail bereits vorhanden ist
   if (await emailExists(email)) {
     // Wenn die E-Mail bereits vorhanden ist, handle entsprechend
     document.getElementById('email').value = ''; // Email-Input leeren
     document.getElementById('email').value = 'Diese E-Mail existiert bereits';
-    document.getElementById('email').style ='color:red; font-weight:bold;';
-    document.getElementById('email').style.border = '2px solid red'; 
+    document.getElementById('email').style = 'color:red; font-weight:bold;';
+    document.getElementById('email').style.border = '2px solid red';
     return false;
   }
 
   // Wenn die E-Mail nicht vorhanden ist, neuen Benutzer erstellen
->>>>>>> 1109ffe7544c7490f0a62a2872c65b3627aae728
   let user = {
     userId: (await findLastUserId()) + 1,
     name: name,
