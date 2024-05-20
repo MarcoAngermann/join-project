@@ -363,21 +363,46 @@ async function createNewTask(event) {
 }
 
 function clearAllTasks() {
-  document.getElementById('title').value = '';
-  document.getElementById('description').value = '';
+  clearTitleAndDescription();
   clearAllCheckbox();
   showUsersEmblem();
+  clearDateAndPriority();
+  clearSelectedCategory();
+  clearSubtasks();
+  clearSubtaskInput();
+  resetUserDisplay();
+}
+
+function clearTitleAndDescription() {
+  document.getElementById('title').value = '';
+  document.getElementById('description').value = '';
+}
+
+function clearDateAndPriority() {
   document.getElementById('date').value = '';
   togglePriority('medium');
-  document.getElementById('selectedCategory').innerHTML =
-    'Select task category';
-  subtaskList = []; // Wenn `subtaskList` eine globale Variable ist
-  document.getElementById('subtaskInput').value = '';
+}
+
+function clearSelectedCategory() {
+  document.getElementById('selectedCategory').innerHTML = 'Select task category';
+}
+
+function clearSubtasks() {
+  subtaskList = [];
   renderSubtask();
-  document.getElementById('subtaskInput').placeholder = 'Add new Subtask';
-  document.getElementById('subtaskInput').readOnly = false;
-  document.getElementById('subtaskInput').style = 'color:black;';
-  document.getElementById('users').classList.remove('show');
+}
+
+function clearSubtaskInput() {
+  let subtaskInput = document.getElementById('subtaskInput');
+  subtaskInput.value = '';
+  subtaskInput.placeholder = 'Add new Subtask';
+  subtaskInput.readOnly = false;
+  subtaskInput.style.color = 'black';
+}
+
+function resetUserDisplay() {
+  let users = document.getElementById('users');
+  users.classList.remove('show');
   document.getElementById('arrowDownUser').style.display = 'block';
   document.getElementById('arrowUpUser').style.display = 'none';
 }
