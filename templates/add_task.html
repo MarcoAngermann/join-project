@@ -83,13 +83,21 @@
         </div>
       </div>
       <span>Category<span class="required-color">*</span></span>
+
+
+
+
       <div onclick="showCategories()" class="contactContainer">
         <span id="selectedCategory">Select task category</span>
         <img id="arrowDownCategory" src="../assets/icons/arrow_down_icon.svg" alt="">
         <img id="arrowUpCategory" src="../assets/icons/arrow_up_icon.svg" style="display: none;">       
       </div>
       <ul id="tasks" class="tasks"></ul>
+
+
+      
       <span class="subtaskLabel">Subtask</span>
+
         <div class="subtask-container">
           <input
             type="text"
@@ -120,9 +128,10 @@
             </div>
           </div>
         </div>
+
         <div id="subtask" class="subtask"></div>
         <div type="submit" class="addTaskBtn-Container">
-          <button formnovalidate class="btnClear" onclick="clearAllTasks()">
+          <button formnovalidate class="btnClear" onclick="clearAllTasks(event)">
             Clear
             <img class="iconCancelSvg" src="../assets/icons/cancel.svg">           
           </button>
