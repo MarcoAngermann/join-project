@@ -168,15 +168,14 @@ function showUsersEmblem() {
     contact = users[i];
     let checkedContact = document.getElementById(`checkbox${i}`);
     if (checkedContact.checked == true) {
-      renderEmblemUsers();
+      usersEmblem.innerHTML += renderEmblemUsers(contact);
     }
   }
 }
 
-function renderEmblemUsers() {
-  let usersEmblem = document.getElementById('usersEmblem');
-  usersEmblem.innerHTML += `
-    <div class="emblem" style="background-color: ${contact['color']}" id="${contact['userId']}">
+function renderEmblemUsers(contact) {
+  return /*html*/ `
+      <div class="emblem" style="background-color: ${contact['color']}" id="${contact['userId']}">
       ${contact['emblem']}
     </div>  `;
 }

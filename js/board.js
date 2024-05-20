@@ -61,7 +61,7 @@ let dummyCards = [
 let currentDraggedElement;
 
 function updateHTML() {
-  let toDo = tasks.filter((t) => t[key + 'status'] == 'toDo');
+  let toDo = tasks.filter((t) => t[users + [key] + 'status'] == 'toDo');
 
   document.getElementById('toDo').innerHTML = '';
 
