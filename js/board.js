@@ -1,8 +1,8 @@
 async function initBoard() {
   includeHTML();
-  updateHTML();
   await usersArray();
   await tasksArray();
+  updateHTML();
 }
 
 let users = [];
@@ -12,17 +12,22 @@ let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];
 
 async function tasksArray() {
   let tasksJson = await loadData('tasks');
-  for (key in tasksJson) {
+  console.log('Loaded tasks:', tasksJson); // Debugging line
+  for (let key in tasksJson) {
     let task = tasksJson[key];
     tasks.push(task);
   }
+  console.log('Tasks array:', tasks); // Debugging line
 }
+
 async function usersArray() {
   let usersJson = await loadData('users');
-  for (key in usersJson) {
+  console.log('Loaded users:', usersJson); // Debugging line
+  for (let key in usersJson) {
     let user = usersJson[key];
     users.push(user);
   }
+  console.log('Users array:', users); // Debugging line
 }
 
 let dummyCards = [
@@ -61,42 +66,46 @@ let dummyCards = [
 let currentDraggedElement;
 
 function updateHTML() {
-  let toDo = tasks.filter((t) => t[users + [key] + 'status'] == 'toDo');
+  let toDo = tasks.filter((t) => t.status == 'To do');
 
   document.getElementById('toDo').innerHTML = '';
 
   for (let i = 0; i < toDo.length; i++) {
-    const status = toDo[i];
-    document.getElementById('toDo').innerHTML += renderSmallCardHTML(status);
+    const task = toDo[i];
+    document.getElementById('toDo').innerHTML += renderSmallCardHTML(task, i);
   }
 
-  let inProgress = tasks.filter((t) => t[key + 'status'] == 'inProgress');
+  let inProgress = tasks.filter((t) => t.status == 'In progress');
 
   document.getElementById('inProgress').innerHTML = '';
 
   for (let i = 0; i < inProgress.length; i++) {
-    const status = inProgress[i];
-    document.getElementById('inProgress').innerHTML +=
-      renderSmallCardHTML(status);
+    const task = inProgress[i];
+    document.getElementById('inProgress').innerHTML += renderSmallCardHTML(
+      task,
+      i
+    );
   }
 
-  let awaitFeedback = tasks.filter((t) => t[key + 'status'] == 'awaitFeedback');
+  let awaitFeedback = tasks.filter((t) => t.status == 'Await feedback');
 
   document.getElementById('awaitFeedback').innerHTML = '';
 
   for (let i = 0; i < awaitFeedback.length; i++) {
-    const status = awaitFeedback[i];
-    document.getElementById('awaitFeedback').innerHTML +=
-      renderSmallCardHTML(status);
+    const task = awaitFeedback[i];
+    document.getElementById('awaitFeedback').innerHTML += renderSmallCardHTML(
+      task,
+      i
+    );
   }
 
-  let done = tasks.filter((t) => t[key + 'status'] == 'done');
+  let done = tasks.filter((t) => t.status == 'Done');
 
   document.getElementById('done').innerHTML = '';
 
   for (let i = 0; i < done.length; i++) {
-    const status = done[i];
-    document.getElementById('done').innerHTML += renderSmallCardHTML(status);
+    const task = done[i];
+    document.getElementById('done').innerHTML += renderSmallCardHTML(task, i);
   }
 }
 
@@ -104,23 +113,23 @@ function startDragging(id) {
   currentDraggedElement = id;
 }
 
-function renderSmallCardHTML(status, i) {
+function renderSmallCardHTML(task, i) {
   return /*html*/ `
-    <div draggable="true" ondragstart="startDragging(${status['id']})" id="smallCard${i}" class="smallcard" onclick="showBigCard(${i})">
+    <div draggable="true" ondragstart="startDragging(${task['cardId']})" id="smallCard${i}" class="smallcard" onclick="showBigCard(${i})">
       <div class="category">
-        <h2>${status['category']}</h2>
+        <h2>${task['category']}</h2>
         <img src="../assets/icons/more_vert_icon.svg" alt="">
       </div>
       <div class="title">
-        <h3>${status['title']}</h3>
+        <h3>${task['title']}</h3>
       </div>
       <div class="description">
-        <p>description</p>
+        <p>${task['description']}</p>
       </div>
       <div class="information">
         <div class="users" id="users">User1</div>
         <div class="priority" id="priority">
-            <img src="../assets/icons/low.svg" alt="">
+            <img src="../assets/icons/${task['priority']}.svg" alt="">
         </div>
       </div>
     </div> 

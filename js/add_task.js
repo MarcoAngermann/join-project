@@ -205,6 +205,7 @@ function changeButtonsSubtask() {
       'color:red; font-weight:bold;';
     document.getElementById('subtaskInput').readOnly = true;
     document.getElementById('subtaskInput').value = 'Maximal 5 Subtasks!';
+    document.getElementById('subtaskContainer').style.border = '1px solid red';
   }
 }
 
@@ -243,6 +244,8 @@ function deleteSubtask(i) {
   document.getElementById('subtaskInput').value = '';
   document.getElementById('subtaskInput').readOnly = false;
   document.getElementById('subtaskInput').style = 'color:black;';
+  document.getElementById('subtaskContainer').style.border =
+    '1px solid #d1d1d1';
 }
 
 function renderSubtask() {
@@ -404,6 +407,8 @@ function clearSubtaskInput() {
   subtaskInput.placeholder = 'Add new Subtask';
   subtaskInput.readOnly = false;
   subtaskInput.style.color = 'black';
+  document.getElementById('subtaskContainer').style.border =
+    '1px solid #d1d1d1';
 }
 
 function resetUserDisplay() {

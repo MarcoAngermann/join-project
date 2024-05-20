@@ -41,12 +41,12 @@
                 <input class="inputs style_InputTypography1" name="confirmPass"
                     style="background-image: url(../assets/icons/lock_icon.svg)" id="passwordConfirm"
                     placeholder="Confirm Password" onkeyup="keyDownConf()" onclick="showPasswordConf()" required>
-                <label id="inputLabel" style="color: red; display: none;"> * Password and confirmPass are not the
-                    same</label>
+                <span id="pwErrorCheck" style="color: red; display: none;"> * Password and confirmPass are not the
+                    same</span>
             </div>
             <div class="box-rememberSignup style_InputTypography2">
                 <input class="checkBox" type="checkbox" id="acepptRules" onchange="isChecked()">
-                <label for="remember"> I accept the &nbsp; <a class="a_formSignUp" href="#"> Privacy policy</a></label>
+                <span for="remember"> I accept the &nbsp; <a class="a_formSignUp" href="#"> Privacy policy</a></span>
             </div>
 
             <div class="divBtn">

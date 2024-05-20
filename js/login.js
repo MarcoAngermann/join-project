@@ -24,6 +24,16 @@ function isChecked() {
   }
 }
 
+async function emailExists(email) {
+  let usersJson = await loadData('users');
+  for (let key in usersJson) {
+    if (usersJson[key].email === email) {
+      return true; // E-Mail existiert bereits
+    }
+  }
+  return false; // E-Mail existiert nicht
+}
+
 async function AddUser(event) {
   event.preventDefault();
   let name = document.getElementById('name').value;
@@ -31,8 +41,12 @@ async function AddUser(event) {
   let password = document.getElementById('password').value;
   let confirmpassword = document.getElementById('passwordConfirm').value;
   if (password != confirmpassword) {
-    document.getElementById('inputLabel').style.display = 'flex';
+    document.getElementById('pwErrorCheck').style.display = 'flex';
     return false;
+  }
+  if (await emailExists(email)) {
+    console.log('Die E-Mail-Adresse wird bereits verwendet.');
+    return false; // Abbruch, da E-Mail bereits existiert
   }
   let user = {
     userId: (await findLastUserId()) + 1,
@@ -57,7 +71,8 @@ function getEmblemUser(name) {
   let nameParts = name.split(' '); // Zerlegt den Namen in ein Array von Wörtern
   let initials = ''; // Speichert die Initialen
   for (let i = 0; i < nameParts.length; i++) {
-    if (i <= 1) { // Nur die ersten beiden Wörter berücksichtigen
+    if (i <= 1) {
+      // Nur die ersten beiden Wörter berücksichtigen
       initials += nameParts[i].slice(0, 1).toUpperCase(); // Erste Buchstaben in Großbuchstaben hinzufügen
     }
   }
