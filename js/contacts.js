@@ -8,8 +8,8 @@ let contacts = [];
 
 async function contactsArray() {
   let contactsJson = await loadData('contacts');
-  for (item in contactsJson) {
-    let contact = contactsJson[item];
+  for (key in contactsJson) {
+    let contact = contactsJson[key];
     contacts.push(contact);
   }
 }

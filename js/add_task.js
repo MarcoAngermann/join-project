@@ -14,16 +14,16 @@ let tasks = [];
 
 async function usersArray() {
   let usersJson = await loadData('users');
-  for (item in usersJson) {
-    let user = usersJson[item];
+  for (key in usersJson) {
+    let user = usersJson[key];
     users.push(user);
   }
 }
 
 async function tasksArray() {
   let tasksJson = await loadData('tasks');
-  for (item in tasksJson) {
-    let task = tasksJson[item];
+  for (key in tasksJson) {
+    let task = tasksJson[key];
     tasks.push(task);
   }
 }

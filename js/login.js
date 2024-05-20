@@ -53,21 +53,21 @@ function colorRandom() {
 }
 
 function getEmblemUser(name) {
-  let aux = name.split(' ');
-  let capital = '';
-  for (let j = 0; j < aux.length; j++) {
-    if (j <= 1) {
-      capital += aux[j].slice(0, 1).toUpperCase();
+  let nameParts = name.split(' '); // Zerlegt den Namen in ein Array von Wörtern
+  let initials = ''; // Speichert die Initialen
+  for (let i = 0; i < nameParts.length; i++) {
+    if (i <= 1) { // Nur die ersten beiden Wörter berücksichtigen
+      initials += nameParts[i].slice(0, 1).toUpperCase(); // Erste Buchstaben in Großbuchstaben hinzufügen
     }
   }
-  return capital;
+  return initials; // Gibt die Initialen zurück
 }
 
 async function findLastUserId() {
   let usersJson = await loadData('users');
   let lastId = 1;
-  for (item in usersJson) {
-    let user = usersJson[item];
+  for (key in usersJson) {
+    let user = usersJson[key];
     if (user.userId > lastId) {
       lastId = user.userId;
     }
@@ -98,8 +98,8 @@ function moveIcon() {
 function doLogin() {
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
-  for (item in usersJson) {
-    user = usersJson[item];
+  for (key in usersJson) {
+    user = usersJson[key];
     if (email == user.email && password == user.password) {
       let userId = user.userId;
       window.sessionStorage.setItem('userId', userId);

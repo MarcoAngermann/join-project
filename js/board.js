@@ -12,8 +12,8 @@ let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];
 
 async function tasksArray() {
   let tasksJson = await loadData('tasks');
-  for (item in tasksJson) {
-    let task = tasksJson[item];
+  for (key in tasksJson) {
+    let task = tasksJson[key];
     tasks.push(task);
   }
 }
