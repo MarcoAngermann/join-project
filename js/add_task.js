@@ -355,11 +355,9 @@ async function createNewTask(event) {
     status: 'To do',
     cardId: lastCardId + 1,
   };
-  document.getElementById('users').classList.remove('show');
-  document.getElementById('arrowDownUser').style.display = 'block';
-  document.getElementById('arrowUpUser').style.display = 'none';
+  resetUserDisplay();
   await postData('tasks', task);
-  clearAllTasks();
+  clearAllTasks(event);
 }
 
 function clearAllTasks(event) {
@@ -385,9 +383,15 @@ function clearTitleAndDescription() {
 function clearDateAndPriority() {
   document.getElementById('date').value = '';
   togglePriority('medium');
+}
+
+function clearSelectedCategory() {
   document.getElementById('selectedCategory').innerHTML =
     'Select task category';
-  subtaskList = []; // Wenn subtaskList eine globale Variable ist
+}
+
+function clearSubtasks() {
+  subtaskList = [];
   document.getElementById('subtaskInput').value = '';
   renderSubtask();
 }

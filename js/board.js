@@ -19,8 +19,8 @@ async function tasksArray() {
 }
 async function usersArray() {
   let usersJson = await loadData('users');
-  for (item in usersJson) {
-    let user = usersJson[item];
+  for (key in usersJson) {
+    let user = usersJson[key];
     users.push(user);
   }
 }
