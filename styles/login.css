@@ -82,7 +82,7 @@ body {
   min-width: 90px;
   height: 49px;
   border: 0.5px solid #2a3647;
-  padding: 0px 15px 0px 15px;
+  padding: 0px 20px 0px 20px;
   text-decoration: none;
 }
 
@@ -147,7 +147,7 @@ body {
 .groupLogin-input {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  padding-top: 30px;
   width: 422px;
   height: 196px;
   gap: 20px;
