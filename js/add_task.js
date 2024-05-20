@@ -112,7 +112,7 @@ function renderUsersHTML(contact, i) {
                 ${contact['emblem']}
               </div> 
               <div class="contactName" >${contact['name']}</div> 
-              <input type="checkbox" id="checkbox${i}">          
+              <input onclick="showUsersEmblem()" type="checkbox" id="checkbox${i}">          
           </li>
           </label>
         `;
@@ -171,7 +171,6 @@ function showUsersEmblem() {
       renderEmblemUsers();
     }
   }
-  document.getElementById('users').classList.toggle('close');
 }
 
 function renderEmblemUsers() {
@@ -184,7 +183,6 @@ function renderEmblemUsers() {
 
 function showUsers() {
   if (document.getElementById('users').classList.contains('show')) {
-    showUsersEmblem();
     document.getElementById('users').classList.remove('show');
     document.getElementById('arrowDownUser').style.display = 'block';
     document.getElementById('arrowUpUser').style.display = 'none';
@@ -357,6 +355,9 @@ async function createNewTask(event) {
     status: 'To do',
     cardId: lastCardId + 1,
   };
+  document.getElementById('users').classList.remove('show');
+  document.getElementById('arrowDownUser').style.display = 'block';
+  document.getElementById('arrowUpUser').style.display = 'none';
   await postData('tasks', task);
   clearAllTasks();
 }
@@ -376,6 +377,9 @@ function clearAllTasks() {
   document.getElementById('subtaskInput').placeholder = 'Add new Subtask';
   document.getElementById('subtaskInput').readOnly = false;
   document.getElementById('subtaskInput').style = 'color:black;';
+  document.getElementById('users').classList.remove('show');
+  document.getElementById('arrowDownUser').style.display = 'block';
+  document.getElementById('arrowUpUser').style.display = 'none';
 }
 
 function clearAllCheckbox() {

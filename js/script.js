@@ -1,7 +1,3 @@
-async function init() {
-  await includeHTML();
-}
-
 let colors = [
   '#FF7A00',
   '#FF5EB3',
