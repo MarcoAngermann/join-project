@@ -44,7 +44,7 @@ async function AddUser(event) {
 
   // Überprüfen, ob das Passwort mit der Bestätigung übereinstimmt
   if (password !== confirmpassword) {
-    document.getElementById('inputLabel').style.display = 'flex';
+    document.getElementById('pwErrorCheck').style.display = 'flex';
     return false;
   }
 
@@ -84,43 +84,6 @@ async function emailExists(email) {
   }
   return false; // E-Mail existiert nicht
 }
-
-// Erweiterte AddUser-Funktion
-// async function AddUser(event) {
-//   event.preventDefault();
-//   let name = document.getElementById('name').value;
-//   let email = document.getElementById('email').value;
-//   let password = document.getElementById('password').value;
-//   let confirmpassword = document.getElementById('passwordConfirm').value;
-
-//   // Überprüfen, ob die Passwörter übereinstimmen
-//   if (password !== confirmpassword) {
-//     document.getElementById('inputLabel').style.display = 'flex';
-//     return false;
-//   }
-
-//   // Überprüfen, ob die E-Mail bereits existiert
-//   if (await emailExists(email)) {
-//     console.log('Die E-Mail-Adresse wird bereits verwendet.');
-//     return false; // Abbruch, da E-Mail bereits existiert
-//   }
-
-//   // Wenn die E-Mail nicht existiert, fahren Sie mit der Erstellung des Benutzers fort
-//   let user = {
-//     userId: (await findLastUserId()) + 1,
-//     name: name,
-//     email: email,
-//     password: password,
-//     emblem: getEmblemUser(name),
-//     color: colorRandom(),
-//   };
-
-//   await postData('users', user);
-//   document.getElementById('dialogSingUp').style.display = 'flex';
-//   await sleep(3000);
-//   cleanContactControls();
-//   backToLogin();
-// }
 
 function colorRandom() {
   return colors[Math.floor(Math.random() * colors.length)];
@@ -170,21 +133,36 @@ function moveIcon() {
   document.getElementById('overlay').classList.add('animation2');
 }
 
-function doLogin() {
+function doLogin(event) {
+  // Verhindern Sie das Standardverhalten des Formulars, falls diese Funktion als Event Handler verwendet wird
+  if (event) event.preventDefault();
+
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
-  for (key in usersJson) {
-    user = usersJson[key];
-    if (email == user.email && password == user.password) {
+  let userExists = false;
+
+  for (let key in usersJson) {
+    let user = usersJson[key];
+    if (email === user.email && password === user.password) {
+      userExists = true;
       let userId = user.userId;
       window.sessionStorage.setItem('userId', userId);
-      console.log('true');
+      console.log('Login successful');
+      window.location.href = '../templates/summary.html';
+      return;
     }
   }
-  location.href = '..//templates/summary.html';
+
+  if (!userExists) {
+    console.log('Login failed: User not found or password incorrect');
+    alert(
+      'Login fehlgeschlagen: Benutzer nicht gefunden oder Passwort falsch.'
+    );
+  }
 }
 
-function getGuestLogin() {
+function getGuestLogin(event) {
+  event.preventDefault();
   let userId = 0;
   window.sessionStorage.setItem('userId', userId);
   location.href = '..//templates/summary.html';

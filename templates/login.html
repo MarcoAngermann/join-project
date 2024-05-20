@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    <form class="formLogin" onsubmit= "return doLogin()";" action="..//templates/summary.html">
+    <form class="formLogin" onsubmit= "return doLogin(event)">
       <h1 class="title underline">Log in</h1>
       <div class="groupLogin-input">
         <input class="inputs style_InputTypography1" type="email" id="email"
@@ -47,7 +47,7 @@
       </div>
       <div class="divBtn">
         <button class="btnJoin style_BtnTypography1" type="submit">Log in</button>
-        <button class="btnGuest style_BtnTypography1" id="Guest_Login" onclick="getGuestLogin()"> Guest Log in </button>
+        <button class="btnGuest style_BtnTypography1" id="Guest_Login" onclick="getGuestLogin(event)"> Guest Log in </button>
       </div>
     </form>
     <div class="footerLogin">
