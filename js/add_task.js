@@ -14,16 +14,16 @@ let tasks = [];
 
 async function usersArray() {
   let usersJson = await loadData('users');
-  for (key in usersJson) {
-    let user = usersJson[key];
+  for (item in usersJson) {
+    let user = usersJson[item];
     users.push(user);
   }
 }
 
 async function tasksArray() {
   let tasksJson = await loadData('tasks');
-  for (key in tasksJson) {
-    let task = tasksJson[key];
+  for (item in tasksJson) {
+    let task = tasksJson[item];
     tasks.push(task);
   }
 }
@@ -362,7 +362,10 @@ async function createNewTask(event) {
   clearAllTasks();
 }
 
-function clearAllTasks() {
+function clearAllTasks(event) {
+  // Verhindert das Standardverhalten des Buttons (das Absenden des Formulars)
+  event.preventDefault();
+
   document.getElementById('title').value = '';
   document.getElementById('description').value = '';
   clearAllCheckbox();
@@ -371,7 +374,7 @@ function clearAllTasks() {
   togglePriority('medium');
   document.getElementById('selectedCategory').innerHTML =
     'Select task category';
-  subtaskList = []; // Wenn `subtaskList` eine globale Variable ist
+  subtaskList = []; // Wenn subtaskList eine globale Variable ist
   document.getElementById('subtaskInput').value = '';
   renderSubtask();
   document.getElementById('subtaskInput').placeholder = 'Add new Subtask';
