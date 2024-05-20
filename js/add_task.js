@@ -122,8 +122,12 @@ function renderCategorys() {
   let task = document.getElementById('tasks');
 
   for (let i = 0; i < categorys.length; i++) {
-    task.innerHTML += /*html*/ `
-            <li class="contactList">
+    task.innerHTML += renderCategorysHTML(i);
+  }
+}
+function renderCategorysHTML(i) {
+  return /*html*/ `
+          <li class="contactList">
                 <span for="">
                     <div tabindex="0" onclick="selectCategory(${i})">
                       ${categorys[i]}
@@ -131,7 +135,6 @@ function renderCategorys() {
                 </span>
             </li>
         `;
-  }
 }
 
 function showCategories() {
