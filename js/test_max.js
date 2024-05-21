@@ -1,3 +1,35 @@
+async function initBoard() {
+  includeHTML();
+  await usersArray();
+  await tasksArray();
+  updateHTML();
+}
+
+let users = [];
+let tasks = [];
+let status = ['To do', 'In progress', 'Await feedback', 'Done'];
+let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];
+
+async function tasksArray() {
+  let tasksJson = await loadData('tasks');
+  console.log('Loaded tasks:', tasksJson); // Debugging line
+  for (let key in tasksJson) {
+    let task = tasksJson[key];
+    tasks.push(task);
+  }
+  console.log('Tasks array:', tasks); // Debugging line
+}
+
+async function usersArray() {
+  let usersJson = await loadData('users');
+  console.log('Loaded users:', usersJson); // Debugging line
+  for (let key in usersJson) {
+    let user = usersJson[key];
+    users.push(user);
+  }
+  console.log('Users array:', users); // Debugging line
+}
+
 let dummyCards = [
   {
     id: 0,
@@ -17,51 +49,39 @@ let dummyCards = [
   {
     id: 3,
     title: 'Verkaufen',
-    category: 'done',
+    category: 'toDo',
+  },
+  {
+    id: 4,
+    title: 'Verkaufen',
+    category: 'toDo',
+  },
+  {
+    id: 5,
+    title: 'Putzen',
+    category: 'toDo',
   },
 ];
 
 let currentDraggedElement;
 
 function updateHTML() {
-  let toDo = dummyCards.filter((t) => t['category'] == 'toDo');
+  updateTasksByStatus('To do', 'toDo');
+  updateTasksByStatus('In progress', 'inProgress');
+  updateTasksByStatus('Await feedback', 'awaitFeedback');
+  updateTasksByStatus('Done', 'done');
+}
 
-  document.getElementById('toDo').innerHTML = '';
+function updateTasksByStatus(status, elementId) {
+  let filteredTasks = tasks.filter((task) => task.status === status);
+  console.log(filteredTasks);
+  let boardCard = document.getElementById(elementId);
 
-  for (let i = 0; i < toDo.length; i++) {
-    const element = toDo[i];
-    document.getElementById('toDo').innerHTML += renderSmallCardHTML(element);
-  }
+  boardCard.innerHTML = '';
 
-  let inProgress = dummyCards.filter((t) => t['category'] == 'inProgress');
-
-  document.getElementById('inProgress').innerHTML = '';
-
-  for (let i = 0; i < inProgress.length; i++) {
-    const element = inProgress[i];
-    document.getElementById('inProgress').innerHTML +=
-      renderSmallCardHTML(element);
-  }
-
-  let awaitFeedback = dummyCards.filter(
-    (t) => t['category'] == 'awaitFeedback'
-  );
-
-  document.getElementById('awaitFeedback').innerHTML = '';
-
-  for (let i = 0; i < awaitFeedback.length; i++) {
-    const element = awaitFeedback[i];
-    document.getElementById('awaitFeedback').innerHTML +=
-      renderSmallCardHTML(element);
-  }
-
-  let done = dummyCards.filter((t) => t['category'] == 'done');
-
-  document.getElementById('done').innerHTML = '';
-
-  for (let i = 0; i < done.length; i++) {
-    const element = done[i];
-    document.getElementById('done').innerHTML += renderSmallCardHTML(element);
+  for (let i = 0; i < filteredTasks.length; i++) {
+    boardCard.innerHTML += renderSmallCardHTML(filteredTasks[i], i);
+    console.log(filteredTasks[i]);
   }
 }
 
@@ -69,35 +89,36 @@ function startDragging(id) {
   currentDraggedElement = id;
 }
 
-function renderSmallCardHTML(element, i) {
+function renderSmallCardHTML(task, i) {
   return /*html*/ `
-    <div draggable="true" ondragstart="startDragging(${element['id']})" id="smallCard${i}" class="smallcard" onclick="showBigCard(${i})">
+    <div draggable="true" ondragstart="startDragging(${task['cardId']})" id="smallCard${i}" class="smallcard" onclick="showBigCard(${i})">
       <div class="category">
-        <h2>${element['category']}</h2>
+        <h2>${task['category']}</h2>
         <img src="../assets/icons/more_vert_icon.svg" alt="">
       </div>
       <div class="title">
-        <h3>${element['title']}</h3>
+        <h3>${task['title']}</h3>
       </div>
       <div class="description">
-        <p>description</p>
+        <p>${task['description']}</p>
       </div>
       <div class="information">
-        <div class="users" id="users">User1</div>
+        <div class="users" id="users">${task['userId']}</div>
         <div class="priority" id="priority">
-            <img src="../assets/icons/low.svg" alt="">
+            <img src="../assets/icons/${task['priority']}.svg" alt="">
         </div>
       </div>
     </div> 
   `;
 }
 
-function allowDrop(ev) {
-  ev.preventDefault();
+function allowDrop(event) {
+  event.preventDefault();
 }
 
 function moveTo(category) {
-  dummyCards[currentDraggedElement]['category'] = category;
+  tasks[currentDraggedElement] = category;
+  console.log('Moved to:', category);
   updateHTML();
 }
 
@@ -109,11 +130,6 @@ function removeHighlight(id) {
   document.getElementById(id).classList.remove('drag-area-highlight');
 }
 
-//
-//
-//
-//
-//
 function showBigCard(i) {
   document.getElementById('showBigCard').classList.remove('dnone');
   content = document.getElementById('showBigCard');
@@ -126,10 +142,11 @@ function closeBigCard() {
 }
 
 function renderBigCardHTML(i) {
+  let task = tasks[i];
   return /*html*/ `
     <div id="bigCard${i}" class="bigCard">
       <div class="big-header">
-        <div><span>category</span></div>
+        <div><span>${task.category}</span></div>
         <div>
             <img
             class="close"
@@ -139,47 +156,92 @@ function renderBigCardHTML(i) {
             />
         </div>
       </div>
-      <h1>Title</h1>
-      <div><p>Description</p></div>
+      <h1>${task.title}</h1>
+      <div><p>${task.description}</p></div>
       <div class="big-date">
         <div><span>Due date:</span></div>
-        <div><span>10/05/2023</span></div>
+        <div><span>${task.date}</span></div>
       </div>
       <div class="big-priority">
         <div><span>Priority:</span></div>
-        <div> <img src="../assets/icons/low.svg" ></div>
+        <div>
+          <span>${task.priority}</span>
+          <img src="../assets/icons/${task.priority}.svg">
+        </div>
       </div>
       <div class="big-users">
-        <div><span>Assigned to:</span></div>
+        <div>
+          <span>Assigned to:</span>
+        </div>
         <div class="big-contact">
-            <div>
-                <img src="../assets/icons/person_icon.svg" alt="">
-                <span>test</span>
-            </div>
-            <div>
-                <img src="../assets/icons/person_icon.svg" alt="">
-                <span>test2</span></div>
-            <div>
-                <img src="../assets/icons/person_icon.svg" alt="">
-                <span>test3</span>
-            </div>
+        <div id="bigUsersEmblem" style="display: inline-flex"></div>
         </div>
-        <div class="big-subtaks">
-            <div><span>Subtasks</span></div>
-            <div><span>Implement Recipe Recommendation</span></div>
-            <div><span>Start Page Layout</span></div>
+      </div>
+      <div class="big-subtasks">
+        <div>
+          <span>Subtasks:</span>
         </div>
-        <div class="bigCard-edit">
-            <div class="big-delete">
-                <img src="../assets/icons/delete_contact_icon.svg" alt="">
-                <span>Delete</span>
-            </div>
-            <div class="seperator"></div>
-            <div class="big-edit">
-                <img src="../assets/icons/edit contacts_icon.svg" alt="">
-                <span>Edit</span>
-            </div>
+        <div class="bigSubtask">
+          <div id="bigSubtask">${task.subtask}</div>
+        </div>
+      </div>
+      <div class="bigCard-edit">
+        <div class="big-delete">
+          <img src="../assets/icons/delete_contact_icon.svg" alt="">
+          <span>Delete</span>
+        </div>
+        <div class="seperator"></div>
+        <div class="big-edit">
+          <img src="../assets/icons/edit contacts_icon.svg" alt="">
+          <span>Edit</span>
+        </div>
       </div>
     </div>
   `;
 }
+
+//function renderBigCardHTML(i) {
+//  return /*html*/ `
+//    <div id="bigCard${i}" class="bigCard">
+//      <div class="big-header">
+//        <div id="bigCategory"></div>
+//        <div>
+//            <img
+//            class="close"
+//            onclick="closeBigCard()"
+//            src="../assets/icons/close_icon.svg"
+//            alt="schließen"
+//            />
+//        </div>
+//      </div>
+//      <h1 id="bigTitle"></h1>
+//      <div id="bigDescription"></div>
+//      <div class="bigDate">
+//        <div><span>Due date:</span></div>
+//        <div id="bigDate"></div>
+//      </div>
+//      <div class="bigPriority">
+//        <div><span>Priority:</span></div>
+//        <div id="bigPriority"></div>
+//      </div>
+//      <div class="bigUsers">
+//        <div><span>Assigned to:</span></div>
+//        <div id="bigUsers" class="big-contact"></div>
+//        <div class="big-subtaks">
+//            <div><span>Subtasks</span></div>
+//            <div id="bigSubtasks"></div>
+//        </div>
+//        <div class="bigCard-edit">
+//            <div class="big-delete">
+//                <img src="../assets/icons/delete_contact_icon.svg" alt="">
+//                <span>Delete</span>
+//            </div>
+//            <div class="seperator"></div>
+//            <div class="big-edit">
+//                <img src="../assets/icons/edit contacts_icon.svg" alt="">
+//                <span>Edit</span>
+//            </div>
+//      </div>
+//    </div>
+//  `;
+//}

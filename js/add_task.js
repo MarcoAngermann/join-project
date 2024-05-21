@@ -7,26 +7,7 @@ async function initAdd() {
   renderCategorys();
 }
 
-let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];
 let subtaskList = [];
-let users = [];
-let tasks = [];
-
-async function usersArray() {
-  let usersJson = await loadData('users');
-  for (item in usersJson) {
-    let user = usersJson[item];
-    users.push(user);
-  }
-}
-
-async function tasksArray() {
-  let tasksJson = await loadData('tasks');
-  for (item in tasksJson) {
-    let task = tasksJson[item];
-    tasks.push(task);
-  }
-}
 
 function resetElements(elements) {
   for (let i = 0; i < elements.length; i++) {
