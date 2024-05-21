@@ -1,7 +1,6 @@
 async function initLogin() {
   moveIcon();
   usersJson = await loadData('users');
-  await includeHTML();
 }
 let usersJson;
 
