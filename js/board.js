@@ -6,9 +6,8 @@ async function initBoard() {
 }
 
 let board = [];
-let status = ['To do', 'In progress', 'Await feedback', 'Done'];
+let status = ['toDo', 'inProgress', 'awaitFeedback', 'done'];
 let currentDraggedElement;
-let currentSubtask = 0;
 
 function updateProgressBar() {
   let percent = (currentSubtask + 1) / tasks.subtask.length;
@@ -17,15 +16,15 @@ function updateProgressBar() {
   document.getElementById('subtaskProgress-bar').style = `width: ${percent}%;`;
 }
 
-function updateHTML() {
-  updateTasksByStatus('To do', 'toDo');
-  updateTasksByStatus('In progress', 'inProgress');
-  updateTasksByStatus('Await feedback', 'awaitFeedback');
-  updateTasksByStatus('Done', 'done');
+async function updateHTML() {
+  updateTasksByStatus('toDo', 'toDo');
+  updateTasksByStatus('inProgress', 'inProgress');
+  updateTasksByStatus('awaitFeedback', 'awaitFeedback');
+  updateTasksByStatus('done', 'done');
 }
 
 function updateTasksByStatus(status, elementId) {
-  let filteredTasks = tasks.filter((task) => task.status === status);
+  let filteredTasks = tasks.filter((task) => task.status == status);
 
   let boardCard = document.getElementById(elementId);
 
@@ -72,7 +71,6 @@ function allowDrop(event) {
 
 function moveTo(status) {
   tasks[currentDraggedElement].status = status;
-  console.log('Moved to:', status);
   updateHTML();
 }
 

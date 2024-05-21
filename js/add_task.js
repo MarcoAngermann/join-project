@@ -95,7 +95,7 @@ function renderUsersHTML(contact, i) {
               <div class="contactName" >${contact['name']}</div> 
               <input onclick="showUsersEmblem()" type="checkbox" id="checkbox${i}">          
           </li>
-          </label>
+      </label>
         `;
 }
 
@@ -318,8 +318,8 @@ function getUser() {
 }
 
 function createCardId(tasks) {
-  let lastCardId = 1;
-  for (let i = 1; i < tasks.length; i++) {
+  let lastCardId = -1;
+  for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].cardId > lastCardId) {
       lastCardId = tasks[i].cardId;
     }
@@ -338,11 +338,12 @@ async function createNewTask(event) {
     priority: getSelectedPrio(),
     category: document.getElementById('selectedCategory').innerHTML,
     subtask: subtaskList,
-    status: 'To do',
+    status: 'toDo',
     cardId: lastCardId + 1,
   };
   resetUserDisplay();
   await postData('tasks', task);
+  location.href = 'board.html';
   clearAllTasks(event);
 }
 
