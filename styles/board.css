@@ -158,3 +158,16 @@
   filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg)
     brightness(91%) contrast(106%);
 }
+
+.big-subtasks {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bigSubtaskList {
+  display: flex;
+  height: 32px;
+  padding: 6px 16px 6px 16px;
+  gap: 16px;
+}

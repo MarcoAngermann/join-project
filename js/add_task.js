@@ -7,26 +7,7 @@ async function initAdd() {
   renderCategorys();
 }
 
-let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];
 let subtaskList = [];
-let users = [];
-let tasks = [];
-
-async function usersArray() {
-  let usersJson = await loadData('users');
-  for (item in usersJson) {
-    let user = usersJson[item];
-    users.push(user);
-  }
-}
-
-async function tasksArray() {
-  let tasksJson = await loadData('tasks');
-  for (item in tasksJson) {
-    let task = tasksJson[item];
-    tasks.push(task);
-  }
-}
 
 function resetElements(elements) {
   for (let i = 0; i < elements.length; i++) {
@@ -114,7 +95,7 @@ function renderUsersHTML(contact, i) {
               <div class="contactName" >${contact['name']}</div> 
               <input onclick="showUsersEmblem()" type="checkbox" id="checkbox${i}">          
           </li>
-          </label>
+      </label>
         `;
 }
 
@@ -337,8 +318,8 @@ function getUser() {
 }
 
 function createCardId(tasks) {
-  let lastCardId = 1;
-  for (let i = 1; i < tasks.length; i++) {
+  let lastCardId = -1;
+  for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].cardId > lastCardId) {
       lastCardId = tasks[i].cardId;
     }
@@ -362,6 +343,7 @@ async function createNewTask(event) {
   };
   resetUserDisplay();
   await postData('tasks', task);
+  location.href = 'board.html';
   clearAllTasks(event);
 }
 

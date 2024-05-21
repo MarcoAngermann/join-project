@@ -38,8 +38,11 @@
 .bigCard {
   display: flex;
   flex-direction: column;
-  width: 50vh;
-  max-height: 90%;
+  width: 550px;
+  height: 750px;
+  position: sticky;
+  overflow-y: auto;
+  gap: 24px;
   border-radius: 10px;
   background-color: #ffffff;
   padding: 48px 40px 48px 40px;
@@ -51,9 +54,24 @@
   align-items: center;
 }
 
-.bigCard img {
-  height: 20px;
-  width: 20px;
+.big-title {
+  word-break: break-word;
+}
+
+.bigPriority img {
+  height: 24px;
+  width: 24px;
+}
+
+.close {
+  height: 40px;
+  width: 40px;
+}
+
+.close:hover {
+  cursor: pointer;
+  background-color: #d2d2d2;
+  border-radius: 50%;
 }
 
 .bigCard img:hover {
@@ -75,4 +93,16 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+
+.bigUserEmblem {
+  display: flex;
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  border-radius: 50%;
+  color: white;
+  font-weight: 400;
+  justify-content: center;
+  text-align: center;
 }

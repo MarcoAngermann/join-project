@@ -15,6 +15,29 @@ let colors = [
   '#FF4646',
   '#FFBB2B',
 ];
+
+let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];
+let users = [];
+let tasks = [];
+
+async function tasksArray() {
+  let tasksJson = await loadData('tasks');
+  for (let key in tasksJson) {
+    let task = tasksJson[key];
+    tasks.push(task);
+  }
+  console.log('Tasks array:', tasks); // Debugging line
+}
+
+async function usersArray() {
+  let usersJson = await loadData('users');
+  for (let key in usersJson) {
+    let user = usersJson[key];
+    users.push(user);
+  }
+  console.log('Users array:', users); // Debugging line
+}
+
 async function includeHTML() {
   let includeElements = document.querySelectorAll('[w3-include-html]');
   for (let i = 0; i < includeElements.length; i++) {
