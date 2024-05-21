@@ -100,10 +100,9 @@ function showBigCard(i) {
 
 function renderBigSubtasks(i) {
   let bigSubtask = document.getElementById(`bigSubtasks${i}`);
-  let task = tasks[i];
 
-  for (let j = 0; j < task.subtask.length; j++) {
-    const subtask = task.subtask[j];
+  for (let j = 0; j < tasks[i]['subtask'].length; j++) {
+    const subtask = tasks[i]['subtask'][j];
     bigSubtask.innerHTML += renderBigSubtasksHTML(subtask, j); // Append each subtask's HTML to the string
   }
 }
@@ -122,6 +121,7 @@ function renderBigSubtasksHTML(subtask, j) {
 function renderBigCardHTML(i) {
   let task = tasks[i];
   return /*html*/ `
+  <div>
     <div id="bigCard${i}" class="bigCard">
       <div class="big-header">
         <div><span>${task.category}</span></div>
@@ -134,7 +134,9 @@ function renderBigCardHTML(i) {
             />
         </div>
       </div>
-      <h1>${task.title}</h1>
+      <div class="big-title">
+        <h1>${task.title}</h1>
+      </div>
       <div><p>${task.description}</p></div>
       <div class="big-date">
         <div><span>Due date:</span></div>
@@ -151,9 +153,7 @@ function renderBigCardHTML(i) {
         <div>
           <span>Assigned to:</span>
         </div>
-        <div class="big-contact">
-        <div id="bigUsersEmblem" style="display: inline-flex"></div>
-        </div>
+        <div id="bigUsersEmblem" class="big-contact" style="display: inline-flex"></div>
       </div>
       <div  class="big-subtasks" >
         <span>Subtasks:</span>
@@ -172,25 +172,30 @@ function renderBigCardHTML(i) {
         </div>
       </div>
     </div>
+    </div>
   `;
 }
 
 function showBigUsersEmblem(i) {
   let bigUsersEmblem = document.getElementById('bigUsersEmblem');
-  let task = tasks[i];
   bigUsersEmblem.innerHTML = '';
-  if (users[i]['userId'] == task.userid) {
-    for (let i = 0; i < tasks.userid.length; i++) {
-      bigUsersEmblem.innerHTML += renderBigEmblemUsers(user);
+
+  for (let j = 0; j < users.length; j++) {
+    if (users[j]['userId'] == 0) continue;
+
+    for (let k = 0; k < tasks[i]['userId'].length; k++) {
+      if (users[j]['userId'] == tasks[i]['userId'][k]) {
+        let user = users[j];
+        bigUsersEmblem.innerHTML += renderBigEmblemUsers(user);
+        break;
+      }
     }
-  } else {
-    console.log('No user found');
   }
 }
 
 function renderBigEmblemUsers(user) {
   return /*html*/ `
-      <div class="emblem" style="background-color: ${user['color']}" id="${user['userId']}">
+      <div class="bigUserEmblem" style="background-color: ${user['color']}" id="${user['userId']}">
       ${user['emblem']}
     </div>  `;
 }

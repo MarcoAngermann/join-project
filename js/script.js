@@ -22,7 +22,6 @@ let tasks = [];
 
 async function tasksArray() {
   let tasksJson = await loadData('tasks');
-  console.log('Loaded tasks:', tasksJson); // Debugging line
   for (let key in tasksJson) {
     let task = tasksJson[key];
     tasks.push(task);
@@ -32,7 +31,6 @@ async function tasksArray() {
 
 async function usersArray() {
   let usersJson = await loadData('users');
-  console.log('Loaded users:', usersJson); // Debugging line
   for (let key in usersJson) {
     let user = usersJson[key];
     users.push(user);
