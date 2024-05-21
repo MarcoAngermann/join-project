@@ -357,7 +357,7 @@ async function createNewTask(event) {
     priority: getSelectedPrio(),
     category: document.getElementById('selectedCategory').innerHTML,
     subtask: subtaskList,
-    status: 'To do',
+    status: 'ToDo',
     cardId: lastCardId + 1,
   };
   resetUserDisplay();

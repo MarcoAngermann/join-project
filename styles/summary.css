@@ -97,6 +97,10 @@
     width: 35px;        
 }
 
+.summaryCardContainer {
+    display: flex;
+}
+
 .numberContainer {
     font-size: 64px;
     font-weight: 600;
@@ -160,12 +164,6 @@
     gap: 50px;
 }
 
-.greetingContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 8px
-}
-
 .greetUserName {
     font-size: 56px;
     width: 585px;
@@ -188,6 +186,23 @@
     font-weight: 400;
 }
 
+@media (max-width: 840px) {
+.greeting-container {
+    display: none !important;
+}
+
+.keineahnunggerade {
+    width: 100%;
+}
+
+.summary-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+}
+
 @media (max-width: 1250px) {
     .sidebar {
         display: none;
@@ -198,16 +213,70 @@
 .joinContainer {
     flex-direction: column;
 }
-.greetingContainer {
-    margin-top: 50px;
-    display: none;
-}
-.greetingContainer span{
-    display: none;
-}
-  }
 
-  .testContainer {
+}
+
+.testContainer {
     margin-top: 200px;
     margin-left: 300px;
   }
+
+.summary-container {
+    display: flex;
+    margin-top: 100px;
+}
+
+.summary-card-medium-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 28px 48px 28px 48px;
+    border-radius: 30px;
+    gap: 13px;
+    text-decoration: none;
+    color: black;
+}
+
+.summary-card-big-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 28px 48px 28px 48px;
+    border-radius: 30px;
+    gap: 13px;
+    text-decoration: none;
+    color: black;
+}
+
+.summary-card-small-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 28px 48px 28px 48px;
+    border-radius: 30px;
+    gap: 13px;
+    text-decoration: none;
+    color: black;
+}
+
+.headline-summary {
+    font-size: large;
+}
+
+.summary-row-container {
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+}
+
+.greeting-container {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.keineahnunggerade {
+    width: 50%;
+}
