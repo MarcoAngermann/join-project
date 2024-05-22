@@ -40,19 +40,19 @@
   gap: 32px;
 }
 
-.big-contact {
+.bigUsersEmblem {
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
 
-.big-contact div {
+.bigUsersEmblem div {
   display: flex;
   align-items: center;
   margin-top: 16px;
 }
 
-.big-contact img {
+.bigUsersEmblem img {
   width: 32px;
   height: 32px;
 }

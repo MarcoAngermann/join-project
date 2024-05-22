@@ -6,7 +6,7 @@ async function initBoard() {
 }
 
 let board = [];
-let status = ['toDo', 'inProgress', 'awaitFeedback', 'done'];
+let status = ['toDo', 'in Progress', 'awaitFeedback', 'done'];
 let currentDraggedElement;
 
 function updateProgressBar() {
@@ -31,13 +31,15 @@ function updateTasksByStatus(status, elementId) {
   boardCard.innerHTML = '';
 
   for (let i = 0; i < filteredTasks.length; i++) {
-    boardCard.innerHTML += renderSmallCardHTML(filteredTasks[i], i);
+    (boardCard.innerHTML += renderSmallCardHTML(filteredTasks[i], i)),
+      showSmallUsersEmblem(filteredTasks[i]),
+      renderSmallSubtasks(filteredTasks[i]);
   }
 }
 
 function renderSmallCardHTML(task, i) {
   return /*html*/ `
-    <div draggable="true" ondragstart="startDragging(${task['cardId']})" id="${task['cardId']}" class="smallcard" onclick="showBigCard(${i})">
+    <div draggable="true" ondragstart="startDragging(${task['cardId']})" id="card-${task['cardId']}" class="smallcard" onclick="showBigCard(${task['cardId']})">
       <div class="category">
         <h2>${task['category']}</h2>
         <img src="../assets/icons/more_vert_icon.svg" alt="">
@@ -49,15 +51,74 @@ function renderSmallCardHTML(task, i) {
         <p>${task['description']}</p>
       </div>
       <div class="subtaskProgress" role="subtaskProgressbar" aria-label="Example with label">
-          <div id="subtaskProgress-bar" class="subtaskProgress-bar" style="width: 0%"></div>
+          <div id="subtaskProgress-bar${task['cardId']}" class="subtaskProgress-bar" style="width: 0%"></div>
       </div>
       <div class="information">
-        <div class="users" id="users">${task['userId']}</div>
-        <div class="priority" id="priority">
+        <div class="smallUsersEmblem" id="smallUsersEmblem${task['cardId']}"></div>
+        <div class="priority" id="priority${task['cardId']}">
             <img src="../assets/icons/${task['priority']}.svg" alt="">
         </div>
       </div>
     </div> 
+  `;
+}
+
+function showSmallUsersEmblem(task) {
+  let smallUsersEmblem = document.getElementById(
+    `smallUsersEmblem${task['cardId']}`
+  );
+  smallUsersEmblem.innerHTML = '';
+  let renderedCount = 0;
+  let extraCount = 0;
+
+  for (let j = 0; j < users.length; j++) {
+    if (users[j]['userId'] == 0) continue;
+
+    for (let k = 0; k < task['userId'].length; k++) {
+      if (users[j]['userId'] == task['userId'][k]) {
+        if (renderedCount < 5) {
+          let user = users[j];
+          smallUsersEmblem.innerHTML += renderSmallUsersEmblem(user);
+          renderedCount++;
+        } else {
+          extraCount++;
+        }
+      }
+    }
+  }
+  if (extraCount > 0) {
+    smallUsersEmblem.innerHTML += renderGreyEmblem(extraCount);
+  }
+}
+function renderGreyEmblem(extraCount) {
+  return `<div class="grey-emblem">+${extraCount}</div>`;
+}
+
+function renderGreyEmblem(remainingCount) {
+  return `<div class="grey-emblem">+${remainingCount}</div>`;
+}
+
+function renderSmallUsersEmblem(user) {
+  return /*html*/ `
+      <div class="smallUserEmblem" style="background-color: ${user['color']}" id="${user['userId']}">
+      ${user['emblem']}
+    </div>  `;
+}
+
+function renderSmallSubtasks(task) {
+  let smallSubtask = document.getElementById(
+    `subtaskProgress-bar${task['cardId']}`
+  ); // Use task['cardId'] instead of i
+
+  for (let j = 0; j < task['subtask'].length; j++) {
+    const subtask = task['subtask'][j];
+    smallSubtask.innerHTML += renderSmallSubtasksHTML(subtask); // Append each subtask's HTML to the string
+  }
+}
+
+function renderSmallSubtasksHTML(subtask) {
+  return /*html*/ `
+      <div>${subtask}</div>
   `;
 }
 

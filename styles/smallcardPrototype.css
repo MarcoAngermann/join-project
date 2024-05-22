@@ -95,14 +95,48 @@
   cursor: pointer;
 }
 
+.bigUsersEmblem {
+  display: inline-flex;
+}
+
 .bigUserEmblem {
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 42px;
   height: 42px;
-  padding: 10px;
   border-radius: 50%;
   color: white;
   font-weight: 400;
+}
+
+.smallUsersEmblem {
+  display: flex;
+  margin-left: 8px;
+}
+
+.smallUserEmblem {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  text-align: center;
+  margin-left: -8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.grey-emblem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #7a7b7b;
+  color: white;
+  font-size: 12px;
 }

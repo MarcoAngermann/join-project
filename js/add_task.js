@@ -93,7 +93,7 @@ function renderUsersHTML(contact, i) {
                 ${contact['emblem']}
               </div> 
               <div class="contactName" >${contact['name']}</div> 
-              <input onclick="showUsersEmblem()" type="checkbox" id="checkbox${i}">          
+              <input onclick="showUsersEmblem()" type="checkbox" id="checkbox${i}" data-userid="${contact['userId']}">          
           </li>
       </label>
         `;
@@ -322,14 +322,16 @@ function getSelectedPrio() {
   }
 }
 
-function getUser() {
-  let userEmblem = document.getElementById('usersEmblem');
-  let divs = userEmblem.getElementsByTagName('div');
-  let idsList = [];
-  for (let i = 0; i < divs.length; i++) {
-    idsList.push(divs[i].id);
+function getSelectedUserIds() {
+  let checkboxes = document.querySelectorAll(
+    '.contactList input[type="checkbox"]:checked'
+  );
+  let selectedUserIds = [];
+  for (let checkbox of checkboxes) {
+    let userId = checkbox.getAttribute('data-userid');
+    selectedUserIds.push(userId);
   }
-  return idsList;
+  return selectedUserIds;
 }
 
 function createCardId(tasks) {
@@ -345,10 +347,11 @@ function createCardId(tasks) {
 async function createNewTask(event) {
   event.preventDefault();
   let lastCardId = createCardId(tasks);
+  let selectedUserIds = getSelectedUserIds();
   task = {
     title: document.getElementById('title').value,
     description: document.getElementById('description').value,
-    userId: getUser(),
+    userId: selectedUserIds,
     date: document.getElementById('date').value,
     priority: getSelectedPrio(),
     category: document.getElementById('selectedCategory').innerHTML,

@@ -179,6 +179,11 @@ textarea {
   font-weight: bold;
 }
 
+.usersEmblem {
+  display: inline-flex;
+  margin-left: 8px;
+}
+
 .emblem {
   display: flex;
   align-items: center;
@@ -189,6 +194,7 @@ textarea {
   background-color: #29abe2;
   color: white;
   font-size: 12px;
+  margin-left: -8px;
 }
 
 .contactList {
@@ -465,4 +471,5 @@ input[type='checkbox'] {
   background-color: #7a7b7b;
   color: white;
   font-size: 12px;
+  margin-left: -8px;
 }
