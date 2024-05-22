@@ -141,20 +141,35 @@ function restrictPastDate() {
   let today = new Date().toISOString().split('T')[0];
   dateInput.setAttribute('min', today);
 }
-
-//Mónica New Funktion
-
 function showUsersEmblem() {
   let usersEmblem = document.getElementById('usersEmblem');
   usersEmblem.innerHTML = '';
+  let renderedCount = 0;
+  let extraCount = 0;
   for (let i = 0; i < users.length; i++) {
     if (users[i]['userId'] == 0) continue;
-    contact = users[i];
+    let contact = users[i];
     let checkedContact = document.getElementById(`checkbox${i}`);
     if (checkedContact.checked == true) {
-      usersEmblem.innerHTML += renderEmblemUsers(contact);
+      if (renderedCount < 5) {
+        usersEmblem.innerHTML += renderEmblemUsers(contact);
+        renderedCount++;
+      } else {
+        extraCount++;
+      }
     }
   }
+  if (extraCount > 0) {
+    usersEmblem.innerHTML += renderGreyEmblem(extraCount);
+  }
+}
+
+function renderGreyEmblem(extraCount) {
+  return `<div class="grey-emblem">+${extraCount}</div>`;
+}
+
+function renderGreyEmblem(remainingCount) {
+  return `<div class="grey-emblem">+${remainingCount}</div>`;
 }
 
 function renderEmblemUsers(contact) {
