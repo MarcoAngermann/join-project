@@ -39,7 +39,7 @@ function updateTasksByStatus(status, elementId) {
 
 function renderSmallCardHTML(task, i) {
   return /*html*/ `
-    <div draggable="true" ondragstart="startDragging(${task['cardId']})" id="card-${task['cardId']}" class="smallcard" onclick="showBigCard(${task['cardId']})">
+    <div draggable="true" ondragstart="startDragging(${task['cardId']})" id="card${task['cardId']}" class="smallcard" onclick="showBigCard(${task['cardId']})">
       <div class="category">
         <h2>${task['category']}</h2>
         <img src="../assets/icons/more_vert_icon.svg" alt="">
@@ -181,7 +181,7 @@ function renderBigCardHTML(i) {
   let task = tasks[i];
   return /*html*/ `
   <div>
-    <div id="bigCard${i}" class="bigCard">
+    <div id="bigCard${task['cardId']}" class="bigCard">
       <div class="big-header">
         <div><span>${task.category}</span></div>
         <div>
