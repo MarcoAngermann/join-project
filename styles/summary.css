@@ -185,7 +185,37 @@
     font-weight: 400;
 }
 
-@media (max-width: 840px) {
+@media (max-width: 600px) {
+    .summary-card-container {
+        width: 450px;
+    }
+
+    .summaryCard {
+        width: 220px;
+    }
+
+    .summaryCardBig {
+        width: 480px;
+    }
+
+    .titleContact {
+        font-size: 48px;
+    }
+
+    .summaryCardSmall {
+        width: 140px; 
+    }
+
+    .numberContainer {
+        font-size: 48px;
+    }
+
+    .summaryTitleContainer {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 900px) {
     .greeting-container {
         display: none !important;
     }
@@ -202,6 +232,13 @@
 
 }
 
+@media (max-width: 950px) { 
+    .greetUserName {
+        font-size: 48px;
+    }
+}
+
+
 @media (max-width: 1250px) {
     .joinContainer {
         flex-direction: column;
@@ -212,8 +249,10 @@
 
 
 @media (max-width: 1425px) {
-    .summary-container {
-        margin-left: 250px !important;
+    .summary-main-container {
+        margin-left: 0px !important;
+        display: flex;
+        justify-content: center;
     }
 
     .sidebar {
@@ -239,9 +278,9 @@
     margin-left: 300px;
 }
 
-.summary-container {
+.summary-main-container {
     display: flex;
-    margin-top: 200px;
+    margin-top: 150px;
     margin-left: 300px;
 }
 
@@ -289,13 +328,13 @@
 }
 
 .greeting-container {
-    width: 30%;
+    width: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
 }
 
-.keineahnunggerade {
-    width: 50%;
+.summary-card-container {
+    width: 600px;
 }
