@@ -5,9 +5,9 @@
 
 .seperator {
     width: 0px;
-    height: 60px;      
-    border: 1px solid #29ABE2;  
-  }
+    height: 60px;
+    border: 1px solid #29ABE2;
+}
 
 .summaryTitleContainer {
     display: flex;
@@ -29,7 +29,7 @@
 
 .summaryCard {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 264px;
@@ -80,21 +80,21 @@
     justify-content: center;
     align-items: center;
 }
- 
+
 .divSummaryIcons {
     background-color: #2A3647;
     border-radius: 50%;
     padding: 5px;
     margin-right: 6px;
     height: 69px;
-    width: 69px;    
-    text-align: center;   
+    width: 69px;
+    text-align: center;
     align-content: center;
-} 
+}
 
-.summaryIcons{       
+.summaryIcons {
     height: 35px;
-    width: 35px;        
+    width: 35px;
 }
 
 .summaryCardContainer {
@@ -132,10 +132,10 @@
     padding: 5px;
     margin-right: 6px;
     height: 69px;
-    width: 69px;    
-    text-align: center;   
+    width: 69px;
+    text-align: center;
     align-content: center;
-} 
+}
 
 .summaryCardBig:hover {
     scale: 1.1;
@@ -145,8 +145,8 @@
 
 .seperatorBigCard {
     width: 0px;
-    height: 60px;      
-    border: 1px solid #d1d1d1;  
+    height: 60px;
+    border: 1px solid #d1d1d1;
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -155,7 +155,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+
 }
 
 .joinContainer {
@@ -166,7 +166,6 @@
 
 .greetUserName {
     font-size: 56px;
-    width: 585px;
     color: #29ABE2;
     font-weight: 700;
 }
@@ -187,43 +186,63 @@
 }
 
 @media (max-width: 840px) {
-.greeting-container {
-    display: none !important;
-}
+    .greeting-container {
+        display: none !important;
+    }
 
-.keineahnunggerade {
-    width: 100%;
-}
+    .keineahnunggerade {
+        width: 100%;
+    }
 
-.summary-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    .summary-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
 }
 
 @media (max-width: 1250px) {
+    .joinContainer {
+        flex-direction: column;
+    }
+
+}
+
+
+
+@media (max-width: 1425px) {
+    .summary-container {
+        margin-left: 250px !important;
+    }
+
     .sidebar {
         display: none;
     }
-.mobile-taskbar {
-    display: flex;
-}
-.joinContainer {
-    flex-direction: column;
 }
 
+@media (max-width: 1400px) {
+    .summary-container {
+        margin-left: 0px !important;
+    }
+
+    .sidebar {
+        display: none;
+    }
 }
+
+
+
 
 .testContainer {
     margin-top: 200px;
     margin-left: 300px;
-  }
+}
 
 .summary-container {
     display: flex;
-    margin-top: 100px;
+    margin-top: 200px;
+    margin-left: 300px;
 }
 
 .summary-card-medium-container {
@@ -264,9 +283,9 @@
 }
 
 .summary-row-container {
- display: flex;
- flex-direction: row;
- flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .greeting-container {
@@ -274,7 +293,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: start;
 }
 
 .keineahnunggerade {
