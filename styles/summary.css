@@ -214,7 +214,7 @@
 .summary-card-medium-container {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     margin-bottom: 20px;
     border-radius: 30px;
     text-decoration: none;
@@ -224,7 +224,7 @@
 .summary-card-big-container {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     margin-bottom: 20px;
     border-radius: 30px;
     text-decoration: none;
@@ -234,7 +234,7 @@
 .summary-card-small-container {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     border-radius: 30px;
     text-decoration: none;
     color: black;
@@ -311,7 +311,7 @@
         font-size: 48px;
     }
     .summaryCard {
-        width: 160px;
+        width: 180px;
     }
 
     .summaryCardBig {
@@ -336,6 +336,11 @@
     .summary-card-small-container {
         display: flex;
         justify-content: center;
+    }
+
+    .summary-card-medium-container {
+        display: flex;
+        justify-content: center
     }
 
 }
