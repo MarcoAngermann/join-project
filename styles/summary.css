@@ -181,6 +181,13 @@
     font-weight: 400;
 }
 
+.mobile-seperator {
+    display: none;
+    width: 60px;
+    height: 0px;
+    border: 1px solid #29ABE2;
+}
+
 @media (max-width: 1425px) {
     .summary-main-container {
         margin-left: 0px !important;
@@ -315,13 +322,6 @@
     .titleContact {
         font-size: 48px;
     }
-    .summaryCard {
-       
-    }
-
-    .summaryCardBig {
-        
-    }
 
     .summaryCardSmall {
         height: 120px;
@@ -410,6 +410,10 @@
         flex-direction: column;
         align-items: flex-start;
         margin-left: 20px;
+    }
+
+    .mobile-seperator {
+        display: flex;
     }
 
     .seperator {
