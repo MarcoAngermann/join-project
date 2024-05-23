@@ -168,6 +168,24 @@
 .bigSubtaskList {
   display: flex;
   height: 32px;
-  padding: 6px 16px 6px 16px;
+  padding: 6px 16px 6px 0px;
   gap: 16px;
+}
+
+.big-users {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.big-user {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.big-single-user {
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
