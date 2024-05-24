@@ -63,6 +63,10 @@ function renderSmallCardHTML(task, i) {
   `;
 }
 
+function dontClose() {
+  event.stopPropagation();
+}
+
 function showSmallUsersEmblem(task) {
   let smallUsersEmblem = document.getElementById(
     `smallUsersEmblem${task['cardId']}`
@@ -180,8 +184,7 @@ function renderBigSubtasksHTML(subtask, j) {
 function renderBigCardHTML(i) {
   let task = tasks[i];
   return /*html*/ `
-  <div>
-    <div id="bigCard${task['cardId']}" class="bigCard">
+    <div id="bigCard${task['cardId']}" class="bigCard" onclick="dontClose()" >
       <div class="big-header">
         <div><span>${task.category}</span></div>
         <div>
@@ -212,7 +215,7 @@ function renderBigCardHTML(i) {
         <div>
           <span>Assigned to:</span>
         </div>
-        <div id="bigUsersEmblem" class="big-contact" style="display: inline-flex"></div>
+        <div id="bigUsersEmblem" class="big-user"></div>
       </div>
       <div  class="big-subtasks" >
         <span>Subtasks:</span>
@@ -230,7 +233,6 @@ function renderBigCardHTML(i) {
           <span>Edit</span>
         </div>
       </div>
-    </div>
     </div>
   `;
 }
@@ -254,9 +256,13 @@ function showBigUsersEmblem(i) {
 
 function renderBigEmblemUsers(user) {
   return /*html*/ `
+  <div class="big-single-user">
       <div class="bigUserEmblem" style="background-color: ${user['color']}" id="${user['userId']}">
-      ${user['emblem']}
-    </div>  `;
+        ${user['emblem']}
+      </div>  
+      <span>${user['name']}</span>
+    </div>
+  `;
 }
 
 //Umbauen für die Progressbar
@@ -273,3 +279,12 @@ function renderBigEmblemUsers(user) {
 //    }
 //  }
 //}
+// progress bar für die smallCard subtasks
+
+// gedraggte card speichern (status)
+// search funktion
+// mobile verschiebung, da auf mobile Drag and Drop nicht funktioniert
+
+// edit funktion bei bigcard (zwischenspeichern wie bei edit add task)
+// delete funktion bei bigcard (wie bei add task)
+// add task funktionen (einzelne statuse + die Allgemeine add task Funktion)

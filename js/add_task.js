@@ -261,11 +261,11 @@ function renderSubtaskHTML(i) {
               id="subtaskList${i}"
               value="${subtaskList[i]}"
               />
-                <div class="edit-images" id="edit-images${i}">
-                  <img onclick="editSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
-                  <div class="edit-seperator"></div>
-                  <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
-                </div>
+              <div class="edit-images" id="edit-images${i}">
+                <img onclick="editSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
+                <div class="edit-seperator"></div>
+                <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
+              </div>
             </div>
         </div>
   `;
@@ -281,6 +281,7 @@ function editSubtask(i) {
   document
     .getElementById(`mainSubtask-container${i}`)
     .classList.add('editsubtaskList');
+  document.getElementById(`edit-images${i}`).classList.add('flex');
 }
 
 function checkSubtask(i) {
@@ -293,6 +294,7 @@ function checkSubtask(i) {
   document
     .getElementById(`mainSubtask-container${i}`)
     .classList.remove('editsubtaskList');
+  document.getElementById(`edit-images${i}`).classList.remove('flex');
 }
 
 function editSubtaskHTML(i) {

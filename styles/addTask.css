@@ -437,7 +437,15 @@ input[type='checkbox'] {
 }
 
 .edit-images {
+  display: none;
+}
+
+.subtaskList:hover .edit-images {
   display: flex;
+}
+
+.flex {
+  display: flex !important;
 }
 
 .edit-seperator {

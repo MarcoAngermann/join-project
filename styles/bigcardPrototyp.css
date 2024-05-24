@@ -15,11 +15,14 @@
 .bigCard {
   display: flex;
   flex-direction: column;
-  width: 50vh;
-  max-height: 90%;
-  border-radius: 30px;
-  padding: 48px 40px 48px 40px;
+  width: 550px;
+  height: 750px;
+  position: sticky;
+  overflow-y: auto;
+  gap: 24px;
+  border-radius: 10px;
   background-color: #ffffff;
+  padding: 48px 40px 48px 40px;
 }
 
 .big-header {
@@ -81,4 +84,5 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 8px;
 }
