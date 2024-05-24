@@ -498,6 +498,13 @@ input[type='checkbox'] {
   .headline-task {
     margin-right: 160px;
   }
+  .tasks {
+    top: 535px;
+  }
+
+  .users {
+    top: 586px;
+  }
 
 }
 
@@ -517,11 +524,11 @@ input[type='checkbox'] {
     display: none;
   }
   .tasks {
-    top: 900px;
+    top: 785px;
   }
 
   .users {
-    top: 585px;
+    top: 505px;
   }
   .groupTask1-input {
     gap: 10px;
@@ -548,6 +555,15 @@ input[type='checkbox'] {
   }
   .main-container {
     align-items: normal;
+  }
+
+  
+  .tasks {
+    top: 785px;
+  }
+
+  .users {
+    top: 505px;
   }
 
 
