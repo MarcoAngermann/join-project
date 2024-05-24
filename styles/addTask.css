@@ -502,6 +502,10 @@ input[type='checkbox'] {
 }
 
 @media (max-width: 960px) {
+  .main-container {
+    margin-top: 100px;
+  }
+
   .add-task-container {
     display: flex;
     flex-direction: column;
@@ -510,7 +514,25 @@ input[type='checkbox'] {
     display: none;
   }
   .required-field-text {
-  display: none;
+    display: none;
+  }
+  .tasks {
+    top: 900px;
+  }
+
+  .users {
+    top: 585px;
+  }
+  .groupTask1-input {
+    gap: 10px;
+  }
+
+  .groupTask2-input {
+    gap: 10px;
+  }
+
+  .addTaskBtn-Container {
+    margin-bottom: 90px;
   }
 }
 
@@ -527,4 +549,6 @@ input[type='checkbox'] {
   .main-container {
     align-items: normal;
   }
+
+
 }
