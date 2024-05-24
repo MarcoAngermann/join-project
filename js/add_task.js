@@ -346,8 +346,8 @@ function createCardId(tasks) {
   return lastCardId; //
 }
 
-async function createNewTask(event) {
-  event.preventDefault();
+async function createNewTask() {
+  // event.preventDefault();
   let lastCardId = createCardId(tasks);
   let selectedUserIds = getSelectedUserIds();
   task = {
