@@ -69,15 +69,7 @@ h3 {
   margin: 200px 100px 32px 300px;
 }
 
-.legal_notice {
-  margin: 200px 100px 32px 300px;
-  position: sticky;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  overflow-y: auto;
-  height: 100%;
-}
+
 
 @media (max-width: 1425px) {
   .help-container {
