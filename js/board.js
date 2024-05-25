@@ -10,7 +10,7 @@ let status = ['toDo', 'in Progress', 'awaitFeedback', 'done'];
 let currentDraggedElement;
 
 function updateProgressBar() {
-  let percent = (currentSubtask + 1) / tasks.subtask.length;
+  let percent = (currentSubtask + 1) / tasks['subtask'].length;
   percent = Math.round(percent * 100);
   document.getElementById('subtaskProgress-bar').innerHTML = `${percent} %`;
   document.getElementById('subtaskProgress-bar').style = `width: ${percent}%;`;
@@ -31,55 +31,51 @@ function updateTasksByStatus(status, elementId) {
   boardCard.innerHTML = '';
 
   for (let i = 0; i < filteredTasks.length; i++) {
-    (boardCard.innerHTML += renderSmallCardHTML(filteredTasks[i], i)),
+    (boardCard.innerHTML += renderSmallCardHTML(filteredTasks[i])),
       showSmallUsersEmblem(filteredTasks[i]),
       renderSmallSubtasks(filteredTasks[i]);
   }
 }
 
-function renderSmallCardHTML(task, i) {
+function renderSmallCardHTML(task) {
   return /*html*/ `
-    <div draggable="true" ondragstart="startDragging(${task['cardId']})" id="card${task['cardId']}" class="smallcard" onclick="showBigCard(${task['cardId']})">
+    <div draggable="true" ondragstart="startDragging(${task.cardId})" id="${task.cardId}" class="smallcard" onclick="showBigCard(${task.cardId})">
       <div class="category">
-        <h2>${task['category']}</h2>
+        <h2>${task.category}</h2>
         <img src="../assets/icons/more_vert_icon.svg" alt="">
       </div>
       <div class="title">
-        <h3>${task['title']}</h3>
+        <h3>${task.title}</h3>
       </div>
       <div class="description">
-        <p>${task['description']}</p>
+        <p>${task.description}</p>
       </div>
       <div class="subtaskProgress" role="subtaskProgressbar" aria-label="Example with label">
-          <div id="subtaskProgress-bar${task['cardId']}" class="subtaskProgress-bar" style="width: 0%"></div>
+          <div id="subtaskProgress-bar${task.cardId}" class="subtaskProgress-bar" style="width: 0%"></div>
       </div>
       <div class="information">
-        <div class="smallUsersEmblem" id="smallUsersEmblem${task['cardId']}"></div>
-        <div class="priority" id="priority${task['cardId']}">
-            <img src="../assets/icons/${task['priority']}.svg" alt="">
+        <div class="smallUsersEmblem" id="smallUsersEmblem${task.cardId}"></div>
+        <div class="priority" id="priority${task.cardId}">
+            <img src="../assets/icons/${task.priority}.svg" alt="">
         </div>
       </div>
     </div> 
   `;
 }
 
-function dontClose() {
-  event.stopPropagation();
-}
-
 function showSmallUsersEmblem(task) {
   let smallUsersEmblem = document.getElementById(
-    `smallUsersEmblem${task['cardId']}`
+    `smallUsersEmblem${task.cardId}`
   );
   smallUsersEmblem.innerHTML = '';
   let renderedCount = 0;
   let extraCount = 0;
 
   for (let j = 0; j < users.length; j++) {
-    if (users[j]['userId'] == 0) continue;
+    if (users[j].userId == 0) continue;
 
-    for (let k = 0; k < task['userId'].length; k++) {
-      if (users[j]['userId'] == task['userId'][k]) {
+    for (let k = 0; k < task.userId.length; k++) {
+      if (users[j].userId == task.userId[k]) {
         if (renderedCount < 5) {
           let user = users[j];
           smallUsersEmblem.innerHTML += renderSmallUsersEmblem(user);
@@ -104,18 +100,18 @@ function renderGreyEmblem(remainingCount) {
 
 function renderSmallUsersEmblem(user) {
   return /*html*/ `
-      <div class="smallUserEmblem" style="background-color: ${user['color']}" id="${user['userId']}">
-      ${user['emblem']}
+      <div class="smallUserEmblem" style="background-color: ${user.color}" id="${user.userId}">
+      ${user.emblem}
     </div>  `;
 }
 
 function renderSmallSubtasks(task) {
   let smallSubtask = document.getElementById(
-    `subtaskProgress-bar${task['cardId']}`
-  ); // Use task['cardId'] instead of i
+    `subtaskProgress-bar${task.cardId}`
+  );
 
-  for (let j = 0; j < task['subtask'].length; j++) {
-    const subtask = task['subtask'][j];
+  for (let j = 0; j < task.subtask.length; j++) {
+    const subtask = task.subtask[j];
     smallSubtask.innerHTML += renderSmallSubtasksHTML(subtask); // Append each subtask's HTML to the string
   }
 }
@@ -134,10 +130,32 @@ function allowDrop(event) {
   event.preventDefault();
 }
 
-function moveTo(status) {
+async function moveTo(status) {
   tasks[currentDraggedElement].status = status;
+  updateBoard(status);
   updateHTML();
 }
+
+async function updateBoard(status) {
+  let tasksJSON = await loadData('tasks');
+  for (let key in tasksJSON) {
+    let task = tasksJSON[key];
+    if (task.cardId == tasks[currentDraggedElement].cardId) {
+      await putData(`tasks/${key}/status`, status);
+    }
+  }
+}
+
+//async function moveTo(status) {
+//  const task = tasks.find(t => t.cardId == currentDraggedElement);
+// // ...
+//  tasks[currentDraggedElement].status = status;
+//  console.log(tasks[currentDraggedElement]);
+//  console.log('Moved to:', status);
+//
+//  await putData('tasks/', tasks);
+//  await updateHTML();
+//}
 
 function highlight(id) {
   document.getElementById(id).classList.add('drag-area-highlight');
@@ -153,38 +171,18 @@ function closeBigCard() {
 
 function showBigCard(i) {
   document.getElementById('showBigCard').classList.remove('dnone');
-  content = document.getElementById('showBigCard');
-  (content.innerHTML = renderBigCardHTML(i)),
-    showBigUsersEmblem(i),
-    renderBigSubtasks(i);
+  let content = document.getElementById('showBigCard');
+  content.innerHTML = '';
+  content.innerHTML = renderBigCardHTML(i);
+  showBigUsersEmblem(i), renderBigSubtasks(i);
 }
 
 // Function to close the image
 
-function renderBigSubtasks(i) {
-  let bigSubtask = document.getElementById(`bigSubtasks${i}`);
-
-  for (let j = 0; j < tasks[i]['subtask'].length; j++) {
-    const subtask = tasks[i]['subtask'][j];
-    bigSubtask.innerHTML += renderBigSubtasksHTML(subtask, j); // Append each subtask's HTML to the string
-  }
-}
-
-function renderBigSubtasksHTML(subtask, j) {
-  return /*html*/ `
-      <label for="checkbox${j}">
-          <li class="bigSubtaskList">
-              <input type="checkbox" id="checkbox${j}">
-              <div class="contactName">${subtask}</div>         
-          </li>
-      </label>
-  `;
-}
-
 function renderBigCardHTML(i) {
   let task = tasks[i];
   return /*html*/ `
-    <div id="bigCard${task['cardId']}" class="bigCard" onclick="dontClose()" >
+    <div id="bigCard${task.cardId}" class="bigCard"  onclick="dontClose()">
       <div class="big-header">
         <div><span>${task.category}</span></div>
         <div>
@@ -219,16 +217,16 @@ function renderBigCardHTML(i) {
       </div>
       <div  class="big-subtasks" >
         <span>Subtasks:</span>
-        <div id="bigSubtasks${i}" class="bigSubtasks">
+        <div id="bigSubtasks" class="bigSubtasks">
         </div>
       </div>
       <div class="bigCard-edit">
-        <div id="bigDelete${i}" class="big-delete">
-          <img src="../assets/icons/delete_contact_icon.svg" alt="">
+        <div id="bigDelete" class="big-delete" onclick="deleteTaskofBoard(${task.cardId})">
+          <img  src="../assets/icons/delete_contact_icon.svg" alt="">
           <span>Delete</span>
         </div>
         <div class="seperator"></div>
-        <div id="bigEdit${i}" class="big-edit">
+        <div id="bigEdit" class="big-edit">
           <img src="../assets/icons/edit-contacts_icon.svg" alt="">
           <span>Edit</span>
         </div>
@@ -242,10 +240,10 @@ function showBigUsersEmblem(i) {
   bigUsersEmblem.innerHTML = '';
 
   for (let j = 0; j < users.length; j++) {
-    if (users[j]['userId'] == 0) continue;
+    if (users[j].userId == 0) continue;
 
     for (let k = 0; k < tasks[i]['userId'].length; k++) {
-      if (users[j]['userId'] == tasks[i]['userId'][k]) {
+      if (users[j].userId == tasks[i].userId[k]) {
         let user = users[j];
         bigUsersEmblem.innerHTML += renderBigEmblemUsers(user);
         break;
@@ -257,12 +255,53 @@ function showBigUsersEmblem(i) {
 function renderBigEmblemUsers(user) {
   return /*html*/ `
   <div class="big-single-user">
-      <div class="bigUserEmblem" style="background-color: ${user['color']}" id="${user['userId']}">
-        ${user['emblem']}
+      <div class="bigUserEmblem" style="background-color: ${user.color}" id="${user.userId}">
+        ${user.emblem}
       </div>  
-      <span>${user['name']}</span>
+      <span>${user.name}</span>
     </div>
   `;
+}
+
+function renderBigSubtasks(i) {
+  let bigSubtask = document.getElementById(`bigSubtasks`);
+
+  for (let j = 0; j < tasks[i].subtask.length; j++) {
+    const subtask = tasks[i].subtask[j];
+    bigSubtask.innerHTML += renderBigSubtasksHTML(subtask, j); // Append each subtask's HTML to the string
+  }
+}
+
+function renderBigSubtasksHTML(subtask, j) {
+  return /*html*/ `
+      <label for="checkbox${j}">
+          <li class="bigSubtaskList">
+              <input type="checkbox" id="checkbox${j}">
+              <div class="contactName">${subtask}</div>         
+          </li>
+      </label>
+  `;
+}
+
+function dontClose() {
+  event.stopPropagation();
+}
+
+async function deleteTaskofBoard() {
+  deleteTask();
+  closeBigCard();
+  updateHTML();
+}
+
+async function deleteTask() {
+  let tasksJSON = await loadData('tasks');
+  for (key in tasksJSON) {
+    let task = tasksJSON[key];
+    if (task.cardId == tasks.cardId) {
+      await putData(`tasks/${key}`);
+      console.log(task);
+    }
+  }
 }
 
 //Umbauen für die Progressbar
@@ -281,7 +320,6 @@ function renderBigEmblemUsers(user) {
 //}
 // progress bar für die smallCard subtasks
 
-// gedraggte card speichern (status)
 // search funktion
 // mobile verschiebung, da auf mobile Drag and Drop nicht funktioniert
 
