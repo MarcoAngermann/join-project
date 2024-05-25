@@ -131,8 +131,11 @@ function allowDrop(event) {
 }
 
 async function moveTo(status) {
-  tasks[currentDraggedElement].status = status;
-  updateBoard(status);
+  // Find the task object with the cardId equal to currentDraggedElement
+  const task = tasks.find((t) => t.cardId == currentDraggedElement);
+  task.status = status;
+  // Update the board and HTML
+  await updateBoard(status); // Assuming updateBoard is an async function
   updateHTML();
 }
 
@@ -140,22 +143,11 @@ async function updateBoard(status) {
   let tasksJSON = await loadData('tasks');
   for (let key in tasksJSON) {
     let task = tasksJSON[key];
-    if (task.cardId == tasks[currentDraggedElement].cardId) {
+    if (task.cardId == currentDraggedElement) {
       await putData(`tasks/${key}/status`, status);
     }
   }
 }
-
-//async function moveTo(status) {
-//  const task = tasks.find(t => t.cardId == currentDraggedElement);
-// // ...
-//  tasks[currentDraggedElement].status = status;
-//  console.log(tasks[currentDraggedElement]);
-//  console.log('Moved to:', status);
-//
-//  await putData('tasks/', tasks);
-//  await updateHTML();
-//}
 
 function highlight(id) {
   document.getElementById(id).classList.add('drag-area-highlight');
@@ -221,7 +213,7 @@ function renderBigCardHTML(i) {
         </div>
       </div>
       <div class="bigCard-edit">
-        <div id="bigDelete" class="big-delete" onclick="deleteTaskofBoard(${task.cardId})">
+        <div id="bigDelete" class="big-delete" onclick="deleteTask(${i})">
           <img  src="../assets/icons/delete_contact_icon.svg" alt="">
           <span>Delete</span>
         </div>
@@ -287,23 +279,22 @@ function dontClose() {
   event.stopPropagation();
 }
 
-async function deleteTaskofBoard() {
-  deleteTask();
+async function deleteTaskofBoard(cardId) {
+  deleteTask(cardId);
   closeBigCard();
   updateHTML();
 }
 
-async function deleteTask() {
+async function deleteTask(cardId) {
   let tasksJSON = await loadData('tasks');
   for (key in tasksJSON) {
     let task = tasksJSON[key];
-    if (task.cardId == tasks.cardId) {
-      await putData(`tasks/${key}`);
+    if (task.cardId == cardId) {
+      await deleteData(`tasks/${key}`);
       console.log(task);
     }
   }
 }
-
 //Umbauen für die Progressbar
 
 //function showUsersEmblem() {
