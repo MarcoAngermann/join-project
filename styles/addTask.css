@@ -37,6 +37,7 @@
 .headline-task {
   font-size: 61px;
   font-weight: 700;
+  margin-right: 664px;
 }
 
 .seperator {
@@ -498,7 +499,7 @@ input[type='checkbox'] {
 
 
   .headline-task {
-    margin-right: 160px;
+    margin-right: 664px;
   }
   .tasks {
     top: 535px;
@@ -511,6 +512,9 @@ input[type='checkbox'] {
 }
 
 @media (max-width: 960px) {
+  .headline-task{
+    margin-right: 165px;
+  }
   .main-container {
     margin-top: 100px;
   }
@@ -548,19 +552,19 @@ input[type='checkbox'] {
 @media (max-width: 470px) {
   .headline-task {
     font-size: 48px;
+    margin-right: 80px;
+    
   }
   .groupTask1-input{
     width: 300px;
-    margin-left: 5%;
-    margin-right: 5%;
+   
   }
   .groupTask2-input {
     width: 300px;
-    margin-left: 5%;
-    margin-right: 5%;
+
   }
   .headline-task {
-    margin-right: 0px;
+    margin-right: 80px;
   }
   .main-container {
     align-items: normal;
@@ -596,5 +600,31 @@ input[type='checkbox'] {
     width: 100%;
   }
 
+  .prioBtn {
+    font-size: 13px;
+  }
+    
+  .tasks {
+    top: 771px;
+    width: 300px;
+  }
+  .users {
+    top: 491px;
+    width: 300px;
+  }
+  .user-checkbox {
+    width: 20px !important;
+  }
 
+  .emblem {
+    width: 30px;
+    height: 28px;
+  }
+
+  .addTaskBtn-Container {
+    margin-left: 0px;
+  }
+  .add-task-container {
+    align-items: center;
+  }
 }
