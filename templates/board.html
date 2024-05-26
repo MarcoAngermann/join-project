@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="../styles/sidebar.css" />
     <link rel="stylesheet" href="../styles/board.css" />
     <link rel="stylesheet" href="../styles/smallcardPrototype.css" />
-    <link rel="icons" href="./assets/icons/join_icon.svg" />
-    <!-- <script src="../js/dummy_db.js"></script> -->
+    <link rel="stylesheet" href="../styles/boardAddTask.css" />
+    <link rel="icon" href="../assets/icons/join_icon.svg" />
     <script src="../js/script.js" defer></script>
     <script src="../js/header.js"></script>
     <script src="../js/board.js" defer></script>
     <script src="../js/firebaseAPI.js"></script>
-    <script src="../js/add_task.js"></script>
+    <script src="../js/board_add_task.js"></script>
+    <script src="../js/board_add_task_template.js"></script>
     <title>Join board</title>
   </head>
   <body onload="initBoard()">
@@ -110,6 +111,7 @@
         <div onclick="closeBigCard()">
           <div id="showBigCard" class="showBigCard dnone"></div>
         </div>
+        <div id="boardAddTask" class="board-add-task dnone"></div>
       </section>
     </div>
   </body>

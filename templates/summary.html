@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="../styles/fonts.css" />
     <link rel="stylesheet" href="../styles/summary.css" />
     <link rel=" stylesheet" href="../styles/mobile_taskbar.css" />
-    <link rel="icons" href="./assets/icons/join_icon.svg" />
-    
+    <link rel="icon" href="../assets/icons/join_icon.svg" />
     <script src="../js/header.js"></script>
     <script src="../js/summary.js"></script>
     <script src="../js/firebaseAPI.js"></script>
@@ -24,87 +23,90 @@
     <div w3-include-html="../templates/mobile_taskbar.html"></div>
     <div class="summary-main-container">
       <div class="summary-card-container">
-          <div class="headline-summary">
-              <div class="summaryTitleContainer">
-                  <h1 class="titleContact">Join 179</h1>
-                  <div class="seperator"></div>
-                  <p>Key Metrics at a Glance</p>
-                  <div class="mobile-seperator"></div>
+        <div class="headline-summary">
+          <div class="summaryTitleContainer">
+            <h1 class="titleContact">Join 179</h1>
+            <div class="seperator"></div>
+            <p>Key Metrics at a Glance</p>
+            <div class="mobile-seperator"></div>
+          </div>
+        </div>
+        <div class="summary-card-medium-container">
+          <a href="board.html" class="summaryCard">
+            <div class="iconContainer">
+              <div class="divSummaryIcons">
+                <img class="summaryIcons" src="../assets/icons/edit.svg" />
               </div>
-          </div>
-          <div class="summary-card-medium-container">
-              <a href="board.html" class="summaryCard">
-                  <div class="iconContainer">
-                      <div class="divSummaryIcons">
-                          <img class="summaryIcons" src="../assets/icons/edit.svg" />
-                      </div>
-                      <div class="textContainer">
-                          <span class="numberContainer">1</span>
-                          <span>To-do</span>
-                      </div>
-                  </div>
-              </a>
-              <a href="board.html" class="summaryCard">
-                  <div class="iconContainer">
-                      <div class="divSummaryIcons">
-                          <img class="summaryIcons" src="../assets/icons/vector.svg" />
-                      </div>
-                      <div class="textContainer">
-                          <span class="numberContainer">1</span>
-                          <span>Done</span>
-                      </div>
-                  </div>
-              </a>
-          </div>
-          <div class="summary-card-big-container">
-              <a href="board.html" class="summaryCardBig">
-                  <div class="iconContainer">
-                      <div class="divCardBigIcons">
-                          <img class="summaryIcons" src="../assets/icons/urgent_white.svg" />
-                      </div>
-                      <div class="textContainer">
-                          <span class="numberContainer">1</span>
-                          <span>Urgent</span>
-                      </div>
-                  </div>
-                  <div class="seperatorBigCard"></div>
-                  <div class="textContainerBigCard">
-                      <span class="dateText">October 16, 2024</span>
-                      <span class="deadlineText">Upcoming Deadline</span>
-                  </div>
-              </a>
-          </div>
-          <div class="summary-card-small-container">
-              <a href="board.html" class="summaryCardSmall">
-                  <div class="iconContainer">
-                      <div class="textContainer">
-                          <span class="numberContainer">2</span>
-                          <span>Tasks in Progress</span>
-                      </div>
-                  </div>
-              </a>
-              <a href="board.html" class="summaryCardSmall">
-                  <div class="iconContainer">
-                      <div class="textContainer">
-                          <span class="numberContainer">2</span>
-                          <span>Awaiting Feedback</span>
-                      </div>
-                  </div>
-              </a>
-              <a href="board.html" class="summaryCardSmall">
-                  <div class="iconContainer">
-                      <div class="textContainer">
-                          <span class="numberContainer">5</span>
-                          <span>Tasks in Board</span>
-                      </div>
-                  </div>
-              </a>
-          </div>
+              <div class="textContainer">
+                <span class="numberContainer">1</span>
+                <span>To-do</span>
+              </div>
+            </div>
+          </a>
+          <a href="board.html" class="summaryCard">
+            <div class="iconContainer">
+              <div class="divSummaryIcons">
+                <img class="summaryIcons" src="../assets/icons/vector.svg" />
+              </div>
+              <div class="textContainer">
+                <span class="numberContainer">1</span>
+                <span>Done</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="summary-card-big-container">
+          <a href="board.html" class="summaryCardBig">
+            <div class="iconContainer">
+              <div class="divCardBigIcons">
+                <img
+                  class="summaryIcons"
+                  src="../assets/icons/urgent_white.svg"
+                />
+              </div>
+              <div class="textContainer">
+                <span class="numberContainer">1</span>
+                <span>Urgent</span>
+              </div>
+            </div>
+            <div class="seperatorBigCard"></div>
+            <div class="textContainerBigCard">
+              <span class="dateText">October 16, 2024</span>
+              <span class="deadlineText">Upcoming Deadline</span>
+            </div>
+          </a>
+        </div>
+        <div class="summary-card-small-container">
+          <a href="board.html" class="summaryCardSmall">
+            <div class="iconContainer">
+              <div class="textContainer">
+                <span class="numberContainer">2</span>
+                <span>Tasks in Progress</span>
+              </div>
+            </div>
+          </a>
+          <a href="board.html" class="summaryCardSmall">
+            <div class="iconContainer">
+              <div class="textContainer">
+                <span class="numberContainer">2</span>
+                <span>Awaiting Feedback</span>
+              </div>
+            </div>
+          </a>
+          <a href="board.html" class="summaryCardSmall">
+            <div class="iconContainer">
+              <div class="textContainer">
+                <span class="numberContainer">5</span>
+                <span>Tasks in Board</span>
+              </div>
+            </div>
+          </a>
+        </div>
       </div>
       <div class="greeting-container">
-          <span class="greetText" id="greetText">Hello</span>
-          <span class="greetUserName" id="greetUserName">User</span>
+        <span class="greetText" id="greetText">Hello</span>
+        <span class="greetUserName" id="greetUserName">User</span>
       </div>
-  </div>
+    </div>
   </body>
 </html>

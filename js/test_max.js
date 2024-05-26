@@ -10,7 +10,7 @@ let status = ['toDo', 'in Progress', 'awaitFeedback', 'done'];
 let currentDraggedElement;
 
 function updateProgressBar() {
-  let percent = (currentSubtask + 1) / tasks['subtask'].length;
+  let percent = (currentSubtask + 1) / tasks.subtask.length;
   percent = Math.round(percent * 100);
   document.getElementById('subtaskProgress-bar').innerHTML = `${percent} %`;
   document.getElementById('subtaskProgress-bar').style = `width: ${percent}%;`;
@@ -37,7 +37,7 @@ function updateTasksByStatus(status, elementId) {
   }
 }
 
-function renderSmallCardHTML(task, i) {
+function renderSmallCardHTML(task) {
   return /*html*/ `
     <div draggable="true" ondragstart="startDragging(${task.cardId})" id="${task.cardId}" class="smallcard" onclick="showBigCard(${task.cardId})">
       <div class="category">
@@ -176,8 +176,8 @@ function showBigCard(cardId) {
 
 // Function to close the image
 
-function renderBigCardHTML(i) {
-  let task = tasks.find((t) => t.cardId == i);
+function renderBigCardHTML(cardId) {
+  let task = tasks.find((t) => t.cardId == cardId);
 
   return /*html*/ `
     <div id="bigCard${task.cardId}" class="bigCard"  onclick="dontClose()">
@@ -219,7 +219,7 @@ function renderBigCardHTML(i) {
         </div>
       </div>
       <div class="bigCard-edit">
-        <div id="bigDelete" class="big-delete" onclick="deleteTask(${task.cardId})">
+        <div id="bigDelete" class="big-delete" onclick="deleteTaskOfBoard(${task.cardId})">
           <img  src="../assets/icons/delete_contact_icon.svg" alt="">
           <span>Delete</span>
         </div>
@@ -288,19 +288,21 @@ function dontClose() {
   event.stopPropagation();
 }
 
-async function deleteTaskofBoard(cardId) {
+async function deleteTaskOfBoard(cardId) {
   await deleteTask(cardId);
   closeBigCard();
+  // Remove the task from the local 'tasks' array
+  tasks = tasks.filter((task) => task.cardId !== cardId);
   updateHTML();
 }
 
 async function deleteTask(cardId) {
   let tasksJSON = await loadData('tasks');
-  for (key in tasksJSON) {
+  for (let key in tasksJSON) {
     let task = tasksJSON[key];
     if (task.cardId == cardId) {
       await deleteData(`tasks/${key}`);
-      console.log(task);
+      console.log('Deleted task:', task);
     }
   }
 }

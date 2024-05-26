@@ -17,6 +17,14 @@
   width: 100%;
 }
 
+.title {
+  word-break: break-word;
+}
+
+.description {
+  word-break: break-word;
+}
+
 .showBigCard {
   display: flex;
   flex-direction: column;
