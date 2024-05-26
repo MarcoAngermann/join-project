@@ -219,7 +219,7 @@ function renderBigCardHTML(i) {
         </div>
       </div>
       <div class="bigCard-edit">
-        <div id="bigDelete" class="big-delete" onclick="deleteTask(${task.cardId})">
+        <div id="bigDelete" class="big-delete" onclick="deleteTaskOfBoard(${task.cardId})">
           <img  src="../assets/icons/delete_contact_icon.svg" alt="">
           <span>Delete</span>
         </div>
@@ -288,19 +288,21 @@ function dontClose() {
   event.stopPropagation();
 }
 
-async function deleteTaskofBoard(cardId) {
-  deleteTask(cardId);
+async function deleteTaskOfBoard(cardId) {
+  await deleteTask(cardId);
   closeBigCard();
-  initBoard();
+  // Remove the task from the local 'tasks' array
+  tasks = tasks.filter((task) => task.cardId !== cardId);
+  updateHTML();
 }
 
 async function deleteTask(cardId) {
   let tasksJSON = await loadData('tasks');
-  for (key in tasksJSON) {
+  for (let key in tasksJSON) {
     let task = tasksJSON[key];
     if (task.cardId == cardId) {
       await deleteData(`tasks/${key}`);
-      console.log(task);
+      console.log('Deleted task:', task);
     }
   }
 }

@@ -71,13 +71,14 @@ function showSmallUsersEmblem(task) {
   let renderedCount = 0;
   let extraCount = 0;
 
-  for (let j = 0; j < users.length; j++) {
-    if (users[j].userId == 0) continue;
+  // Überprüfen Sie, ob die userId-Array existiert und nicht leer ist
+  if (task.userId && task.userId.length > 0) {
+    for (let userId of task.userId) {
+      if (userId == 0) continue; // Überspringen, wenn userId 0 ist
 
-    for (let k = 0; k < task.userId.length; k++) {
-      if (users[j].userId == task.userId[k]) {
+      let user = users.find((u) => u.userId == userId);
+      if (user) {
         if (renderedCount < 5) {
-          let user = users[j];
           smallUsersEmblem.innerHTML += renderSmallUsersEmblem(user);
           renderedCount++;
         } else {
@@ -86,6 +87,7 @@ function showSmallUsersEmblem(task) {
       }
     }
   }
+
   if (extraCount > 0) {
     smallUsersEmblem.innerHTML += renderGreyEmblem(extraCount);
   }
@@ -109,10 +111,11 @@ function renderSmallSubtasks(task) {
   let smallSubtask = document.getElementById(
     `subtaskProgress-bar${task.cardId}`
   );
-
-  for (let j = 0; j < task.subtask.length; j++) {
-    const subtask = task.subtask[j];
-    smallSubtask.innerHTML += renderSmallSubtasksHTML(subtask); // Append each subtask's HTML to the string
+  if (task.subtask && task.subtask.length > 0) {
+    for (let j = 0; j < task.subtask.length; j++) {
+      const subtask = task.subtask[j];
+      smallSubtask.innerHTML += renderSmallSubtasksHTML(subtask); // Append each subtask's HTML to the string
+    }
   }
 }
 
@@ -286,7 +289,7 @@ function dontClose() {
 }
 
 async function deleteTaskofBoard(cardId) {
-  deleteTask(cardId);
+  await deleteTask(cardId);
   closeBigCard();
   updateHTML();
 }
@@ -301,25 +304,3 @@ async function deleteTask(cardId) {
     }
   }
 }
-//Umbauen für die Progressbar
-
-//function showUsersEmblem() {
-//  let usersEmblem = document.getElementById('usersEmblem');
-//  usersEmblem.innerHTML = '';
-//  for (let i = 0; i < users.length; i++) {
-//    if (users[i]['userId'] == 0) continue;
-//    contact = users[i];
-//    let checkedContact = document.getElementById(`checkbox${i}`);
-//    if (checkedContact.checked == true) {
-//      usersEmblem.innerHTML += renderEmblemUsers(contact);
-//    }
-//  }
-//}
-// progress bar für die smallCard subtasks
-
-// search funktion
-// mobile verschiebung, da auf mobile Drag and Drop nicht funktioniert
-
-// edit funktion bei bigcard (zwischenspeichern wie bei edit add task)
-// delete funktion bei bigcard (wie bei add task)
-// add task funktionen (einzelne statuse + die Allgemeine add task Funktion)
