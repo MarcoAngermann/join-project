@@ -31,13 +31,13 @@ function updateTasksByStatus(status, elementId) {
   boardCard.innerHTML = '';
 
   for (let i = 0; i < filteredTasks.length; i++) {
-    (boardCard.innerHTML += renderSmallCardHTML(filteredTasks[i])),
+    (boardCard.innerHTML += renderSmallCardHTML(filteredTasks[i], i)),
       showSmallUsersEmblem(filteredTasks[i]),
       renderSmallSubtasks(filteredTasks[i]);
   }
 }
 
-function renderSmallCardHTML(task) {
+function renderSmallCardHTML(task, i) {
   return /*html*/ `
     <div draggable="true" ondragstart="startDragging(${task.cardId})" id="${task.cardId}" class="smallcard" onclick="showBigCard(${task.cardId})">
       <div class="category">
@@ -71,13 +71,14 @@ function showSmallUsersEmblem(task) {
   let renderedCount = 0;
   let extraCount = 0;
 
-  for (let j = 0; j < users.length; j++) {
-    if (users[j].userId == 0) continue;
+  // Überprüfen Sie, ob die userId-Array existiert und nicht leer ist
+  if (task.userId && task.userId.length > 0) {
+    for (let userId of task.userId) {
+      if (userId == 0) continue; // Überspringen, wenn userId 0 ist
 
-    for (let k = 0; k < task.userId.length; k++) {
-      if (users[j].userId == task.userId[k]) {
+      let user = users.find((u) => u.userId == userId);
+      if (user) {
         if (renderedCount < 5) {
-          let user = users[j];
           smallUsersEmblem.innerHTML += renderSmallUsersEmblem(user);
           renderedCount++;
         } else {
@@ -86,6 +87,7 @@ function showSmallUsersEmblem(task) {
       }
     }
   }
+
   if (extraCount > 0) {
     smallUsersEmblem.innerHTML += renderGreyEmblem(extraCount);
   }
@@ -109,10 +111,11 @@ function renderSmallSubtasks(task) {
   let smallSubtask = document.getElementById(
     `subtaskProgress-bar${task.cardId}`
   );
-
-  for (let j = 0; j < task.subtask.length; j++) {
-    const subtask = task.subtask[j];
-    smallSubtask.innerHTML += renderSmallSubtasksHTML(subtask); // Append each subtask's HTML to the string
+  if (task.subtask && task.subtask.length > 0) {
+    for (let j = 0; j < task.subtask.length; j++) {
+      const subtask = task.subtask[j];
+      smallSubtask.innerHTML += renderSmallSubtasksHTML(subtask); // Append each subtask's HTML to the string
+    }
   }
 }
 
@@ -161,18 +164,21 @@ function closeBigCard() {
   document.getElementById('showBigCard').classList.add('dnone');
 }
 
-function showBigCard(i) {
+function showBigCard(cardId) {
+  console.log(cardId);
   document.getElementById('showBigCard').classList.remove('dnone');
   let content = document.getElementById('showBigCard');
   content.innerHTML = '';
-  content.innerHTML = renderBigCardHTML(i);
-  showBigUsersEmblem(i), renderBigSubtasks(i);
+  content.innerHTML = renderBigCardHTML(cardId);
+  showBigUsersEmblem(cardId);
+  renderBigSubtasks(cardId);
 }
 
 // Function to close the image
 
 function renderBigCardHTML(i) {
-  let task = tasks[i];
+  let task = tasks.find((t) => t.cardId == i);
+
   return /*html*/ `
     <div id="bigCard${task.cardId}" class="bigCard"  onclick="dontClose()">
       <div class="big-header">
@@ -213,7 +219,7 @@ function renderBigCardHTML(i) {
         </div>
       </div>
       <div class="bigCard-edit">
-        <div id="bigDelete" class="big-delete" onclick="deleteTask(${i})">
+        <div id="bigDelete" class="big-delete" onclick="deleteTask(${task.cardId})">
           <img  src="../assets/icons/delete_contact_icon.svg" alt="">
           <span>Delete</span>
         </div>
@@ -227,18 +233,17 @@ function renderBigCardHTML(i) {
   `;
 }
 
-function showBigUsersEmblem(i) {
+async function showBigUsersEmblem(cardId) {
   let bigUsersEmblem = document.getElementById('bigUsersEmblem');
   bigUsersEmblem.innerHTML = '';
+  const task = tasks.find((t) => t.cardId == cardId);
+  if (task && task.userId) {
+    for (let userId of task.userId) {
+      if (userId == 0) continue; // Skip if userId is 0
 
-  for (let j = 0; j < users.length; j++) {
-    if (users[j].userId == 0) continue;
-
-    for (let k = 0; k < tasks[i]['userId'].length; k++) {
-      if (users[j].userId == tasks[i].userId[k]) {
-        let user = users[j];
+      let user = users.find((u) => u.userId == userId);
+      if (user) {
         bigUsersEmblem.innerHTML += renderBigEmblemUsers(user);
-        break;
       }
     }
   }
@@ -255,12 +260,16 @@ function renderBigEmblemUsers(user) {
   `;
 }
 
-function renderBigSubtasks(i) {
-  let bigSubtask = document.getElementById(`bigSubtasks`);
+function renderBigSubtasks(cardId) {
+  let bigSubtask = document.getElementById('bigSubtasks');
+  bigSubtask.innerHTML = ''; // Clear existing subtasks
 
-  for (let j = 0; j < tasks[i].subtask.length; j++) {
-    const subtask = tasks[i].subtask[j];
-    bigSubtask.innerHTML += renderBigSubtasksHTML(subtask, j); // Append each subtask's HTML to the string
+  const task = tasks.find((t) => t.cardId == cardId);
+  if (task && task.subtask) {
+    for (let j = 0; j < task.subtask.length; j++) {
+      const subtask = task.subtask[j];
+      bigSubtask.innerHTML += renderBigSubtasksHTML(subtask, j); // Append each subtask's HTML to the string
+    }
   }
 }
 
@@ -269,7 +278,7 @@ function renderBigSubtasksHTML(subtask, j) {
       <label for="checkbox${j}">
           <li class="bigSubtaskList">
               <input type="checkbox" id="checkbox${j}">
-              <div class="contactName">${subtask}</div>         
+              <div class="contactName">${subtask}</div>
           </li>
       </label>
   `;
@@ -282,7 +291,7 @@ function dontClose() {
 async function deleteTaskofBoard(cardId) {
   deleteTask(cardId);
   closeBigCard();
-  updateHTML();
+  initBoard();
 }
 
 async function deleteTask(cardId) {
@@ -295,25 +304,3 @@ async function deleteTask(cardId) {
     }
   }
 }
-//Umbauen für die Progressbar
-
-//function showUsersEmblem() {
-//  let usersEmblem = document.getElementById('usersEmblem');
-//  usersEmblem.innerHTML = '';
-//  for (let i = 0; i < users.length; i++) {
-//    if (users[i]['userId'] == 0) continue;
-//    contact = users[i];
-//    let checkedContact = document.getElementById(`checkbox${i}`);
-//    if (checkedContact.checked == true) {
-//      usersEmblem.innerHTML += renderEmblemUsers(contact);
-//    }
-//  }
-//}
-// progress bar für die smallCard subtasks
-
-// search funktion
-// mobile verschiebung, da auf mobile Drag and Drop nicht funktioniert
-
-// edit funktion bei bigcard (zwischenspeichern wie bei edit add task)
-// delete funktion bei bigcard (wie bei add task)
-// add task funktionen (einzelne statuse + die Allgemeine add task Funktion)
