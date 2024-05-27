@@ -1,34 +1,46 @@
-/*html*/ `
-    <form class="board-add-task-container" onsubmit="createNewTask(event);">
-    <div class="board-groupTask1-input">
+function renderBoardAddTaskHTML(boardStatus) {
+  console.log(boardStatus);
+  return /*html*/ `
+  <div class="main-container">
+    <h1 class="headline-task">Add Task</h1>
+    <div>
+      <img
+      class="close"
+      onclick="closeBigCard()"
+      src="../assets/icons/close_icon.svg"
+      alt="schließen"
+      />
+    </div>
+  <form class="add-task-container" onsubmit="createNewTaskBoard(${boardStatus},event); return false;">
+    <div class="groupTask1-input">
       <span>Title<span class="required-color">*</span></span>
-      <input id="boardTitle" type="text" required />
+      <input id="title" type="text" required />
       <span>Description</span>
-      <textarea name="" id="boardDescription" cols="30" rows="5"></textarea>
+      <textarea name="" id="description" cols="30" rows="5"></textarea>
       <span>Assigned to</span>
 
 
 
-      <div onclick="showUsers()" class="board-contact-container">
+      <div onclick="showUsers()" class="contactContainer">
         <span>Select user to assign</span>
-        <img id="boardArrowDownUser" src="../assets/icons/arrow_down_icon.svg" alt="">
-        <img id="boardArrowUpUser" src="../assets/icons/arrow_up_icon.svg" style="display: none;">
+        <img id="arrowDownUser" src="../assets/icons/arrow_down_icon.svg" alt="">
+        <img id="arrowUpUser" src="../assets/icons/arrow_up_icon.svg" style="display: none;">
       </div>
-        <div id="boardUsersEmblem" class="board-users-emblem"></div>
-        <ul id=boardUsers" class="boardUsers"></ul>
+      <div id="usersEmblem" class="usersEmblem"></div>
+      <ul id="boardUsers" class="users"></ul>
       <div>
-        <p class="board-required-field-text">
-          <span class="board-required-color">*</span>This field is required
+        <p class="required-field-text">
+          <span class="required-color">*</span>This field is required
         </p>
       </div>
     </div>
-    <div class="board-seperator"></div>
-    <div class="board-groupTask2-input">
+    <div class="seperator"></div>
+    <div class="groupTask2-input">
       <span>Due date<span class="required-color">*</span></span>
       <input id="date" type="date" required />
       <span>Prio</span>
-      <div class="board-prio-container">
-        <div class="board-prioBtn" id="boardUrgentPrio" onclick="togglePriority('urgent')">
+      <div class="prio-container">
+        <div class="prioBtn" id="urgentPrio" onclick="togglePriority('urgent')">
           Urgent
           <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -39,7 +51,7 @@
               fill="#FF3D00" />
           </svg>
         </div>
-        <div class="board-prioBtn board-midBtn-Color" id="boardMidPrio"  onclick="togglePriority('medium')">
+        <div class="prioBtn midBtn-Color" id="midPrio"  onclick="togglePriority('medium')">
           Medium
           <svg width="21" height="8" viewBox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -50,7 +62,7 @@
               fill="white" />
           </svg>
         </div>
-        <div class="board-prioBtn" id="boardLowPrio" onclick="togglePriority('low')">
+        <div class="prioBtn" id="lowPrio" onclick="togglePriority('low')">
           Low
           <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -62,44 +74,44 @@
           </svg>
         </div>
       </div>
-      <span>Category<span class="board-required-color">*</span></span>
+      <span>Category<span class="required-color">*</span></span>
 
 
 
 
-      <div onclick="showCategories()" class="board-contact-container">
-        <span id="boardSelectedCategory">Select task category</span>
-        <img id="boardArrowDownCategory" src="../assets/icons/arrow_down_icon.svg" alt="">
-        <img id="boardArrowUpCategory" src="../assets/icons/arrow_up_icon.svg" style="display: none;">       
+      <div onclick="showCategories()" class="contactContainer">
+        <span id="selectedCategory">Select task category</span >
+        <img id="arrowDownCategory" src="../assets/icons/arrow_down_icon.svg" alt="">
+        <img id="arrowUpCategory" src="../assets/icons/arrow_up_icon.svg" style="display: none;">
       </div>
-      <ul id="boardTasks" class="board-tasks"></ul>
+      <ul id="boardTasks" class="tasks"></ul>
 
 
       
-      <span class="board-subtask-label">Subtask</span>
+      <span class="subtaskLabel">Subtask</span>
 
-        <div class="board-subtask-container" id="boardSubtaskContainer">
+        <div class="subtask-container" id="subtaskContainer">
           <input
             type="text"
-            id="boardSubtaskInput"
+            id="subtaskInput"
             placeholder="Add new subtask"
             onclick="changeButtonsSubtask()"
           />
-          <div class="board-subtask-right">
-            <div id="boardSubtaskRightAdd" class="board-subtask-right-add dnone">
-              <img 
+          <div class="subtask-right">
+            <div id="subtask-right-add" class="subtask-right-add dnone">
+              <img
                 onclick="removeSubtask()"
                 src="../assets/icons/cancel.svg"
                 alt=""
               />
-              <div class="board-subtask-right-seperator"></div>
+              <div class="subtask-right-seperator"></div>
               <img
                 onclick="addSubtask()"
                 src="../assets/icons/check.svg"
                 alt=""
               />
             </div>
-            <div id="boardSubtaskRightRegular" class="board-subtask-right-regular">
+            <div id="subtask-right-regular" class="subtask-right-regular">
               <img
                 onclick="changeButtonsSubtask()"
                 src="../assets/icons/add.svg"
@@ -109,18 +121,20 @@
           </div>
         </div>
 
-        <div id="boardSubtask" class="board-subtask"></div>
-        <div type="submit" class="board-addTaskBtn-Container">
-          <button formnovalidate class="board-btnClear" onclick="clearAllTasks(event)">
+        <div id="subtask" class="subtask"></div>
+        <div type="submit" class="addTaskBtn-Container">
+          <button formnovalidate class="btnClear" onclick="clearAllTasks(event)">
             Clear
-            <img class="board-iconCancelSvg" src="../assets/icons/cancel.svg">           
+            <img class="iconCancelSvg" src="../assets/icons/cancel.svg">
           </button>
-          <button class="board-btnTask">
+          <button class="btnTask" type="submit">
             Create Task
-            <img src="..//assets/icons/checkWhite.svg">           
+            <img src="..//assets/icons/checkWhite.svg">
           </button>
         </div>
         </div>
       </div>
-    </form>
-`;
+  </form>
+</div>
+  `;
+}

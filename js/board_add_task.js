@@ -1,13 +1,23 @@
-async function initBoardAdd() {
-  restrictPastDate();
-  includeHTML();
-  await usersArray();
-  await tasksArray();
-  renderUsers();
-  renderCategorys();
+let subtaskList = [];
+
+function boardAddTask(boardStatus) {
+  showBoardAddTask(boardStatus);
 }
 
-let boardSubtasklist = [];
+function showBoardAddTask(boardStatus) {
+  console.log(boardStatus);
+  document.getElementById('boardAddTask').classList.remove('dnone');
+  let content = document.getElementById('boardAddTask');
+  content.innerHTML = '';
+  content.innerHTML = renderBoardAddTaskHTML(boardStatus);
+  renderUsers();
+  renderCategorys();
+  restrictPastDate();
+}
+
+function closeAddTask() {
+  document.getElementById('showBoardAddTask').classList.add('dnone');
+}
 
 function resetElements(elements) {
   for (let i = 0; i < elements.length; i++) {
@@ -76,27 +86,27 @@ window.onload = function () {
 };
 
 function renderUsers() {
-  let user = document.getElementById('boardUsers');
+  let content = document.getElementById('boardUsers');
 
   for (let i = 0; i < users.length; i++) {
     if (users[i].userId == 0) continue;
     const user = users[i];
-    user.innerHTML += renderUsersHTML(user, i);
+    content.innerHTML += renderUsersHTML(user, i);
   }
 }
 
 function renderUsersHTML(user, i) {
   return /*html*/ `
-        <label for="checkbox${i}">
-            <li class="board-contactlist">        
-                <div tabindex="0" class="emblem" style="background-color: ${user.color}">
-                  ${user.emblem}
-                </div> 
-                <div class="board-contact-name" >${contact.name}</div> 
-                <input class="board-user-checkbox" onclick="showUsersEmblem()" type="checkbox" id="checkbox${i}" data-userid="${contact.userId}">          
-            </li>
-        </label>
-          `;
+      <label for="checkbox${i}">
+          <li class="contactList">        
+              <div tabindex="0" class="emblem" style="background-color: ${user.color}">
+                ${user.emblem}
+              </div> 
+              <div class="contactName" >${user.name}</div> 
+              <input class="user-checkbox" onclick="showUsersEmblem()" type="checkbox" id="checkbox${i}" data-userid="${user.userId}">          
+          </li>
+      </label>
+        `;
 }
 
 function renderCategorys() {
@@ -108,48 +118,48 @@ function renderCategorys() {
 }
 function renderCategorysHTML(i) {
   return /*html*/ `
-            <li class="board-contactList">
-                  <span for="">
-                      <div tabindex="0" onclick="selectCategory(${i})">
-                        ${categorys[i]}
-                      </div>
-                  </span>
-              </li>
-          `;
+          <li class="contactList">
+                <span for="">
+                    <div tabindex="0" onclick="selectCategory(${i})">
+                      ${categorys[i]}
+                    </div>
+                </span>
+            </li>
+        `;
 }
 
 function showCategories() {
   if (document.getElementById('boardTasks').classList.contains('show')) {
     document.getElementById('boardTasks').classList.remove('show');
-    document.getElementById('boardArrowDownCategory').style.display = 'block';
-    document.getElementById('boardArrowUpCategory').style.display = 'none';
+    document.getElementById('arrowDownCategory').style.display = 'block';
+    document.getElementById('arrowUpCategory').style.display = 'none';
   } else {
     document.getElementById('boardTasks').classList.add('show');
-    document.getElementById('boardArrowDownCategory').style.display = 'none';
-    document.getElementById('boardArrowUpCategory').style.display = 'block';
+    document.getElementById('arrowDownCategory').style.display = 'none';
+    document.getElementById('arrowUpCategory').style.display = 'block';
   }
 }
 
 function selectCategory(index) {
   let selectedCategory = categorys[index];
-  document.getElementById('boardSelectedCategory').innerHTML = selectedCategory;
+  document.getElementById('selectedCategory').innerHTML = selectedCategory;
   showCategories(); // Hide the category list after selection
 }
 
 function restrictPastDate() {
-  let dateInput = document.getElementById('boardDate');
+  let dateInput = document.getElementById('date');
   let today = new Date().toISOString().split('T')[0];
   dateInput.setAttribute('min', today);
 }
 function showUsersEmblem() {
-  let usersEmblem = document.getElementById('boardUsersEmblem');
+  let usersEmblem = document.getElementById('usersEmblem');
   usersEmblem.innerHTML = '';
   let renderedCount = 0;
   let extraCount = 0;
   for (let i = 0; i < users.length; i++) {
     if (users[i]['userId'] == 0) continue;
     let contact = users[i];
-    let checkedContact = document.getElementById(`boardCheckbox${i}`);
+    let checkedContact = document.getElementById(`checkbox${i}`);
     if (checkedContact.checked == true) {
       if (renderedCount < 5) {
         usersEmblem.innerHTML += renderEmblemUsers(contact);
@@ -172,66 +182,64 @@ function renderGreyEmblem(remainingCount) {
   return `<div class="grey-emblem">+${remainingCount}</div>`;
 }
 
-function renderEmblemUsers(user) {
+function renderEmblemUsers(contact) {
   return /*html*/ `
-        <div class="board-emblem" style="background-color: ${user.color}" id="${user.userId}">
-        ${user.emblem}
-      </div>  `;
+      <div class="emblem" style="background-color: ${contact['color']}" id="${contact['userId']}">
+      ${contact['emblem']}
+    </div>  `;
 }
 
 function showUsers() {
   if (document.getElementById('boardUsers').classList.contains('show')) {
     document.getElementById('boardUsers').classList.remove('show');
-    document.getElementById('boardArrowDownUser').style.display = 'block';
-    document.getElementById('boardArrowUpUser').style.display = 'none';
+    document.getElementById('arrowDownUser').style.display = 'block';
+    document.getElementById('arrowUpUser').style.display = 'none';
   } else {
     document.getElementById('boardUsers').classList.add('show');
-    document.getElementById('boardArrowDownUser').style.display = 'none';
-    document.getElementById('boardArrowUpUser').style.display = 'block';
+    document.getElementById('arrowDownUser').style.display = 'none';
+    document.getElementById('arrowUpUser').style.display = 'block';
   }
 }
 
 // Max Subtaks Functions
 function changeButtonsSubtask() {
   if (subtaskList.length < 5) {
-    document.getElementById('boardSubtaskRightRegular').classList.add('dnone');
-    document.getElementById('boardSubtaskRightAdd').classList.remove('dnone');
+    document.getElementById('subtask-right-regular').classList.add('dnone');
+    document.getElementById('subtask-right-add').classList.remove('dnone');
   } else {
-    document.getElementById('boardSubtaskInput').style =
+    document.getElementById('subtaskInput').style =
       'color:red; font-weight:bold;';
-    document.getElementById('boardSubtaskInput').readOnly = true;
-    document.getElementById('boardSubtaskInput').value = 'Maximal 5 Subtasks!';
-    document.getElementById('boardSubtaskContainer').style.border =
-      '1px solid red';
+    document.getElementById('subtaskInput').readOnly = true;
+    document.getElementById('subtaskInput').value = 'Maximal 5 Subtasks!';
+    document.getElementById('subtaskContainer').style.border = '1px solid red';
   }
 }
 
 function removeSubtask() {
-  subtask = document.getElementById('boardSubtaskInput');
+  subtask = document.getElementById('subtaskInput');
   subtask.value = '';
-  document.getElementById('boardSubtaskRightRegular').classList.remove('dnone');
-  document.getElementById('boardSubtaskRightAdd').classList.add('dnone');
+  document.getElementById('subtask-right-regular').classList.remove('dnone');
+  document.getElementById('subtask-right-add').classList.add('dnone');
 }
 
 function removeIcons() {
-  document.getElementById('boardSubtaskRightRegular').classList.remove('dnone');
-  document.getElementById('boardSubtaskRightAdd').classList.add('dnone');
+  document.getElementById('subtask-right-regular').classList.remove('dnone');
+  document.getElementById('subtask-right-add').classList.add('dnone');
 }
 
 function addSubtask() {
-  let input = document.getElementById('boardSubtaskInput').value;
+  let input = document.getElementById('subtaskInput').value;
   if (input == '') {
-    document.getElementById('boardSubtaskInput').placeholder =
+    document.getElementById('subtaskInput').placeholder =
       'Bitte etwas eingeben!';
     return;
   }
   // Überprüfe, ob bereits 5 Subtasks vorhanden sind
   if (subtaskList.length < 5) {
-    document.getElementById('boardSubtaskInput').placeholder =
-      'Add new Subtask';
+    document.getElementById('subtaskInput').placeholder = 'Add new Subtask';
     subtaskList.push(input);
     renderSubtask();
-    document.getElementById('boardSubtaskInput').value = '';
+    document.getElementById('subtaskInput').value = '';
     removeSubtask();
   }
 }
@@ -239,10 +247,10 @@ function addSubtask() {
 function deleteSubtask(i) {
   subtaskList.splice(i, 1);
   renderSubtask();
-  document.getElementById('boardSubtaskInput').value = '';
-  document.getElementById('boardSubtaskInput').readOnly = false;
-  document.getElementById('boardSubtaskInput').style = 'color:black;';
-  document.getElementById('boardSubtaskContainer').style.border =
+  document.getElementById('subtaskInput').value = '';
+  document.getElementById('subtaskInput').readOnly = false;
+  document.getElementById('subtaskInput').style = 'color:black;';
+  document.getElementById('subtaskContainer').style.border =
     '1px solid #d1d1d1';
 }
 
@@ -256,67 +264,67 @@ function renderSubtask() {
 
 function renderSubtaskHTML(i) {
   return /*html*/ `
-    <div class="board-subtasklist" id="boardMainSubtaskContainer${i}">
+    <div class="subtaskList" id="mainSubtask-container${i}">
             <input
-                readonly
-                type="text"
-                id="boardSubtasklist${i}"
-                value="${boardSubtasklist[i]}"
-                />
-            <div class="board-edit-images" id="boardEditImages${i}">
-                <img onclick="editSubtask(${i})" id=boardEditSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
+              readonly
+              type="text"
+              id="subtaskList${i}"
+              value="${subtaskList[i]}"
+              />
+              <div class="edit-images" id="edit-images${i}">
+                <img onclick="editSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
                 <div class="edit-seperator"></div>
-                    <img onclick="deleteSubtask(${i})" id="boardDeleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
-                </div>
+                <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
+              </div>
             </div>
         </div>
-    `;
+  `;
 }
 
 function editSubtask(i) {
-  document.getElementById(`boardSubtasklist${i}`).readOnly = false;
-  edit = document.getElementById(`boardEditImages${i}`);
+  document.getElementById(`subtaskList${i}`).readOnly = false;
+  edit = document.getElementById(`edit-images${i}`);
   edit.innerHTML = editSubtaskHTML(i);
   document
-    .getElementById(`boardMainSubtaskContainer${i}`)
-    .classList.remove('boardSubtasklist');
+    .getElementById(`mainSubtask-container${i}`)
+    .classList.remove('subtaskList');
   document
-    .getElementById(`boardMainSubtaskContainer${i}`)
-    .classList.add('boardEditsubtasklist');
-  document.getElementById(`boardEditImages${i}`).classList.add('flex');
+    .getElementById(`mainSubtask-container${i}`)
+    .classList.add('editsubtaskList');
+  document.getElementById(`edit-images${i}`).classList.add('flex');
 }
 
 function checkSubtask(i) {
-  document.getElementById(`boardSubtasklist${i}`).readOnly = true;
-  edit = document.getElementById(`boardEditImages${i}`);
+  document.getElementById(`subtaskList${i}`).readOnly = true;
+  edit = document.getElementById(`edit-images${i}`);
   edit.innerHTML = checkSubtaskHTML(i);
   document
-    .getElementById(`boardMainSubtaskContainer${i}`)
-    .classList.add('board-subtasklist');
+    .getElementById(`mainSubtask-container${i}`)
+    .classList.add('subtaskList');
   document
-    .getElementById(`boardMainSubtask-container${i}`)
-    .classList.remove('boardEditsubtaskList');
-  document.getElementById(`boardEditImages${i}`).classList.remove('flex');
+    .getElementById(`mainSubtask-container${i}`)
+    .classList.remove('editsubtaskList');
+  document.getElementById(`edit-images${i}`).classList.remove('flex');
 }
 
 function editSubtaskHTML(i) {
   return /*html*/ `
-      <img onclick="deleteSubtask(${i})" id="boardDeleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
-      <div class="board-edit-seperator"></div>
-      <img  onclick="checkSubtask(${i})" id="boardCheckSubtask${i}" src="../assets/icons/check.svg" alt="">
-    `;
+    <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
+    <div class="edit-seperator"></div>
+    <img  onclick="checkSubtask(${i})" id="checkSubtask${i}" src="../assets/icons/check.svg" alt="">
+  `;
 }
 function checkSubtaskHTML(i) {
   return /*html*/ `
-    <img onclick="editSubtask(${i})" id="boardEditSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
-    <div class="board-edit-seperator"></div>
-    <img onclick="deleteSubtask(${i})" id="boardDeleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
-    `;
+    <img onclick="editSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
+    <div class="edit-seperator"></div>
+    <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
+  `;
 }
 
 function getSelectedPrio() {
-  let urgentBtn = document.getElementById('boardUrgentPrio');
-  let lowprioBtn = document.getElementById('boardLowPrio');
+  let urgentBtn = document.getElementById('urgentPrio');
+  let lowprioBtn = document.getElementById('lowPrio');
   if (urgentBtn.classList.contains('selected')) {
     return 'urgent';
   } else if (lowprioBtn.classList.contains('selected')) {
@@ -345,39 +353,29 @@ function createCardId(tasks) {
       lastCardId = tasks[i].cardId;
     }
   }
+  console.log(lastCardId);
   return lastCardId; //
 }
 
-function createAddtask(toDo) {
-  createNewTask(toDo);
-}
-
-function createAddtask(inProgress) {
-  createNewTask(inProgress);
-}
-
-function createAddtask(awaitFeedback) {
-  createNewTask(awaitFeedback);
-}
-//in das createNewTask() kommt später der Status rein also = createNewTask(toDO)...
-async function createNewTask(status) {
-  // event.preventDefault();
+async function createNewTaskBoard(boardStatus, event) {
+  console.log(boardStatus);
+  event.preventDefault();
   let lastCardId = createCardId(tasks);
   let selectedUserIds = getSelectedUserIds();
   task = {
-    title: document.getElementById('boardTitle').value,
-    description: document.getElementById('boardDescription').value,
+    title: document.getElementById('title').value,
+    description: document.getElementById('description').value,
     userId: selectedUserIds,
-    date: document.getElementById('boardDate').value,
+    date: document.getElementById('date').value,
     priority: getSelectedPrio(),
-    category: document.getElementById('boardSelectedCategory').innerHTML,
+    category: document.getElementById('selectedCategory').innerHTML,
     subtask: subtaskList,
-    status: status,
+    status: boardStatus,
     cardId: lastCardId + 1,
   };
   resetUserDisplay();
   await postData('tasks', task);
-  location.href = 'board.html';
+  console.log(task);
   clearAllTasks(event);
 }
 
@@ -385,8 +383,8 @@ function clearAllTasks(event) {
   // Verhindert das Standardverhalten des Buttons (das Absenden des Formulars)
   event.preventDefault();
 
-  document.getElementById('boardTitle').value = '';
-  document.getElementById('boardDescription').value = '';
+  document.getElementById('title').value = '';
+  document.getElementById('description').value = '';
   clearAllCheckbox();
   showUsersEmblem();
   clearDateAndPriority();
@@ -397,41 +395,41 @@ function clearAllTasks(event) {
 }
 
 function clearTitleAndDescription() {
-  document.getElementById('boardTitle').value = '';
-  document.getElementById('boardDescription').value = '';
+  document.getElementById('title').value = '';
+  document.getElementById('description').value = '';
 }
 
 function clearDateAndPriority() {
-  document.getElementById('boardDate').value = '';
+  document.getElementById('date').value = '';
   togglePriority('medium');
 }
 
 function clearSelectedCategory() {
-  document.getElementById('boardSelectedCategory').innerHTML =
+  document.getElementById('selectedCategory').innerHTML =
     'Select task category';
 }
 
 function clearSubtasks() {
   subtaskList = [];
-  document.getElementById('boardSubtaskInput').value = '';
+  document.getElementById('subtaskInput').value = '';
   renderSubtask();
 }
 
 function clearSubtaskInput() {
-  let subtaskInput = document.getElementById('boardSubtaskInput');
+  let subtaskInput = document.getElementById('subtaskInput');
   subtaskInput.value = '';
   subtaskInput.placeholder = 'Add new Subtask';
   subtaskInput.readOnly = false;
   subtaskInput.style.color = 'black';
-  document.getElementById('boardSubtaskContainer').style.border =
+  document.getElementById('subtaskContainer').style.border =
     '1px solid #d1d1d1';
 }
 
 function resetUserDisplay() {
   let users = document.getElementById('boardUsers');
   users.classList.remove('show');
-  document.getElementById('boardArrowDownUser').style.display = 'block';
-  document.getElementById('boardArrowUpUser').style.display = 'none';
+  document.getElementById('arrowDownUser').style.display = 'block';
+  document.getElementById('arrowUpUser').style.display = 'none';
 }
 
 function clearAllCheckbox() {

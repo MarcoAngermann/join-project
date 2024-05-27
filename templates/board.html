@@ -14,7 +14,7 @@
     <script src="../js/board.js" defer></script>
     <script src="../js/firebaseAPI.js"></script>
     <script src="../js/board_add_task.js"></script>
-    <script src="../js/board_add_task_template.js"></script>
+    <script src="../js/board_add_task_template.js" defer></script>
     <title>Join board</title>
   </head>
   <body onload="initBoard()">
@@ -38,7 +38,7 @@
             </div>
           </div>
 
-          <button>
+          <button onclick="boardAddTask('toDo')">
             Add task
             <img src="..//assets/icons/add_icon_white.svg" />
           </button>
@@ -50,6 +50,7 @@
           <div class="todo-head">
             <h3>To Do</h3>
             <img
+              onclick="boardAddTask('toDo')"
               class="plusBtn-svg"
               src="..//assets/icons/plusbuttonBoard.svg"
             />
@@ -66,6 +67,7 @@
           <div class="inProgress-head">
             <h3>In Progress</h3>
             <img
+              onclick="boardAddTask('inProgress')"
               class="plusBtn-svg"
               src="..//assets/icons/plusbuttonBoard.svg"
             />
@@ -83,6 +85,7 @@
           <div class="awaitFeedback-head">
             <h3>Await Feedback</h3>
             <img
+              onclick="boardAddTask('awaitFeedback')"
               class="plusBtn-svg"
               src="..//assets/icons/plusbuttonBoard.svg"
             />
