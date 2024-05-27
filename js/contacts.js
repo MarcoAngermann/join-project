@@ -68,8 +68,8 @@ let mobilWindow = window.matchMedia('(max-width:710px)');
 mobilWindow.addEventListener('change', () => myFunc());
 function myFunc() {
     if (mobilWindow.matches) {
-      document.getElementById("divContactDetails").style.display = "flex";
-      document.getElementById("divContactList").style.display = "none";
+      document.getElementById("divContactDetails").style.display = "none";
+      document.getElementById("divContactList").style.display = "flex";
     } else {
       document.getElementById("divContactDetails").style.display = "flex";
       document.getElementById("divContactList").style.display = "flex";
