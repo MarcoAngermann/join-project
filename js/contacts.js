@@ -30,9 +30,8 @@ function renderListContact() {
     }
     contentList.innerHTML += `
             <div class="divShortContact" onclick="showDetailContact(${i})">
-            <div class="contactEmblem" style="background-color: ${
-              contact['color']
-            }"> ${renderEmblem(contact['name'])} </div>
+            <div class="contactEmblem" style="background-color: ${contact['color']
+      }"> ${renderEmblem(contact['name'])} </div>
             <div class="divShortInfo">
                     <p>${contact['name']}</p>
                     <a>${contact['email']}</a>
@@ -61,15 +60,55 @@ function showDetailContact(i) {
   infoContact.offsetWidth;
   infoContact.classList.add('move-left');
   infoContact.innerHTML += renderContactinList(i);
+  mobileDetails();
 }
 
+
+let mobilWindow = window.matchMedia('(max-width:710px)');
+mobilWindow.addEventListener('change', () => myFunc());
+function myFunc() {
+    if (mobilWindow.matches) {
+      document.getElementById("divContactDetails").style.display = "flex";
+      document.getElementById("divContactList").style.display = "none";
+    } else {
+      document.getElementById("divContactDetails").style.display = "flex";
+      document.getElementById("divContactList").style.display = "flex";
+    }
+}
+
+
+function mobileDetails() {
+  outWidth = window.outerWidth;
+  if (outWidth <= 710) {
+    document.getElementById("divContactDetails").style.display = "flex";
+    document.getElementById("divContactList").style.display = "none";
+  };
+}
+
+function backMobileContListe() {
+  outWidth = window.outerWidth;
+  if (outWidth <= 710) {
+    document.getElementById("divContactDetails").style.display = "none";
+    document.getElementById("divContactList").style.display = "flex";
+  };
+}
+function openMobileDialog() {
+  let mobileMode = document.getElementById("amobile_nameContact");
+  if (mobileMode.style.display == "none") {
+    mobileMode.style.display = "flex";
+  }
+  else {
+    mobileMode.style.display = "none";
+  }
+
+}
 function renderContactinList(i) {
   return ` 
   <div class="headlineContact">
       <div class="emblemInfo" id="emblem" style="background-color: ${contact['color']}">${contact['emblem']}</div>
       <div class="nameContact">
           ${contact['name']}
-        <div class="a_nameContact">
+        <div class="a_nameContact" id="a_nameContact">
             <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
             <a onclick="deleteContact(${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
         </div>
@@ -81,8 +120,17 @@ function renderContactinList(i) {
     <a id="email_contact">${contact['email']}</a>
     <div><b>Phone</b></div>
     <div id="phone_contact">${contact['phone']}</div>
+  </div>
+  
+  <div class="mobileContact" onclick="openMobileDialog()"><img class="arrow" src="..//assets/icons/menu_ContactOptions.svg" /></div>
+  <div class="amobile_nameContact" id="amobile_nameContact">
+    <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
+    <a onclick="deleteContact( ${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
   </div>`;
 }
+
+
+
 
 function openDialog(newContact, i) {
   let dialog = document.getElementById('dialog');
@@ -109,14 +157,16 @@ function renderContactDialog(title1, functionNew, btnText) {
   return `
 <div class="dialog">
 <div class="joinAddContact">
+<button class="btnMobileClose" onclick="closeDialog()"><img class="imgBtns"
+src="../assets/icons/closeWhite_icon.svg"></button>
   <img class="iconJoinContact" src="../assets/icons/joinWhite.svg">
   <div class="titleContact">${title1}</div>
   <div id="textAdd" class="textAdd">Task are better with a team</div>
   <div class="seperatorAdd"></div>
 </div>
-<div style="margin: 30px;"><img src="../assets/icons/person_icon.svg">
+<div class="iconEdit"><img src="../assets/icons/person_icon.svg">
 </div>
-<div style="height: 100%;">
+<div class="styleDivFormEdit">
   <button class="btnClose" onclick="closeDialog()"><img class="imgBtns"
       src="../assets/icons/cancel.svg"></button>
   <form class="addcontactForm" onsubmit=${functionNew}>
