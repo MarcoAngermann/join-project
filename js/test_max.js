@@ -17,10 +17,10 @@ function updateProgressBar() {
 }
 
 async function updateHTML() {
-  updateTasksByStatus('toDo', 'toDo');
-  updateTasksByStatus('inProgress', 'inProgress');
-  updateTasksByStatus('awaitFeedback', 'awaitFeedback');
-  updateTasksByStatus('done', 'done');
+  updateTasksByStatus('toDo', 'boardToDo');
+  updateTasksByStatus('inProgress', 'boardInProgress');
+  updateTasksByStatus('awaitFeedback', 'boardAwaitFeedback');
+  updateTasksByStatus('done', 'boardDone');
 }
 
 function updateTasksByStatus(status, elementId) {

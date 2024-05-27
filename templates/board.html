@@ -38,7 +38,7 @@
             </div>
           </div>
 
-          <button onclick="boardAddTask('toDo')">
+          <button onclick="showBoardAddTask('toDo')">
             Add task
             <img src="..//assets/icons/add_icon_white.svg" />
           </button>
@@ -50,7 +50,7 @@
           <div class="todo-head">
             <h3>To Do</h3>
             <img
-              onclick="boardAddTask('toDo')"
+              onclick="showBoardAddTask('toDo')"
               class="plusBtn-svg"
               src="..//assets/icons/plusbuttonBoard.svg"
             />
@@ -67,7 +67,7 @@
           <div class="inProgress-head">
             <h3>In Progress</h3>
             <img
-              onclick="boardAddTask('inProgress')"
+              onclick="showBoardAddTask('inProgress')"
               class="plusBtn-svg"
               src="..//assets/icons/plusbuttonBoard.svg"
             />
@@ -85,7 +85,7 @@
           <div class="awaitFeedback-head">
             <h3>Await Feedback</h3>
             <img
-              onclick="boardAddTask('awaitFeedback')"
+              onclick="showBoardAddTask('awaitFeedback')"
               class="plusBtn-svg"
               src="..//assets/icons/plusbuttonBoard.svg"
             />
@@ -114,7 +114,11 @@
         <div onclick="closeBigCard()">
           <div id="showBigCard" class="showBigCard dnone"></div>
         </div>
-        <div id="boardAddTask" class="board-add-task dnone"></div>
+        <div
+          onclick="closeAddTaskBoard()"
+          id="boardAddTask"
+          class="board-add-task dnone"
+        ></div>
       </section>
     </div>
   </body>

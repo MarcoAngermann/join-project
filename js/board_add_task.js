@@ -1,9 +1,5 @@
 let subtaskList = [];
 
-function boardAddTask(boardStatus) {
-  showBoardAddTask(boardStatus);
-}
-
 function showBoardAddTask(boardStatus) {
   console.log(boardStatus);
   document.getElementById('boardAddTask').classList.remove('dnone');
@@ -375,8 +371,8 @@ async function createNewTaskBoard(boardStatus, event) {
   };
   resetUserDisplay();
   await postData('tasks', task);
-  console.log(task);
   clearAllTasks(event);
+  closeAddTaskBoard();
 }
 
 function clearAllTasks(event) {
@@ -392,6 +388,10 @@ function clearAllTasks(event) {
   clearSubtasks();
   clearSubtaskInput();
   resetUserDisplay();
+}
+
+function closeAddTaskBoard() {
+  document.getElementById('boardAddTask').classList.add('dnone');
 }
 
 function clearTitleAndDescription() {

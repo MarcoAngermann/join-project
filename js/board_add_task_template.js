@@ -1,15 +1,17 @@
 function renderBoardAddTaskHTML(boardStatus) {
   console.log(boardStatus);
   return /*html*/ `
-  <div class="main-container">
-    <h1 class="headline-task">Add Task</h1>
-    <div>
-      <img
-      class="close"
-      onclick="closeBigCard()"
-      src="../assets/icons/close_icon.svg"
-      alt="schließen"
-      />
+  <div class="main-container" onclick="dontClose()">
+    <div class="addTaskTop">
+      <h1 class="headline-task">Add Task</h1>
+      <div>
+        <img
+        class="closeBoard"
+        onclick="closeAddTaskBoard()"
+        src="../assets/icons/close_icon.svg"
+        alt="schließen"
+        />
+      </div>
     </div>
   <form class="add-task-container" onsubmit="createNewTaskBoard(${boardStatus},event); return false;">
     <div class="groupTask1-input">
@@ -127,7 +129,7 @@ function renderBoardAddTaskHTML(boardStatus) {
             Clear
             <img class="iconCancelSvg" src="../assets/icons/cancel.svg">
           </button>
-          <button class="btnTask" type="submit">
+          <button class="btnTask">
             Create Task
             <img src="..//assets/icons/checkWhite.svg">
           </button>
