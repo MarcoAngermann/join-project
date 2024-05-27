@@ -516,12 +516,14 @@ input[type='checkbox'] {
     margin-top: 150px;
     margin-left: 120px;
   }
+}
 
   @media (max-width: 1190px) {
     .main-container {
       margin-top: 150px;
       margin-left: 50px;
     }
+  }
 
 @media (max-width: 960px) {
   .headline-task{
@@ -566,15 +568,12 @@ input[type='checkbox'] {
   .headline-task {
     font-size: 48px;
     margin-right: 80px;
-    
   }
   .groupTask1-input{
     width: 300px;
-   
   }
   .groupTask2-input {
     width: 300px;
-
   }
   .headline-task {
     margin-right: 80px;
@@ -582,8 +581,6 @@ input[type='checkbox'] {
   .main-container {
     align-items: normal;
   }
-
-  
   .tasks {
     top: 785px;
   }
@@ -591,7 +588,6 @@ input[type='checkbox'] {
   .users {
     top: 505px;
   }
-
   .groupTask1-input input {
     width: 100%;
   }
@@ -604,19 +600,15 @@ input[type='checkbox'] {
   .add-task-container {
     width: 100%;
   }
-
   #date {
     width: 100%;
   }
-
   .subtask-container {
     width: 100%;
   }
-
   .prioBtn {
     font-size: 13px;
   }
-    
   .tasks {
     top: 771px;
     width: 300px;
@@ -628,12 +620,10 @@ input[type='checkbox'] {
   .user-checkbox {
     width: 20px !important;
   }
-
   .emblem {
     width: 30px;
     height: 28px;
   }
-
   .addTaskBtn-Container {
     margin-left: 0px;
   }

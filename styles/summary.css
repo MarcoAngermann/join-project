@@ -190,14 +190,11 @@
 
 @media (max-width: 1425px) {
     .summary-main-container {
-        margin-left: 0px !important;
         display: flex;
         justify-content: center;
     }
 
-    .sidebar {
-        display: none;
-    }
+
 }
 
 @media (max-width: 1400px) {
@@ -282,6 +279,19 @@
 
 }
 
+@media (max-width: 1190px) {
+    .summary-main-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 100px;
+}
+
+    .sidebar {
+        display: none;
+    }
+}
+
 @media (max-width: 1000px) {
     .titleContact {
         font-size: 48px;
@@ -295,6 +305,10 @@
 }
 
 @media (max-width: 900px) {
+
+    .summary-main-container {
+        margin-left: 50px;
+    }
     .greeting-container {
         display: none;
     }
@@ -312,6 +326,9 @@
 }
 
 @media (max-width: 600px) {
+    .summary-main-container {
+        margin-left: 0px;
+    }
     .titleContact {
         font-size: 48px;
     }
