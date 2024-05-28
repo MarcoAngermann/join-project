@@ -373,6 +373,7 @@ async function createNewTaskBoard(boardStatus, event) {
   await postData('tasks', task);
   clearAllTasks(event);
   closeAddTaskBoard();
+  location.href = 'board.html';
 }
 
 function clearAllTasks(event) {
