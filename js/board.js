@@ -5,7 +5,7 @@ async function initBoard() {
   updateHTML();
 }
 
-let board = [];
+let boardEdit = [];
 let status = ['toDo', 'in Progress', 'awaitFeedback', 'done'];
 let currentDraggedElement;
 
@@ -174,8 +174,6 @@ function showBigCard(cardId) {
   renderBigSubtasks(cardId);
 }
 
-// Function to close the image
-
 function renderBigCardHTML(cardId) {
   let task = tasks.find((t) => t.cardId == cardId);
 
@@ -224,7 +222,7 @@ function renderBigCardHTML(cardId) {
           <span>Delete</span>
         </div>
         <div class="seperator"></div>
-        <div id="bigEdit" class="big-edit">
+        <div id="bigEdit" class="big-edit" onclick="editTaskOfBoard(${task.cardId})">
           <img src="../assets/icons/edit-contacts_icon.svg" alt="">
           <span>Edit</span>
         </div>
@@ -328,8 +326,10 @@ function isSearchQueryTooShort(searchQuery) {
 
 function filterTasks(searchQuery) {
   return tasks.filter((task) => {
-    return task.title.toLowerCase().startsWith(searchQuery) ||
-           task.description.toLowerCase().startsWith(searchQuery);
+    return (
+      task.title.toLowerCase().startsWith(searchQuery) ||
+      task.description.toLowerCase().startsWith(searchQuery)
+    );
   });
 }
 
@@ -341,7 +341,7 @@ function clearTaskContainers() {
 }
 
 function renderFilteredTasks(filteredTasks) {
-  filteredTasks.forEach(task => {
+  filteredTasks.forEach((task) => {
     let elementId = getElementIdByStatus(task.status);
     document.getElementById(elementId).innerHTML += renderSmallCardHTML(task);
     showSmallUsersEmblem(task);
@@ -350,7 +350,7 @@ function renderFilteredTasks(filteredTasks) {
 }
 
 function getElementIdByStatus(status) {
-  switch(status) {
+  switch (status) {
     case 'toDo':
       return 'toDo';
     case 'inProgress':
@@ -362,4 +362,38 @@ function getElementIdByStatus(status) {
     default:
       return '';
   }
+}
+
+function editTaskOfBoard(cardId) {
+  let task = tasks.find((t) => t.cardId == cardId);
+  let information = {
+    cardId: cardId,
+    category: task.category,
+    date: task.date,
+    description: task.description,
+    priority: task.priority,
+    status: task.status,
+    title: task.title,
+    subtask: subtaskList,
+  };
+  boardEdit.push(information);
+  console.log(boardEdit);
+
+  document.getElementById('showBigCard').innerHTML = boardAddTaskEdit(cardId);
+}
+
+function closeEditBoard() {
+  document.getElementById('showBigCard').classList.add('dnone');
+  boardEdit = [];
+}
+
+function renderInformation(cardId) {
+  let task = tasks.find((t) => t.cardId == cardId);
+  document.getElementById('title');
+  document.getElementById('');
+  document.getElementById('');
+  document.getElementById('');
+  document.getElementById('');
+  document.getElementById('');
+  document.getElementById('');
 }

@@ -93,6 +93,16 @@ function renderUsers() {
   }
 }
 
+function renderUsers() {
+  let content = document.getElementById('editUsers');
+
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].userId == 0) continue;
+    const user = users[i];
+    content.innerHTML += renderUsersHTML(user, i);
+  }
+}
+
 function renderUsersHTML(user, i) {
   return /*html*/ `
       <label for="checkbox${i}">
@@ -194,6 +204,18 @@ function showUsers() {
     document.getElementById('arrowUpUser').style.display = 'none';
   } else {
     document.getElementById('boardUsers').classList.add('show');
+    document.getElementById('arrowDownUser').style.display = 'none';
+    document.getElementById('arrowUpUser').style.display = 'block';
+  }
+}
+
+function showEditUsers() {
+  if (document.getElementById('editUsers').classList.contains('show')) {
+    document.getElementById('editUsers').classList.remove('show');
+    document.getElementById('arrowDownUser').style.display = 'block';
+    document.getElementById('arrowUpUser').style.display = 'none';
+  } else {
+    document.getElementById('editUsers').classList.add('show');
     document.getElementById('arrowDownUser').style.display = 'none';
     document.getElementById('arrowUpUser').style.display = 'block';
   }

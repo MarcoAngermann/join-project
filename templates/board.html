@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../styles/sidebar.css" />
     <link rel="stylesheet" href="../styles/board.css" />
     <link rel="stylesheet" href="../styles/smallcardPrototype.css" />
-    <link rel="stylesheet" href="../styles/boardAddTask.css" />
+    <!--<link rel="stylesheet" href="../styles/boardAddTask.css" />-->
+    <link rel="stylesheet" href="../styles/boardEditAddTask.css" />
     <link rel="icon" href="../assets/icons/join_icon.svg" />
     <script src="../js/script.js" defer></script>
     <script src="../js/header.js"></script>
@@ -15,6 +16,7 @@
     <script src="../js/firebaseAPI.js"></script>
     <script src="../js/board_add_task.js"></script>
     <script src="../js/board_add_task_template.js" defer></script>
+    <script src="../js/board_add_task_edit_template.js"></script>
     <title>Join board</title>
   </head>
   <body onload="initBoard()">
@@ -27,7 +29,7 @@
         <div class="top-right">
           <div class="input-area">
             <input
-             onkeydown="searchTasks()"
+              onkeydown="searchTasks()"
               id="search"
               type="search"
               placeholder="Find Task"
@@ -111,7 +113,7 @@
             ondragover="allowDrop(event); highlight('done')"
           ></div>
         </div>
-        <div onclick="closeBigCard()">
+        <div onclick="closeBigCard(), closeEditBoard()">
           <div id="showBigCard" class="showBigCard dnone"></div>
         </div>
         <div

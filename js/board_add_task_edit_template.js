@@ -1,9 +1,16 @@
-function boardAddTaskEdit(i) {
+function boardAddTaskEdit(cardId) {
   return /*html*/ `
-    <div class="main-container">
+    <div onclick="dontClose()">
         <form class="add-task-container" onsubmit="createNewTask(event);">
-
-            <span>Title<span class="required-color">*</span></span>
+            <div class="edit-task-header">
+                <span>Title<span class="required-color">*</span></span>
+                <img
+                    class="close-edit-board"
+                    onclick="closeEditBoard()"
+                    src="../assets/icons/close_icon.svg"
+                    alt="schließen"
+                />
+            </div>
             <input id="title" type="text" required />
             <span>Description</span>
             <textarea name="" id="description" cols="30" rows="5"></textarea>
@@ -46,14 +53,16 @@ function boardAddTaskEdit(i) {
                 </div>
             </div>
             <span>Assigned to</span>
-            <div onclick="showUsers()" class="contactContainer">
+            <div onclick="showEditUsers()" class="contactContainer">
                 <span>Select user to assign</span>
                 <img id="arrowDownUser" src="../assets/icons/arrow_down_icon.svg" alt="">
                 <img id="arrowUpUser" src="../assets/icons/arrow_up_icon.svg" style="display: none;">
             </div>
             <div id="usersEmblem" class="usersEmblem"></div>
-            <ul id="users" class="users"></ul>
-            <ul id="tasks" class="tasks"></ul>
+            <ul id="editUsers" class="users"></ul>
+            <!--
+                <ul id="tasks" class="tasks"></ul>
+            -->
             <span class="subtaskLabel">Subtask</span>
             <div class="subtask-container" id="subtaskContainer">
                 <input
