@@ -3,9 +3,11 @@ let subtaskList = [];
 function showBoardAddTask(boardStatus) {
   console.log(boardStatus);
   document.getElementById('boardAddTask').classList.remove('dnone');
+  console.log('Status:', boardStatus);
   let content = document.getElementById('boardAddTask');
   content.innerHTML = '';
   content.innerHTML = renderBoardAddTaskHTML(boardStatus);
+  console.log(boardStatus);
   renderUsers();
   renderCategorys();
   restrictPastDate();
@@ -354,8 +356,8 @@ function createCardId(tasks) {
 }
 
 async function createNewTaskBoard(boardStatus, event) {
-  console.log(boardStatus);
   event.preventDefault();
+  console.log(boardStatus);
   let lastCardId = createCardId(tasks);
   let selectedUserIds = getSelectedUserIds();
   task = {
@@ -373,13 +375,12 @@ async function createNewTaskBoard(boardStatus, event) {
   await postData('tasks', task);
   clearAllTasks(event);
   closeAddTaskBoard();
-  location.href = 'board.html';
+  updateHTML();
 }
 
 function clearAllTasks(event) {
   // Verhindert das Standardverhalten des Buttons (das Absenden des Formulars)
   event.preventDefault();
-
   document.getElementById('title').value = '';
   document.getElementById('description').value = '';
   clearAllCheckbox();
@@ -439,3 +440,12 @@ function clearAllCheckbox() {
     checkboxes[i].checked = false;
   }
 }
+
+// search muss nach titel und nach beschreibung filtern
+// und die gefilterten cards rendern
+
+// progressbar erstellen anhand der subtasks die ich in
+//der bigCard mit den checkboxen anwähle
+
+// status wird nicht richtig übergeben, sondern er schickt den gesamten
+// div container der drag and drop area
