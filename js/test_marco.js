@@ -339,3 +339,40 @@ function clearAllCheckbox() {
     checkboxes[i].checked = false;
   }
 }
+
+// function searchTasks() {
+//   let searchQuery = document.getElementById('search').value.toLowerCase();
+//   if (searchQuery.length < 3) {
+//     updateHTML();
+//     return;
+//   }
+//   let filteredTasks = tasks.filter((task) => {
+//     return task.title.toLowerCase().startsWith(searchQuery) ||
+//            task.description.toLowerCase().startsWith(searchQuery);
+//   });
+//   document.getElementById('toDo').innerHTML = '';
+//   document.getElementById('inProgress').innerHTML = '';
+//   document.getElementById('awaitFeedback').innerHTML = '';
+//   document.getElementById('done').innerHTML = '';
+
+//   filteredTasks.forEach(task => {
+//     let elementId;
+//     switch(task.status) {
+//       case 'toDo':
+//         elementId = 'toDo';
+//         break;
+//       case 'inProgress':
+//         elementId = 'inProgress';
+//         break;
+//       case 'awaitFeedback':
+//         elementId = 'awaitFeedback';
+//         break;
+//       case 'done':
+//         elementId = 'done';
+//         break;
+//     }
+//     document.getElementById(elementId).innerHTML += renderSmallCardHTML(task);
+//     showSmallUsersEmblem(task);
+//     renderSmallSubtasks(task);
+//   });
+// }

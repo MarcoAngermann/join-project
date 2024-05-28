@@ -308,39 +308,58 @@ async function deleteTask(cardId) {
 }
 
 function searchTasks() {
-  let searchQuery = document.getElementById('search').value.toLowerCase();
-  if (searchQuery.length < 3) {
+  let searchQuery = getSearchQuery();
+  if (isSearchQueryTooShort(searchQuery)) {
     updateHTML();
     return;
   }
+  let filteredTasks = filterTasks(searchQuery);
+  clearTaskContainers();
+  renderFilteredTasks(filteredTasks);
+}
 
-  let filteredTasks = tasks.filter((task) => {
+function getSearchQuery() {
+  return document.getElementById('search').value.toLowerCase();
+}
+
+function isSearchQueryTooShort(searchQuery) {
+  return searchQuery.length < 3;
+}
+
+function filterTasks(searchQuery) {
+  return tasks.filter((task) => {
     return task.title.toLowerCase().startsWith(searchQuery) ||
            task.description.toLowerCase().startsWith(searchQuery);
   });
+}
+
+function clearTaskContainers() {
   document.getElementById('toDo').innerHTML = '';
   document.getElementById('inProgress').innerHTML = '';
   document.getElementById('awaitFeedback').innerHTML = '';
   document.getElementById('done').innerHTML = '';
+}
 
+function renderFilteredTasks(filteredTasks) {
   filteredTasks.forEach(task => {
-    let elementId;
-    switch(task.status) {
-      case 'toDo':
-        elementId = 'toDo';
-        break;
-      case 'inProgress':
-        elementId = 'inProgress';
-        break;
-      case 'awaitFeedback':
-        elementId = 'awaitFeedback';
-        break;
-      case 'done':
-        elementId = 'done';
-        break;
-    }
+    let elementId = getElementIdByStatus(task.status);
     document.getElementById(elementId).innerHTML += renderSmallCardHTML(task);
     showSmallUsersEmblem(task);
     renderSmallSubtasks(task);
   });
+}
+
+function getElementIdByStatus(status) {
+  switch(status) {
+    case 'toDo':
+      return 'toDo';
+    case 'inProgress':
+      return 'inProgress';
+    case 'awaitFeedback':
+      return 'awaitFeedback';
+    case 'done':
+      return 'done';
+    default:
+      return '';
+  }
 }
