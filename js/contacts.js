@@ -63,7 +63,6 @@ function showDetailContact(i) {
   mobileDetails();
 }
 
-
 let mobilWindow = window.matchMedia('(max-width:710px)');
 mobilWindow.addEventListener('change', () => myFunc());
 function myFunc() {
@@ -75,7 +74,6 @@ function myFunc() {
       document.getElementById("divContactList").style.display = "flex";
     }
 }
-
 
 function mobileDetails() {
   outWidth = window.outerWidth;
@@ -96,6 +94,7 @@ function openMobileDialog() {
   let mobileMode = document.getElementById("amobile_nameContact");
   if (mobileMode.style.display == "none") {
     mobileMode.style.display = "flex";
+    
   }
   else {
     mobileMode.style.display = "none";

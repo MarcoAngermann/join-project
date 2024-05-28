@@ -49,6 +49,16 @@ body {
   gap: 35px;
 }
 
+.mobile_divSignUp {
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 279px;
+  height: 49px;
+  gap: 35px;
+}
+
 /*Allgemeine Scrhrift für Buttons*/
 .style_BtnTypography1 {
   font-weight: 700;
@@ -127,7 +137,7 @@ body {
   height: 493px;
   padding: 48px 115px 48px 115px;
   gap: 32px;
-  border-radius: 30px;  
+  border-radius: 30px;
   box-shadow: 0px 0px 14px 3px #0000000A;
   background: #FFFFFF;
 }
@@ -302,26 +312,26 @@ form label {
 /* Login animation */
 @keyframes moveLogo {
   0% {
-      transform: translateX(200%) translateY(150%);
-        
-      scale: 2.5;
+    transform: translateX(200%) translateY(150%);
+
+    scale: 2.5;
   }
 
   100% {
-      scale: 1.0;
-      transform: translateX(0%) translateY(0%);
-       
+    scale: 1.0;
+    transform: translateX(0%) translateY(0%);
+
   }
 }
 
 @keyframes opacity {
   0% {
-      opacity: 1;
-      display: flex;
+    opacity: 1;
+    display: flex;
   }
 
   100% {
-      display: none;
+    display: none;
   }
 }
 
@@ -356,7 +366,7 @@ form label {
   bottom: 0;
   display: none;
   justify-content: center;
-  align-items: center;    
+  align-items: center;
 }
 
 .dialog {
@@ -364,17 +374,173 @@ form label {
   flex-direction: row;
   height: auto;
   align-items: center;
-  justify-items: center;    
+  justify-items: center;
   animation: moveSignUp 1s ease-in-out;
 }
+
 /* Signup successfull animation*/
 @keyframes moveSignUp {
   0% {
-      transform: translateY(1000px);
+    transform: translateY(1000px);
   }
+
   100% {
-      transform: translateY(50%);        
+    transform: translateY(50%);
   }
 }
 
+/*Resposive Login*/
+@media(max-width:700px) {
+  .divSignUp {
+    display: none;
+  }
 
+  .mobile_divSignUp {
+    display: flex;
+  }
+
+  .imgLogo {
+    width: 70px;
+    height: 90px;
+  }
+
+  .title {
+    font-size: 45px;
+  }
+
+  .underline {
+    padding-bottom: 5px;
+  }
+
+  .formLogin {
+    width: 530px;
+    height: 400px;
+    padding: 35px 45px 35px 45px;
+    gap: 22px;
+  }
+}
+
+@media(max-width:550px) {
+  .imgLogo {
+    width: 50px;
+    height: 70px;
+    margin: 13px 0px 13px 57px;
+  }
+
+  .title {
+    font-size: 40px;
+  }
+
+  .divBtn {
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+  }
+
+  .style_BtnTypography1 {
+    font-size: 18px;
+  }
+
+  .btnGuest {
+    height: 40px;
+  }
+
+  .btnJoin {
+    height: 40px;
+  }
+
+  .groupLogin-input {
+    gap: 18px;
+    height: 160px;
+  }
+
+  .formLogin {
+    width: 450px;
+    height: 530px;
+    padding: 25px;
+    gap: 15px;
+  }
+}
+
+@media(max-width:460px) {
+  .imgLogo {
+    width: 40px;
+    height: 60px;
+    margin: 13px 0px 13px 37px;
+  }
+
+  .title {
+    font-size: 35px;
+  }
+
+  .groupLogin-input {
+    width: 290px;
+    gap: 18px;
+    height: 160px;
+  }
+
+  .formLogin {
+    width: 315px;
+    height: 430px;
+    padding: 25px;
+    gap: 15px;
+  }
+
+  .style_BtnTypography1 {
+    font-size: 16px;
+  }
+
+  .style_InputTypography2 {
+    font-size: 14px;
+  }
+
+  .inputs {
+    font-size: 14px;
+  }
+}
+
+/*responsive SignUp*/
+@media(max-width:620px) {
+  .a_headlineSignUp {
+    margin-top: 25px;
+  }
+
+  .formSignUp {
+    width: 480px;
+    height: 560px;
+    padding: 28px 38px 28px 38px;
+  }
+}
+
+@media (max-width:500px) {
+  .formSignUp {
+    width: 380px;
+    height: 560px;
+    padding: 28px 38px 28px 38px;
+  }
+
+  .groupSignUp-input {
+    width: 350px;
+    height: 360px;
+  }
+
+  .inputs {
+    font-size: 16px;
+  }
+}
+
+@media (max-width:400px) {
+  .formSignUp {
+    width: 315px;
+    height: 560px;
+    padding: 8px 18px 8px 18px;
+  }
+
+  .groupSignUp-input {
+    width: 300px;
+  }
+
+  .inputs {
+    font-size: 14px;
+  }
+}
