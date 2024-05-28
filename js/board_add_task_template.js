@@ -13,7 +13,7 @@ function renderBoardAddTaskHTML(boardStatus) {
         />
       </div>
     </div>
-  <form class="add-task-container" onsubmit="createNewTaskBoard(${boardStatus},event); return false;">
+  <form class="add-task-container" onsubmit="createNewTaskBoard('${boardStatus}',event); return false;">
     <div class="groupTask1-input">
       <span>Title<span class="required-color">*</span></span>
       <input id="title" type="text" required />
@@ -77,10 +77,6 @@ function renderBoardAddTaskHTML(boardStatus) {
         </div>
       </div>
       <span>Category<span class="required-color">*</span></span>
-
-
-
-
       <div onclick="showCategories()" class="contactContainer">
         <span id="selectedCategory">Select task category</span >
         <img id="arrowDownCategory" src="../assets/icons/arrow_down_icon.svg" alt="">
