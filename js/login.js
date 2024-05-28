@@ -1,5 +1,5 @@
 async function initLogin() {
-  moveIcon();
+  moveIcons();
   usersJson = await loadData('users');
 }
 let usersJson;
@@ -132,6 +132,11 @@ function moveIcon() {
   document.getElementById('overlay').classList.add('animation2');
 }
 
+function moveMobileIcon() {
+  document.getElementById('imgLogoID').classList.add('animation3');
+  document.getElementById('overlay').classList.add('animation2');
+}
+
 function doLogin(event) {
   // Verhindern Sie das Standardverhalten des Formulars, falls diese Funktion als Event Handler verwendet wird
   if (event) event.preventDefault();
@@ -198,3 +203,19 @@ function showPasswordConf() {
     image.type = 'password';
   }
 }
+
+
+/*mobile function*/
+
+function moveIcons() {
+  outWidth = window.innerWidth;
+  if (outWidth <= 700) {
+    document.getElementById("imgLogoID").src = "../assets/icons/joinWhite.svg";
+    document.getElementById("overlay").style.backgroundColor = "#2A3647";
+    moveMobileIcon();
+  }
+  else {
+    moveIcon();
+  }
+};
+

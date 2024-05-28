@@ -310,10 +310,22 @@ form label {
 }
 
 /* Login animation */
-@keyframes moveLogo {
+ @keyframes moveLogo {
   0% {
-    transform: translateX(200%) translateY(150%);
+    transform: translateX(180%) translateY(130%);
+    scale: 2.5;
+  }
 
+  100% {
+    scale: 1.0;
+    transform: translateX(0%) translateY(0%);
+
+  }
+} 
+
+@keyframes moveMobileLogo {
+  0% {
+    transform: translateX(100%) translateY(120%);
     scale: 2.5;
   }
 
@@ -323,6 +335,7 @@ form label {
 
   }
 }
+
 
 @keyframes opacity {
   0% {
@@ -350,6 +363,10 @@ form label {
 .animation2 {
   animation: opacity 1s ease-in-out;
   display: none;
+}
+
+.animation3{
+  animation: moveMobileLogo 2s ease-in-out;
 }
 
 .d-none {

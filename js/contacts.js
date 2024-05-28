@@ -62,7 +62,7 @@ function showDetailContact(i) {
   infoContact.innerHTML += renderContactinList(i);
   mobileDetails();
 }
-
+/*mobile function*/
 let mobilWindow = window.matchMedia('(max-width:710px)');
 mobilWindow.addEventListener('change', () => myFunc());
 function myFunc() {
@@ -72,11 +72,12 @@ function myFunc() {
     } else {
       document.getElementById("divContactDetails").style.display = "flex";
       document.getElementById("divContactList").style.display = "flex";
+      document.getElementById("amobile_nameContact").style.display="none";
     }
 }
 
 function mobileDetails() {
-  outWidth = window.outerWidth;
+  outWidth = window.innerWidth;
   if (outWidth <= 710) {
     document.getElementById("divContactDetails").style.display = "flex";
     document.getElementById("divContactList").style.display = "none";
@@ -84,23 +85,28 @@ function mobileDetails() {
 }
 
 function backMobileContListe() {
-  outWidth = window.outerWidth;
+  outWidth = window.innerWidth;
   if (outWidth <= 710) {
     document.getElementById("divContactDetails").style.display = "none";
     document.getElementById("divContactList").style.display = "flex";
   };
 }
-function openMobileDialog() {
-  let mobileMode = document.getElementById("amobile_nameContact");
-  if (mobileMode.style.display == "none") {
-    mobileMode.style.display = "flex";
-    
-  }
-  else {
-    mobileMode.style.display = "none";
-  }
-
+function openMobileEditDialog() {
+  let mobileMode = document.getElementById("amobile_nameContact");  
+    mobileMode.style.display = "flex";  
+    document.getElementById('openMobilEdit').style.display="none";
+    document.getElementById('closeMobilEdit').style.display="flex";   
 }
+
+function closeMobileEditDialog() {
+  let mobileMode = document.getElementById("amobile_nameContact"); 
+  mobileMode.style.display = "none";  
+  document.getElementById('openMobilEdit').style.display="flex";
+  document.getElementById('closeMobilEdit').style.display="none";  
+}
+
+/*end mobile function*/
+
 function renderContactinList(i) {
   return ` 
   <div class="headlineContact">
@@ -121,7 +127,8 @@ function renderContactinList(i) {
     <div id="phone_contact">${contact['phone']}</div>
   </div>
   
-  <div class="mobileContact" onclick="openMobileDialog()"><img class="arrow" src="..//assets/icons/menu_ContactOptions.svg" /></div>
+  <div class="mobileContact"><img class="arrow" id="openMobilEdit" src="..//assets/icons/menu_ContactOptions.svg" onclick="openMobileEditDialog()"/>
+  <img class="arrowWhite" id="closeMobilEdit" src="..//assets/icons/closeWhite_icon.svg" onclick="closeMobileEditDialog()"/> </div>
   <div class="amobile_nameContact" id="amobile_nameContact">
     <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
     <a onclick="deleteContact( ${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
