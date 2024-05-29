@@ -323,13 +323,13 @@ function getSearchQuery() {
 }
 
 function isSearchQueryTooShort(searchQuery) {
-  return searchQuery.length < 3;
+  return searchQuery.length < 2; // angepasst auf 3 Zeichen
 }
 
 function filterTasks(searchQuery) {
   return tasks.filter((task) => {
-    return task.title.toLowerCase().startsWith(searchQuery) ||
-           task.description.toLowerCase().startsWith(searchQuery);
+    return task.title.toLowerCase().includes(searchQuery) ||
+           task.description.toLowerCase().includes(searchQuery);
   });
 }
 
