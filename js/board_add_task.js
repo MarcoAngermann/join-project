@@ -93,7 +93,6 @@ function renderUsers() {
   }
 }
 
-<<<<<<< HEAD
 function renderUsers() {
   let content = document.getElementById('users');
 
@@ -104,8 +103,6 @@ function renderUsers() {
   }
 }
 
-=======
->>>>>>> 7f09299ab2c42290aa3cac0c12595fabb8a853cd
 function renderUsersHTML(user, i) {
   return /*html*/ `
       <label for="checkbox${i}">

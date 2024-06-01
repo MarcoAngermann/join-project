@@ -32,6 +32,17 @@ function renderInformation(cardId) {
   renderEditSubtask(task.subtask);
 }
 
+function showEditUsers() {
+  if (document.getElementById('editUsers').classList.contains('show')) {
+    document.getElementById('editUsers').classList.remove('show');
+    document.getElementById('arrowDownUser').style.display = 'block';
+    document.getElementById('arrowUpUser').style.display = 'none';
+  } else {
+    document.getElementById('editUsers').classList.add('show');
+    document.getElementById('arrowDownUser').style.display = 'none';
+    document.getElementById('arrowUpUser').style.display = 'block';
+  }
+}
 function editChangeButtonsSubtask() {
   if (!Array.isArray(boardEdit[0].subtask)) {
     boardEdit[0].subtask = [];
