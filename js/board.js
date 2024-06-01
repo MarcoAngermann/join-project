@@ -5,7 +5,7 @@ async function initBoard() {
   updateHTML();
 }
 
-let boardEdit = [];
+let board = [];
 let status = ['toDo', 'in Progress', 'awaitFeedback', 'done'];
 let currentDraggedElement;
 
@@ -167,6 +167,8 @@ function showBigCard(cardId) {
   renderBigSubtasks(cardId);
 }
 
+// Function to close the image
+
 function renderBigCardHTML(cardId) {
   let task = tasks.find((t) => t.cardId == cardId);
 
@@ -215,7 +217,7 @@ function renderBigCardHTML(cardId) {
           <span>Delete</span>
         </div>
         <div class="seperator"></div>
-        <div id="bigEdit" class="big-edit" onclick="editTaskOfBoard(${task.cardId})">
+        <div id="bigEdit" class="big-edit">
           <img src="../assets/icons/edit-contacts_icon.svg" alt="">
           <span>Edit</span>
         </div>
@@ -315,15 +317,24 @@ function getSearchQuery() {
 }
 
 function isSearchQueryTooShort(searchQuery) {
+<<<<<<< HEAD
   return searchQuery.length < 3; // angepasst auf 3 Zeichen
+=======
+  return searchQuery.length < 2; // angepasst auf 3 Zeichen
+>>>>>>> 7f09299ab2c42290aa3cac0c12595fabb8a853cd
 }
 
 function filterTasks(searchQuery) {
   return tasks.filter((task) => {
+<<<<<<< HEAD
     return (
       task.title.toLowerCase().includes(searchQuery) ||
       task.description.toLowerCase().includes(searchQuery)
     );
+=======
+    return task.title.toLowerCase().includes(searchQuery) ||
+           task.description.toLowerCase().includes(searchQuery);
+>>>>>>> 7f09299ab2c42290aa3cac0c12595fabb8a853cd
   });
 }
 
@@ -335,7 +346,7 @@ function clearTaskContainers() {
 }
 
 function renderFilteredTasks(filteredTasks) {
-  filteredTasks.forEach((task) => {
+  filteredTasks.forEach(task => {
     let elementId = getElementIdByStatus(task.status);
     document.getElementById(elementId).innerHTML += renderSmallCardHTML(task);
     showSmallUsersEmblem(task);
@@ -344,7 +355,7 @@ function renderFilteredTasks(filteredTasks) {
 }
 
 function getElementIdByStatus(status) {
-  switch (status) {
+  switch(status) {
     case 'toDo':
       return 'toDo';
     case 'inProgress':
@@ -357,6 +368,7 @@ function getElementIdByStatus(status) {
       return '';
   }
 }
+<<<<<<< HEAD
 
 function getSelectedUserIds() {
   let checkboxes = document.querySelectorAll(
@@ -417,3 +429,5 @@ async function updateSubtasks(cardId) {
     }
   }
 }
+=======
+>>>>>>> 7f09299ab2c42290aa3cac0c12595fabb8a853cd

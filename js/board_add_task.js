@@ -93,6 +93,7 @@ function renderUsers() {
   }
 }
 
+<<<<<<< HEAD
 function renderUsers() {
   let content = document.getElementById('users');
 
@@ -103,6 +104,8 @@ function renderUsers() {
   }
 }
 
+=======
+>>>>>>> 7f09299ab2c42290aa3cac0c12595fabb8a853cd
 function renderUsersHTML(user, i) {
   return /*html*/ `
       <label for="checkbox${i}">
@@ -204,18 +207,6 @@ function showUsers() {
     document.getElementById('arrowUpUser').style.display = 'none';
   } else {
     document.getElementById('users').classList.add('show');
-    document.getElementById('arrowDownUser').style.display = 'none';
-    document.getElementById('arrowUpUser').style.display = 'block';
-  }
-}
-
-function showEditUsers() {
-  if (document.getElementById('editUsers').classList.contains('show')) {
-    document.getElementById('editUsers').classList.remove('show');
-    document.getElementById('arrowDownUser').style.display = 'block';
-    document.getElementById('arrowUpUser').style.display = 'none';
-  } else {
-    document.getElementById('editUsers').classList.add('show');
     document.getElementById('arrowDownUser').style.display = 'none';
     document.getElementById('arrowUpUser').style.display = 'block';
   }
