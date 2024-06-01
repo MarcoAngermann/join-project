@@ -1,5 +1,5 @@
 async function initLogin() {
-  moveIcons();
+  moveIcon();
   usersJson = await loadData('users');
 }
 let usersJson;
@@ -132,11 +132,6 @@ function moveIcon() {
   document.getElementById('overlay').classList.add('animation2');
 }
 
-function moveMobileIcon() {
-  document.getElementById('imgLogoID').classList.add('animation3');
-  document.getElementById('overlay').classList.add('animation2');
-}
-
 function doLogin(event) {
   // Verhindern Sie das Standardverhalten des Formulars, falls diese Funktion als Event Handler verwendet wird
   if (event) event.preventDefault();
@@ -203,6 +198,7 @@ function showPasswordConf() {
     image.type = 'password';
   }
 }
+<<<<<<< HEAD
 
 /*mobile function*/
 
@@ -216,3 +212,5 @@ function moveIcons() {
     moveIcon();
   }
 }
+=======
+>>>>>>> 7f09299ab2c42290aa3cac0c12595fabb8a853cd

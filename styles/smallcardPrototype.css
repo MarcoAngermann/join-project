@@ -46,8 +46,8 @@
 .bigCard {
   display: flex;
   flex-direction: column;
-  width: 525px;
-  height: 900px;
+  width: 550px;
+  height: 750px;
   position: sticky;
   overflow-y: auto;
   gap: 24px;
