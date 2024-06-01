@@ -204,18 +204,15 @@ function showPasswordConf() {
   }
 }
 
-
 /*mobile function*/
 
 function moveIcons() {
   outWidth = window.innerWidth;
   if (outWidth <= 700) {
-    document.getElementById("imgLogoID").src = "../assets/icons/joinWhite.svg";
-    document.getElementById("overlay").style.backgroundColor = "#2A3647";
+    document.getElementById('imgLogoID').src = '../assets/icons/joinWhite.svg';
+    document.getElementById('overlay').style.backgroundColor = '#2A3647';
     moveMobileIcon();
-  }
-  else {
+  } else {
     moveIcon();
   }
-};
-
+}

@@ -79,7 +79,7 @@ function renderUsers() {
   let user = document.getElementById('users');
 
   for (let i = 0; i < users.length; i++) {
-    if (users[i]['userId'] == 0) continue;
+    if (users[i].userId == 0) continue;
     const contact = users[i];
     user.innerHTML += renderUsersHTML(contact, i);
   }
@@ -89,11 +89,11 @@ function renderUsersHTML(contact, i) {
   return /*html*/ `
       <label for="checkbox${i}">
           <li class="contactList">        
-              <div tabindex="0" class="emblem" style="background-color: ${contact['color']}">
-                ${contact['emblem']}
+              <div tabindex="0" class="emblem" style="background-color: ${contact.color}">
+                ${contact.emblem}
               </div> 
-              <div class="contactName" >${contact['name']}</div> 
-              <input class="user-checkbox" onclick="showUsersEmblem()" type="checkbox" id="checkbox${i}" data-userid="${contact['userId']}">          
+              <div class="contactName" >${contact.name}</div> 
+              <input class="user-checkbox" onclick="showUsersEmblem()" type="checkbox" id="checkbox${i}" data-userid="${contact.userId}">          
           </li>
       </label>
         `;
@@ -147,7 +147,7 @@ function showUsersEmblem() {
   let renderedCount = 0;
   let extraCount = 0;
   for (let i = 0; i < users.length; i++) {
-    if (users[i]['userId'] == 0) continue;
+    if (users[i].userId == 0) continue;
     let contact = users[i];
     let checkedContact = document.getElementById(`checkbox${i}`);
     if (checkedContact.checked == true) {
@@ -174,8 +174,8 @@ function renderGreyEmblem(remainingCount) {
 
 function renderEmblemUsers(contact) {
   return /*html*/ `
-      <div class="emblem" style="background-color: ${contact['color']}" id="${contact['userId']}">
-      ${contact['emblem']}
+      <div class="emblem" style="background-color: ${contact.color}" id="${contact.userId}">
+      ${contact.emblem}
     </div>  `;
 }
 
@@ -346,8 +346,8 @@ function createCardId(tasks) {
   return lastCardId; //
 }
 
-async function createNewTask() {
-  // event.preventDefault();
+async function createNewTask(event) {
+  event.preventDefault();
   let lastCardId = createCardId(tasks);
   let selectedUserIds = getSelectedUserIds();
   task = {

@@ -63,14 +63,14 @@
   opacity: 1;
 }
 
-.groupTask1-input {
+.group-task1-input {
   display: flex;
   flex-direction: column;
   width: 440px;
   gap: 16px;
 }
 
-.groupTask2-input {
+.group-task2-input {
   display: flex;
   flex-direction: column;
   width: 440px;
@@ -107,7 +107,7 @@ textarea {
   resize: none;
 }
 
-.btnTask {
+.task-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,7 +123,7 @@ textarea {
   line-height: 25.2px;
 }
 
-.btnClear {
+.clear-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,19 +139,19 @@ textarea {
   border: 1px solid;
 }
 
-.btnTask:hover {
+.task-button:hover {
   background-color: #29abe2;
   border: 0.5px solid #29abe2;
   cursor: pointer;
 }
 
-.btnClear:hover {
+.clear-button:hover {
   color: #29abe2;
   border: 0.5px solid #29abe2;
   cursor: pointer;
 }
 
-.btnClear:hover .iconCancelSvg {
+.clear-button:hover .icon-cancel-svg {
   filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg)
     brightness(91%) contrast(106%);
 }
@@ -251,18 +251,18 @@ textarea {
   display: flex;
 }
 
-.addTaskTop {
+.task-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.closeBoard {
+.close-board {
   height: 32px;
   width: 32px;
 }
 
-.closeBoard:hover {
+.close-board:hover {
   cursor: pointer;
   background-color: #d2d2d2;
   border-radius: 50%;
@@ -535,11 +535,11 @@ input[type='checkbox'] {
   .users {
     top: 505px;
   }
-  .groupTask1-input {
+  .group-task1-input {
     gap: 10px;
   }
 
-  .groupTask2-input {
+  .group-task2-input {
     gap: 10px;
   }
 
@@ -553,10 +553,10 @@ input[type='checkbox'] {
     font-size: 48px;
     margin-right: 80px;
   }
-  .groupTask1-input {
+  .group-task1-input {
     width: 300px;
   }
-  .groupTask2-input {
+  .group-task2-input {
     width: 300px;
   }
   .headline-task {
@@ -572,10 +572,10 @@ input[type='checkbox'] {
   .users {
     top: 505px;
   }
-  .groupTask1-input input {
+  .group-task1-input input {
     width: 100%;
   }
-  .groupTask1-input textarea {
+  .group-task1-input textarea {
     width: 100%;
   }
   .contactContainer {

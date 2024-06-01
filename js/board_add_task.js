@@ -84,7 +84,7 @@ window.onload = function () {
 };
 
 function renderUsers() {
-  let content = document.getElementById('boardUsers');
+  let content = document.getElementById('users');
 
   for (let i = 0; i < users.length; i++) {
     if (users[i].userId == 0) continue;
@@ -94,7 +94,7 @@ function renderUsers() {
 }
 
 function renderUsers() {
-  let content = document.getElementById('editUsers');
+  let content = document.getElementById('users');
 
   for (let i = 0; i < users.length; i++) {
     if (users[i].userId == 0) continue;
@@ -198,12 +198,12 @@ function renderEmblemUsers(contact) {
 }
 
 function showUsers() {
-  if (document.getElementById('boardUsers').classList.contains('show')) {
-    document.getElementById('boardUsers').classList.remove('show');
+  if (document.getElementById('users').classList.contains('show')) {
+    document.getElementById('users').classList.remove('show');
     document.getElementById('arrowDownUser').style.display = 'block';
     document.getElementById('arrowUpUser').style.display = 'none';
   } else {
-    document.getElementById('boardUsers').classList.add('show');
+    document.getElementById('users').classList.add('show');
     document.getElementById('arrowDownUser').style.display = 'none';
     document.getElementById('arrowUpUser').style.display = 'block';
   }
@@ -317,7 +317,7 @@ function editSubtask(i) {
 function checkSubtask(i) {
   document.getElementById(`subtaskList${i}`).readOnly = true;
   edit = document.getElementById(`edit-images${i}`);
-  edit.innerHTML = checkSubtaskHTML(i);
+  edit.innerHTML = i;
   document
     .getElementById(`mainSubtask-container${i}`)
     .classList.add('subtaskList');
@@ -450,7 +450,7 @@ function clearSubtaskInput() {
 }
 
 function resetUserDisplay() {
-  let users = document.getElementById('boardUsers');
+  let users = document.getElementById('users');
   users.classList.remove('show');
   document.getElementById('arrowDownUser').style.display = 'block';
   document.getElementById('arrowUpUser').style.display = 'none';
@@ -463,11 +463,5 @@ function clearAllCheckbox() {
   }
 }
 
-// search muss nach titel und nach beschreibung filtern
-// und die gefilterten cards rendern
-
 // progressbar erstellen anhand der subtasks die ich in
 //der bigCard mit den checkboxen anwähle
-
-// status wird nicht richtig übergeben, sondern er schickt den gesamten
-// div container der drag and drop area

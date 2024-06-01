@@ -27,21 +27,25 @@
 .todo-head {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 8px;
 }
 
 .inProgress-head {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 8px;
 }
 
 .awaitFeedback-head {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 8px;
 }
 
 .done-head {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 8px;
 }
 
 .main svg {
@@ -188,4 +192,13 @@
   display: flex;
   align-items: center;
   gap: 24px;
+}
+
+.subtask-progress-bar {
+  height: 20px;
+  background-color: #4caf50;
+  text-align: center;
+  line-height: 20px;
+  color: white;
+  transition: width 0.5s ease-in-out;
 }

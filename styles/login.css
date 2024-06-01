@@ -8,9 +8,11 @@ body {
 
 .overlay {
   display: flex;
+  justify-content: center;
+  align-items: center;
   max-width: 100%;
   height: 100vh;
-  background-color: #F6F7F8;
+  background-color: #f6f7f8;
   position: relative;
 }
 
@@ -21,7 +23,7 @@ body {
   justify-content: space-around;
   max-width: 1400px;
   height: 100vh;
-  background-color: #F6F7F8;
+  background-color: #f6f7f8;
   position: relative;
 }
 
@@ -119,12 +121,12 @@ body {
 }
 
 .btnDisabled {
-  background-color: #F6F7F8;
+  background-color: #f6f7f8;
   color: #89898a;
   border-radius: 8px;
   min-width: 90px;
   height: 49px;
-  border: 0.5px solid #F6F7F8;
+  border: 0.5px solid #f6f7f8;
   padding: 0px 15px 0px 15px;
 }
 
@@ -138,8 +140,8 @@ body {
   padding: 48px 115px 48px 115px;
   gap: 32px;
   border-radius: 30px;
-  box-shadow: 0px 0px 14px 3px #0000000A;
-  background: #FFFFFF;
+  box-shadow: 0px 0px 14px 3px #0000000a;
+  background: #ffffff;
 }
 
 .title {
@@ -150,7 +152,7 @@ body {
 }
 
 .underline {
-  border-bottom: 3px solid #29ABE2;
+  border-bottom: 3px solid #29abe2;
   padding-bottom: 15px;
 }
 
@@ -170,7 +172,7 @@ body {
   width: 422px;
   height: 48px;
   gap: 10px;
-  border: 1px solid #D1D1D1;
+  border: 1px solid #d1d1d1;
   border-radius: 10px;
   padding: 12px 21px 12px 21px;
 }
@@ -180,7 +182,7 @@ body {
   background-position: right 10px center;
   width: 100%;
   gap: 10px;
-  border: 1px solid #D1D1D1;
+  border: 1px solid #d1d1d1;
   border-radius: 10px;
   padding: 12px 21px 12px 21px;
   color: black;
@@ -204,7 +206,7 @@ body {
   left: 4px;
   border-radius: 3px 0px 0px 0px;
   border: 2px;
-  border: 2px solid #2A3647;
+  border: 2px solid #2a3647;
 }
 
 form label {
@@ -237,7 +239,7 @@ form label {
 }
 
 .a_footer:hover {
-  color: #29ABE2;
+  color: #29abe2;
   font-weight: bold;
 }
 
@@ -256,7 +258,7 @@ form label {
 }
 
 .a_headlineSignUp:hover {
-  background-color: #ECE0E0;
+  background-color: #ece0e0;
   border-radius: 50%;
   padding: 0;
 }
@@ -264,7 +266,7 @@ form label {
 .icoArrowLeft {
   width: 32px;
   height: 32px;
-  color: #29ABE2;
+  color: #29abe2;
   padding: 0;
 }
 
@@ -277,9 +279,9 @@ form label {
   height: 630px;
   padding: 48px 88px 48px 88px;
   border-radius: 30px;
-  box-shadow: 0px 0px 14px 3px #0000000A;
+  box-shadow: 0px 0px 14px 3px #0000000a;
   gap: 32px;
-  background: #FFFFFF;
+  background: #ffffff;
 }
 
 .groupSignUp-input {
@@ -301,7 +303,7 @@ form label {
 }
 
 .a_formSignUp {
-  color: #29ABE2;
+  color: #29abe2;
   text-decoration: none;
 }
 
@@ -310,18 +312,17 @@ form label {
 }
 
 /* Login animation */
- @keyframes moveLogo {
+@keyframes moveLogo {
   0% {
     transform: translateX(180%) translateY(130%);
     scale: 2.5;
   }
 
   100% {
-    scale: 1.0;
+    scale: 1;
     transform: translateX(0%) translateY(0%);
-
   }
-} 
+}
 
 @keyframes moveMobileLogo {
   0% {
@@ -330,12 +331,10 @@ form label {
   }
 
   100% {
-    scale: 1.0;
+    scale: 1;
     transform: translateX(0%) translateY(0%);
-
   }
 }
-
 
 @keyframes opacity {
   0% {
@@ -365,7 +364,7 @@ form label {
   display: none;
 }
 
-.animation3{
+.animation3 {
   animation: moveMobileLogo 2s ease-in-out;
 }
 
@@ -407,7 +406,7 @@ form label {
 }
 
 /*Resposive Login*/
-@media(max-width:700px) {
+@media (max-width: 700px) {
   .divSignUp {
     display: none;
   }
@@ -437,7 +436,7 @@ form label {
   }
 }
 
-@media(max-width:550px) {
+@media (max-width: 550px) {
   .imgLogo {
     width: 50px;
     height: 70px;
@@ -479,7 +478,7 @@ form label {
   }
 }
 
-@media(max-width:460px) {
+@media (max-width: 460px) {
   .imgLogo {
     width: 40px;
     height: 60px;
@@ -517,7 +516,7 @@ form label {
 }
 
 /*responsive SignUp*/
-@media(max-width:620px) {
+@media (max-width: 620px) {
   .a_headlineSignUp {
     margin-top: 25px;
   }
@@ -529,7 +528,7 @@ form label {
   }
 }
 
-@media (max-width:500px) {
+@media (max-width: 500px) {
   .formSignUp {
     width: 380px;
     height: 560px;
@@ -546,7 +545,7 @@ form label {
   }
 }
 
-@media (max-width:400px) {
+@media (max-width: 400px) {
   .formSignUp {
     width: 315px;
     height: 560px;
