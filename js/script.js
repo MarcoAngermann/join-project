@@ -21,6 +21,7 @@ let users = [];
 let tasks = [];
 
 async function tasksArray() {
+  tasks = [];
   let tasksJson = await loadData('tasks');
   for (let key in tasksJson) {
     let task = tasksJson[key];

@@ -207,7 +207,7 @@ textarea {
 }
 
 .close {
-  display: none;
+  display: flex;
 }
 
 .edit-users {

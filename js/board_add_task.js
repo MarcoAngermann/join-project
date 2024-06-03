@@ -244,8 +244,9 @@ function addSubtask() {
   }
   // Überprüfe, ob bereits 5 Subtasks vorhanden sind
   if (subtaskList.length < 5) {
-    document.getElementById('subtaskInput').placeholder = 'Add new Subtask';
-    subtaskList.push(input);
+    document.getElementById('subtaskInput').placeholder = 'Add new Subtask';  
+    let newTask={'subtaskText':input, 'checked': false};
+    subtaskList.push(newTask);
     renderSubtask();
     document.getElementById('subtaskInput').value = '';
     removeSubtask();
@@ -277,7 +278,7 @@ function renderSubtaskHTML(i) {
               readonly
               type="text"
               id="subtaskList${i}"
-              value="${subtaskList[i]}"
+              value="${subtaskList[i].subtaskText}"
               />
               <div class="edit-images" id="edit-images${i}">
                 <img onclick="editSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
@@ -303,7 +304,10 @@ function editSubtask(i) {
 }
 
 function checkSubtask(i) {
-  document.getElementById(`subtaskList${i}`).readOnly = true;
+  subtaskList[i].subtaskText = document.getElementById(`subtaskList${i}`).value;
+  renderSubtask();
+
+  /* document.getElementById(`subtaskList${i}`).readOnly = true;
   edit = document.getElementById(`edit-images${i}`);
   edit.innerHTML = i;
   document
@@ -312,7 +316,8 @@ function checkSubtask(i) {
   document
     .getElementById(`mainSubtask-container${i}`)
     .classList.remove('editsubtaskList');
-  document.getElementById(`edit-images${i}`).classList.remove('flex');
+  document.getElementById(`edit-images${i}`).classList.remove('flex'); */
+
 }
 
 function editSubtaskHTML(i) {

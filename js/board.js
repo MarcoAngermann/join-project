@@ -252,10 +252,6 @@ function renderBigEmblemUsers(user) {
 async function renderBigSubtasks(cardId) {
   let bigSubtask = document.getElementById('bigSubtasks');
   bigSubtask.innerHTML = ''; // Clear existing subtasks
-  let checkedSubtasksIds = await checkedSubtasks(cardId);
-
-  // Mark the checkboxes of the checked subtasks
-  checkSubtaskCheckboxes(checkedSubtasksIds);
   const task = tasks.find((t) => t.cardId == cardId);
   if (task && task.subtask) {
     for (let j = 0; j < task.subtask.length; j++) {
@@ -270,8 +266,8 @@ function renderBigSubtasksHTML(cardId, subtask, j) {
   return /*html*/ `
       <label for="checkbox${j}">
           <li class="bigSubtaskList">
-              <input class="big-card-checkbox" onclick="renderProgressBar(${cardId})" type="checkbox" id="checkbox${j}" data-userid="${j}">
-              <div class="contactName">${subtask}</div>
+              <input class="big-card-checkbox" onclick="renderProgressBar(${cardId}, ${j})" type="checkbox"  ${subtask.checked ? 'checked' : ''} id="checkbox${j}" data-userid="${j}">
+              <div class="contactName">${subtask.subtaskText}</div>
           </li>
       </label>
   `;
@@ -371,17 +367,23 @@ function getSelectedUserIds() {
   return selectedUserIds;
 }
 
-function renderProgressBar(cardId) {
-  let subtasks = getSelectedSubtasks(cardId);
-  updateSubtasks(cardId, subtasks);
-  checkUserCheckboxes();
-  //updateProgressbar(cardId, subtasks);
-  //updateProgressBarDisplay(cardId, subtasks);
+function renderProgressBar(cardId, isubtask) {
+  let value = document.getElementById('checkbox' + isubtask).checked;
+  updateSubtasks(cardId, isubtask, value);
+  const task = tasks.find((t) => t.cardId == cardId);
+  let subtasks = task.subtask;
+ // updateProgressbar(cardId, subtasks);
+  updateProgressBarDisplay(cardId, subtasks);
 }
 
 function updateProgressBarDisplay(cardId, subtasks) {
-  let percent =
-    subtasks.length / tasks.find((t) => t.cardId == cardId).subtask.length;
+  let checkedSubtasks = 0
+  for (let i=0; i<subtasks.length; i++){    
+    if(subtasks[i].checked== true){
+      checkedSubtasks += 1;
+    }   
+  }
+  let percent= checkedSubtasks / subtasks.length;
   percent = Math.round(percent * 100).toFixed(0);
   let progressBar = document.getElementById(`subtaskProgressBar${cardId}`);
   progressBar.innerHTML = `${percent}%`;
@@ -391,31 +393,20 @@ function updateProgressBarDisplay(cardId, subtasks) {
   console.log(tasks.find((t) => t.cardId == cardId).subtask.length);
 }
 
-function updateProgressbar(cardId, subtasks) {
+/* function updateProgressbar(cardId, subtasks) {
   const task = tasks.find((t) => t.cardId == cardId);
   if (task) {
     task.subtask = subtasks;
   }
-}
+} */
 
-function getSelectedSubtasks() {
-  let checkboxes = document.querySelectorAll(
-    `.bigSubtaskList input[type="checkbox"]:checked`
-  );
-  let selectedSubtasks = [];
-  for (let checkbox of checkboxes) {
-    let subtaskId = checkbox.getAttribute(`id`);
-    selectedSubtasks.push(subtaskId);
-  }
-  console.log(selectedSubtasks);
-  return selectedSubtasks;
-}
-async function updateSubtasks(cardId, subtasks) {
+async function updateSubtasks(cardId, isubtask, value) {
   let tasksJSON = await loadData('tasks');
   for (let key in tasksJSON) {
     let task = tasksJSON[key];
     if (task.cardId == cardId) {
-      await putData(`tasks/${key}/subtask/checkedSubtasks`, subtasks);
+      await putData(`tasks/${key}/subtask/${isubtask}/checked`, value);
+      await tasksArray();
     }
   }
 }
@@ -432,18 +423,4 @@ function checkSubtaskCheckboxes(checkedSubtasksList) {
   }
 }
 
-async function checkedSubtasks(cardId) {
-  let tasksJSON = await loadData('tasks');
-  let checkedSubtasks = [];
-  for (let key in tasksJSON) {
-    let task = tasksJSON[key];
-    if (task.cardId == cardId) {
-      if (!task.subtask.checkedSubtasks) {
-        return [];
-      }
-      checkedSubtasks = task.subtask.checkedSubtasks;
-      break; // Sobald die richtige Aufgabe gefunden wurde, brechen Sie die Schleife ab
-    }
-  }
-  return checkedSubtasks; // Rückgabe der geprüften Subtasks
-}
+
