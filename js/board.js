@@ -64,10 +64,9 @@ function showSmallUsersEmblem(task) {
   let renderedCount = 0;
   let extraCount = 0;
 
-  // Überprüfen Sie, ob die userId-Array existiert und nicht leer ist
   if (task.userId && task.userId.length > 0) {
     for (let userId of task.userId) {
-      if (userId == 0) continue; // Überspringen, wenn userId 0 ist
+      if (userId == 0) continue;
 
       let user = users.find((u) => u.userId == userId);
       if (user) {
