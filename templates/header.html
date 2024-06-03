@@ -17,18 +17,18 @@
 
 <body>
   <header class="header">
+    <img class="headerlogoimg" src="../assets/icons/join_icon.svg" />
     <span class="header-left">Kanban Project Management Tool</span>
 
     <div class="header-right">
-      <div class="help">
-        <a href="./help.html"><img class="help" src="..//assets/icons/help.svg" />
+      <div class="help"><a href="./help.html"><img class="help" src="..//assets/icons/help.svg" />
         </a>
       </div>
       <div onclick="showMenu()" class="useremblem dropdown" id="emblemUser"></div>
       <div id="dropdownContent" class="dropdownContent">
         <a href="./legal_notice.html">Legal Notice</a>
         <a href="./privacy_policy.html">Privacy Policy</a>
-        <a href="./login.html">Log Out</a>
+        <a onclick="userLogOut()">Log Out</a>
       </div>
     </div>
   </header>

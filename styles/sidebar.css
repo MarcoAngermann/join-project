@@ -46,7 +46,7 @@
 .a-nav:hover {
   cursor: pointer;
   color: #ffffff;
-  background-color: rgb(9, 25, 49,1);
+  background-color: rgb(9, 25, 49, 1);
 }
 
 .a-nav:focus {
@@ -84,4 +84,19 @@
   color: #29abe2;
   scale: 1.1;
   font-weight: bold;
+}
+
+@media(max-width:1200px) {
+  .sidebar {
+    width: 200px;
+  }
+  .a-nav{
+    padding:  8px 36px 8px 36px;
+  } 
+}
+
+@media (max-width: 1050px) {
+  .sidebar {
+    display: none;
+  }
 }

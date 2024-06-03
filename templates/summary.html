@@ -10,19 +10,20 @@
     <link rel=" stylesheet" href="../styles/mobile_taskbar.css" />
     <link rel="icon" href="../assets/icons/join_icon.svg" />
     <script src="../js/header.js"></script>
-    <script src="../js/summary.js"></script>
-    <script src="../js/firebaseAPI.js"></script>
     <script src=" ../js/script.js"></script>
+    <script src="../js/summary.js"></script>
+    <script src="../js/firebaseAPI.js"></script>   
     <script src="../js/login.js"></script>
     <title>Join summary!</title>
   </head>
 
-  <body onload="initSummary()">
+  <body onload ="initSummary()">
     <div w3-include-html="../templates/sidebar.html"></div>
     <div w3-include-html="../templates/header.html"></div>
     <div w3-include-html="../templates/mobile_taskbar.html"></div>
+
     <div class="summary-main-container">
-      <div class="summary-card-container">
+      <div class="summary-card-container" id="summary-card-container">
         <div class="headline-summary">
           <div class="summaryTitleContainer">
             <h1 class="titleContact">Join 179</h1>
@@ -38,7 +39,7 @@
                 <img class="summaryIcons" src="../assets/icons/edit.svg" />
               </div>
               <div class="textContainer">
-                <span class="numberContainer">1</span>
+                <span class="numberContainer" id='toDoCount'></span>
                 <span>To-do</span>
               </div>
             </div>
@@ -49,7 +50,7 @@
                 <img class="summaryIcons" src="../assets/icons/vector.svg" />
               </div>
               <div class="textContainer">
-                <span class="numberContainer">1</span>
+                <span class="numberContainer" id="doneCount"></span>
                 <span>Done</span>
               </div>
             </div>
@@ -65,13 +66,13 @@
                 />
               </div>
               <div class="textContainer">
-                <span class="numberContainer">1</span>
+                <span class="numberContainer" id="urgentCount"></span>
                 <span>Urgent</span>
               </div>
             </div>
             <div class="seperatorBigCard"></div>
             <div class="textContainerBigCard">
-              <span class="dateText">October 16, 2024</span>
+              <span class="dateText" id="nextUrgentDate">October 16, 2024</span>
               <span class="deadlineText">Upcoming Deadline</span>
             </div>
           </a>
@@ -80,7 +81,7 @@
           <a href="board.html" class="summaryCardSmall">
             <div class="iconContainer">
               <div class="textContainer">
-                <span class="numberContainer">2</span>
+                <span class="numberContainer" id="inProgressCount"></span>
                 <span>Tasks in Progress</span>
               </div>
             </div>
@@ -88,7 +89,7 @@
           <a href="board.html" class="summaryCardSmall">
             <div class="iconContainer">
               <div class="textContainer">
-                <span class="numberContainer">2</span>
+                <span class="numberContainer" id="awaitFeedbackCount"></span>
                 <span>Awaiting Feedback</span>
               </div>
             </div>
@@ -96,16 +97,16 @@
           <a href="board.html" class="summaryCardSmall">
             <div class="iconContainer">
               <div class="textContainer">
-                <span class="numberContainer">5</span>
+                <span class="numberContainer" id="allTasksCount"></span>
                 <span>Tasks in Board</span>
               </div>
             </div>
           </a>
         </div>
       </div>
-      <div class="greeting-container">
-        <span class="greetText" id="greetText">Hello</span>
-        <span class="greetUserName" id="greetUserName">User</span>
+      <div class="greeting-container" id="greeting-container">
+        <span class="greetText" id="greetText"></span>
+        <span class="greetUserName" id="greetUserName"></span>
       </div>
     </div>
   </body>

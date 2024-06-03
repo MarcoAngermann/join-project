@@ -17,12 +17,26 @@
   
   @media (max-width: 1425px) {
     .privacy-policy  {
-      margin: 200px 100px 32px 300px;
-  
+      margin: 200px 100px 32px 300px;  
       }
     
       .text {
         margin-top: 20px;
+      }
+    }
+
+    @media (max-width: 1050px){
+      .privacy-policy  {
+        margin: 150px 20px 32px 80px;  
+        }      
+        .text {
+          margin-top: 20px;
+        }
+    }
+
+    @media (max-width: 900px) {
+      .title-policy h1{
+          font-size: 54px;
       }
     }
   
@@ -33,12 +47,18 @@
   }
 
   @media (max-width: 570px) {
+    .privacy-policy  {
+      margin: 150px 50px 32px 50px;  
+      }      
     .title-policy h1{
         font-size: 32px;
     }
   }
 
   @media (max-width: 400px) {
+    .privacy-policy  {
+      margin: 150px 30px 32px 20px;  
+      }      
     .title-policy h1{
         font-size: 24px;
     }

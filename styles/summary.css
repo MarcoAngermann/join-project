@@ -77,6 +77,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .divSummaryIcons {
@@ -94,8 +95,6 @@
     height: 35px;
     width: 35px;
 }
-
-
 
 .numberContainer {
     font-size: 64px;
@@ -151,7 +150,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
 }
 
 .joinContainer {
@@ -186,22 +184,6 @@
     width: 60px;
     height: 0px;
     border: 1px solid #29ABE2;
-}
-
-@media (max-width: 1425px) {
-    .summary-main-container {
-        display: flex;
-        justify-content: center;
-    }
-
-
-}
-
-@media (max-width: 1400px) {
-    .summary-container {
-        margin-left: 0px !important;
-    }
-
 }
 
 .testContainer {
@@ -268,24 +250,81 @@
 }
 
 .summary-card-container {
+    display: flex;
+    flex-direction: column;
     width: 600px;
-    margin-right: 20px;
+    margin-right: 30px;
+}
+
+/* summary mobil animation Greetting */
+@keyframes opacity {
+    0% {
+        opacity: 1;
+        display: flex;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.animationSummary {
+    animation: opacity 1s ease-in-out;
+    display: none;
+}
+
+@keyframes shine {
+    0% {
+        opacity: 0;
+        display: none;
+    }
+
+    100% {
+        opacity: 1;
+        display: show;
+    }
+}
+
+.animationSummaryShine {
+    transition: opacity 1s;
+    animation: shine 1s ease-in-out;
 }
 
 @media (max-width: 1250px) {
-    .joinContainer {
-        flex-direction: column;
+    .summary-main-container {
+        margin-left: 260px;
     }
 
+    .greetUserName {
+        font-size: 50px;
+    }
 }
 
-@media (max-width: 1190px) {
+@media (max-width:1100px) {
+    .summary-main-container {
+        margin-left: 230px;
+    }
+
+    .summary-card-container {
+        width: 570px;
+    }
+
+    .greetText {
+        font-size: 28px;
+    }
+
+    .greetUserName {
+        font-size: 44px;
+    }
+}
+
+@media (max-width: 1050px) {
     .summary-main-container {
         display: flex;
         justify-content: center;
         align-items: center;
         margin-left: 100px;
-}
+    }
 
     .sidebar {
         display: none;
@@ -296,21 +335,22 @@
     .titleContact {
         font-size: 48px;
     }
+
+    .greetUserName {
+        font-size: 48px;
+    }
 }
 
-@media (max-width: 950px) { 
+@media (max-width: 950px) {
     .greetUserName {
         font-size: 48px;
     }
 }
 
 @media (max-width: 900px) {
-
     .summary-main-container {
-        margin-left: 50px;
-    }
-    .greeting-container {
-        display: none;
+        margin-left: 20px;
+        gap: 15px;
     }
 
     .summary-container {
@@ -321,31 +361,52 @@
 
     .summary-card-container {
         margin-right: 0px;
+        width: 530px;
     }
-
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
+
     .summary-main-container {
-        margin-left: 0px;
-    }
-    .titleContact {
-        font-size: 48px;
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 130px;       
     }
 
+    .greeting-container {     
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 80vh;
+    }
+
+    .summary-card-container {
+        display: none;
+        width: 570px;
+    }
 }
 
 @media (max-width: 580px) {
+    .summary-main-container {
+        margin-left: 0px;
+    }
+
     .titleContact {
         font-size: 48px;
+    }
+
+    .summary-card-container {
+        width: 100%;
     }
 
     .summaryCardSmall {
         height: 120px;
     }
+
     .numberContainer {
         font-size: 48px;
     }
+
     .textContainer {
         font-size: 10px;
         font-weight: 600;
@@ -356,12 +417,12 @@
     }
 }
 
-@media (max-width: 520px) { 
+@media (max-width: 520px) {
 
     .summaryCard {
         width: 150px;
         height: 150px;
-        
+
     }
 
     .summaryCardBig {
@@ -369,10 +430,10 @@
         height: 150px;
     }
 
-    .summaryCardSmall {     
+    .summaryCardSmall {
         width: 110px;
         height: 100px;
-              
+
     }
 
     .titleContact {
@@ -395,7 +456,7 @@
 
     .summary-card-small-container {
         gap: 5px;
-     }
+    }
 
 }
 
@@ -404,7 +465,7 @@
     .summaryCard {
         width: 150px;
         height: 150px;
-        
+
     }
 
     .summaryCardBig {
@@ -412,10 +473,10 @@
         height: 150px;
     }
 
-    .summaryCardSmall {     
+    .summaryCardSmall {
         width: 110px;
         height: 100px;
-              
+
     }
 
     .numberContainer {
@@ -427,6 +488,7 @@
         flex-direction: column;
         align-items: flex-start;
         margin-left: 20px;
+        gap: 15px;
     }
 
     .mobile-seperator {
@@ -438,8 +500,9 @@
     }
 
     .summary-card-small-container {
-       gap: 5px;
+        gap: 5px;
     }
+
     .textContainer {
         text-align: center;
     }
@@ -453,7 +516,7 @@
     .summaryCard {
         width: 130px;
         height: 130px;
-        
+
     }
 
     .summaryCardBig {
@@ -461,17 +524,20 @@
         height: 150px;
     }
 
-    .summaryCardSmall {     
+    .summaryCardSmall {
         width: 90px;
         height: 90px;
-              
+
     }
+
     .seperatorBigCard {
         margin-right: 10px;
     }
+
     .dateText {
         font-size: 13px;
     }
+
     .deadlineText {
         font-size: 12px;
     }
@@ -491,11 +557,3 @@
         width: 25px;
     }
 }
-
-
-
-
-
-
-
-

@@ -52,6 +52,7 @@ async function includeHTML() {
   }
   focusSidebar();
   getuseremblem();
+  openSidebarRules();
 }
 
 function errorFunction() {
@@ -86,6 +87,28 @@ async function getUserLogin() {
 
 async function getuseremblem() {
   let currentUser = await getUserLogin();
-  let emblemUser = document.getElementById('emblemUser');
-  emblemUser.innerHTML = currentUser.emblem;
+  if (currentUser != null) {
+    let emblemUser = document.getElementById('emblemUser');
+    emblemUser.innerHTML = currentUser.emblem;
+  }
+  else {
+    emblemUser.innerHTML = "";
+  }
+}
+
+function userLogOut() {
+  window.sessionStorage.removeItem('userId');
+  window.location.href = '../templates/login.html';
+}
+
+async function openSidebarRules() {
+  let currentUser = await getUserLogin(); 
+  let sidebarRules = document.getElementById('menu'); 
+  let mobileSidebarRules = document.getElementById('mobile-mysidebar'); 
+  if (currentUser == null) {      
+    sidebarRules.style.display = "none";    
+    mobileSidebarRules.style.display = "none";
+    let arrowBack = document.getElementById('backSummaryRules');    
+    arrowBack.href = '../templates/login.html';
+  } 
 }

@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .add-task-container h1 {
@@ -35,9 +35,11 @@
 }
 
 .headline-task {
+  display: flex;
   font-size: 61px;
   font-weight: 700;
-  margin-right: 664px;
+  margin-left: 130px;
+  align-self: flex-start !important;
 }
 
 .seperator {
@@ -139,8 +141,7 @@ textarea {
 }
 
 .btnClear:hover .iconCancelSvg {
-  filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg)
-    brightness(91%) contrast(106%);
+  filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg) brightness(91%) contrast(106%);
 }
 
 .midBtn-Color {
@@ -198,10 +199,11 @@ textarea {
   display: flex;
   align-items: center;
   flex-direction: row;
-  gap: 8px;
+  gap: 12px;
   margin-bottom: 8px;
   cursor: pointer;
   margin-top: 8px;
+  margin-left: 10px;
 }
 
 .contactList:hover {
@@ -211,18 +213,6 @@ textarea {
 .contactList span {
   width: 100%;
 }
-
-/*
-.contactList:focus {
-  color: white;
-  background-color: #2a3647;
-  outline: none;
-}
-
-.contactList:focus:hover {
-  background-color: #091931;
-}
-*/
 
 .contactContainer {
   display: flex;
@@ -242,7 +232,7 @@ textarea {
   cursor: pointer;
 }
 
-.contactContainer span {
+.spanContactContainer {
   font-size: 20px;
 }
 
@@ -263,23 +253,9 @@ textarea {
   overflow: auto;
   border-radius: 10px;
   padding: 10px;
-  top: 633px;
+  top: 570px;
   z-index: 1;
 }
-
-/*
-.assignees {
-  display: none;
-  height: 150px;
-  overflow-y: auto;
-  position: sticky;
-  z-index: 99;
-  list-style: none;
-  padding-inline-start: 16px;
-  background-color: #ffffff;
-  border-radius: 10px;
-}
-*/
 
 input[type='checkbox'] {
   height: 14px;
@@ -298,25 +274,9 @@ input[type='checkbox'] {
   overflow: auto;
   border-radius: 10px;
   padding: 10px;
-  top: 583px;
+  top: 520px;
   z-index: 1;
 }
-
-/*
-.tasks {
-  display: none;
-  justify-content: center;
-  height: 150px;
-  overflow-y: auto;
-  position: sticky;
-  z-index: 99;
-  list-style: none;
-  padding-inline-start: 16px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  cursor: pointer;
-}
-*/
 
 .tasks li:hover {
   background-color: #f6f7f8;
@@ -484,155 +444,392 @@ input[type='checkbox'] {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
-  margin-top: 150px;
-  margin-left: 200px;
+  height: 100vh;
+  margin-left: 230px;
 }
 
-@media (max-width: 1425px) {
+@media (max-width: 1300px) {
   .main-container {
-    margin-left: 150px;
-    margin-top: 150px;
-    display: flex;
-    align-items: center;
+    align-items: flex-start;
+    margin-left: 230px;
+    padding: 0px 25px 0px 25px;
   }
 
   .headline-task {
-    margin-right: 664px;
-  }
-  .tasks {
-    top: 535px;
-  }
-
-  .users {
-    top: 586px;
-  }
-}
-@media (max-width: 1300px) {
-  .main-container {
-    margin-top: 150px;
-    margin-left: 120px;
+    margin-left: 10px;
   }
 }
 
 @media (max-width: 1200px) {
   .main-container {
-    margin-top: 150px;
-    margin-left: 120px;
+    margin-left: 200px;
+  }
+
+  .groupTask1-input {
+    width: 400px;
+    gap: 14px;
+  }
+
+  .groupTask1-input #title {
+    width: 400px;
+  }
+
+  .groupTask1-input textarea {
+    width: 400px;
+  }
+
+  .groupTask2-input {
+    width: 400px;
+    gap: 14px;
+  }
+
+  .groupTask2-input input {
+    width: 400px;
+  }
+
+  .subtask-container {
+    width: 400px;
+  }
+
+  .contactContainer {
+    width: 400px;
+  }
+
+  .users {
+    width: 400px;
+  }
+
+  .tasks {
+    width: 400px;
+  }
+
+  .addTaskBtn-Container {
+    margin-left: 15px;
+  }
+
+  .btnClear {
+    width: 100px;
+    font-size: 18px;
+  }
+
+  .btnTask {
+    width: 180px;
+    font-size: 18px;
   }
 }
 
-@media (max-width: 1190px) {
+@media (max-width: 1100px) {
   .main-container {
-    margin-top: 150px;
-    margin-left: 50px;
+    padding: 0px 18px 0px 18px;
+  }
+
+  .groupTask1-input {
+    width: 380px;
+    gap: 12px;
+  }
+
+  .groupTask1-input #title {
+    width: 380px;
+  }
+
+  .groupTask1-input textarea {
+    width: 380px;
+  }
+
+  .groupTask2-input {
+    width: 380px;
+    gap: 12px;
+  }
+
+  .groupTask2-input input {
+    width: 380px;
+  }
+
+  .subtask-container {
+    width: 380px;
+  }
+
+  .contactContainer {
+    width: 380px;
+  }
+
+  .users {
+    width: 380px;
+  }
+
+  .tasks {
+    width: 380px;
   }
 }
 
-@media (max-width: 960px) {
-  .headline-task {
-    margin-right: 165px;
-  }
+@media (max-width: 1050px) {
   .main-container {
-    margin-top: 100px;
+    align-items: center;
+    padding: 0px;
     margin-left: 0px;
   }
 
+  .headline-task {
+    margin-left: 70px;
+    font-size: 55px;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .main-container {
+    padding: 0px;
+    margin-left: 20px;
+  }
+
+  .headline-task {
+    margin-left: 50px;
+    font-size: 50px;
+  }
+
+  .groupTask1-input {
+    width: 350px;
+    gap: 14px;
+  }
+
+  .groupTask1-input #title {
+    width: 350px;
+  }
+
+  .groupTask1-input textarea {
+    width: 350px;
+  }
+
+  .groupTask2-input {
+    width: 350px;
+    gap: 14px;
+  }
+
+  .groupTask2-input input {
+    width: 350px;
+  }
+
+  .prio-container {
+    gap: 12px
+  }
+
+  .prioBtn {
+    width: 125px;
+    font-size: 18px;
+  }
+
+  .subtask-container {
+    width: 350px;
+  }
+
+  .contactContainer {
+    width: 350px;
+  }
+
+  .users {
+    width: 350px;
+  }
+
+  .tasks {
+    width: 350px;
+  }
+
+  .spanContactContainer {
+    font-size: 16px;
+  }
+
+  .addTaskBtn-Container {
+    margin-left: 15px;
+  }
+
+  .btnClear {
+    width: 100px;
+    font-size: 18px;
+  }
+
+  .btnTask {
+    width: 180px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 800px) {
   .add-task-container {
     display: flex;
     flex-direction: column;
   }
+
   .seperator {
     display: none;
   }
+
+  .headline-task {
+    width: 89%;
+    font-size: 45px;
+  }
+
+  .main-container {
+    margin-top: 200px;
+    margin-left: 0px;
+  }
+
   .required-field-text {
     display: none;
   }
-  .tasks {
-    top: 785px;
+
+  .groupTask1-input {
+    width: 440px;
+    gap: 12px;
   }
 
-  .users {
-    top: 505px;
+  .groupTask1-input #title {
+    width: 440px;
   }
-  .groupTask1-input {
-    gap: 10px;
+
+  .groupTask1-input textarea {
+    width: 440px;
   }
 
   .groupTask2-input {
-    gap: 10px;
+    width: 440px;
+    gap: 12px;
+  }
+
+  .groupTask2-input input {
+    width: 440px;
+  }
+
+  .subtask-container {
+    width: 440px;
+  }
+
+  .contactContainer {
+    width: 440px;
+  }
+
+  .users {
+    width: 440px;
+    top: 585px;
+  }
+
+  .prio-container {
+    gap: 16px;
+    justify-content: space-between;
+  }
+
+  .tasks {
+    width: 440px;
+    padding-top: 10px;
+    top: 890px;
   }
 
   .addTaskBtn-Container {
-    margin-bottom: 90px;
+    margin-left: 15px;
+  }
+
+  .btnClear {
+    width: 100px;
+    font-size: 18px;
+  }
+
+  .btnTask {
+    width: 180px;
+    font-size: 18px;
   }
 }
 
 @media (max-width: 470px) {
-  .headline-task {
-    font-size: 48px;
-    margin-right: 80px;
+  .main-container {
+    margin-top: 130px;
   }
+
+  .headline-task {
+    width: 80%;
+  }
+
   .groupTask1-input {
     width: 300px;
   }
+
+  .groupTask1-input #title {
+    width: 300px;
+  }
+
   .groupTask2-input {
     width: 300px;
   }
+
   .headline-task {
     margin-right: 80px;
   }
+
   .main-container {
     align-items: normal;
   }
-  .tasks {
-    top: 785px;
-  }
 
-  .users {
-    top: 505px;
-  }
   .groupTask1-input input {
     width: 100%;
   }
+
   .groupTask1-input textarea {
     width: 100%;
   }
+
   .contactContainer {
     width: 100%;
   }
+
+  .users {
+    top: 510px;
+    width: 300px;
+  }
+
   .add-task-container {
     width: 100%;
   }
+
   #date {
     width: 100%;
   }
+
   .subtask-container {
     width: 100%;
   }
+
   .prioBtn {
     font-size: 13px;
   }
+
   .tasks {
-    top: 771px;
+    top: 820px;
     width: 300px;
   }
-  .users {
-    top: 491px;
-    width: 300px;
-  }
+
+
   .user-checkbox {
     width: 20px !important;
   }
+
   .emblem {
     width: 30px;
     height: 28px;
+    padding: 5px;
   }
+
+  .contactName {
+    width: 270px;
+    font-size: 14px;
+  }
+
   .addTaskBtn-Container {
     margin-left: 0px;
   }
+
   .add-task-container {
     align-items: center;
+  }
+
+  .spanContactContainer {
+    font-size: 14px;
   }
 }

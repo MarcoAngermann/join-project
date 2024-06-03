@@ -439,7 +439,7 @@
     cursor: pointer;
 }
 
-.arrowWhite{
+.arrowWhite {
     display: none;
     background-color: #2A3647;
     width: 28px;
@@ -448,6 +448,7 @@
     padding: 8px;
 
 }
+
 @media (max-width: 1425px) {
     .sidebar {
         display: flex !important;
@@ -457,6 +458,7 @@
         display: none !important;
     }
 }
+
 
 @media (max-width:1345px) {
     .divContactList {
@@ -484,6 +486,25 @@
         height: 100px;
         font-size: 50px;
         margin: 30px 0px 30px 0px;
+    }
+}
+
+@media (max-width:1200px) {
+    .contactContainer {
+        margin-left: 200px;
+    }
+
+    .joinAddContact {
+        padding: 0px 25px 0px 25px;
+    }
+    .iconEdit{
+        margin:10px
+    }
+    .dialog{
+        height: 510px;
+    }
+    .addcontactForm{
+        margin-top: 120px;
     }
 }
 
@@ -521,6 +542,9 @@
 
     .groupContact-input {
         width: 370px;
+    }
+    .textAdd{
+        font-size: 24px;
     }
 }
 
@@ -561,7 +585,7 @@
         height: 250px;
         border-radius: 20px 20px 0px 0px;
         align-content: flex-start;
-        padding-top: 40px;
+        padding-top: 30px;
     }
 
     .iconJoinContact {
@@ -583,12 +607,12 @@
 
     .iconEdit {
         position: fixed;
-        margin-top: 200px;
+        margin-top: 220px;
     }
 
     .iconEdit img {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
     }
 
     .addcontactForm {
@@ -630,17 +654,36 @@
     .a_nameContact {
         display: none;
     }
-    .amobile_nameContact{
+
+    .amobile_nameContact {
         bottom: 240px;
     }
 }
 
 @media (max-width:450px) {
+
     .divList {
         width: 100%;
     }
-    .amobile_nameContact{
+
+    .amobile_nameContact {
         bottom: 240px;
+    }
+
+    .btnMobileClose {
+        margin-bottom: 20px;
+    }
+
+    .joinAddContact {
+        height: 250px;
+        border-radius: 20px 20px 0px 0px;
+        align-content: flex-start;
+        padding: 20px 20px 0px 20px;
+    }
+
+    .textAdd {
+        font-size: 25px;
+        margin: 12px 0px 12px 0px;
     }
 }
 
@@ -649,35 +692,47 @@
     .divShortInfo {
         font-size: 16px;
     }
+
     .groupContact-input {
         width: 290px;
     }
+
     .style_InputTypography1 {
-        font-size: 16px;
+        font-size: 14px;
     }
 
-    .mobileContact{
+    .mobileContact {
         margin-right: 10px;
     }
-    .divContactTitle{
+
+    .divContactTitle {
         height: 50px;
         margin-top: 15px;
     }
-    .titleContact{
+
+    .titleContact {
         font-size: 30px;
     }
-    .style_BtnTypography1{
-        font-size: 12px;
+
+    .textAdd {
+        font-size: 20px;
     }
-    .emblemInfo{
+
+    .style_BtnTypography1 {
+        font-size: 16px;
+    }
+
+    .emblemInfo {
         font-size: 25px;
         height: 60px;
         width: auto;
     }
-    .nameContact{
+
+    .nameContact {
         font-size: 30px;
     }
-    .amobile_nameContact{
+
+    .amobile_nameContact {
         bottom: 280px;
     }
 }

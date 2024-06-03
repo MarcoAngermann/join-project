@@ -128,19 +128,17 @@ function backToLogin() {
 }
 
 function moveIcon() {
+  document.getElementById('containerLog').style.display = 'none';
   document.getElementById('imgLogoID').classList.add('animation1');
   document.getElementById('overlay').classList.add('animation2');
-}
-
-function moveMobileIcon() {
-  document.getElementById('imgLogoID').classList.add('animation3');
-  document.getElementById('overlay').classList.add('animation2');
+  setTimeout(() => {
+    document.getElementById('containerLog').style.display = 'flex';
+  }, 1000);
 }
 
 function doLogin(event) {
   // Verhindern Sie das Standardverhalten des Formulars, falls diese Funktion als Event Handler verwendet wird
   if (event) event.preventDefault();
-
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
   let userExists = false;
@@ -174,36 +172,35 @@ function getGuestLogin(event) {
 
 function keyDown() {
   let image = document.getElementById('password');
-  image.style.backgroundImage = "url('../assets/icons/visibility_off.svg')";
+  image.style.backgroundImage = "url('../assets/icons/visibility.svg')";
 }
 
 function showPassword() {
   let image = document.getElementById('password');
   if (image.type == 'password') {
-    image.style.backgroundImage = "url('../assets/icons/visibility.svg')";
+    image.style.backgroundImage = "url('../assets/icons/visibility_off.svg')";
     image.type = 'text';
   } else {
-    image.style.backgroundImage = "url('../assets/icons/visibility_off.svg')";
+    image.style.backgroundImage = "url('../assets/icons/visibility.svg')";
     image.type = 'password';
   }
 }
 
 function keyDownConf() {
   let image = document.getElementById('passwordConfirm');
-  image.style.backgroundImage = "url('../assets/icons/visibility_off.svg')";
+  image.style.backgroundImage = "url('../assets/icons/visibility.svg')";
 }
 
 function showPasswordConf() {
   let image = document.getElementById('passwordConfirm');
   if (image.type == 'password') {
-    image.style.backgroundImage = "url('../assets/icons/visibility.svg')";
+    image.style.backgroundImage = "url('../assets/icons/visibility_off.svg')";
     image.type = 'text';
   } else {
-    image.style.backgroundImage = "url('../assets/icons/visibility_off.svg')";
+    image.style.backgroundImage = "url('../assets/icons/visibility.svg')";
     image.type = 'password';
   }
 }
-
 
 /*mobile function*/
 
@@ -212,7 +209,7 @@ function moveIcons() {
   if (outWidth <= 700) {
     document.getElementById("imgLogoID").src = "../assets/icons/joinWhite.svg";
     document.getElementById("overlay").style.backgroundColor = "#2A3647";
-    moveMobileIcon();
+    moveIcon();
   }
   else {
     moveIcon();

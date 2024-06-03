@@ -12,6 +12,7 @@ body {
   height: 100vh;
   background-color: #F6F7F8;
   position: relative;
+  overflow-y: hidden;
 }
 
 .containerLog {
@@ -234,6 +235,7 @@ form label {
   color: lightslategray;
   margin: 20px;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .a_footer:hover {
@@ -310,32 +312,23 @@ form label {
 }
 
 /* Login animation */
- @keyframes moveLogo {
-  0% {
-    transform: translateX(180%) translateY(130%);
-    scale: 2.5;
-  }
-
-  100% {
-    scale: 1.0;
-    transform: translateX(0%) translateY(0%);
-
-  }
-} 
-
-@keyframes moveMobileLogo {
-  0% {
-    transform: translateX(100%) translateY(120%);
-    scale: 2.5;
-  }
-
-  100% {
-    scale: 1.0;
-    transform: translateX(0%) translateY(0%);
-
-  }
+:root {
+  --initial-translate-x: 240%;
+  --initial-translate-y: 140%;
+  --initial-scale: 2.5;
 }
 
+@keyframes moveLogo {
+  0% {
+    transform: translateX(var(--initial-translate-x)) translateY(var(--initial-translate-y));
+    scale: var(--initial-scale);
+  }
+
+  100% {
+    scale: 1.0;
+    transform: translateX(0%) translateY(0%);
+  }
+}
 
 @keyframes opacity {
   0% {
@@ -350,7 +343,6 @@ form label {
 
 .imgLogoMove {
   display: flex;
-  justify-content: center;
   width: 100.03px;
   height: 121.97px;
   position: relative;
@@ -363,10 +355,6 @@ form label {
 .animation2 {
   animation: opacity 1s ease-in-out;
   display: none;
-}
-
-.animation3{
-  animation: moveMobileLogo 2s ease-in-out;
 }
 
 .d-none {
@@ -407,7 +395,36 @@ form label {
 }
 
 /*Resposive Login*/
+@media(max-width:1200px) {
+  :root {
+    --initial-translate-x: 250%;
+    --initial-translate-y: 130%;
+  }
+}
+
+@media(max-width:1000px) {
+  :root {
+    --initial-translate-x: 220%;
+    --initial-translate-y: 170%;
+    --initial-scale: 2;
+  }
+}
+
+@media(max-width:800px) {
+  :root {
+    --initial-translate-x: 190%;
+    --initial-translate-y: 170%;
+    --initial-scale: 2;
+  }
+}
+
 @media(max-width:700px) {
+  :root {
+    --initial-translate-x: 150%;
+    --initial-translate-y: 165%;
+    --initial-scale: 2;
+  }
+
   .divSignUp {
     display: none;
   }
@@ -437,7 +454,20 @@ form label {
   }
 }
 
+@media(max-width:625px) {
+  :root {
+    --initial-translate-x: 130%;
+    --initial-translate-y: 150%;
+    --initial-scale: 2;
+  }
+}
+
 @media(max-width:550px) {
+  :root {
+    --initial-translate-x: 100%;
+    --initial-translate-y: 120%;
+    --initial-scale: 1.5;
+  }
   .imgLogo {
     width: 50px;
     height: 70px;
@@ -478,8 +508,20 @@ form label {
     gap: 15px;
   }
 }
+@media(max-width:510px) {
+  :root {
+    --initial-translate-x: 120%;
+    --initial-translate-y: 190%;
+    --initial-scale: 1.5;
+  }
+}
 
 @media(max-width:460px) {
+  :root {
+    --initial-translate-x: 100%;
+    --initial-translate-y: 180%;
+    --initial-scale: 1.5;
+  }
   .imgLogo {
     width: 40px;
     height: 60px;

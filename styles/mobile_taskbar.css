@@ -30,31 +30,33 @@
     font-weight: 400;
     font-size: 16px;
     gap: 8px;
-  }
+}
 
-  .a-nav-mobile:hover {
+.a-nav-mobile:hover {
     cursor: pointer;
     color: #ffffff;
     background-color: rgb(9, 25, 49);
-  }
+}
 
-  .icon-mobile {
+.icon-mobile {
     width: 32px;
     height: 32px;
     vertical-align: middle;
-  }
+}
 
-  @media (max-width: 1050px) {
+@media (max-width: 1050px) {
     .sidebar {
         display: none;
     }
-.mobile-taskbar {
-    display: flex;
-}
-.testContainer {
-    margin-left: 0px;
-    margin-top: 130px;
-}
+
+    .mobile-taskbar {
+        display: flex;
+    }
+
+    .testContainer {
+        margin-left: 0px;
+        margin-top: 130px;
+    }
 
 }
 
