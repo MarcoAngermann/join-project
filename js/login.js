@@ -198,7 +198,6 @@ function showPasswordConf() {
     image.type = 'password';
   }
 }
-<<<<<<< HEAD
 
 /*mobile function*/
 
@@ -212,5 +211,3 @@ function moveIcons() {
     moveIcon();
   }
 }
-=======
->>>>>>> 7f09299ab2c42290aa3cac0c12595fabb8a853cd
