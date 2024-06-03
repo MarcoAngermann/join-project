@@ -157,7 +157,7 @@ function closeBigCard() {
   document.getElementById('showBigCard').classList.add('dnone');
 }
 
-function showBigCard(cardId) {
+async function showBigCard(cardId) {
   console.log(cardId);
   document.getElementById('showBigCard').classList.remove('dnone');
   let content = document.getElementById('showBigCard');
@@ -169,7 +169,6 @@ function showBigCard(cardId) {
 
 function renderBigCardHTML(cardId) {
   let task = tasks.find((t) => t.cardId == cardId);
-
   return /*html*/ `
     <div id="bigCard${task.cardId}" class="bigCard"  onclick="dontClose()">
       <div class="big-header">
@@ -251,10 +250,13 @@ function renderBigEmblemUsers(user) {
   `;
 }
 
-function renderBigSubtasks(cardId) {
+async function renderBigSubtasks(cardId) {
   let bigSubtask = document.getElementById('bigSubtasks');
   bigSubtask.innerHTML = ''; // Clear existing subtasks
+  let checkedSubtasksIds = await checkedSubtasks(cardId);
 
+  // Mark the checkboxes of the checked subtasks
+  checkSubtaskCheckboxes(checkedSubtasksIds);
   const task = tasks.find((t) => t.cardId == cardId);
   if (task && task.subtask) {
     for (let j = 0; j < task.subtask.length; j++) {
@@ -419,21 +421,15 @@ async function updateSubtasks(cardId, subtasks) {
   }
 }
 
-// Diese Funktion aktualisiert die Checkboxen basierend auf den geladenen Daten
-async function checkUserCheckboxes() {
-  checkedSubtasks();
+function checkSubtaskCheckboxes(checkedSubtasksList) {
+  // Selektiere alle Checkboxen in der bigCard
+  let subtaskCheckboxes = document.querySelectorAll('.big-card-checkbox');
 
-  let checkedSubtasks = await checkedSubtasks();
-
-  // Selektiere alle Checkboxen
-  let userCheckboxes = document.querySelectorAll('.big-card-checkbox');
-
-  // Gehe jede Checkbox durch
-  for (let checkbox of userCheckboxes) {
-    let userId = checkbox.dataset.userid;
-
-    // Überprüfe, ob die userId in den geladenen checkedSubtasks vorhanden ist
-    checkbox.checked = checkedSubtasks.includes(userId);
+  // Gehe jede Checkbox durch und setze sie auf 'checked', wenn sie in der Liste der geprüften Subtasks ist
+  for (let i = 0; i < subtaskCheckboxes.length; i++) {
+    let checkbox = subtaskCheckboxes[i];
+    let subtaskId = checkbox.getAttribute('data-userid'); // Stellen Sie sicher, dass Sie das richtige Attribut für die ID verwenden
+    checkbox.checked = checkedSubtasksList.includes(subtaskId);
   }
 }
 
@@ -443,6 +439,9 @@ async function checkedSubtasks(cardId) {
   for (let key in tasksJSON) {
     let task = tasksJSON[key];
     if (task.cardId == cardId) {
+      if (!task.subtask.checkedSubtasks) {
+        return [];
+      }
       checkedSubtasks = task.subtask.checkedSubtasks;
       break; // Sobald die richtige Aufgabe gefunden wurde, brechen Sie die Schleife ab
     }
