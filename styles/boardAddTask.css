@@ -144,7 +144,7 @@ textarea {
   border: 0.5px solid #29abe2;
   cursor: pointer;
 }
-
+/*
 .clear-button:hover {
   color: #29abe2;
   border: 0.5px solid #29abe2;
@@ -155,7 +155,7 @@ textarea {
   filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg)
     brightness(91%) contrast(106%);
 }
-
+*/
 .midBtn-Color {
   background-color: #ffa800;
   color: #ffffff;

@@ -269,7 +269,7 @@ function renderBigSubtasksHTML(cardId, subtask, j) {
   return /*html*/ `
       <label for="checkbox${j}">
           <li class="bigSubtaskList">
-              <input type="checkbox" id="checkbox${j} data-userid="${j}">
+              <input class="big-card-checkbox" onclick="renderProgressBar(${cardId})" type="checkbox" id="checkbox${j}" data-userid="${j}">
               <div class="contactName">${subtask}</div>
           </li>
       </label>
@@ -372,9 +372,10 @@ function getSelectedUserIds() {
 
 function renderProgressBar(cardId) {
   let subtasks = getSelectedSubtasks(cardId);
-  updateProgressbar(cardId, subtasks);
-  //updateSubtasks(cardId);
-  updateProgressBarDisplay(cardId, subtasks);
+  updateSubtasks(cardId, subtasks);
+  checkUserCheckboxes();
+  //updateProgressbar(cardId, subtasks);
+  //updateProgressBarDisplay(cardId, subtasks);
 }
 
 function updateProgressBarDisplay(cardId, subtasks) {
@@ -400,20 +401,51 @@ function getSelectedSubtasks() {
   let checkboxes = document.querySelectorAll(
     `.bigSubtaskList input[type="checkbox"]:checked`
   );
-
+  let selectedSubtasks = [];
   for (let checkbox of checkboxes) {
     let subtaskId = checkbox.getAttribute(`id`);
-    ArrayAusFireBase.push(subtaskId);
+    selectedSubtasks.push(subtaskId);
   }
   console.log(selectedSubtasks);
   return selectedSubtasks;
 }
-async function updateSubtasks(cardId) {
-  let subtasksJSON = await loadData('tasks');
-  for (let key in subtasksJSON) {
-    let subtask = subtasksJSON[key];
-    if (subtask.cardId == cardId) {
-      await putData(`tasks/${key}/`);
+async function updateSubtasks(cardId, subtasks) {
+  let tasksJSON = await loadData('tasks');
+  for (let key in tasksJSON) {
+    let task = tasksJSON[key];
+    if (task.cardId == cardId) {
+      await putData(`tasks/${key}/subtask/checkedSubtasks`, subtasks);
     }
   }
+}
+
+// Diese Funktion aktualisiert die Checkboxen basierend auf den geladenen Daten
+async function checkUserCheckboxes() {
+  checkedSubtasks();
+
+  let checkedSubtasks = await checkedSubtasks();
+
+  // Selektiere alle Checkboxen
+  let userCheckboxes = document.querySelectorAll('.big-card-checkbox');
+
+  // Gehe jede Checkbox durch
+  for (let checkbox of userCheckboxes) {
+    let userId = checkbox.dataset.userid;
+
+    // Überprüfe, ob die userId in den geladenen checkedSubtasks vorhanden ist
+    checkbox.checked = checkedSubtasks.includes(userId);
+  }
+}
+
+async function checkedSubtasks(cardId) {
+  let tasksJSON = await loadData('tasks');
+  let checkedSubtasks = [];
+  for (let key in tasksJSON) {
+    let task = tasksJSON[key];
+    if (task.cardId == cardId) {
+      checkedSubtasks = task.subtask.checkedSubtasks;
+      break; // Sobald die richtige Aufgabe gefunden wurde, brechen Sie die Schleife ab
+    }
+  }
+  return checkedSubtasks; // Rückgabe der geprüften Subtasks
 }

@@ -28,6 +28,7 @@ function renderInformation(cardId) {
   document.getElementById('editDate').value = task.date;
   editTogglePriority(task.priority);
   renderEditUsers();
+  restrictEditPastDate();
   showPickedUsersEmblems(cardId);
   renderEditSubtask(task.subtask);
 }
@@ -174,20 +175,70 @@ function checkThisSubtaskHTML(i) {
     `;
 }
 
+function resetEditElements(elements) {
+  for (let i = 0; i < elements.length; i++) {
+    elements[i].classList.remove('edit-selected');
+    elements[i].style.backgroundColor = 'white';
+    elements[i].style.color = 'black';
+    let svgPaths = elements[i].querySelectorAll('svg path');
+    if (svgPaths) {
+      for (let j = 0; j < svgPaths.length; j++) {
+        // Setze die ursprüngliche Farbe des SVGs zurück, wenn die Priorität 'medium' ist
+        if (elements[i].getAttribute('onclick').includes('medium')) {
+          svgPaths[j].style.fill = '#FFA800';
+        } else {
+          svgPaths[j].style.fill = svgPaths[j].getAttribute('originalColor');
+        }
+      }
+    }
+  }
+}
+
+function setEditPriorityStyles(
+  selectedElement,
+  backgroundColor,
+  textColor,
+  svgColor
+) {
+  if (selectedElement) {
+    selectedElement.classList.add('edit-selected');
+    selectedElement.style.backgroundColor = backgroundColor;
+    selectedElement.style.color = textColor;
+    let svgPaths = selectedElement.querySelectorAll('svg path');
+    if (svgPaths) {
+      for (let j = 0; j < svgPaths.length; j++) {
+        svgPaths[j].style.fill = svgColor;
+      }
+    }
+  }
+}
+
 function editTogglePriority(priority) {
   let elements = document.getElementsByClassName('edit-priobtn');
-  resetElements(elements);
+  resetEditElements(elements);
 
   // Hintergrundfarbe, Textfarbe und SVG-Farbe basierend auf der ausgewählten Priorität festlegen
   let selectedElement = document.querySelector("[onclick*='" + priority + "']");
   if (priority === 'urgent') {
-    setPriorityStyles(selectedElement, '#FF3D00', 'white', 'white');
+    setEditPriorityStyles(selectedElement, '#FF3D00', 'white', 'white');
   } else if (priority === 'medium') {
-    setPriorityStyles(selectedElement, '#FFA800', 'white', 'white');
+    setEditPriorityStyles(selectedElement, '#FFA800', 'white', 'white');
   } else if (priority === 'low') {
-    setPriorityStyles(selectedElement, '#7AE229', 'white', 'white');
+    setEditPriorityStyles(selectedElement, '#7AE229', 'white', 'white');
   }
 }
+
+window.onload = function () {
+  let elements = document.getElementsByClassName('edit-priobtn');
+  for (let i = 0; i < elements.length; i++) {
+    let svgPaths = elements[i].querySelectorAll('svg path');
+    if (svgPaths) {
+      for (let j = 0; j < svgPaths.length; j++) {
+        svgPaths[j].setAttribute('originalColor', svgPaths[j].style.fill);
+      }
+    }
+  }
+};
 
 function getEditSelectedPrio() {
   let urgentBtn = document.getElementById('urgentPrio');
@@ -199,6 +250,12 @@ function getEditSelectedPrio() {
   } else {
     return 'medium';
   }
+}
+
+function restrictEditPastDate() {
+  let dateInput = document.getElementById('editDate');
+  let today = new Date().toISOString().split('T')[0];
+  dateInput.setAttribute('min', today);
 }
 
 function renderEditUsers() {

@@ -212,18 +212,6 @@ textarea {
   width: 100%;
 }
 
-/*
-.contactList:focus {
-  color: white;
-  background-color: #2a3647;
-  outline: none;
-}
-
-.contactList:focus:hover {
-  background-color: #091931;
-}
-*/
-
 .contactContainer {
   display: flex;
   align-items: center;
@@ -490,11 +478,11 @@ input[type='checkbox'] {
   margin-left: 200px;
 }
 
-@media (max-width: 1425px) { 
+@media (max-width: 1425px) {
   .main-container {
     margin-left: 150px;
     margin-top: 150px;
-    display: flex;  
+    display: flex;
     align-items: center;
   }
 
@@ -508,7 +496,6 @@ input[type='checkbox'] {
   .users {
     top: 586px;
   }
-
 }
 @media (max-width: 1300px) {
   .main-container {
@@ -524,15 +511,15 @@ input[type='checkbox'] {
   }
 }
 
-  @media (max-width: 1190px) {
-    .main-container {
-      margin-top: 150px;
-      margin-left: 50px;
-    }
+@media (max-width: 1190px) {
+  .main-container {
+    margin-top: 150px;
+    margin-left: 50px;
   }
+}
 
 @media (max-width: 960px) {
-  .headline-task{
+  .headline-task {
     margin-right: 165px;
   }
   .main-container {
@@ -575,7 +562,7 @@ input[type='checkbox'] {
     font-size: 48px;
     margin-right: 80px;
   }
-  .groupTask1-input{
+  .groupTask1-input {
     width: 300px;
   }
   .groupTask2-input {
