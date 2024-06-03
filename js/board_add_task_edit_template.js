@@ -1,7 +1,7 @@
 function boardAddTaskEdit(cardId) {
   return /*html*/ `
     <div onclick="dontClose()">
-        <form class="add-task-container" onsubmit="createNewTask(event);">
+        <form class="edit-add-task-container" onsubmit="editTask(${cardId},event);">
             <div class="edit-task-header">
                 <span>Title<span class="required-color">*</span></span>
                 <img
@@ -11,14 +11,14 @@ function boardAddTaskEdit(cardId) {
                     alt="schließen"
                 />
             </div>
-            <input id="title" type="text" required />
+            <input id="editTitle" type="text" required />
             <span>Description</span>
-            <textarea name="" id="description" cols="30" rows="5"></textarea>
-            <span>Due date<span class="required-color">*</span></span>
-            <input id="date" type="date" required />
+            <textarea name="" id="editDescription" cols="30" rows="5"></textarea>
+            <span>Due date<span class="edit-required-color">*</span></span>
+            <input id="editDate" type="date" required />
             <span>Prio</span>
-            <div class="prio-container">
-                <div class="prioBtn" id="urgentPrio" onclick="togglePriority('urgent')">
+            <div class="edit-prio-container">
+                <div class="edit-priobtn" id="urgentPrio" onclick="editTogglePriority('urgent')">
                     Urgent
                     <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -29,7 +29,7 @@ function boardAddTaskEdit(cardId) {
                             fill="#FF3D00" />
                     </svg>
                 </div>
-                <div class="prioBtn midBtn-Color" id="midPrio"  onclick="togglePriority('medium')">
+                <div class="edit-priobtn midBtn-Color"   onclick="editTogglePriority('medium')">
                     Medium
                     <svg width="21" height="8" viewBox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -40,7 +40,7 @@ function boardAddTaskEdit(cardId) {
                         fill="white" />
                     </svg>
                 </div>
-                <div class="prioBtn" id="lowPrio" onclick="togglePriority('low')">
+                <div class="edit-priobtn" id="lowPrio" onclick="editTogglePriority('low')">
                     Low
                     <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -53,50 +53,47 @@ function boardAddTaskEdit(cardId) {
                 </div>
             </div>
             <span>Assigned to</span>
-            <div onclick="showEditUsers()" class="contactContainer">
+            <div onclick="showEditUsers()" class="edit-contact-container">
                 <span>Select user to assign</span>
                 <img id="arrowDownUser" src="../assets/icons/arrow_down_icon.svg" alt="">
                 <img id="arrowUpUser" src="../assets/icons/arrow_up_icon.svg" style="display: none;">
             </div>
-            <div id="usersEmblem" class="usersEmblem"></div>
-            <ul id="editUsers" class="users"></ul>
-            <!--
-                <ul id="tasks" class="tasks"></ul>
-            -->
-            <span class="subtaskLabel">Subtask</span>
-            <div class="subtask-container" id="subtaskContainer">
+            <div id="editUsersEmblem" class="edit-users-emblem"></div>
+            <ul id="editUsers" class="edit-users"></ul>
+            <span class="edit-subtask-label">Subtask</span>
+            <div class="edit-subtask-container" id="editSubtaskContainer">
                 <input
                     type="text"
-                    id="subtaskInput"
+                    id="editSubtaskInput"
                     placeholder="Add new subtask"
-                    onclick="changeButtonsSubtask()"
+                    onclick="editChangeButtonsSubtask()"
                 />
-                <div class="subtask-right">
-                <div id="subtask-right-add" class="subtask-right-add dnone">
+                <div class="edit-subtask-right">
+                <div id="editSubtaskRightAdd" class="edit-subtask-right-add dnone">
                     <img 
-                        onclick="removeSubtask()"
+                        onclick="editRemoveSubtask()"
                         src="../assets/icons/cancel.svg"
                         alt=""
                     />
                     <div class="subtask-right-seperator"></div>
                     <img
-                        onclick="addSubtask()"
+                        onclick="editAddSubtask()"
                         src="../assets/icons/check.svg"
                         alt=""
                     />
                 </div>
-                <div id="subtask-right-regular" class="subtask-right-regular">
+                <div id="editSubtaskRightRegular" class="edit-subtask-right-regular">
                     <img
-                        onclick="changeButtonsSubtask()"
+                        onclick="editChangeButtonsSubtask()"
                         src="../assets/icons/add.svg"
                         alt=""
                     />
                 </div>
             </div>
             </div>
-            <div id="subtask" class="subtask"></div>
+            <div id="editSubtask" class="edit-subtask"></div>
             <div type="submit" class="addTaskBtn-Container">
-                <button class="btnTask">
+                <button class="edit-btntask">
                     Ok
                     <img src="..//assets/icons/checkWhite.svg">           
                 </button>

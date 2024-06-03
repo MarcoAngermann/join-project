@@ -550,7 +550,7 @@
 
 @media (max-width:820px) {
     .divShortInfo {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .divContactList {
@@ -629,7 +629,6 @@
 }
 
 @media (max-width:710px) {
-
     .divList {
         width: 70%;
     }
@@ -648,7 +647,7 @@
     }
 
     .divShortInfo {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .a_nameContact {

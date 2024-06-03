@@ -346,7 +346,7 @@ input[type='checkbox'] {
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  height: 24px;
+  height: 32px;
   gap: 4px;
   padding: 4px 16px 4px 16px;
 }

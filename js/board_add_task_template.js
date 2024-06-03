@@ -2,11 +2,11 @@ function renderBoardAddTaskHTML(boardStatus) {
   console.log(boardStatus);
   return /*html*/ `
   <div class="main-container" onclick="dontClose()">
-    <div class="addTaskTop">
+    <div class="task-top">
       <h1 class="headline-task">Add Task</h1>
       <div>
         <img
-        class="closeBoard"
+        class="close-board"
         onclick="closeAddTaskBoard()"
         src="../assets/icons/close_icon.svg"
         alt="schließen"
@@ -14,7 +14,7 @@ function renderBoardAddTaskHTML(boardStatus) {
       </div>
     </div>
   <form class="add-task-container" onsubmit="createNewTaskBoard('${boardStatus}',event); return false;">
-    <div class="groupTask1-input">
+    <div class="group-task1-input">
       <span>Title<span class="required-color">*</span></span>
       <input id="title" type="text" required />
       <span>Description</span>
@@ -29,7 +29,7 @@ function renderBoardAddTaskHTML(boardStatus) {
         <img id="arrowUpUser" src="../assets/icons/arrow_up_icon.svg" style="display: none;">
       </div>
       <div id="usersEmblem" class="usersEmblem"></div>
-      <ul id="boardUsers" class="users"></ul>
+      <ul id="users" class="users"></ul>
       <div>
         <p class="required-field-text">
           <span class="required-color">*</span>This field is required
@@ -37,7 +37,7 @@ function renderBoardAddTaskHTML(boardStatus) {
       </div>
     </div>
     <div class="seperator"></div>
-    <div class="groupTask2-input">
+    <div class="group-task2-input">
       <span>Due date<span class="required-color">*</span></span>
       <input id="date" type="date" required />
       <span>Prio</span>
@@ -86,7 +86,7 @@ function renderBoardAddTaskHTML(boardStatus) {
 
 
       
-      <span class="subtaskLabel">Subtask</span>
+      <span class="subtask-label">Subtask</span>
 
         <div class="subtask-container" id="subtaskContainer">
           <input
@@ -121,11 +121,11 @@ function renderBoardAddTaskHTML(boardStatus) {
 
         <div id="subtask" class="subtask"></div>
         <div type="submit" class="addTaskBtn-Container">
-          <button formnovalidate class="btnClear" onclick="clearAllTasks(event)">
+          <button formnovalidate class="clear-button" onclick="clearAllTasks(event)">
             Clear
-            <img class="iconCancelSvg" src="../assets/icons/cancel.svg">
+            <img class="icon-cancel-svg" src="../assets/icons/cancel.svg">
           </button>
-          <button class="btnTask">
+          <button class="task-button">
             Create Task
             <img src="..//assets/icons/checkWhite.svg">
           </button>

@@ -1,5 +1,5 @@
 async function initLogin() {
-  moveIcons();
+  moveIcon();
   usersJson = await loadData('users');
 }
 let usersJson;
@@ -214,5 +214,4 @@ function moveIcons() {
   else {
     moveIcon();
   }
-};
-
+}
