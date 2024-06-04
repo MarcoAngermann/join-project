@@ -664,6 +664,7 @@ input[type='checkbox'] {
   }
 
   .headline-task {
+    margin-top: 50px;
     width: 89%;
     font-size: 45px;
   }
@@ -693,6 +694,7 @@ input[type='checkbox'] {
   .groupTask2-input {
     width: 440px;
     gap: 12px;
+    margin-bottom: 100px;
   }
 
   .groupTask2-input input {
@@ -780,7 +782,7 @@ input[type='checkbox'] {
   }
 
   .users {
-    top: 510px;
+    top: 532px;
     width: 300px;
   }
 
