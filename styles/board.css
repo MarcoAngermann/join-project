@@ -159,8 +159,7 @@
 
 .plusBtn-svg:hover {
   cursor: pointer;
-  filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg)
-    brightness(91%) contrast(106%);
+  filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg) brightness(91%) contrast(106%);
 }
 
 .big-subtasks {
@@ -194,11 +193,33 @@
   gap: 24px;
 }
 
-.subtask-progress-bar {
-  height: 20px;
-  background-color: #4caf50;
-  text-align: center;
-  line-height: 20px;
-  color: white;
+.subtask-progress {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+progress[value] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 60%;
+  height: 8px;  
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #F4F4F4;
+  border-radius: 8px;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: #4589FF;
+  border-radius: 8px;
   transition: width 0.5s ease-in-out;
+}
+
+.subtask-progress-count {
+  display: flex;
+  width: 40%;
+  font-size: 12px;
 }

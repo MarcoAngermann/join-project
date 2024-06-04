@@ -2,15 +2,10 @@ function boardAddTaskEdit(cardId) {
   return /*html*/ `
     <div onclick="dontClose()">
         <form class="edit-add-task-container" onsubmit="editTask(${cardId},event);">
-            <div class="edit-task-header">
-                <span>Title<span class="required-color">*</span></span>
-                <img
-                    class="close-edit-board"
-                    onclick="closeEditBoard()"
-                    src="../assets/icons/close_icon.svg"
-                    alt="schließen"
-                />
+            <div class="edit-task-header">               
+                <img class="close-edit-board" onclick="closeEditBoard()" src="../assets/icons/close_icon.svg" alt="schließen" />
             </div>
+            <span>Title<span class="required-color">*</span></span>
             <input id="editTitle" type="text" required />
             <span>Description</span>
             <textarea name="" id="editDescription" cols="30" rows="5"></textarea>
@@ -76,18 +71,10 @@ function boardAddTaskEdit(cardId) {
                         alt=""
                     />
                     <div class="subtask-right-seperator"></div>
-                    <img
-                        onclick="editAddSubtask()"
-                        src="../assets/icons/check.svg"
-                        alt=""
-                    />
+                    <img onclick="editAddSubtask()" src="../assets/icons/check.svg" alt="" />
                 </div>
                 <div id="editSubtaskRightRegular" class="edit-subtask-right-regular">
-                    <img
-                        onclick="editChangeButtonsSubtask()"
-                        src="../assets/icons/add.svg"
-                        alt=""
-                    />
+                    <img onclick="editChangeButtonsSubtask()" src="../assets/icons/add.svg" alt=""/>
                 </div>
             </div>
             </div>

@@ -1,12 +1,12 @@
 .edit-add-task-container {
-  /*height: 900px;*/
-  width: 525px;
+  width: auto;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
   background-color: #ffffff;
   border-radius: 30px;
-  padding: 32px 40px 32px 40px;
+  padding: 20px 25px 20px 25px;
+  overflow-y: auto;
 }
 
 .edit-add-task-container h1 {
@@ -36,11 +36,12 @@
   border: 1px solid #d1d1d1;
   gap: 10px;
   padding: 12px 16px 12px 16px;
+  overflow-y: hidden;
 }
 
 .edit-task-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .close-edit-board {
@@ -53,6 +54,7 @@
   background-color: #dcdcdc;
   border-radius: 50%;
 }
+
 .edit-prio-container {
   display: flex;
   flex-direction: row;
@@ -88,14 +90,12 @@ textarea {
   align-items: center;
   justify-content: center;
   background: #2a3647;
-
   border-radius: 10px;
   padding: 16px;
   gap: 4px;
-  font-size: 21px;
+  font-size: 18px;
   color: #ffffff;
-  font-weight: 700;
-  line-height: 25.2px;
+  font-weight: 700;  
 }
 
 .edit-btntask:hover {
@@ -111,8 +111,7 @@ textarea {
 }
 
 .btnClear:hover .iconCancelSvg {
-  filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg)
-    brightness(91%) contrast(106%);
+  filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg) brightness(91%) contrast(106%);
 }
 
 .midBtn-Color {
@@ -409,6 +408,7 @@ input[type='checkbox'] {
   .headline-task {
     margin-right: 664px;
   }
+
   .tasks {
     top: 535px;
   }
@@ -427,12 +427,15 @@ input[type='checkbox'] {
     display: flex;
     flex-direction: column;
   }
+
   .seperator {
     display: none;
   }
+
   .required-field-text {
     display: none;
   }
+
   .tasks {
     top: 785px;
   }
@@ -440,6 +443,7 @@ input[type='checkbox'] {
   .edit-users {
     top: 505px;
   }
+
   .groupTask1-input {
     gap: 10px;
   }
@@ -458,15 +462,19 @@ input[type='checkbox'] {
     font-size: 48px;
     margin-right: 80px;
   }
+
   .groupTask1-input {
     width: 300px;
   }
+
   .groupTask2-input {
     width: 300px;
   }
+
   .headline-task {
     margin-right: 80px;
   }
+
   .tasks {
     top: 785px;
   }
@@ -474,45 +482,58 @@ input[type='checkbox'] {
   .edit-users {
     top: 505px;
   }
+
   .groupTask1-input input {
     width: 100%;
   }
+
   .groupTask1-input textarea {
     width: 100%;
   }
+
   .edit-contact-container {
     width: 100%;
   }
+
   .edit-add-task-container {
     width: 100%;
   }
+
   #date {
     width: 100%;
   }
+
   .edit-subtask-container {
     width: 100%;
   }
+
   .edit-priobtn {
     font-size: 13px;
   }
+
   .tasks {
     top: 771px;
     width: 300px;
   }
+
   .edit-users {
     top: 491px;
     width: 300px;
   }
+
   .edit-user-checkbox {
     width: 20px !important;
   }
+
   .edit-emblem {
     width: 30px;
     height: 28px;
   }
+
   .addTaskBtn-Container {
     margin-left: 0px;
   }
+
   .edit-add-task-container {
     align-items: center;
   }

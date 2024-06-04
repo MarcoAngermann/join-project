@@ -18,15 +18,12 @@ async function updateHTML() {
 
 function updateTasksByStatus(status, elementId) {
   let filteredTasks = tasks.filter((task) => task.status == status);
-
   let boardCard = document.getElementById(elementId);
-
   boardCard.innerHTML = '';
-
   for (let i = 0; i < filteredTasks.length; i++) {
-    (boardCard.innerHTML += renderSmallCardHTML(filteredTasks[i], i)),
-      showSmallUsersEmblem(filteredTasks[i]);
-    //renderSmallSubtasks(filteredTasks[i]);
+    (boardCard.innerHTML += renderSmallCardHTML(filteredTasks[i], i));
+    showSmallUsersEmblem(filteredTasks[i]);
+    renderProgressBar(filteredTasks[i].cardId, tasks);
   }
 }
 
@@ -44,7 +41,8 @@ function renderSmallCardHTML(task) {
         <p>${task.description}</p>
       </div>
       <div class="subtask-progress" role="subtask-progressbar" aria-label="Example with label">
-      <div id="subtaskProgressBar${task.cardId}" class="subtask-progress-bar" style="width: 0%"></div>
+      <progress class="subtask-progress-bar" id="subtaskProgressBar${task.cardId}" max="100" ></progress>
+      <p class="subtask-progress-count" id="subtasksCount${task.cardId}"></p>
       </div>
       <div class="information">
         <div class="smallUsersEmblem" id="smallUsersEmblem${task.cardId}"></div>
@@ -67,7 +65,6 @@ function showSmallUsersEmblem(task) {
   if (task.userId && task.userId.length > 0) {
     for (let userId of task.userId) {
       if (userId == 0) continue;
-
       let user = users.find((u) => u.userId == userId);
       if (user) {
         if (renderedCount < 5) {
@@ -100,21 +97,13 @@ function renderSmallUsersEmblem(user) {
 }
 
 function renderSmallSubtasks(task) {
-  let smallSubtask = document.getElementById(
-    `subtaskProgressBar${task.cardId}`
-  );
+  let smallSubtask = document.getElementById(`subtaskProgressBar${task.cardId}`);
   if (task.subtask && task.subtask.length > 0) {
     for (let j = 0; j < task.subtask.length; j++) {
       const subtask = task.subtask[j];
-      smallSubtask.innerHTML += renderSmallSubtasksHTML(subtask); // Append each subtask's HTML to the string
+      smallSubtask.innerHTML += ` <div>${subtask}</div> `;  // Append each subtask's HTML to the string
     }
   }
-}
-
-function renderSmallSubtasksHTML(subtask) {
-  return /*html*/ `
-      <div>${subtask}</div>
-  `;
 }
 
 function startDragging(id) {
@@ -151,13 +140,14 @@ function highlight(id) {
 function removeHighlight(id) {
   document.getElementById(id).classList.remove('drag-area-highlight');
 }
+//Dialog BigCard
 
 function closeBigCard() {
+  updateHTML();
   document.getElementById('showBigCard').classList.add('dnone');
 }
 
-async function showBigCard(cardId) {
-  console.log(cardId);
+async function showBigCard(cardId) {  
   document.getElementById('showBigCard').classList.remove('dnone');
   let content = document.getElementById('showBigCard');
   content.innerHTML = '';
@@ -172,14 +162,7 @@ function renderBigCardHTML(cardId) {
     <div id="bigCard${task.cardId}" class="bigCard"  onclick="dontClose()">
       <div class="big-header">
         <div><span>${task.category}</span></div>
-        <div>
-            <img
-            class="close"
-            onclick="closeBigCard()"
-            src="../assets/icons/close_icon.svg"
-            alt="schließen"
-            />
-        </div>
+        <div><img class="close" onclick="closeBigCard()" src="../assets/icons/close_icon.svg" alt="schließen"/></div>
       </div>
       <div class="big-title">
         <h1>${task.title}</h1>
@@ -245,8 +228,7 @@ function renderBigEmblemUsers(user) {
         ${user.emblem}
       </div>  
       <span>${user.name}</span>
-    </div>
-  `;
+    </div>`;
 }
 
 async function renderBigSubtasks(cardId) {
@@ -266,7 +248,7 @@ function renderBigSubtasksHTML(cardId, subtask, j) {
   return /*html*/ `
       <label for="checkbox${j}">
           <li class="bigSubtaskList">
-              <input class="big-card-checkbox" onclick="renderProgressBar(${cardId}, ${j})" type="checkbox"  ${subtask.checked ? 'checked' : ''} id="checkbox${j}" data-userid="${j}">
+              <input class="big-card-checkbox" onclick="checkedSubtask(${cardId}, ${j})" type="checkbox"  ${subtask.checked ? 'checked' : ''} id="checkbox${j}" data-userid="${j}">
               <div class="contactName">${subtask.subtaskText}</div>
           </li>
       </label>
@@ -367,38 +349,10 @@ function getSelectedUserIds() {
   return selectedUserIds;
 }
 
-function renderProgressBar(cardId, isubtask) {
+function checkedSubtask(cardId, isubtask) {
   let value = document.getElementById('checkbox' + isubtask).checked;
   updateSubtasks(cardId, isubtask, value);
-  const task = tasks.find((t) => t.cardId == cardId);
-  let subtasks = task.subtask;
- // updateProgressbar(cardId, subtasks);
-  updateProgressBarDisplay(cardId, subtasks);
 }
-
-function updateProgressBarDisplay(cardId, subtasks) {
-  let checkedSubtasks = 0
-  for (let i=0; i<subtasks.length; i++){    
-    if(subtasks[i].checked== true){
-      checkedSubtasks += 1;
-    }   
-  }
-  let percent= checkedSubtasks / subtasks.length;
-  percent = Math.round(percent * 100).toFixed(0);
-  let progressBar = document.getElementById(`subtaskProgressBar${cardId}`);
-  progressBar.innerHTML = `${percent}%`;
-  progressBar.style.width = `${percent}%`;
-  console.log(percent);
-  console.log(subtasks.length);
-  console.log(tasks.find((t) => t.cardId == cardId).subtask.length);
-}
-
-/* function updateProgressbar(cardId, subtasks) {
-  const task = tasks.find((t) => t.cardId == cardId);
-  if (task) {
-    task.subtask = subtasks;
-  }
-} */
 
 async function updateSubtasks(cardId, isubtask, value) {
   let tasksJSON = await loadData('tasks');
@@ -411,15 +365,26 @@ async function updateSubtasks(cardId, isubtask, value) {
   }
 }
 
-function checkSubtaskCheckboxes(checkedSubtasksList) {
-  // Selektiere alle Checkboxen in der bigCard
-  let subtaskCheckboxes = document.querySelectorAll('.big-card-checkbox');
+function renderProgressBar(cardId, tasks) {
+  const task = tasks.find((t) => t.cardId == cardId);
+  let subtasks = task.subtask;
+  updateProgressBarDisplay(cardId, subtasks);
+}
 
-  // Gehe jede Checkbox durch und setze sie auf 'checked', wenn sie in der Liste der geprüften Subtasks ist
-  for (let i = 0; i < subtaskCheckboxes.length; i++) {
-    let checkbox = subtaskCheckboxes[i];
-    let subtaskId = checkbox.getAttribute('data-userid'); // Stellen Sie sicher, dass Sie das richtige Attribut für die ID verwenden
-    checkbox.checked = checkedSubtasksList.includes(subtaskId);
+function updateProgressBarDisplay(cardId, subtasks) {
+  let checkedSubtasks = 0
+  if (subtasks != null) {
+    for (let i = 0; i < subtasks.length; i++) {
+      if (subtasks[i].checked == true) {
+        checkedSubtasks += 1;
+      }
+    }
+    let percent = checkedSubtasks / subtasks.length;
+    percent = Math.round(percent * 100).toFixed(0);  
+    let colorProgressBar = document.getElementById(`subtaskProgressBar${cardId}`);
+    colorProgressBar.value = percent;
+    let subtasksCount = document.getElementById(`subtasksCount${cardId}`);
+    subtasksCount.innerHTML = checkedSubtasks + '/' + subtasks.length + ' Subtasks';
   }
 }
 

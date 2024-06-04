@@ -81,17 +81,18 @@ function editAddSubtask() {
       'Bitte etwas eingeben!';
     return;
   }
-
   if (!boardEdit[0].subtask) {
     return;
   }
   // Überprüfe, ob bereits 5 Subtasks vorhanden sind
   if (boardEdit[0].subtask.length < 5) {
     document.getElementById('editSubtaskInput').placeholder = 'Add new Subtask';
-    boardEdit[0].subtask.push(input);
-    renderEditSubtask(boardEdit[0].subtask);
+    let newSubtask={'subtaskText':input, 'checked': false};
+    boardEdit[0].subtask.push(newSubtask);
+    renderEditSubtask(boardEdit[0].subtask.subtaskText);
     document.getElementById('editSubtaskInput').value = '';
-    editRemoveSubtask();
+    renderEditSubtask(boardEdit[0].subtask);
+    //editRemoveSubtask();
   }
 }
 
@@ -101,8 +102,7 @@ function editDeleteSubtask(i) {
   document.getElementById('editSubtaskInput').value = '';
   document.getElementById('editSubtaskInput').readOnly = false;
   document.getElementById('editSubtaskInput').style = 'color:black;';
-  document.getElementById('editSubtaskContainer').style.border =
-    '1px solid #d1d1d1';
+  document.getElementById('editSubtaskContainer').style.border = '1px solid #d1d1d1';
 }
 
 function renderEditSubtask(subtasks) {
@@ -112,7 +112,7 @@ function renderEditSubtask(subtasks) {
     return;
   }
   for (let i = 0; i < Math.min(subtasks.length, 5); i++) {
-    editSubtask.innerHTML += renderEditSubtaskHTML(subtasks[i], i);
+    editSubtask.innerHTML += renderEditSubtaskHTML(subtasks[i].subtaskText, i);
   }
 }
 
@@ -138,12 +138,8 @@ function editThisSubtask(i) {
   document.getElementById(`editSubtaskList${i}`).readOnly = false;
   edit = document.getElementById(`edit-images${i}`);
   edit.innerHTML = editThisSubtaskHTML(i);
-  document
-    .getElementById(`edit-main-subtask-container${i}`)
-    .classList.remove('edit-subtasklist');
-  document
-    .getElementById(`edit-main-subtask-container${i}`)
-    .classList.add('edit-list');
+  document.getElementById(`edit-main-subtask-container${i}`).classList.remove('edit-subtasklist');
+  document.getElementById(`edit-main-subtask-container${i}`).classList.add('edit-list');
   document.getElementById(`edit-images${i}`).classList.add('flex');
 }
 
@@ -151,12 +147,8 @@ function editCheckSubtask(i) {
   document.getElementById(`editSubtaskList${i}`).readOnly = true;
   edit = document.getElementById(`edit-images${i}`);
   edit.innerHTML = checkThisSubtaskHTML(i);
-  document
-    .getElementById(`edit-main-subtask-container${i}`)
-    .classList.add('edit-subtasklist');
-  document
-    .getElementById(`edit-main-subtask-container${i}`)
-    .classList.remove('edit-list');
+  document.getElementById(`edit-main-subtask-container${i}`).classList.add('edit-subtasklist');
+  document.getElementById(`edit-main-subtask-container${i}`).classList.remove('edit-list');
   document.getElementById(`edit-images${i}`).classList.remove('flex');
 }
 
@@ -407,7 +399,7 @@ async function updateEditBoard(cardId, updatedTask) {
   for (let key in tasksJSON) {
     let task = tasksJSON[key];
     if (task.cardId == cardId) {
-      await putData(`tasks/${key}/`, updatedTask);
+      await putData(`tasks/${key}/`,updatedTask);
     }
   }
 }
