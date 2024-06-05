@@ -8,11 +8,9 @@ body {
 
 .overlay {
   display: flex;
-  justify-content: center;
-  align-items: center;
   max-width: 100%;
   height: 100vh;
-  background-color: #f6f7f8;
+  background-color: #F6F7F8;
   position: relative;
   overflow-y: hidden;
 }
@@ -323,7 +321,7 @@ form label {
 @keyframes moveLogo {
   0% {
     transform: translateX(var(--initial-translate-x)) translateY(var(--initial-translate-y));
-    scale: var(--initial-scale);
+    scale: var(--initial-scale);   
   }
 
   100% {
