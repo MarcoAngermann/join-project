@@ -319,12 +319,13 @@ form label {
 }
 
 @keyframes moveLogo {
-  0% {
+
+  0%,  40% {
     transform: translateX(var(--initial-translate-x)) translateY(var(--initial-translate-y));
-    scale: var(--initial-scale);   
+    scale: var(--initial-scale);
   }
 
-  100% {
+  60%, 100% {
     scale: 1;
     transform: translateX(0%) translateY(0%);
   }
@@ -397,22 +398,22 @@ form label {
 /*Resposive Login*/
 @media(max-width:1200px) {
   :root {
-    --initial-translate-x: 250%;
+    --initial-translate-x: 200%;
     --initial-translate-y: 130%;
   }
 }
 
 @media(max-width:1000px) {
   :root {
-    --initial-translate-x: 220%;
-    --initial-translate-y: 170%;
+    --initial-translate-x: 200%;
+    --initial-translate-y: 175%;
     --initial-scale: 2;
   }
 }
 
 @media(max-width:800px) {
   :root {
-    --initial-translate-x: 190%;
+    --initial-translate-x: 180%;
     --initial-translate-y: 170%;
     --initial-scale: 2;
   }
@@ -468,6 +469,7 @@ form label {
     --initial-translate-y: 120%;
     --initial-scale: 1.5;
   }
+
   .imgLogo {
     width: 50px;
     height: 70px;
@@ -508,20 +510,22 @@ form label {
     gap: 15px;
   }
 }
+
 @media(max-width:510px) {
   :root {
     --initial-translate-x: 120%;
-    --initial-translate-y: 190%;
+    --initial-translate-y: 200%;
     --initial-scale: 1.5;
   }
 }
 
 @media(max-width:460px) {
   :root {
-    --initial-translate-x: 100%;
-    --initial-translate-y: 180%;
+    --initial-translate-x: 110%;
+    --initial-translate-y: 220%;
     --initial-scale: 1.5;
   }
+
   .imgLogo {
     width: 40px;
     height: 60px;

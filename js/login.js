@@ -129,7 +129,9 @@ function backToLogin() {
 
 function moveIcon() {
   document.getElementById('containerLog').style.display = 'none';
+
   document.getElementById('imgLogoID').classList.add('animation1');
+
   document.getElementById('overlay').classList.add('animation2');
   setTimeout(() => {
     document.getElementById('containerLog').style.display = 'flex';
