@@ -124,7 +124,7 @@ function cleanContactControls() {
 }
 
 function backToLogin() {
-  location.href = '../templates/login.html';
+  location.href = '../index.html';
 }
 
 function moveIcon() {
@@ -150,7 +150,7 @@ function doLogin(event) {
       let userId = user.userId;
       window.sessionStorage.setItem('userId', userId);
       console.log('Login successful');
-      window.location.href = '../templates/summary.html';
+      window.location.href = './templates/summary.html';
       return;
     }
   }
@@ -167,7 +167,7 @@ function getGuestLogin(event) {
   event.preventDefault();
   let userId = 0;
   window.sessionStorage.setItem('userId', userId);
-  location.href = '..//templates/summary.html';
+  location.href = './templates/summary.html';
 }
 
 function keyDown() {
