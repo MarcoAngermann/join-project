@@ -56,11 +56,6 @@
   cursor: pointer;
 }
 
-.main svg:hover rect,
-.main svg:hover path {
-  stroke: #29abe2;
-}
-
 .input-area {
   display: flex;
   justify-content: space-between;
@@ -222,4 +217,25 @@ progress[value]::-webkit-progress-value {
   display: flex;
   width: 40%;
   font-size: 12px;
+}
+
+.amobile_boardOptions{
+  display: flex;
+  flex-direction: column;
+  right: 20px;
+  bottom: 170px;
+  gap: 15px;
+  border: 1px solid #F6F7F8;
+  border-radius: 10px;
+  width: max-content;
+  background-color: white;
+  padding: 15px;
+  box-shadow: 1px 0px 3px 0px #9fbdc1;
+  font-size: 12px;
+}
+
+.amobile_boardOptions a:hover {
+  cursor: pointer;
+  color: #29ABE2;
+  font-weight: 400;
 }

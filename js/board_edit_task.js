@@ -89,7 +89,6 @@ function editAddSubtask() {
     document.getElementById('editSubtaskInput').placeholder = 'Add new Subtask';
     let newSubtask={'subtaskText':input, 'checked': false};
     boardEdit[0].subtask.push(newSubtask);
-    renderEditSubtask(boardEdit[0].subtask.subtaskText);
     document.getElementById('editSubtaskInput').value = '';
     renderEditSubtask(boardEdit[0].subtask);
     //editRemoveSubtask();
@@ -116,24 +115,6 @@ function renderEditSubtask(subtasks) {
   }
 }
 
-function renderEditSubtaskHTML(subtasks, i) {
-  return /*html*/ `
-        <div class="edit-subtasklist" id="edit-main-subtask-container${i}">
-            <input
-                readonly
-                type="text"
-                id="editSubtaskList${i}"
-                value="${subtasks}"
-                />
-                <div class="edit-images" id="edit-images${i}">
-                    <img onclick="editThisSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
-                    <div class="edit-seperator"></div>
-                    <img onclick="editDeleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
-                </div>
-        </div>
-    `;
-}
-
 function editThisSubtask(i) {
   document.getElementById(`editSubtaskList${i}`).readOnly = false;
   edit = document.getElementById(`edit-images${i}`);
@@ -150,21 +131,6 @@ function editCheckSubtask(i) {
   document.getElementById(`edit-main-subtask-container${i}`).classList.add('edit-subtasklist');
   document.getElementById(`edit-main-subtask-container${i}`).classList.remove('edit-list');
   document.getElementById(`edit-images${i}`).classList.remove('flex');
-}
-
-function editThisSubtaskHTML(i) {
-  return /*html*/ `
-      <img onclick="editDeleteSubtask(${i})" id="editDeleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
-      <div class="edit-seperator"></div>
-      <img  onclick="editCheckSubtask(${i})" id="editCheckSubtask${i}" src="../assets/icons/check.svg" alt="">
-    `;
-}
-function checkThisSubtaskHTML(i) {
-  return /*html*/ `
-      <img onclick="editThisSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
-      <div class="edit-seperator"></div>
-      <img onclick="editDeleteSubtask(${i})" id="editDeleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
-    `;
 }
 
 function resetEditElements(elements) {
@@ -208,9 +174,8 @@ function setEditPriorityStyles(
 function editTogglePriority(priority) {
   let elements = document.getElementsByClassName('edit-priobtn');
   resetEditElements(elements);
-
   // Hintergrundfarbe, Textfarbe und SVG-Farbe basierend auf der ausgewählten Priorität festlegen
-  let selectedElement = document.querySelector("[onclick*='" + priority + "']");
+  let selectedElement = document.getElementById('edit'+ priority+ 'Prio');
   if (priority === 'urgent') {
     setEditPriorityStyles(selectedElement, '#FF3D00', 'white', 'white');
   } else if (priority === 'medium') {
@@ -260,20 +225,6 @@ function renderEditUsers() {
   }
 }
 
-function renderEditUsersHTML(user, i) {
-  return /*html*/ `
-          <label for="editCheckbox${i}">
-              <li class="edit-contactlist">        
-                  <div tabindex="0" class="edit-emblem" style="background-color: ${user.color}">
-                    ${user.emblem}
-                  </div> 
-                  <div class="edit-contact-name" >${user.name}</div> 
-                  <input class="edit-user-checkbox" onclick="showEditUsersEmblem()" type="checkbox" id="editCheckbox${i}" data-userid="${user.userId}">          
-              </li>
-          </label>
-            `;
-}
-
 let hiddenUserIds = new Set();
 function showPickedUsersEmblems(cardId) {
   let editUsersEmblem = document.getElementById('editUsersEmblem');
@@ -305,16 +256,6 @@ function showPickedUsersEmblems(cardId) {
   checkUserCheckboxesBasedOnEmblems();
 }
 
-function renderEditEmblemUsers(user) {
-  return /*html*/ `
-    <div class="edit-single-user">
-        <div class="edit-emblem" style="background-color: ${user.color}" id="${user.userId}">
-          ${user.emblem}
-        </div>
-      </div>
-    `;
-}
-
 function showEditUsersEmblem() {
   let usersEmblem = document.getElementById('editUsersEmblem');
   usersEmblem.innerHTML = '';
@@ -336,21 +277,6 @@ function showEditUsersEmblem() {
   if (extraCount > 0) {
     usersEmblem.innerHTML += renderGreyEmblem(extraCount);
   }
-}
-
-function renderGreyEmblem(extraCount) {
-  return `<div class="edit-grey-emblem">+${extraCount}</div>`;
-}
-
-function renderGreyEmblem(remainingCount) {
-  return `<div class="edit-grey-emblem">+${remainingCount}</div>`;
-}
-
-function renderEmblemUsers(user) {
-  return /*html*/ `
-        <div class="edit-emblem" style="background-color: ${user.color}" id="${user.userId}">
-        ${user.emblem}
-      </div>  `;
 }
 
 function checkUserCheckboxesBasedOnEmblems() {
@@ -392,6 +318,8 @@ async function editTask(cardId, event) {
   resetEditUserDisplay();
   await updateEditBoard(cardId, updatedTask);
   await updateHTML();
+  closeEditBoard();
+  showBigCard(cardId);
 }
 
 async function updateEditBoard(cardId, updatedTask) {

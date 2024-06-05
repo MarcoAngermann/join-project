@@ -20,9 +20,6 @@ function renderBoardAddTaskHTML(boardStatus) {
       <span>Description</span>
       <textarea name="" id="description" cols="30" rows="5"></textarea>
       <span>Assigned to</span>
-
-
-
       <div onclick="showUsers()" class="contactContainer">
         <span>Select user to assign</span>
         <img id="arrowDownUser" src="../assets/icons/arrow_down_icon.svg" alt="">
@@ -53,7 +50,7 @@ function renderBoardAddTaskHTML(boardStatus) {
               fill="#FF3D00" />
           </svg>
         </div>
-        <div class="prioBtn midBtn-Color" id="midPrio"  onclick="togglePriority('medium')">
+        <div class="prioBtn midBtn-Color" id="mediumPrio"  onclick="togglePriority('medium')">
           Medium
           <svg width="21" height="8" viewBox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -82,10 +79,7 @@ function renderBoardAddTaskHTML(boardStatus) {
         <img id="arrowDownCategory" src="../assets/icons/arrow_down_icon.svg" alt="">
         <img id="arrowUpCategory" src="../assets/icons/arrow_up_icon.svg" style="display: none;">
       </div>
-      <ul id="boardTasks" class="tasks"></ul>
-
-
-      
+      <ul id="boardTasks" class="tasks"></ul>      
       <span class="subtask-label">Subtask</span>
 
         <div class="subtask-container" id="subtaskContainer">
@@ -136,3 +130,77 @@ function renderBoardAddTaskHTML(boardStatus) {
 </div>
   `;
 }
+
+function renderUsersHTML(user, i) {
+  return /*html*/ `
+      <label for="checkbox${i}">
+          <li class="contactList">        
+              <div tabindex="0" class="emblem" style="background-color: ${user.color}">
+                ${user.emblem}
+              </div> 
+              <div class="contactName" >${user.name}</div> 
+              <input class="user-checkbox" onclick="showUsersEmblem()" type="checkbox" id="checkbox${i}" data-userid="${user.userId}">          
+          </li>
+      </label>
+        `;
+}
+
+function renderCategorysHTML(i) {
+  return /*html*/ `
+          <li class="contactList">
+              <span for="">
+                <div tabindex="0" onclick="selectCategory(${i})">
+                  ${categorys[i]}
+                 </div>
+              </span>
+          </li>`;
+}
+
+function renderGreyEmblem(extraCount) {
+  return `<div class="grey-emblem">+${extraCount}</div>`;
+}
+
+function renderGreyEmblem(remainingCount) {
+  return `<div class="grey-emblem">+${remainingCount}</div>`;
+}
+
+function renderEmblemUsers(contact) {
+  return /*html*/ `
+      <div class="emblem" style="background-color: ${contact['color']}" id="${contact['userId']}">
+      ${contact['emblem']}
+    </div>  `;
+}
+
+function renderSubtaskHTML(i) {
+  return /*html*/ `
+    <div class="subtaskList" id="mainSubtask-container${i}">
+            <input
+              readonly
+              type="text"
+              id="subtaskList${i}"
+              value="${subtaskList[i].subtaskText}"
+              />
+              <div class="edit-images" id="edit-images${i}">
+                <img onclick="editSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
+                <div class="edit-seperator"></div>
+                <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
+              </div>
+            </div>
+        </div> `;
+}
+
+function editSubtaskHTML(i) {
+  return /*html*/ `
+    <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
+    <div class="edit-seperator"></div>
+    <img  onclick="checkSubtask(${i})" id="checkSubtask${i}" src="../assets/icons/check.svg" alt="">
+  `;
+}
+function checkSubtaskHTML(i) {
+  return /*html*/ `
+    <img onclick="editSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
+    <div class="edit-seperator"></div>
+    <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
+  `;
+}
+

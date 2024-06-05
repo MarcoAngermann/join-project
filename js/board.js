@@ -2,7 +2,7 @@ async function initBoard() {
   includeHTML();
   await usersArray();
   await tasksArray();
-  updateHTML();
+  await updateHTML();
 }
 
 let boardEdit = [];
@@ -10,6 +10,7 @@ let status = ['toDo', 'in Progress', 'awaitFeedback', 'done'];
 let currentDraggedElement;
 
 async function updateHTML() {
+  await tasksArray();
   updateTasksByStatus('toDo', 'toDo');
   updateTasksByStatus('inProgress', 'inProgress');
   updateTasksByStatus('awaitFeedback', 'awaitFeedback');
@@ -32,7 +33,18 @@ function renderSmallCardHTML(task) {
     <div draggable="true" ondragstart="startDragging(${task.cardId})" id="${task.cardId}" class="smallcard" onclick="showBigCard(${task.cardId})">
       <div class="category">
         <h2>${task.category}</h2>
-        <img src="../assets/icons/more_vert_icon.svg" alt="">
+        <div class="mobileBoard" onclick="openMobileOptions()"><img src="../assets/icons/more_vert_icon.svg" /></div>
+        <div class="amobile_boardOptions" id="amobile_boardOptions" style="display:flex">
+            <p><b>Move To...</b></p>
+            <a onclick="mobilemoveTo('toDo',${task.cardId} )">To Do</a>
+            <a onclick="mobilemoveTo('inProgress',${task.cardId})">In Progress</a>
+            <a onclick="mobilemoveto('awaitFeedback',${task.cardId})">Await Feedback</a>
+            <a onclick="mobilemoveto('done',${task.cardId})">Done</a>
+        </div>
+        
+        
+        
+        
       </div>
       <div class="title">
         <h3>${task.title}</h3>
@@ -41,7 +53,7 @@ function renderSmallCardHTML(task) {
         <p>${task.description}</p>
       </div>
       <div class="subtask-progress" role="subtask-progressbar" aria-label="Example with label">
-      <progress class="subtask-progress-bar" id="subtaskProgressBar${task.cardId}" max="100" ></progress>
+      <progress id="subtaskProgressBar${task.cardId}" max="100" ></progress>
       <p class="subtask-progress-count" id="subtasksCount${task.cardId}"></p>
       </div>
       <div class="information">
@@ -61,7 +73,6 @@ function showSmallUsersEmblem(task) {
   smallUsersEmblem.innerHTML = '';
   let renderedCount = 0;
   let extraCount = 0;
-
   if (task.userId && task.userId.length > 0) {
     for (let userId of task.userId) {
       if (userId == 0) continue;
@@ -114,13 +125,19 @@ function allowDrop(event) {
   event.preventDefault();
 }
 
+async function mobilemoveto(status, cardId){
+currentDraggedElement = cardId;
+moveTo(status);
+}
+
+
 async function moveTo(status) {
   // Find the task object with the cardId equal to currentDraggedElement
   const task = tasks.find((t) => t.cardId == currentDraggedElement);
   task.status = status;
   // Update the board and HTML
   await updateBoard(status); // Assuming updateBoard is an async function
-  updateHTML();
+  await updateHTML();
 }
 
 async function updateBoard(status) {
@@ -141,13 +158,11 @@ function removeHighlight(id) {
   document.getElementById(id).classList.remove('drag-area-highlight');
 }
 //Dialog BigCard
-
 function closeBigCard() {
-  updateHTML();
   document.getElementById('showBigCard').classList.add('dnone');
 }
 
-async function showBigCard(cardId) {  
+async function showBigCard(cardId) {
   document.getElementById('showBigCard').classList.remove('dnone');
   let content = document.getElementById('showBigCard');
   content.innerHTML = '';
@@ -212,7 +227,6 @@ async function showBigUsersEmblem(cardId) {
   if (task && task.userId) {
     for (let userId of task.userId) {
       if (userId == 0) continue; // Skip if userId is 0
-
       let user = users.find((u) => u.userId == userId);
       if (user) {
         bigUsersEmblem.innerHTML += renderBigEmblemUsers(user);
@@ -261,10 +275,9 @@ function dontClose() {
 
 async function deleteTaskOfBoard(cardId) {
   await deleteTask(cardId);
+  await updateHTML();
   closeBigCard();
-  // Remove the task from the local 'tasks' array
-  tasks = tasks.filter((task) => task.cardId !== cardId);
-  updateHTML();
+
 }
 
 async function deleteTask(cardId) {
@@ -277,7 +290,7 @@ async function deleteTask(cardId) {
     }
   }
 }
-
+//search function
 function searchTasks() {
   let searchQuery = getSearchQuery();
   if (isSearchQueryTooShort(searchQuery)) {
@@ -294,7 +307,7 @@ function getSearchQuery() {
 }
 
 function isSearchQueryTooShort(searchQuery) {
-  return searchQuery.length < 3; // angepasst auf 3 Zeichen
+  return searchQuery.length < 2; // angepasst auf 3 Zeichen
 }
 
 function filterTasks(searchQuery) {
@@ -319,6 +332,7 @@ function renderFilteredTasks(filteredTasks) {
     document.getElementById(elementId).innerHTML += renderSmallCardHTML(task);
     showSmallUsersEmblem(task);
     renderSmallSubtasks(task);
+    renderProgressBar(task.cardId, tasks);
   });
 }
 
@@ -349,9 +363,10 @@ function getSelectedUserIds() {
   return selectedUserIds;
 }
 
-function checkedSubtask(cardId, isubtask) {
+async function checkedSubtask(cardId, isubtask) {
   let value = document.getElementById('checkbox' + isubtask).checked;
-  updateSubtasks(cardId, isubtask, value);
+  await updateSubtasks(cardId, isubtask, value);
+  await updateHTML();
 }
 
 async function updateSubtasks(cardId, isubtask, value) {
@@ -360,7 +375,6 @@ async function updateSubtasks(cardId, isubtask, value) {
     let task = tasksJSON[key];
     if (task.cardId == cardId) {
       await putData(`tasks/${key}/subtask/${isubtask}/checked`, value);
-      await tasksArray();
     }
   }
 }
@@ -373,18 +387,22 @@ function renderProgressBar(cardId, tasks) {
 
 function updateProgressBarDisplay(cardId, subtasks) {
   let checkedSubtasks = 0
-  if (subtasks != null) {
+  if (subtasks != null && subtasks.length > 0) {
     for (let i = 0; i < subtasks.length; i++) {
       if (subtasks[i].checked == true) {
         checkedSubtasks += 1;
       }
     }
     let percent = checkedSubtasks / subtasks.length;
-    percent = Math.round(percent * 100).toFixed(0);  
+    percent = Math.round(percent * 100).toFixed(0);
     let colorProgressBar = document.getElementById(`subtaskProgressBar${cardId}`);
     colorProgressBar.value = percent;
     let subtasksCount = document.getElementById(`subtasksCount${cardId}`);
     subtasksCount.innerHTML = checkedSubtasks + '/' + subtasks.length + ' Subtasks';
+  }
+  else {
+    let colorProgressBar = document.getElementById(`subtaskProgressBar${cardId}`);
+    colorProgressBar.style.display = 'none';
   }
 }
 

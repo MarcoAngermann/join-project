@@ -66,17 +66,18 @@ function showDetailContact(i) {
 let mobilWindow = window.matchMedia('(max-width:710px)');
 mobilWindow.addEventListener('change', () => myFunc());
 function myFunc() {
-    if (mobilWindow.matches) {
-      document.getElementById("divContactDetails").style.display = "none";
-      document.getElementById("divContactList").style.display = "flex";
-    } else {
-      document.getElementById("divContactDetails").style.display = "flex";
-      document.getElementById("divContactList").style.display = "flex";
-    }
+  if (mobilWindow.matches) {
+    document.getElementById("divContactDetails").style.display = "none";
+    document.getElementById("divContactList").style.display = "flex";
+  } else {
+    document.getElementById("divContactDetails").style.display = "flex";
+    document.getElementById("divContactList").style.display = "flex";
+    document.getElementById("amobile_nameContact").style.display="none";
+  }
 }
 
 function mobileDetails() {
-  outWidth = window.outerWidth;
+  outWidth = window.innerWidth;
   if (outWidth <= 710) {
     document.getElementById("divContactDetails").style.display = "flex";
     document.getElementById("divContactList").style.display = "none";
@@ -84,7 +85,7 @@ function mobileDetails() {
 }
 
 function backMobileContListe() {
-  outWidth = window.outerWidth;
+  outWidth = window.innerWidth;
   if (outWidth <= 710) {
     document.getElementById("divContactDetails").style.display = "none";
     document.getElementById("divContactList").style.display = "flex";
@@ -94,7 +95,6 @@ function openMobileDialog() {
   let mobileMode = document.getElementById("amobile_nameContact");
   if (mobileMode.style.display == "none") {
     mobileMode.style.display = "flex";
-    
   }
   else {
     mobileMode.style.display = "none";
@@ -122,14 +122,11 @@ function renderContactinList(i) {
   </div>
   
   <div class="mobileContact" onclick="openMobileDialog()"><img class="arrow" src="..//assets/icons/menu_ContactOptions.svg" /></div>
-  <div class="amobile_nameContact" id="amobile_nameContact">
+  <div class="amobile_nameContact" id="amobile_nameContact" style="display:none">
     <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
     <a onclick="deleteContact( ${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
   </div>`;
 }
-
-
-
 
 function openDialog(newContact, i) {
   let dialog = document.getElementById('dialog');
@@ -145,6 +142,8 @@ function openDialog(newContact, i) {
     let functionNew = 'editContact(event,' + i + ')';
     let btnText = 'Save';
     dialog.innerHTML = renderContactDialog(title1, functionNew, btnText);
+    document.getElementById('iconContact').outerHTML =
+      `<div class="emblemInfo" id="emblemContact" style="background-color: ${contact['color']}">${contact['emblem']}</div>`;
     document.getElementById('textAdd').classList.add('d-none');
     document.getElementById('nameContact').value = contact['name'];
     document.getElementById('emailContact').value = contact['email'];
@@ -163,8 +162,9 @@ src="../assets/icons/closeWhite_icon.svg"></button>
   <div id="textAdd" class="textAdd">Task are better with a team</div>
   <div class="seperatorAdd"></div>
 </div>
-<div class="iconEdit"><img src="../assets/icons/person_icon.svg">
+<div class="iconEdit" id="iconContact"><img src="../assets/icons/person_icon.svg">
 </div>
+
 <div class="styleDivFormEdit">
   <button class="btnClose" onclick="closeDialog()"><img class="imgBtns"
       src="../assets/icons/cancel.svg"></button>
@@ -188,6 +188,8 @@ src="../assets/icons/closeWhite_icon.svg"></button>
 function closeDialog() {
   let dialog = document.getElementById('dialog');
   dialog.classList.add('d-none');
+  let mobileMode = document.getElementById("amobile_nameContact");
+  mobileMode.style.display='none';
 }
 
 function renderEmblem(name) {

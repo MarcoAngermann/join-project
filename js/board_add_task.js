@@ -58,9 +58,8 @@ function setPriorityStyles(
 function togglePriority(priority) {
   let elements = document.getElementsByClassName('prioBtn');
   resetElements(elements);
-
   // Hintergrundfarbe, Textfarbe und SVG-Farbe basierend auf der ausgewählten Priorität festlegen
-  let selectedElement = document.querySelector("[onclick*='" + priority + "']");
+  let selectedElement = document.getElementById(priority + 'Prio');
   if (priority === 'urgent') {
     setPriorityStyles(selectedElement, '#FF3D00', 'white', 'white');
   } else if (priority === 'medium') {
@@ -85,7 +84,6 @@ window.onload = function () {
 
 function renderUsers() {
   let content = document.getElementById('users');
-
   for (let i = 0; i < users.length; i++) {
     if (users[i].userId == 0) continue;
     const user = users[i];
@@ -103,37 +101,12 @@ function renderUsers() {
   }
 }
 
-function renderUsersHTML(user, i) {
-  return /*html*/ `
-      <label for="checkbox${i}">
-          <li class="contactList">        
-              <div tabindex="0" class="emblem" style="background-color: ${user.color}">
-                ${user.emblem}
-              </div> 
-              <div class="contactName" >${user.name}</div> 
-              <input class="user-checkbox" onclick="showUsersEmblem()" type="checkbox" id="checkbox${i}" data-userid="${user.userId}">          
-          </li>
-      </label>
-        `;
-}
-
 function renderCategorys() {
   let task = document.getElementById('boardTasks');
 
   for (let i = 0; i < categorys.length; i++) {
     task.innerHTML += renderCategorysHTML(i);
   }
-}
-function renderCategorysHTML(i) {
-  return /*html*/ `
-          <li class="contactList">
-                <span for="">
-                    <div tabindex="0" onclick="selectCategory(${i})">
-                      ${categorys[i]}
-                    </div>
-                </span>
-            </li>
-        `;
 }
 
 function showCategories() {
@@ -159,6 +132,7 @@ function restrictPastDate() {
   let today = new Date().toISOString().split('T')[0];
   dateInput.setAttribute('min', today);
 }
+
 function showUsersEmblem() {
   let usersEmblem = document.getElementById('usersEmblem');
   usersEmblem.innerHTML = '';
@@ -180,21 +154,6 @@ function showUsersEmblem() {
   if (extraCount > 0) {
     usersEmblem.innerHTML += renderGreyEmblem(extraCount);
   }
-}
-
-function renderGreyEmblem(extraCount) {
-  return `<div class="grey-emblem">+${extraCount}</div>`;
-}
-
-function renderGreyEmblem(remainingCount) {
-  return `<div class="grey-emblem">+${remainingCount}</div>`;
-}
-
-function renderEmblemUsers(contact) {
-  return /*html*/ `
-      <div class="emblem" style="background-color: ${contact['color']}" id="${contact['userId']}">
-      ${contact['emblem']}
-    </div>  `;
 }
 
 function showUsers() {
@@ -271,25 +230,6 @@ function renderSubtask() {
   }
 }
 
-function renderSubtaskHTML(i) {
-  return /*html*/ `
-    <div class="subtaskList" id="mainSubtask-container${i}">
-            <input
-              readonly
-              type="text"
-              id="subtaskList${i}"
-              value="${subtaskList[i].subtaskText}"
-              />
-              <div class="edit-images" id="edit-images${i}">
-                <img onclick="editSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
-                <div class="edit-seperator"></div>
-                <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
-              </div>
-            </div>
-        </div>
-  `;
-}
-
 function editSubtask(i) {
   document.getElementById(`subtaskList${i}`).readOnly = false;
   edit = document.getElementById(`edit-images${i}`);
@@ -306,33 +246,6 @@ function editSubtask(i) {
 function checkSubtask(i) {
   subtaskList[i].subtaskText = document.getElementById(`subtaskList${i}`).value;
   renderSubtask();
-
-  /* document.getElementById(`subtaskList${i}`).readOnly = true;
-  edit = document.getElementById(`edit-images${i}`);
-  edit.innerHTML = i;
-  document
-    .getElementById(`mainSubtask-container${i}`)
-    .classList.add('subtaskList');
-  document
-    .getElementById(`mainSubtask-container${i}`)
-    .classList.remove('editsubtaskList');
-  document.getElementById(`edit-images${i}`).classList.remove('flex'); */
-
-}
-
-function editSubtaskHTML(i) {
-  return /*html*/ `
-    <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
-    <div class="edit-seperator"></div>
-    <img  onclick="checkSubtask(${i})" id="checkSubtask${i}" src="../assets/icons/check.svg" alt="">
-  `;
-}
-function checkSubtaskHTML(i) {
-  return /*html*/ `
-    <img onclick="editSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
-    <div class="edit-seperator"></div>
-    <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
-  `;
 }
 
 function getSelectedPrio() {
@@ -422,8 +335,7 @@ function clearDateAndPriority() {
 }
 
 function clearSelectedCategory() {
-  document.getElementById('selectedCategory').innerHTML =
-    'Select task category';
+  document.getElementById('selectedCategory').innerHTML = 'Select task category';
 }
 
 function clearSubtasks() {
@@ -438,8 +350,7 @@ function clearSubtaskInput() {
   subtaskInput.placeholder = 'Add new Subtask';
   subtaskInput.readOnly = false;
   subtaskInput.style.color = 'black';
-  document.getElementById('subtaskContainer').style.border =
-    '1px solid #d1d1d1';
+  document.getElementById('subtaskContainer').style.border = '1px solid #d1d1d1';
 }
 
 function resetUserDisplay() {

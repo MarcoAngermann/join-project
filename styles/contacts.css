@@ -483,9 +483,10 @@
     }
 
     .emblemInfo {
-        height: 100px;
+        width: auto;
+        height: 80px;
         font-size: 50px;
-        margin: 30px 0px 30px 0px;
+        margin: -30px 0px 0px 0px;
     }
 }
 
@@ -655,7 +656,7 @@
     }
 
     .amobile_nameContact {
-        bottom: 240px;
+        bottom: 190px;
     }
 }
 
@@ -666,7 +667,7 @@
     }
 
     .amobile_nameContact {
-        bottom: 240px;
+        bottom: 190px;
     }
 
     .btnMobileClose {
@@ -732,6 +733,6 @@
     }
 
     .amobile_nameContact {
-        bottom: 280px;
+        bottom: 200px;
     }
 }
