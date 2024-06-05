@@ -41,10 +41,6 @@ function renderSmallCardHTML(task) {
             <a onclick="mobilemoveto('awaitFeedback',${task.cardId})">Await Feedback</a>
             <a onclick="mobilemoveto('done',${task.cardId})">Done</a>
         </div>
-        
-        
-        
-        
       </div>
       <div class="title">
         <h3>${task.title}</h3>
@@ -125,18 +121,18 @@ function allowDrop(event) {
   event.preventDefault();
 }
 
-async function mobilemoveto(status, cardId){
-currentDraggedElement = cardId;
-moveTo(status);
+async function mobilemoveto(status, cardId) {
+  currentDraggedElement = cardId;
+  moveTo(status);
 }
 
-function openMobileOptions(event){
-  document.getElementById('mobileBoard').addEventListener("click", function(event) {
+function openMobileOptions(event) {
+  document.getElementById('mobileBoard').addEventListener("click", function (event) {
     event.preventDefault(); // Verhindert das Standardverhalten (falls notwendig)
     event.stopPropagation(); // Verhindert, dass das Ereignis weitergegeben wird
-    document.getElementById('amobile_boardOptions').style.display='flex';
+    document.getElementById('amobile_boardOptions').style.display = 'flex';
     console.log("Menü wurde angeklickt");
-});
+  });
 }
 
 async function moveTo(status) {
