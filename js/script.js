@@ -99,7 +99,7 @@ async function getuseremblem() {
 
 function userLogOut() {
   window.sessionStorage.removeItem('userId');
-  window.location.href = '../templates/login.html';
+  window.location.href = '../index.html';
 }
 
 async function openSidebarRules() {
@@ -110,6 +110,6 @@ async function openSidebarRules() {
     sidebarRules.style.display = "none";    
     mobileSidebarRules.style.display = "none";
     let arrowBack = document.getElementById('backSummaryRules');    
-    arrowBack.href = '../templates/login.html';
+    arrowBack.href = '../index.html';
   } 
 }
