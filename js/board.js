@@ -33,7 +33,7 @@ function renderSmallCardHTML(task) {
     <div draggable="true" ondragstart="startDragging(${task.cardId})" id="${task.cardId}" class="smallcard" onclick="showBigCard(${task.cardId})">
       <div class="category">
         <h3>${task.category}</h3>
-        <div class="mobileBoard" id="mobileBoard" onclick="openMobileOptions(${task.cardId},event)" ><img src="../assets/icons/more_vert_icon.svg"/></div>
+        <div class="mobileBoard" id="mobileBoard" onclick="openMobileOptions(${task.cardId},event)"><img class="imgMobile" src="../assets/icons/more_vert_icon.svg"/></div>
         <div class="amobile_boardOptions" id="amobile_boardOptions${task.cardId}" style="display:none">            
             <p class="mobileClose"><b>Move To...</b><button class="btnClose" onclick="closeMobilOptions(event,${task.cardId})"><b>X</b></button></p>
             <a onclick="mobilemoveTo('toDo',${task.cardId},event)">To&nbsp;Do</a>

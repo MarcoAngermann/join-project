@@ -669,7 +669,7 @@
     }
 
     .amobile_nameContact {
-        bottom: 180px;
+        bottom: 10px;
     }
 
     .btnMobileClose {
@@ -690,7 +690,7 @@
 }
 
 
-@media (max-width:370px) {
+@media (max-width:395px) {
     .divShortInfo {
         font-size: 16px;
     }
