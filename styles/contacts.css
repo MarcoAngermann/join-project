@@ -179,6 +179,7 @@
     margin-right: 25px;
     display: none;
     cursor: pointer;
+    position: relative;
 }
 
 .amobile_nameContact {
@@ -194,6 +195,7 @@
     background-color: white;
     padding: 15px;
     box-shadow: 1px 0px 3px 0px #9fbdc1;
+    position: absolute;
 }
 
 .amobile_nameContact :hover {
@@ -667,7 +669,7 @@
     }
 
     .amobile_nameContact {
-        bottom: 190px;
+        bottom: 180px;
     }
 
     .btnMobileClose {

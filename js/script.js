@@ -103,13 +103,13 @@ function userLogOut() {
 }
 
 async function openSidebarRules() {
-  let currentUser = await getUserLogin(); 
-  let sidebarRules = document.getElementById('menu'); 
-  let mobileSidebarRules = document.getElementById('mobile-mysidebar'); 
-  if (currentUser == null) {      
-    sidebarRules.style.display = "none";    
+  let currentUser = await getUserLogin();
+  let sidebarRules = document.getElementById('menu');
+  let mobileSidebarRules = document.getElementById('mobile-mysidebar');
+  if (currentUser == null) {
+    sidebarRules.style.display = "none";
     mobileSidebarRules.style.display = "none";
-    let arrowBack = document.getElementById('backSummaryRules');    
+    let arrowBack = document.getElementById('backSummaryRules');
     arrowBack.href = '../index.html';
-  } 
+  }
 }

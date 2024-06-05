@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/style.css" />
     <link rel="stylesheet" href="../styles/sidebar.css" />
+    <link rel="stylesheet" href="../styles/mobile_taskbar.css" />
     <link rel="stylesheet" href="../styles/board.css" />
     <link rel="stylesheet" href="../styles/smallcardPrototype.css" />
     <link rel="stylesheet" href="../styles/boardAddTask.css" />
@@ -50,14 +51,14 @@
             <img
               onclick="showBoardAddTask('toDo')" class="plusBtn-svg" src="..//assets/icons/plusbuttonBoard.svg"/>
           </div>
-          <div class="drag-area" id="toDo" ondrop="moveTo('toDo')" ondragleave="removeHighlight('toDo')" ondragover="allowDrop(event); highlight('toDo')"></div>
+          <div class="drag-area" id="toDo" ondrop="moveTo(event,'toDo')" ondragleave="removeHighlight('toDo')" ondragover="allowDrop(event); highlight('toDo')"></div>
         </div>
         <div class="inProgress">
           <div class="inProgress-head">
             <h3>In Progress</h3>
             <img onclick="showBoardAddTask('inProgress')" class="plusBtn-svg" src="..//assets/icons/plusbuttonBoard.svg"/>
           </div>
-          <div class="drag-area" id="inProgress" ondrop="moveTo('inProgress')" ondragleave="removeHighlight('inProgress')" 
+          <div class="drag-area" id="inProgress" ondrop="moveTo(event, 'inProgress')" ondragleave="removeHighlight('inProgress')" 
               ondragover="allowDrop(event); highlight('inProgress')"></div>
         </div>
 
@@ -66,7 +67,7 @@
             <h3>Await Feedback</h3>
             <img onclick="showBoardAddTask('awaitFeedback')" class="plusBtn-svg" src="..//assets/icons/plusbuttonBoard.svg"/>
           </div>
-          <div class="drag-area" id="awaitFeedback" ondrop="moveTo('awaitFeedback')" ondragleave="removeHighlight('awaitFeedback')"
+          <div class="drag-area" id="awaitFeedback" ondrop="moveTo(event,'awaitFeedback')" ondragleave="removeHighlight('awaitFeedback')"
             ondragover="allowDrop(event); highlight('awaitFeedback')"></div>
         </div>
 
@@ -74,7 +75,7 @@
           <div class="done-head">
             <h3>Done</h3>
           </div>
-          <div class="drag-area" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')"
+          <div class="drag-area" id="done" ondrop="moveTo(event, 'done')" ondragleave="removeHighlight('done')"
             ondragover="allowDrop(event); highlight('done')"></div>
         </div>
         <div onclick="closeBigCard()">

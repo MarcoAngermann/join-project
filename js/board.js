@@ -32,18 +32,18 @@ function renderSmallCardHTML(task) {
   return /*html*/ `
     <div draggable="true" ondragstart="startDragging(${task.cardId})" id="${task.cardId}" class="smallcard" onclick="showBigCard(${task.cardId})">
       <div class="category">
-        <h2>${task.category}</h2>
-        <div class="mobileBoard" id="mobileBoard" onclick="openMobileOptions(${task.cardId},event)"><img src="../assets/icons/more_vert_icon.svg"/></div>
-        <div class="amobile_boardOptions" id="amobile_boardOptions${task.cardId}" style="display:none">
-            <p><b>Move To...</b></p>
-            <a onclick="mobilemoveTo('toDo',${task.cardId},event)">To Do</a>
-            <a onclick="mobilemoveTo('inProgress',${task.cardId},event)">In Progress</a>
-            <a onclick="mobilemoveto('awaitFeedback',${task.cardId},event)">Await Feedback</a>
-            <a onclick="mobilemoveto('done',${task.cardId},event)">Done</a>
+        <h3>${task.category}</h3>
+        <div class="mobileBoard" id="mobileBoard" onclick="openMobileOptions(${task.cardId},event)" ><img src="../assets/icons/more_vert_icon.svg"/></div>
+        <div class="amobile_boardOptions" id="amobile_boardOptions${task.cardId}" style="display:none">            
+            <p class="mobileClose"><b>Move To...</b><button class="btnClose" onclick="closeMobilOptions(event,${task.cardId})"><b>X</b></button></p>
+            <a onclick="mobilemoveTo('toDo',${task.cardId},event)">To&nbsp;Do</a>
+            <a onclick="mobilemoveTo('inProgress',${task.cardId},event)">In&nbsp;Progress</a>
+            <a onclick="mobilemoveTo('awaitFeedback',${task.cardId},event)">Await&nbsp;Feedback</a>
+            <a onclick="mobilemoveTo('done',${task.cardId},event)">Done</a>
         </div>                   
       </div>
       <div class="title">
-        <h3>${task.title}</h3>
+        <h4>${task.title}</h4>
       </div>
       <div class="description">
         <p>${task.description}</p>
@@ -83,7 +83,6 @@ function showSmallUsersEmblem(task) {
       }
     }
   }
-
   if (extraCount > 0) {
     smallUsersEmblem.innerHTML += renderGreyEmblem(extraCount);
   }
@@ -120,18 +119,6 @@ function startDragging(id) {
 function allowDrop(event) {
   event.preventDefault();
 }
-
-async function mobilemoveTo(status, cardId, event) {
-  event.stopPropagation();
-  currentDraggedElement = cardId;
-  moveTo(event, status);
-}
-
-function openMobileOptions(cardId,event) {
-  event.stopPropagation();
-  document.getElementById('amobile_boardOptions'+cardId).style.display = 'flex';
-};
-
 
 async function moveTo(event, status) {
   event.stopPropagation();
@@ -408,4 +395,37 @@ function updateProgressBarDisplay(cardId, subtasks) {
   }
 }
 
+async function mobilemoveTo(status, cardId, event) {
+  event.stopPropagation();
+  currentDraggedElement = cardId;
+  moveTo(event, status);
+}
 
+function openMobileOptions(cardId, event) {
+  event.stopPropagation();
+  document.getElementById('amobile_boardOptions' + cardId).style.display = 'flex';
+};
+function closeMobilOptions(event, cardId) {
+  event.stopPropagation();
+  document.getElementById('amobile_boardOptions' + cardId).style.display = 'none';
+}
+
+
+let mobilWindow = window.matchMedia('(max-width:710px)');
+mobilWindow.addEventListener('change', () => myFunc());
+function MmyFunc() {
+  if (mobilWindow.matches) {
+    document.getElementById("mobileBoard").style.display = "flex";
+
+  } else {
+    document.getElementById("mobileBoard").style.display = "none";
+  }
+}
+
+function mobileDetails() {
+  outWidth = window.innerWidth;
+  if (outWidth <= 710) {
+    document.getElementById("mobileBoard").style.display = "flex";
+   
+  };
+}

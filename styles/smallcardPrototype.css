@@ -1,8 +1,9 @@
 .smallcard {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 24px;
-  width: 250px;
+  width: 220px;
   margin: 16px;
   padding: 16px;
   border-radius: 24px;
@@ -160,4 +161,55 @@
   background-color: #7a7b7b;
   color: white;
   font-size: 12px;
+}
+
+.mobileBoard{
+  display: none;
+}
+
+.amobile_boardOptions {
+  position: absolute;
+  flex-direction: column;
+  gap: 5px;
+  top: 5px;
+  right: 5px;
+  border: 1px solid #F6F7F8;
+  border-radius: 10px;
+  width: max-content;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 1px 0px 3px 0px #9fbdc1;
+  font-size: 12px;
+}
+
+.amobile_boardOptions a:hover {
+  cursor: pointer;
+  color: #F4F4F4;
+  font-weight: 400;
+  background-color: #29ABE2;
+  border-radius: 10px;
+  padding: 0px 2px 0px 8px;
+}
+
+.mobileClose {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.btnClose {
+  border: solid 1px #7a7b7b;
+  border-radius: 10px;
+}
+
+.btnClose:hover{
+  cursor: pointer;
+  background-color: #29ABE2;
+  color: #F4F4F4;
+}
+
+@media (max-width:710px) {
+  .mobileBoard{
+    display: flex;
+  }
 }

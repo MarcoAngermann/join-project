@@ -1,5 +1,11 @@
 .board-container {
-  margin: 200px 100px 32px 300px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 150px;
+  margin-left: 260px;
+  background-color: #F6F7F8;
+  height: 100vh;
+  max-width: 1425px;
 }
 
 .search {
@@ -8,7 +14,8 @@
 
 .top {
   display: flex;
-  justify-content: space-between;
+  width: 100%;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -21,7 +28,14 @@
 .main {
   display: flex;
   margin-top: 24px;
-  gap: 24px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.todo {
+  display: flex;
+  flex-direction: column;
+  width: 23%;
 }
 
 .todo-head {
@@ -30,16 +44,34 @@
   margin-bottom: 8px;
 }
 
+.inProgress {
+  display: flex;
+  flex-direction: column;
+  width: 23%;
+}
+
 .inProgress-head {
   display: flex;
   justify-content: space-between;
   margin-bottom: 8px;
 }
 
+.awaitFeedback {
+  display: flex;
+  flex-direction: column;
+  width: 23%;
+}
+
 .awaitFeedback-head {
   display: flex;
   justify-content: space-between;
   margin-bottom: 8px;
+}
+
+.done {
+  display: flex;
+  flex-direction: column;
+  width: 23%;
 }
 
 .done-head {
@@ -120,7 +152,6 @@
 
 .drag-area {
   height: 100%;
-  width: 300px;
   background-color: rgba(0, 0, 0, 0.1);
   margin-bottom: 50px;
   display: flex;
@@ -199,7 +230,7 @@ progress[value] {
   appearance: none;
   -webkit-appearance: none;
   width: 60%;
-  height: 8px;  
+  height: 8px;
 }
 
 progress[value]::-webkit-progress-bar {
@@ -219,23 +250,41 @@ progress[value]::-webkit-progress-value {
   font-size: 12px;
 }
 
-.amobile_boardOptions{
-  display: flex;
-  flex-direction: column;
-  right: 20px;
-  bottom: 170px;
-  gap: 15px;
-  border: 1px solid #F6F7F8;
-  border-radius: 10px;
-  width: max-content;
-  background-color: white;
-  padding: 15px;
-  box-shadow: 1px 0px 3px 0px #9fbdc1;
-  font-size: 12px;
+@media (max-width:1345px) {
+  .todo {
+    width: 45%;
+  }
+
+  .inProgress {
+    width: 45%;
+  }
+
+  .awaitFeedback {
+    width: 45%;
+  }
+
+  .done {
+    width: 45%;
+  }
 }
 
-.amobile_boardOptions a:hover {
-  cursor: pointer;
-  color: #29ABE2;
-  font-weight: 400;
+@media (max-width:1050px) {
+  .board-container {   
+    margin-left: 50px;
+  }
+  .todo {
+    width: 45%;
+  }
+
+  .inProgress {
+    width: 45%;
+  }
+
+  .awaitFeedback {
+    width: 45%;
+  }
+
+  .done {
+    width: 45%;
+  }
 }
