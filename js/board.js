@@ -33,8 +33,8 @@ function renderSmallCardHTML(task) {
     <div draggable="true" ondragstart="startDragging(${task.cardId})" id="${task.cardId}" class="smallcard" onclick="showBigCard(${task.cardId})">
       <div class="category">
         <h2>${task.category}</h2>
-        <div class="mobileBoard" onclick="openMobileOptions()"><img src="../assets/icons/more_vert_icon.svg" /></div>
-        <div class="amobile_boardOptions" id="amobile_boardOptions" style="display:flex">
+        <div class="mobileBoard" id="mobileBoard" onclick="openMobileOptions(event)"><img src="../assets/icons/more_vert_icon.svg" /></div>
+        <div class="amobile_boardOptions" id="amobile_boardOptions" style="display:none">
             <p><b>Move To...</b></p>
             <a onclick="mobilemoveTo('toDo',${task.cardId} )">To Do</a>
             <a onclick="mobilemoveTo('inProgress',${task.cardId})">In Progress</a>
@@ -130,6 +130,14 @@ currentDraggedElement = cardId;
 moveTo(status);
 }
 
+function openMobileOptions(event){
+  document.getElementById('mobileBoard').addEventListener("click", function(event) {
+    event.preventDefault(); // Verhindert das Standardverhalten (falls notwendig)
+    event.stopPropagation(); // Verhindert, dass das Ereignis weitergegeben wird
+    document.getElementById('amobile_boardOptions').style.display='flex';
+    console.log("Menü wurde angeklickt");
+});
+}
 
 async function moveTo(status) {
   // Find the task object with the cardId equal to currentDraggedElement
