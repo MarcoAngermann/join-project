@@ -33,18 +33,14 @@ function renderSmallCardHTML(task) {
     <div draggable="true" ondragstart="startDragging(${task.cardId})" id="${task.cardId}" class="smallcard" onclick="showBigCard(${task.cardId})">
       <div class="category">
         <h2>${task.category}</h2>
-        <div class="mobileBoard" id="mobileBoard" onclick="openMobileOptions(event)"><img src="../assets/icons/more_vert_icon.svg" /></div>
-        <div class="amobile_boardOptions" id="amobile_boardOptions" style="display:none">
+        <div class="mobileBoard" id="mobileBoard" onclick="openMobileOptions(${task.cardId},event)"><img src="../assets/icons/more_vert_icon.svg"/></div>
+        <div class="amobile_boardOptions" id="amobile_boardOptions${task.cardId}" style="display:none">
             <p><b>Move To...</b></p>
-            <a onclick="mobilemoveTo('toDo',${task.cardId} )">To Do</a>
-            <a onclick="mobilemoveTo('inProgress',${task.cardId})">In Progress</a>
-            <a onclick="mobilemoveto('awaitFeedback',${task.cardId})">Await Feedback</a>
-            <a onclick="mobilemoveto('done',${task.cardId})">Done</a>
-        </div>
-        
-        
-        
-        
+            <a onclick="mobilemoveTo('toDo',${task.cardId},event)">To Do</a>
+            <a onclick="mobilemoveTo('inProgress',${task.cardId},event)">In Progress</a>
+            <a onclick="mobilemoveto('awaitFeedback',${task.cardId},event)">Await Feedback</a>
+            <a onclick="mobilemoveto('done',${task.cardId},event)">Done</a>
+        </div>                   
       </div>
       <div class="title">
         <h3>${task.title}</h3>
@@ -112,7 +108,7 @@ function renderSmallSubtasks(task) {
   if (task.subtask && task.subtask.length > 0) {
     for (let j = 0; j < task.subtask.length; j++) {
       const subtask = task.subtask[j];
-      smallSubtask.innerHTML += ` <div>${subtask}</div> `;  // Append each subtask's HTML to the string
+      smallSubtask.innerHTML += `<div>${subtask}</div> `;  // Append each subtask's HTML to the string
     }
   }
 }
@@ -125,21 +121,20 @@ function allowDrop(event) {
   event.preventDefault();
 }
 
-async function mobilemoveto(status, cardId){
-currentDraggedElement = cardId;
-moveTo(status);
+async function mobilemoveTo(status, cardId, event) {
+  event.stopPropagation();
+  currentDraggedElement = cardId;
+  moveTo(event, status);
 }
 
-function openMobileOptions(event){
-  document.getElementById('mobileBoard').addEventListener("click", function(event) {
-    event.preventDefault(); // Verhindert das Standardverhalten (falls notwendig)
-    event.stopPropagation(); // Verhindert, dass das Ereignis weitergegeben wird
-    document.getElementById('amobile_boardOptions').style.display='flex';
-    console.log("Menü wurde angeklickt");
-});
-}
+function openMobileOptions(cardId,event) {
+  event.stopPropagation();
+  document.getElementById('amobile_boardOptions'+cardId).style.display = 'flex';
+};
 
-async function moveTo(status) {
+
+async function moveTo(event, status) {
+  event.stopPropagation();
   // Find the task object with the cardId equal to currentDraggedElement
   const task = tasks.find((t) => t.cardId == currentDraggedElement);
   task.status = status;
@@ -273,8 +268,7 @@ function renderBigSubtasksHTML(cardId, subtask, j) {
               <input class="big-card-checkbox" onclick="checkedSubtask(${cardId}, ${j})" type="checkbox"  ${subtask.checked ? 'checked' : ''} id="checkbox${j}" data-userid="${j}">
               <div class="contactName">${subtask.subtaskText}</div>
           </li>
-      </label>
-  `;
+      </label>`;
 }
 
 function dontClose() {

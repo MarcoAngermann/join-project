@@ -198,8 +198,8 @@ window.onload = function () {
 };
 
 function getEditSelectedPrio() {
-  let urgentBtn = document.getElementById('urgentPrio');
-  let lowprioBtn = document.getElementById('lowPrio');
+  let urgentBtn = document.getElementById('editurgentPrio');
+  let lowprioBtn = document.getElementById('editlowPrio');
   if (urgentBtn.classList.contains('edit-selected')) {
     return 'urgent';
   } else if (lowprioBtn.classList.contains('edit-selected')) {
