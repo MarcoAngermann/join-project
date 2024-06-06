@@ -1,6 +1,6 @@
 function boardAddTaskEdit(cardId) {
   return /*html*/ `
-    <div onclick="dontClose()">
+    <div class="edit-add-task" onclick="dontClose()">
         <form class="edit-add-task-container" onsubmit="editTask(${cardId},event);">
             <div class="edit-task-header">               
                 <img class="close-edit-board" onclick="closeEditBoard()" src="../assets/icons/close_icon.svg" alt="schließen" />
@@ -52,9 +52,11 @@ function boardAddTaskEdit(cardId) {
                 <span>Select user to assign</span>
                 <img id="arrowDownUser" src="../assets/icons/arrow_down_icon.svg" alt="">
                 <img id="arrowUpUser" src="../assets/icons/arrow_up_icon.svg" style="display: none;">
+                <ul id="editUsers" class="edit-users"></ul>
             </div>
+            
             <div id="editUsersEmblem" class="edit-users-emblem"></div>
-            <ul id="editUsers" class="edit-users"></ul>
+            
             <span class="edit-subtask-label">Subtask</span>
             <div class="edit-subtask-container" id="editSubtaskContainer">
                 <input
@@ -79,8 +81,8 @@ function boardAddTaskEdit(cardId) {
             </div>
             </div>
             <div id="editSubtask" class="edit-subtask"></div>
-            <div type="submit" class="addTaskBtn-Container">
-                <button class="edit-btntask">
+            <div class="edit-btntask-container">
+                <button type="submit" class="edit-btntask">
                     Ok
                     <img src="..//assets/icons/checkWhite.svg">           
                 </button>
@@ -90,9 +92,9 @@ function boardAddTaskEdit(cardId) {
     </div>
 `;
 }
-//render function SubtasksEdit 
+//render function SubtasksEdit
 function renderEditSubtaskHTML(subtasks, i) {
-    return /*html*/ `
+  return /*html*/ `
           <div class="edit-subtasklist" id="edit-main-subtask-container${i}">
               <input
                   readonly
@@ -107,26 +109,26 @@ function renderEditSubtaskHTML(subtasks, i) {
                   </div>
           </div>
       `;
-  }
-  
-  function editThisSubtaskHTML(i) {
-    return /*html*/ `
+}
+
+function editThisSubtaskHTML(i) {
+  return /*html*/ `
         <img onclick="editDeleteSubtask(${i})" id="editDeleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
         <div class="edit-seperator"></div>
         <img  onclick="editCheckSubtask(${i})" id="editCheckSubtask${i}" src="../assets/icons/check.svg" alt="">
       `;
-  }
+}
 
-  function checkThisSubtaskHTML(i) {
-    return /*html*/ `
+function checkThisSubtaskHTML(i) {
+  return /*html*/ `
         <img onclick="editThisSubtask(${i})" id="editSubtask${i}" src="../assets/icons/edit_contacts_icon.svg" alt="">
         <div class="edit-seperator"></div>
         <img onclick="editDeleteSubtask(${i})" id="editDeleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
       `;
-  }
-//render function UsersEdit 
-  function renderEditUsersHTML(user, i) {
-    return /*html*/ `
+}
+//render function UsersEdit
+function renderEditUsersHTML(user, i) {
+  return /*html*/ `
             <label for="editCheckbox${i}">
                 <li class="edit-contactlist">        
                     <div tabindex="0" class="edit-emblem" style="background-color: ${user.color}">
@@ -137,30 +139,29 @@ function renderEditSubtaskHTML(subtasks, i) {
                 </li>
             </label>
               `;
-  }
+}
 
-  function renderEditEmblemUsers(user) {
-    return /*html*/ `
+function renderEditEmblemUsers(user) {
+  return /*html*/ `
       <div class="edit-single-user">
           <div class="edit-emblem" style="background-color: ${user.color}" id="${user.userId}">
             ${user.emblem}
           </div>
         </div>
       `;
-  }
+}
 
-  function renderGreyEmblem(extraCount) {
-    return `<div class="edit-grey-emblem">+${extraCount}</div>`;
-  }
-  
-  function renderGreyEmblem(remainingCount) {
-    return `<div class="edit-grey-emblem">+${remainingCount}</div>`;
-  }
-  
-  function renderEmblemUsers(user) {
-    return /*html*/ `
+function renderGreyEmblem(extraCount) {
+  return `<div class="edit-grey-emblem">+${extraCount}</div>`;
+}
+
+function renderGreyEmblem(remainingCount) {
+  return `<div class="edit-grey-emblem">+${remainingCount}</div>`;
+}
+
+function renderEmblemUsers(user) {
+  return /*html*/ `
           <div class="edit-emblem" style="background-color: ${user.color}" id="${user.userId}">
           ${user.emblem}
         </div>  `;
-  }
-  
+}

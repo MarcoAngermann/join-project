@@ -22,7 +22,7 @@ function updateTasksByStatus(status, elementId) {
   let boardCard = document.getElementById(elementId);
   boardCard.innerHTML = '';
   for (let i = 0; i < filteredTasks.length; i++) {
-    (boardCard.innerHTML += renderSmallCardHTML(filteredTasks[i], i));
+    boardCard.innerHTML += renderSmallCardHTML(filteredTasks[i], i);
     showSmallUsersEmblem(filteredTasks[i]);
     renderProgressBar(filteredTasks[i].cardId, tasks);
   }
@@ -103,11 +103,13 @@ function renderSmallUsersEmblem(user) {
 }
 
 function renderSmallSubtasks(task) {
-  let smallSubtask = document.getElementById(`subtaskProgressBar${task.cardId}`);
+  let smallSubtask = document.getElementById(
+    `subtaskProgressBar${task.cardId}`
+  );
   if (task.subtask && task.subtask.length > 0) {
     for (let j = 0; j < task.subtask.length; j++) {
       const subtask = task.subtask[j];
-      smallSubtask.innerHTML += `<div>${subtask}</div> `;  // Append each subtask's HTML to the string
+      smallSubtask.innerHTML += `<div>${subtask}</div> `; // Append each subtask's HTML to the string
     }
   }
 }
@@ -200,7 +202,7 @@ function renderBigCardHTML(cardId) {
           <img  src="../assets/icons/delete_contact_icon.svg" alt="">
           <span>Delete</span>
         </div>
-        <div class="seperator"></div>
+        <div class="big-seperator"></div>
         <div id="bigEdit" class="big-edit" onclick="editTaskOfBoard(${task.cardId})">
           <img src="../assets/icons/edit-contacts_icon.svg" alt="">
           <span>Edit</span>
@@ -252,7 +254,9 @@ function renderBigSubtasksHTML(cardId, subtask, j) {
   return /*html*/ `
       <label for="checkbox${j}">
           <li class="bigSubtaskList">
-              <input class="big-card-checkbox" onclick="checkedSubtask(${cardId}, ${j})" type="checkbox"  ${subtask.checked ? 'checked' : ''} id="checkbox${j}" data-userid="${j}">
+              <input class="big-card-checkbox" onclick="checkedSubtask(${cardId}, ${j})" type="checkbox"  ${
+    subtask.checked ? 'checked' : ''
+  } id="checkbox${j}" data-userid="${j}">
               <div class="contactName">${subtask.subtaskText}</div>
           </li>
       </label>`;
@@ -266,7 +270,6 @@ async function deleteTaskOfBoard(cardId) {
   await deleteTask(cardId);
   await updateHTML();
   closeBigCard();
-
 }
 
 async function deleteTask(cardId) {
@@ -375,7 +378,7 @@ function renderProgressBar(cardId, tasks) {
 }
 
 function updateProgressBarDisplay(cardId, subtasks) {
-  let checkedSubtasks = 0
+  let checkedSubtasks = 0;
   if (subtasks != null && subtasks.length > 0) {
     for (let i = 0; i < subtasks.length; i++) {
       if (subtasks[i].checked == true) {
@@ -384,13 +387,17 @@ function updateProgressBarDisplay(cardId, subtasks) {
     }
     let percent = checkedSubtasks / subtasks.length;
     percent = Math.round(percent * 100).toFixed(0);
-    let colorProgressBar = document.getElementById(`subtaskProgressBar${cardId}`);
+    let colorProgressBar = document.getElementById(
+      `subtaskProgressBar${cardId}`
+    );
     colorProgressBar.value = percent;
     let subtasksCount = document.getElementById(`subtasksCount${cardId}`);
-    subtasksCount.innerHTML = checkedSubtasks + '/' + subtasks.length + ' Subtasks';
-  }
-  else {
-    let colorProgressBar = document.getElementById(`subtaskProgressBar${cardId}`);
+    subtasksCount.innerHTML =
+      checkedSubtasks + '/' + subtasks.length + ' Subtasks';
+  } else {
+    let colorProgressBar = document.getElementById(
+      `subtaskProgressBar${cardId}`
+    );
     colorProgressBar.style.display = 'none';
   }
 }
@@ -403,29 +410,28 @@ async function mobilemoveTo(status, cardId, event) {
 
 function openMobileOptions(cardId, event) {
   event.stopPropagation();
-  document.getElementById('amobile_boardOptions' + cardId).style.display = 'flex';
-};
+  document.getElementById('amobile_boardOptions' + cardId).style.display =
+    'flex';
+}
 function closeMobilOptions(event, cardId) {
   event.stopPropagation();
-  document.getElementById('amobile_boardOptions' + cardId).style.display = 'none';
+  document.getElementById('amobile_boardOptions' + cardId).style.display =
+    'none';
 }
-
 
 let mobilWindow = window.matchMedia('(max-width:710px)');
 mobilWindow.addEventListener('change', () => myFunc());
 function myFunc() {
   if (mobilWindow.matches) {
-    document.getElementById("mobileBoard").style.display = "flex";
-
+    document.getElementById('mobileBoard').style.display = 'flex';
   } else {
-    document.getElementById("mobileBoard").style.display = "none";
+    document.getElementById('mobileBoard').style.display = 'none';
   }
 }
 
 function mobileDetails() {
   outWidth = window.innerWidth;
   if (outWidth <= 710) {
-    document.getElementById("mobileBoard").style.display = "flex";
-   
-  };
+    document.getElementById('mobileBoard').style.display = 'flex';
+  }
 }

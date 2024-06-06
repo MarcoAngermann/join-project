@@ -52,7 +52,7 @@
   position: sticky;
   overflow-y: auto;
   gap: 24px;
-  border-radius: 10px;
+  border-radius: 30px;
   background-color: #ffffff;
   padding: 48px 40px 48px 40px;
 }
@@ -103,12 +103,21 @@
   display: flex;
   justify-content: flex-end;
   gap: 8px;
+  margin-block-start: auto;
 }
 
 .big-delete {
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+
+.big-seperator {
+  width: 0px;
+  height: 24px;
+  gap: 0px;
+  border: 1px solid #d1d1d1;
+  opacity: 1;
 }
 
 .big-edit {
@@ -174,7 +183,7 @@
   gap: 5px;
   top: 5px;
   right: 5px;
-  border: 1px solid #F6F7F8;
+  border: 1px solid #f6f7f8;
   border-radius: 10px;
   width: max-content;
   background-color: white;
@@ -185,9 +194,9 @@
 
 .amobile_boardOptions a:hover {
   cursor: pointer;
-  color: #F4F4F4;
+  color: #f4f4f4;
   font-weight: 400;
-  background-color: #29ABE2;
+  background-color: #29abe2;
   border-radius: 10px;
   padding: 0px 2px 0px 8px;
 }
@@ -205,23 +214,29 @@
 
 .btnClose:hover {
   cursor: pointer;
-  background-color: #29ABE2;
-  color: #F4F4F4;
+  background-color: #29abe2;
+  color: #f4f4f4;
 }
 
-@media (max-width:1345px) {
+@media (max-width: 1345px) {
   .smallcard {
     width: 280px;
   }
 }
 
-@media (max-width:800px) {
+@media (max-width: 800px) {
   .smallcard {
     width: 265px;
   }
+
+  .bigCard {
+    height: 70%;
+    width: 70%;
+    padding: 24px 16px 24px 16px;
+  }
 }
 
-@media (max-width:710px) {
+@media (max-width: 710px) {
   .mobileBoard {
     display: flex;
   }
@@ -231,8 +246,12 @@
   }
 }
 
-@media (max-width:650px) {
+@media (max-width: 650px) {
   .mobileBoard {
     display: flex;
+  }
+
+  .bigCard {
+    width: 80%;
   }
 }
