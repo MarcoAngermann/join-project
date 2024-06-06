@@ -413,7 +413,7 @@ function closeMobilOptions(event, cardId) {
 
 let mobilWindow = window.matchMedia('(max-width:710px)');
 mobilWindow.addEventListener('change', () => myFunc());
-function MyFunc() {
+function myFunc() {
   if (mobilWindow.matches) {
     document.getElementById("mobileBoard").style.display = "flex";
 
