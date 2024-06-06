@@ -3,7 +3,7 @@
   flex-direction: column;
   margin-top: 150px;
   margin-left: 260px;
-  background-color: #F6F7F8;
+  background-color: #f6f7f8;
   max-width: 1425px;
 }
 
@@ -26,10 +26,10 @@
   display: none;
 }
 
-.topPlus:hover{
+.topPlus:hover {
   cursor: pointer;
-  background-color: #29ABE2;
-  border: 0.5px solid #29ABE2;  
+  background-color: #29abe2;
+  border: 0.5px solid #29abe2;
 }
 
 .top-left {
@@ -38,24 +38,35 @@
   gap: 16px;
 }
 
-
 .top-right {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.main {
+.empty-board {
   display: flex;
+  height: 48px;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px dashed #a8a8a8;
+  justify-content: center;
+  align-items: center;
+  color: #b5b4b4;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.edit-main {
+  display: flex;
+  flex-wrap: wrap;
   margin-top: 24px;
   gap: 18px;
-  flex-wrap: wrap;
 }
 
 .todo {
   display: flex;
   flex-direction: column;
-  width: 23%;
+  width: 250px;
 }
 
 .todo-head {
@@ -67,7 +78,7 @@
 .inProgress {
   display: flex;
   flex-direction: column;
-  width: 23%;
+  width: 250px;
 }
 
 .inProgress-head {
@@ -79,7 +90,7 @@
 .awaitFeedback {
   display: flex;
   flex-direction: column;
-  width: 23%;
+  width: 250px;
 }
 
 .awaitFeedback-head {
@@ -91,7 +102,7 @@
 .done {
   display: flex;
   flex-direction: column;
-  width: 23%;
+  width: 250px;
 }
 
 .done-head {
@@ -172,8 +183,7 @@
 
 .drag-area {
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 15px;
+  border-radius: 10px;
   margin-bottom: 50px;
   display: flex;
   flex-direction: column;
@@ -206,7 +216,8 @@
 
 .plusBtn-svg:hover {
   cursor: pointer;
-  filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg) brightness(91%) contrast(106%);
+  filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg)
+    brightness(91%) contrast(106%);
 }
 
 .big-subtasks {
@@ -255,12 +266,12 @@ progress[value] {
 }
 
 progress[value]::-webkit-progress-bar {
-  background-color: #F4F4F4;
+  background-color: #f4f4f4;
   border-radius: 8px;
 }
 
 progress[value]::-webkit-progress-value {
-  background-color: #4589FF;
+  background-color: #4589ff;
   border-radius: 8px;
   transition: width 0.5s ease-in-out;
 }
@@ -271,47 +282,13 @@ progress[value]::-webkit-progress-value {
   font-size: 12px;
 }
 
-@media (max-width:1345px) {
-  .todo {
-    width: 45%;
-  }
-
-  .inProgress {
-    width: 45%;
-  }
-
-  .awaitFeedback {
-    width: 45%;
-  }
-
-  .done {
-    width: 45%;
-  }
-}
-
-@media (max-width:1050px) {
+@media (max-width: 1050px) {
   .board-container {
     margin-left: 50px;
   }
-
-  .todo {
-    width: 45%;
-  }
-
-  .inProgress {
-    width: 45%;
-  }
-
-  .awaitFeedback {
-    width: 45%;
-  }
-
-  .done {
-    width: 45%;
-  }
 }
 
-@media (max-width:900px) {
+@media (max-width: 900px) {
   .top h1 {
     font-size: 50px;
   }
@@ -327,7 +304,7 @@ progress[value]::-webkit-progress-value {
   }
 }
 
-@media (max-width:800px) {
+@media (max-width: 800px) {
   .top h1 {
     font-size: 48px;
   }
@@ -338,20 +315,20 @@ progress[value]::-webkit-progress-value {
   }
 }
 
-@media (max-width:710px) {
-  .main{
-    gap:15px;
+@media (max-width: 710px) {
+  .main {
+    gap: 15px;
   }
   .topPlus {
     display: flex;
   }
 
   .top-right button {
-    display: none
+    display: none;
   }
 }
 
-@media (max-width:650px) {
+@media (max-width: 650px) {
   .topPlus {
     display: flex;
   }
@@ -359,7 +336,7 @@ progress[value]::-webkit-progress-value {
     flex-direction: column;
     gap: 24px;
   }
-  .top-left{
+  .top-left {
     justify-content: space-between;
     width: 95%;
   }
@@ -367,44 +344,28 @@ progress[value]::-webkit-progress-value {
     width: 450px;
     height: 40px;
   }
-  .todo {
-    width: 95%;
-  }
 
-  .inProgress {
-    width: 95%;
-  }
-
-  .awaitFeedback {
-    width: 95%;
-  }
-
-  .done {
-    width: 95%;
-  }
-
-  .drag-area{
+  .drag-area {
     flex-direction: row;
     flex-wrap: wrap;
   }
-
 }
 
-@media (max-width:550px) {
+@media (max-width: 550px) {
   .input-area {
     width: 350px;
     height: 35px;
   }
-  
-progress[value] {
-   width: 50%; 
-}
-.subtask-progress-count {
-width: 50%;
-}
+
+  progress[value] {
+    width: 50%;
+  }
+  .subtask-progress-count {
+    width: 50%;
+  }
 }
 
-@media (max-width:550px) {
+@media (max-width: 550px) {
   .input-area {
     width: 250px;
     height: 35px;

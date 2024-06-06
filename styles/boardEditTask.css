@@ -233,7 +233,7 @@ textarea {
   border-radius: 10px;
   padding: 12px 10px 10px 12px;
   top: 50px;
-  right: -2px;
+  right: 1px;
   z-index: 2;
 }
 
@@ -451,14 +451,6 @@ input[type='checkbox'] {
     top: 785px;
   }
 
-  .groupTask1-input {
-    gap: 10px;
-  }
-
-  .groupTask2-input {
-    gap: 10px;
-  }
-
   .addTaskBtn-Container {
     margin-bottom: 90px;
   }
@@ -479,6 +471,11 @@ input[type='checkbox'] {
     width: 100%;
   }
 
+  .edit-user-checkbox {
+    display: flex;
+    flex: 1;
+  }
+
   .edit-contact-container {
     width: 100%;
   }
@@ -494,7 +491,7 @@ input[type='checkbox'] {
   }
 
   .edit-users {
-    width: 101%;
+    width: 100%;
   }
 }
 
@@ -511,28 +508,12 @@ input[type='checkbox'] {
     margin-right: 80px;
   }
 
-  .groupTask1-input {
-    width: 300px;
-  }
-
-  .groupTask2-input {
-    width: 300px;
-  }
-
   .headline-task {
     margin-right: 80px;
   }
 
   .tasks {
     top: 785px;
-  }
-
-  .groupTask1-input input {
-    width: 100%;
-  }
-
-  .groupTask1-input textarea {
-    width: 100%;
   }
 
   .edit-contact-container {

@@ -22,7 +22,7 @@ function updateTasksByStatus(status, elementId) {
   let boardCard = document.getElementById(elementId);
   boardCard.innerHTML = '';
   if (filteredTasks.length == 0) {
-    boardCard.innerHTML = renderEmptyBoard();
+    boardCard.innerHTML = renderEmptyBoard(status);
     return;
   } else
     for (let i = 0; i < filteredTasks.length; i++) {
@@ -30,6 +30,14 @@ function updateTasksByStatus(status, elementId) {
       showSmallUsersEmblem(filteredTasks[i]);
       renderProgressBar(filteredTasks[i].cardId, tasks);
     }
+}
+
+function renderEmptyBoard(status) {
+  return /*html*/ `
+    <div class="empty-board">
+      <span>No tasks ${status}</span>
+    </div>
+  `;
 }
 
 function renderSmallCardHTML(task) {

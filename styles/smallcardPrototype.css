@@ -24,6 +24,8 @@
 
 .description {
   word-break: break-word;
+  overflow-y: auto;
+  max-height: 60px;
 }
 
 .showBigCard {
@@ -218,21 +220,10 @@
   color: #f4f4f4;
 }
 
-@media (max-width: 1345px) {
-  .smallcard {
-    width: 280px;
-  }
-}
-
 @media (max-width: 800px) {
-  .smallcard {
-    width: 265px;
-  }
-
   .bigCard {
-    height: 70%;
-    width: 70%;
-    padding: 24px 16px 24px 16px;
+    height: 75%;
+    width: 80%;
   }
 }
 
@@ -240,18 +231,17 @@
   .mobileBoard {
     display: flex;
   }
-
-  .smallcard {
-    width: 250px;
-  }
 }
 
 @media (max-width: 650px) {
   .mobileBoard {
     display: flex;
   }
+}
 
+@media (max-width: 600px) {
   .bigCard {
-    width: 80%;
+    width: 100%;
+    padding: 30px 24px 30px 20px;
   }
 }
