@@ -21,11 +21,15 @@ function updateTasksByStatus(status, elementId) {
   let filteredTasks = tasks.filter((task) => task.status == status);
   let boardCard = document.getElementById(elementId);
   boardCard.innerHTML = '';
-  for (let i = 0; i < filteredTasks.length; i++) {
-    boardCard.innerHTML += renderSmallCardHTML(filteredTasks[i], i);
-    showSmallUsersEmblem(filteredTasks[i]);
-    renderProgressBar(filteredTasks[i].cardId, tasks);
-  }
+  if (filteredTasks.length == 0) {
+    boardCard.innerHTML = renderEmptyBoard();
+    return;
+  } else
+    for (let i = 0; i < filteredTasks.length; i++) {
+      boardCard.innerHTML += renderSmallCardHTML(filteredTasks[i], i);
+      showSmallUsersEmblem(filteredTasks[i]);
+      renderProgressBar(filteredTasks[i].cardId, tasks);
+    }
 }
 
 function renderSmallCardHTML(task) {
