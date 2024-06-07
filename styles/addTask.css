@@ -753,6 +753,8 @@ input[type='checkbox'] {
 
   .headline-task {
     width: 80%;
+    padding-top: 150px;
+    margin-left: 10px;
   }
 
   .groupTask1-input {
