@@ -89,16 +89,16 @@ function convertDate(dateUrgent) {
 
 function mobileSummaryGreetting() {
   document
-    .getElementById('greeting-container')
+    .getElementById('greetingContainer')
     .classList.add('animationSummary');
   setTimeout(() => {
-    document.getElementById('summary-card-container').style.display = 'flex';
+    document.getElementById('summaryCardContainer').style.display = 'flex';
   }, 1000);
 }
 
 function mobileSummaryShow() {
   document
-    .getElementById('summary-card-container')
+    .getElementById('summaryCardContainer')
     .classList.add('animationSummaryShine');
 }
 
@@ -109,11 +109,11 @@ function myFunc() {
     mobileGreeting();
   } else {
     document
-      .getElementById('greeting-container')
+      .getElementById('greetingContainer')
       .classList.remove('animationSummary');
-    document.getElementById('greeting-container').style.display = 'flex';
+    document.getElementById('greetingContainer').style.display = 'flex';
     document
-      .getElementById('summary-card-container')
+      .getElementById('summaryCardContainer')
       .classList.remove('animationSummaryShine');
   }
 }
