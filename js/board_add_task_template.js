@@ -1,7 +1,7 @@
 function renderBoardAddTaskHTML(boardStatus) {
   console.log(boardStatus);
   return /*html*/ `
-  <div class="main-container" onclick="dontClose()">
+  <div class="add-task-main-container" onclick="dontClose()">
     <div class="task-top">
       <h1 class="headline-task">Add Task</h1>
       <div>
@@ -33,7 +33,7 @@ function renderBoardAddTaskHTML(boardStatus) {
         </p>
       </div>
     </div>
-    <div class="seperator"></div>
+    <div class="board-addtask-seperator"></div>
     <div class="group-task2-input">
       <span>Due date<span class="required-color">*</span></span>
       <input id="date" type="date" required />
