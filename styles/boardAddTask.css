@@ -161,7 +161,7 @@ textarea {
   color: #ffffff;
 }
 
-.addTaskBtn-Container {
+.addtask-button-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -189,7 +189,7 @@ textarea {
   font-weight: bold;
 }
 
-.usersEmblem {
+.users-emblem {
   display: inline-flex;
   margin-left: 8px;
 }
@@ -207,7 +207,7 @@ textarea {
   margin-left: -8px;
 }
 
-.contactList {
+.contactlist {
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -217,15 +217,15 @@ textarea {
   margin-top: 8px;
 }
 
-.contactList:hover {
+.contactlist:hover {
   background-color: #f6f7f8;
 }
 
-.contactList span {
+.contactlist span {
   width: 100%;
 }
 
-.contactContainer {
+.contact-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -239,11 +239,11 @@ textarea {
   z-index: 2;
 }
 
-.contactContainer:hover {
+.contact-container:hover {
   cursor: pointer;
 }
 
-.contactContainer span {
+.contact-container span {
   font-size: 20px;
 }
 
@@ -286,7 +286,7 @@ input[type='checkbox'] {
   width: 14px;
 }
 
-.contactName {
+.contact-name {
   width: 320px;
 }
 
@@ -365,7 +365,7 @@ input[type='checkbox'] {
   overflow-y: auto;
 }
 
-.subtaskList {
+.subtasklist {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -375,16 +375,16 @@ input[type='checkbox'] {
   padding: 4px 16px 4px 16px;
 }
 
-.subtaskList::before {
+.subtasklist::before {
   content: '\2022';
 }
 
-.subtaskList:hover {
+.subtasklist:hover {
   background-color: #dcdcdc;
   border-radius: 10px;
 }
 
-.subtaskList input {
+.subtasklist input {
   background-color: transparent;
   border: none;
   outline: none;
@@ -425,7 +425,7 @@ input[type='checkbox'] {
   display: none;
 }
 
-.subtaskList:hover .edit-images {
+.subtasklist:hover .edit-images {
   display: flex;
 }
 
@@ -476,12 +476,12 @@ input[type='checkbox'] {
 }
 
 .board-addtask-seperator {
-    width: 0px;
-    height: 424px;
-    margin-left: 20px;
-    margin-right: 20px;
-    border: 1px solid #d1d1d1;
-    opacity: 1;
+  width: 0px;
+  height: 424px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border: 1px solid #d1d1d1;
+  opacity: 1;
 }
 
 @media (max-width: 1425px) {
@@ -497,7 +497,6 @@ input[type='checkbox'] {
     margin-right: 610px;
   }
 
-
   .tasks {
     top: 535px;
   }
@@ -507,10 +506,9 @@ input[type='checkbox'] {
   }
 }
 @media (max-width: 1270px) {
-.headline-task {
-  font-size: 56px;
-
-}
+  .headline-task {
+    font-size: 56px;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -573,7 +571,7 @@ input[type='checkbox'] {
     gap: 10px;
   }
 
-  .addTaskBtn-Container {
+  .addtask-button-container {
     margin-bottom: 90px;
   }
   .add-task-main-container {
@@ -582,7 +580,8 @@ input[type='checkbox'] {
   }
 
   .task-top {
-    padding-top: 100px;}
+    padding-top: 100px;
+  }
 }
 
 @media (max-width: 530px) {
@@ -622,7 +621,7 @@ input[type='checkbox'] {
   .group-task1-input textarea {
     width: 100%;
   }
-  .contactContainer {
+  .contact-container {
     width: 100%;
   }
   .add-task-container {
@@ -652,7 +651,7 @@ input[type='checkbox'] {
     width: 30px;
     height: 28px;
   }
-  .addTaskBtn-Container {
+  .addtask-button-container {
     margin-left: 0px;
   }
   .add-task-container {
@@ -662,7 +661,7 @@ input[type='checkbox'] {
     flex-direction: column;
     align-items: center;
   }
-  .contactContainer span {
+  .contact-container span {
     font-size: 16px;
   }
 

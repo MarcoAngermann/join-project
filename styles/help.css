@@ -69,11 +69,9 @@ h3 {
   margin: 200px 100px 32px 300px;
 }
 
-
-
 @media (max-width: 1425px) {
   .help-container {
-    margin: 100px 0px 32px 0px;
+    margin: 100px 16px 32px 16px;
   }
 
   .text {

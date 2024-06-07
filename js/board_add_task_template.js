@@ -20,12 +20,12 @@ function renderBoardAddTaskHTML(boardStatus) {
       <span>Description</span>
       <textarea name="" id="description" cols="30" rows="5"></textarea>
       <span>Assigned to</span>
-      <div onclick="showUsers()" class="contactContainer">
+      <div onclick="showUsers()" class="contact-container">
         <span>Select user to assign</span>
         <img id="arrowDownUser" src="../assets/icons/arrow_down_icon.svg" alt="">
         <img id="arrowUpUser" src="../assets/icons/arrow_up_icon.svg" style="display: none;">
       </div>
-      <div id="usersEmblem" class="usersEmblem"></div>
+      <div id="usersEmblem" class="users-emblem"></div>
       <ul id="users" class="users"></ul>
       <div>
         <p class="required-field-text">
@@ -114,7 +114,7 @@ function renderBoardAddTaskHTML(boardStatus) {
         </div>
 
         <div id="subtask" class="subtask"></div>
-        <div type="submit" class="addTaskBtn-Container">
+        <div type="submit" class="addtask-button-container">
           <button formnovalidate class="clear-button" onclick="clearAllTasks(event)">
             Clear
             <img class="icon-cancel-svg" src="../assets/icons/cancel.svg">
@@ -134,11 +134,11 @@ function renderBoardAddTaskHTML(boardStatus) {
 function renderUsersHTML(user, i) {
   return /*html*/ `
       <label for="checkbox${i}">
-          <li class="contactList">        
+          <li class="contactlist">        
               <div tabindex="0" class="emblem" style="background-color: ${user.color}">
                 ${user.emblem}
               </div> 
-              <div class="contactName" >${user.name}</div> 
+              <div class="contact-name" >${user.name}</div> 
               <input class="user-checkbox" onclick="showUsersEmblem()" type="checkbox" id="checkbox${i}" data-userid="${user.userId}">          
           </li>
       </label>
@@ -147,7 +147,7 @@ function renderUsersHTML(user, i) {
 
 function renderCategorysHTML(i) {
   return /*html*/ `
-          <li class="contactList">
+          <li class="contactlist">
               <span for="">
                 <div tabindex="0" onclick="selectCategory(${i})">
                   ${categorys[i]}
@@ -203,4 +203,3 @@ function checkSubtaskHTML(i) {
     <img onclick="deleteSubtask(${i})" id="deleteSubtask${i}" src="../assets/icons/delete_contact_icon.svg" alt="">
   `;
 }
-

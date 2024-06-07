@@ -7,8 +7,6 @@ async function initSummary() {
   mobileGreeting();
 }
 
-
-
 function getGreeting(isGuest) {
   let time = new Date().getHours();
   let greeting;
@@ -26,7 +24,7 @@ function getGreeting(isGuest) {
 
 async function displayGreeting() {
   let currentUser = await getUserLogin();
-  let isGuest = (currentUser.userId == 0);
+  let isGuest = currentUser.userId == 0;
   document.getElementById('greetText').innerHTML = getGreeting(isGuest);
 }
 
@@ -41,11 +39,11 @@ async function displayUser() {
 }
 
 let todo = 0;
-let inProgress = 0
+let inProgress = 0;
 let awaitFeedback = 0;
 let done = 0;
 let urgent = 0;
-let dateUrgent = "2100-01-01";
+let dateUrgent = '2100-01-01';
 
 function countsTaskStatus() {
   for (let i = 0; i < tasks.length; i++) {
@@ -78,25 +76,30 @@ function rendernCountTasks() {
   if (urgent == 0) {
     document.getElementById('nextUrgentDate').innerHTML = '';
   } else {
-    document.getElementById('nextUrgentDate').innerHTML = convertDate(dateUrgent);
+    document.getElementById('nextUrgentDate').innerHTML =
+      convertDate(dateUrgent);
   }
 }
 
 function convertDate(dateUrgent) {
   let date = new Date(dateUrgent);
   let options = { month: 'long', day: 'numeric', year: 'numeric' };
-  return date.toLocaleDateString("en-US", options);
+  return date.toLocaleDateString('en-US', options);
 }
 
 function mobileSummaryGreetting() {
-  document.getElementById('greeting-container').classList.add('animationSummary');
+  document
+    .getElementById('greeting-container')
+    .classList.add('animationSummary');
   setTimeout(() => {
     document.getElementById('summary-card-container').style.display = 'flex';
   }, 1000);
 }
 
 function mobileSummaryShow() {
-  document.getElementById('summary-card-container').classList.add('animationSummaryShine');
+  document
+    .getElementById('summary-card-container')
+    .classList.add('animationSummaryShine');
 }
 
 let mobilWindow = window.matchMedia('(max-width:800px)');
@@ -105,9 +108,13 @@ function myFunc() {
   if (mobilWindow.matches) {
     mobileGreeting();
   } else {
-    document.getElementById('greeting-container').classList.remove('animationSummary');
+    document
+      .getElementById('greeting-container')
+      .classList.remove('animationSummary');
     document.getElementById('greeting-container').style.display = 'flex';
-    document.getElementById('summary-card-container').classList.remove('animationSummaryShine');
+    document
+      .getElementById('summary-card-container')
+      .classList.remove('animationSummaryShine');
   }
 }
 
