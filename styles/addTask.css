@@ -804,8 +804,15 @@ input[type='checkbox'] {
     width: 100%;
   }
 
+  .prio-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
   .prioBtn {
-    font-size: 13px;
+    width: 100%;
   }
 
   .tasks {
