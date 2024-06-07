@@ -431,19 +431,30 @@ function closeMobilOptions(event, cardId) {
     'none';
 }
 
-let mobilWindow = window.matchMedia('(max-width:710px)');
-mobilWindow.addEventListener('change', () => myFunc());
+let mobilWindow = window.matchMedia('(max-width: 770px)');
+mobilWindow.addEventListener('change', myFunc);
+
+// Funktion zur Überprüfung und Anpassung des Display-Styles
 function myFunc() {
-  if (mobilWindow.matches) {
-    document.getElementById('mobileBoard').style.display = 'flex';
-  } else {
-    document.getElementById('mobileBoard').style.display = 'none';
-  }
+  const elements = document.querySelectorAll('.mobileBoard');
+  elements.forEach(element => {
+    if (mobilWindow.matches) {
+      element.style.display = 'flex';
+    } else {
+      element.style.display = 'none';
+    }
+  });
 }
 
+// Funktion zur initialen Überprüfung der Fensterbreite
 function mobileDetails() {
+  const elements = document.querySelectorAll('.mobileBoard');
   outWidth = window.innerWidth;
-  if (outWidth <= 710) {
-    document.getElementById('mobileBoard').style.display = 'flex';
-  }
+  elements.forEach(element => {
+    if (outWidth <= 770) {
+      element.style.display = 'flex';
+    } else {
+      element.style.display = 'none';
+    }
+  });
 }

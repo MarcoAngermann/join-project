@@ -315,7 +315,7 @@ progress[value]::-webkit-progress-value {
   }
 }
 
-@media (max-width: 710px) {
+@media (max-width: 770px) {
   .main {
     gap: 15px;
   }
