@@ -576,6 +576,20 @@ input[type='checkbox'] {
   .addTaskBtn-Container {
     margin-bottom: 90px;
   }
+  .add-task-main-container {
+    overflow-y: scroll;
+    height: 100vh;
+  }
+
+  .task-top {
+    padding-top: 100px;}
+}
+
+@media (max-width: 530px) {
+  .headline-task {
+    font-size: 32px;
+    margin-right: 0px;
+  }
 }
 
 @media (max-width: 470px) {
@@ -621,14 +635,14 @@ input[type='checkbox'] {
     width: 100%;
   }
   .prioBtn {
-    font-size: 13px;
+    width: 100%;
   }
   .tasks {
     top: 771px;
     width: 300px;
   }
   .users {
-    top: 491px;
+    top: 348px;
     width: 300px;
   }
   .user-checkbox {
@@ -643,5 +657,23 @@ input[type='checkbox'] {
   }
   .add-task-container {
     align-items: center;
+  }
+  .prio-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .contactContainer span {
+    font-size: 16px;
+  }
+
+  .task-top {
+    padding-top: 230px;
+  }
+}
+
+@media (max-width: 400px) {
+  .headline-task {
+    font-size: 28px !important;
+    margin-right: 0px;
   }
 }
