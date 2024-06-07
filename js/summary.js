@@ -89,14 +89,14 @@ function convertDate(dateUrgent) {
 }
 
 function mobileSummaryGreetting() {
-  document.getElementById('greeting-container').classList.add('animationSummary');
+  document.getElementById('greetingContainer').classList.add('animationSummary');
   setTimeout(() => {
-    document.getElementById('summary-card-container').style.display = 'flex';
+    document.getElementById('summaryCardContainer').style.display = 'flex';
   }, 1000);
 }
 
 function mobileSummaryShow() {
-  document.getElementById('summary-card-container').classList.add('animationSummaryShine');
+  document.getElementById('summaryCardContainer').classList.add('animationSummaryShine');
 }
 
 let mobilWindow = window.matchMedia('(max-width:800px)');
@@ -105,9 +105,9 @@ function myFunc() {
   if (mobilWindow.matches) {
     mobileGreeting();
   } else {
-    document.getElementById('greeting-container').classList.remove('animationSummary');
-    document.getElementById('greeting-container').style.display = 'flex';
-    document.getElementById('summary-card-container').classList.remove('animationSummaryShine');
+    document.getElementById('greetingContainer').classList.remove('animationSummary');
+    document.getElementById('greetingContainer').style.display = 'flex';
+    document.getElementById('summaryCardContainer').classList.remove('animationSummaryShine');
   }
 }
 
