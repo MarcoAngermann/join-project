@@ -255,6 +255,7 @@ textarea {
   top: 46px;
   right: 0px;
   z-index: 5;
+  padding-inline-start: 0px;
 }
 
 input[type='checkbox'] {
@@ -276,6 +277,7 @@ input[type='checkbox'] {
   top: 47px;
   right: -2px;
   z-index: 5;
+  padding-inline-start: 0px;
 }
 
 .tasks li:hover {
