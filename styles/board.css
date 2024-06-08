@@ -282,6 +282,20 @@ progress[value]::-webkit-progress-value {
   font-size: 12px;
 }
 
+@keyframes move-left {
+  from {
+    margin-left: 120%;
+  }
+
+  to {
+    margin-left: 0%;
+  }
+}
+
+.move-left {
+  animation: move-left 1s ease-in-out;
+}
+
 @media (max-width: 1050px) {
   .board-container {
     margin-left: 50px;

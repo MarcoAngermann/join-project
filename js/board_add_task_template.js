@@ -1,17 +1,18 @@
 function renderBoardAddTaskHTML(boardStatus) {
   console.log(boardStatus);
   return /*html*/ `
-  <div class="add-task-main-container" onclick="dontClose()">
+  <div id="boardAddedToTask" class="board-added-to-task dnone">
+    <img src="../assets/icons/task_added_to_board_animation.svg" alt="">
+  </div>
+  <div id="addTaskMainContainer" class="add-task-main-container" onclick="dontClose()">
     <div class="task-top">
       <h1 class="headline-task">Add Task</h1>
-      <div>
         <img
         class="close-board"
         onclick="closeAddTaskBoard()"
         src="../assets/icons/close_icon.svg"
         alt="schließen"
         />
-      </div>
     </div>
   <form class="add-task-container" onsubmit="createNewTaskBoard('${boardStatus}',event); return false;">
     <div class="group-task1-input">
@@ -74,12 +75,12 @@ function renderBoardAddTaskHTML(boardStatus) {
         </div>
       </div>
       <span>Category<span class="required-color">*</span></span>
-      <div onclick="showCategories()" class="contactContainer">
+      <div onclick="showCategories()" class="contact-container">
         <span id="selectedCategory">Select task category</span >
         <img id="arrowDownCategory" src="../assets/icons/arrow_down_icon.svg" alt="">
         <img id="arrowUpCategory" src="../assets/icons/arrow_up_icon.svg" style="display: none;">
-      </div>
-      <ul id="boardTasks" class="tasks"></ul>      
+        <ul id="boardTasks" class="tasks"></ul> 
+      </div>      
       <span class="subtask-label">Subtask</span>
 
         <div class="subtask-container" id="subtaskContainer">
@@ -166,14 +167,14 @@ function renderGreyEmblem(remainingCount) {
 
 function renderEmblemUsers(contact) {
   return /*html*/ `
-      <div class="emblem" style="background-color: ${contact['color']}" id="${contact['userId']}">
-      ${contact['emblem']}
+      <div class="emblem" style="background-color: ${contact.color}" id="${contact.userId}">
+      ${contact.emblem}
     </div>  `;
 }
 
 function renderSubtaskHTML(i) {
   return /*html*/ `
-    <div class="subtaskList" id="mainSubtask-container${i}">
+    <div class="subtasklist" id="mainSubtask-container${i}">
             <input
               readonly
               type="text"

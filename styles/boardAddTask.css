@@ -11,6 +11,15 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+.board-added-to-task {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  left: 50%;
+  bottom: 50%;
+  z-index: 10;
+}
+
 .add-task-container {
   display: flex;
   flex-direction: row;
@@ -50,7 +59,6 @@
 .headline-task {
   font-size: 61px;
   font-weight: 700;
-  margin-right: 664px;
 }
 
 .seperator {
@@ -191,7 +199,9 @@ textarea {
 
 .users-emblem {
   display: inline-flex;
-  margin-left: 8px;
+  align-items: center;
+  padding-left: 16px;
+  height: 40px;
 }
 
 .emblem {
@@ -212,9 +222,9 @@ textarea {
   align-items: center;
   flex-direction: row;
   gap: 8px;
-  margin-bottom: 8px;
+  height: 40px;
+  padding: 0 10px;
   cursor: pointer;
-  margin-top: 8px;
 }
 
 .contactlist:hover {
@@ -237,6 +247,7 @@ textarea {
   padding: 12px 16px 12px 16px;
   cursor: pointer;
   z-index: 2;
+  position: relative;
 }
 
 .contact-container:hover {
@@ -255,6 +266,7 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .close-board {
@@ -276,8 +288,9 @@ textarea {
   width: 440px;
   overflow: auto;
   border-radius: 10px;
-  padding: 10px;
-  top: 857px;
+  top: 50px;
+  right: -2px;
+  padding-inline-start: 0px;
   z-index: 1;
 }
 
@@ -287,19 +300,20 @@ input[type='checkbox'] {
 }
 
 .contact-name {
-  width: 320px;
+  width: 80%;
 }
 
 .tasks {
   display: none;
   position: absolute;
   background-color: #ffffff;
-  width: 440px;
+  width: 441px;
   overflow: auto;
   border-radius: 10px;
-  padding: 10px;
-  top: 804px;
-  z-index: 6;
+  top: 47px;
+  right: -2px;
+  z-index: 5;
+  padding-inline-start: 0px;
 }
 
 .tasks li:hover {
@@ -468,11 +482,10 @@ input[type='checkbox'] {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 150px;
-  margin-left: 200px;
   background-color: #ffffff;
   border-radius: 10px;
   padding: 40px 60px 40px 60px;
+  z-index: 15;
 }
 
 .board-addtask-seperator {
@@ -484,25 +497,42 @@ input[type='checkbox'] {
   opacity: 1;
 }
 
+@keyframes move-left {
+  from {
+    margin-left: 120%;
+  }
+
+  to {
+    margin-left: 0%;
+  }
+}
+
+.move-left {
+  animation: move-left 1s ease-in-out;
+}
+
+@keyframes move-right {
+  from {
+    margin-left: 0%;
+  }
+
+  to {
+    margin-left: 120%;
+  }
+}
+
+.move-right {
+  animation: move-left 1s ease-in-out;
+}
+
 @media (max-width: 1425px) {
   .add-task-main-container {
-    margin-left: 230px;
-    margin-top: 150px;
     display: flex;
     align-items: center;
     padding: 40px 25px 40px 25px;
   }
   .headline-task {
     font-size: 56px;
-    margin-right: 610px;
-  }
-
-  .tasks {
-    top: 535px;
-  }
-
-  .users {
-    top: 586px;
   }
 }
 @media (max-width: 1270px) {
@@ -527,9 +557,6 @@ input[type='checkbox'] {
 
 @media (max-width: 1050px) {
   .add-task-main-container {
-    margin-left: 0px;
-    margin-top: 150px;
-    margin-bottom: 150px;
     display: flex;
     align-items: center;
     padding: 40px 25px 40px 25px;
@@ -538,9 +565,6 @@ input[type='checkbox'] {
 }
 
 @media (max-width: 960px) {
-  .headline-task {
-    margin-right: 165px;
-  }
   .main-container {
     margin-top: 100px;
     margin-left: 0px;
@@ -556,13 +580,7 @@ input[type='checkbox'] {
   .required-field-text {
     display: none;
   }
-  .tasks {
-    top: 785px;
-  }
 
-  .users {
-    top: 505px;
-  }
   .group-task1-input {
     gap: 10px;
   }
@@ -578,23 +596,17 @@ input[type='checkbox'] {
     overflow-y: scroll;
     height: 100vh;
   }
-
-  .task-top {
-    padding-top: 100px;
-  }
 }
 
 @media (max-width: 530px) {
   .headline-task {
     font-size: 32px;
-    margin-right: 0px;
   }
 }
 
 @media (max-width: 470px) {
   .headline-task {
     font-size: 48px;
-    margin-right: 80px;
   }
   .group-task1-input {
     width: 300px;
@@ -602,19 +614,10 @@ input[type='checkbox'] {
   .group-task2-input {
     width: 300px;
   }
-  .headline-task {
-    margin-right: 80px;
-  }
   .main-container {
     align-items: normal;
   }
-  .tasks {
-    top: 785px;
-  }
 
-  .users {
-    top: 505px;
-  }
   .group-task1-input input {
     width: 100%;
   }
@@ -637,11 +640,9 @@ input[type='checkbox'] {
     width: 100%;
   }
   .tasks {
-    top: 771px;
     width: 300px;
   }
   .users {
-    top: 348px;
     width: 300px;
   }
   .user-checkbox {
@@ -673,6 +674,5 @@ input[type='checkbox'] {
 @media (max-width: 400px) {
   .headline-task {
     font-size: 28px !important;
-    margin-right: 0px;
   }
 }

@@ -120,6 +120,7 @@ function mobileGreeting() {
   outWidth = window.innerWidth;
   if (outWidth <= 800) {
     mobileSummaryGreetting();
+    document.getElementById('greetingContainer').style.display = 'dnone';
     mobileSummaryShow();
   }
 }
