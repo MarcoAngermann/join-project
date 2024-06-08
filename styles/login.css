@@ -312,22 +312,16 @@ form label {
 }
 
 /* Login animation */
-:root {
-  --initial-translate-x: 240%;
-  --initial-translate-y: 140%;
-  --initial-scale: 2.5;
-}
 
 @keyframes moveLogo {
-
-  0%,  40% {
-    transform: translateX(var(--initial-translate-x)) translateY(var(--initial-translate-y));
-    scale: var(--initial-scale);
+  0% {
+    transform: translate(-50%, -50%);
+    height: 100px;
   }
-
-  60%, 100% {
-    scale: 1;
-    transform: translateX(0%) translateY(0%);
+  100% {
+    top: 80px;
+    left: 60px;
+    height: 100px;    
   }
 }
 
@@ -343,18 +337,19 @@ form label {
 }
 
 .imgLogoMove {
-  display: flex;
-  width: 100.03px;
-  height: 121.97px;
-  position: relative;
+  height: 100px;
+  display: flex;  
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 .animation1 {
-  animation: moveLogo 2s ease-in-out;
+  animation: moveLogo 2s ease-in;
 }
 
 .animation2 {
-  animation: opacity 1s ease-in-out;
+  animation: opacity 2s ease-in-out;
   display: none;
 }
 
@@ -396,36 +391,10 @@ form label {
 }
 
 /*Resposive Login*/
-@media(max-width:1200px) {
-  :root {
-    --initial-translate-x: 200%;
-    --initial-translate-y: 130%;
-  }
-}
 
-@media(max-width:1000px) {
-  :root {
-    --initial-translate-x: 200%;
-    --initial-translate-y: 175%;
-    --initial-scale: 2;
-  }
-}
-
-@media(max-width:800px) {
-  :root {
-    --initial-translate-x: 180%;
-    --initial-translate-y: 170%;
-    --initial-scale: 2;
-  }
-}
 
 @media(max-width:700px) {
-  :root {
-    --initial-translate-x: 150%;
-    --initial-translate-y: 165%;
-    --initial-scale: 2;
-  }
-
+ 
   .divSignUp {
     display: none;
   }
@@ -455,22 +424,10 @@ form label {
   }
 }
 
-@media(max-width:625px) {
-  :root {
-    --initial-translate-x: 130%;
-    --initial-translate-y: 150%;
-    --initial-scale: 2;
-  }
-}
+
 
 @media(max-width:550px) {
-  :root {
-    --initial-translate-x: 100%;
-    --initial-translate-y: 120%;
-    --initial-scale: 1.5;
-  }
-
-  .imgLogo {
+   .imgLogo {
     width: 50px;
     height: 70px;
     margin: 13px 0px 13px 57px;
@@ -511,20 +468,8 @@ form label {
   }
 }
 
-@media(max-width:510px) {
-  :root {
-    --initial-translate-x: 120%;
-    --initial-translate-y: 200%;
-    --initial-scale: 1.5;
-  }
-}
 
 @media(max-width:460px) {
-  :root {
-    --initial-translate-x: 110%;
-    --initial-translate-y: 220%;
-    --initial-scale: 1.5;
-  }
 
   .imgLogo {
     width: 40px;

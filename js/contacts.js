@@ -119,16 +119,15 @@ function renderContactinList(i) {
     <div><b>Email</b></div>
     <a id="email_contact">${contact['email']}</a>
     <div><b>Phone</b></div>
-    <div id="phone_contact">${contact['phone']}</div>
-  </div>
+    <div id="phone_contact">${contact['phone']}</div> 
   
-  <div class="mobileContact" onclick="openMobileDialog()"><img class="arrow" src="..//assets/icons/menu_ContactOptions.svg" />
-  <div class="amobile_nameContact" id="amobile_nameContact" style="display:none">
-  <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
-  <a onclick="deleteContact( ${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
-</div>
-  </div>
- `;
+    <div class="mobileContact" onclick="openMobileDialog()"><img class="arrow" src="..//assets/icons/menu_ContactOptions.svg" />
+      <div class="amobile_nameContact" id="amobile_nameContact" style="display:none">
+        <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
+        <a onclick="deleteContact( ${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
+      </div>
+    </div>
+  </div> `;
 }
 
 function openDialog(newContact, i) {
