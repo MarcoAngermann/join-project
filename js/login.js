@@ -164,32 +164,32 @@ function getGuestLogin(event) {
 
 function keyDown() {
   let image = document.getElementById('password');
-  image.style.backgroundImage = "url('../assets/icons/visibility.svg')";
+  image.style.backgroundImage = "url('./assets/icons/visibility.svg')";
 }
 
 function showPassword() {
   let image = document.getElementById('password');
   if (image.type == 'password') {
-    image.style.backgroundImage = "url('../assets/icons/visibility_off.svg')";
+    image.style.backgroundImage = "url('./assets/icons/visibility_off.svg')";
     image.type = 'text';
   } else {
-    image.style.backgroundImage = "url('../assets/icons/visibility.svg')";
+    image.style.backgroundImage = "url('./assets/icons/visibility.svg')";
     image.type = 'password';
   }
 }
 
 function keyDownConf() {
   let image = document.getElementById('passwordConfirm');
-  image.style.backgroundImage = "url('../assets/icons/visibility.svg')";
+  image.style.backgroundImage = "url('./assets/icons/visibility.svg')";
 }
 
 function showPasswordConf() {
   let image = document.getElementById('passwordConfirm');
   if (image.type == 'password') {
-    image.style.backgroundImage = "url('../assets/icons/visibility_off.svg')";
+    image.style.backgroundImage = "url('./assets/icons/visibility_off.svg')";
     image.type = 'text';
   } else {
-    image.style.backgroundImage = "url('../assets/icons/visibility.svg')";
+    image.style.backgroundImage = "url('./assets/icons/visibility.svg')";
     image.type = 'password';
   }
 }
