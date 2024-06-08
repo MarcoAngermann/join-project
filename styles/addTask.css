@@ -35,11 +35,10 @@
 }
 
 .headline-task {
-  display: flex;
+
   font-size: 61px;
   font-weight: 700;
-  margin-left: 130px;
-  align-self: flex-start !important;
+
 }
 
 .seperator {
@@ -442,22 +441,20 @@ input[type='checkbox'] {
 .main-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   height: 100vh;
-  margin-left: 230px;
+  margin-left: 300px;
 }
 
 @media (max-width: 1300px) {
   .main-container {
     align-items: flex-start;
-    margin-left: 230px;
+    margin-left: 260px;
     padding: 0px 25px 0px 25px;
   }
 
-  .headline-task {
-    margin-left: 10px;
-  }
+
 }
 
 @media (max-width: 1200px) {
@@ -564,15 +561,12 @@ input[type='checkbox'] {
 
 @media (max-width: 1050px) {
   .main-container {
-    align-items: center;
+    
     padding: 0px;
-    margin-left: 0px;
+    margin-left: 100px;
   }
 
-  .headline-task {
-    margin-left: 70px;
-    font-size: 55px;
-  }
+
   .tasks {
     top: 510px;
   }
@@ -580,7 +574,11 @@ input[type='checkbox'] {
     top: 563px;
   }
 }
-
+@media (max-width: 980px) {
+  .main-container {
+    margin-left: 80px;
+  }
+}
 
 @media (max-width: 900px) {
   .main-container {
@@ -588,10 +586,7 @@ input[type='checkbox'] {
     margin-left: 20px;
   }
 
-  .headline-task {
-    margin-left: 50px;
-    font-size: 50px;
-  }
+
 
   .groupTask1-input {
     width: 350px;
@@ -669,15 +664,12 @@ input[type='checkbox'] {
     display: none;
   }
 
-  .headline-task {
-    margin-top: 50px;
-    width: 89%;
-    font-size: 45px;
-  }
+
 
   .main-container {
     margin-top: 200px;
     margin-left: 0px;
+    align-items: center;
   }
 
   .required-field-text {
@@ -748,14 +740,14 @@ input[type='checkbox'] {
 
 @media (max-width: 470px) {
   .main-container {
-    margin-top: 130px;
+    margin-top: 250px;
   }
 
   .headline-task {
-    width: 80%;
-    padding-top: 150px;
-    margin-left: 10px;
+    font-size: 48px;
   }
+
+
 
   .groupTask1-input {
     width: 300px;
@@ -769,9 +761,7 @@ input[type='checkbox'] {
     width: 300px;
   }
 
-  .headline-task {
-    margin-right: 80px;
-  }
+
 
   .main-container {
     align-items: normal;
