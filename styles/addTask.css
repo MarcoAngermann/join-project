@@ -200,9 +200,15 @@ textarea {
   align-items: center;
   flex-direction: row;
   gap: 12px;
-  cursor: pointer;
   height: 40px;
-  padding: 10px 20px;
+  cursor: pointer;
+  padding: 0px 20px;
+}
+
+.categorylist {
+  display: flex;
+  align-items: center;
+  height: 40px;
 }
 
 .contactList:hover {

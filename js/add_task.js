@@ -110,7 +110,7 @@ function renderCategorysHTML(i) {
   return /*html*/ `
           <li class="contactList">
                 <span for="">
-                    <div tabindex="0" onclick="selectCategory(${i})">
+                    <div class="categorylist" tabindex="0" onclick="selectCategory(${i})">
                       ${categorys[i]}
                     </div>
                 </span>
@@ -227,7 +227,7 @@ function addSubtask() {
   // Überprüfe, ob bereits 5 Subtasks vorhanden sind
   if (subtaskList.length < 5) {
     document.getElementById('subtaskInput').placeholder = 'Add new Subtask';
-    let newTask={'subtaskText':input, 'checked': false};
+    let newTask = { subtaskText: input, checked: false };
     subtaskList.push(newTask);
     renderSubtask();
     document.getElementById('subtaskInput').value = '';

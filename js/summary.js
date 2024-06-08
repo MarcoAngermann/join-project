@@ -4,7 +4,7 @@ async function initSummary() {
   countsTaskStatus();
   displayGreeting();
   displayUser();
-  mobileGreeting()
+  mobileGreeting();
 }
 
 function getGreeting(isGuest) {
@@ -90,31 +90,36 @@ function convertDate(dateUrgent) {
 function mobileGreeting() {
   let summaryContainer = document.getElementById('summaryCardContainer');
   let greetingContainer = document.getElementById('greetingContainer');
+  let greetingTimeout;
+
   function showGreetingThenSummary() {
+    clearTimeout(greetingTimeout); // Löscht den vorherigen Timeout, falls vorhanden
     summaryContainer.style.display = 'none';
     greetingContainer.style.display = 'flex';
     greetingContainer.classList.remove('fadeOut');
     greetingContainer.classList.add('fadeIn');
-    setTimeout(function() {
+
+    greetingTimeout = setTimeout(function () {
       greetingContainer.classList.remove('fadeIn');
       summaryContainer.style.display = 'flex';
       greetingContainer.style.display = 'none';
-    }, 4000); 
+    }, 4000);
   }
 
   function adjustVisibility() {
     if (window.innerWidth < 800) {
       showGreetingThenSummary();
     } else {
-      greetingContainer.style.display = 'flex';
-      summaryContainer.style.display = 'flex';
+      clearTimeout(greetingTimeout); // Löscht den Timeout, um zu verhindern, dass der Greeting-Container verschwindet
+      greetingContainer.style.display = 'flex'; // Stellt sicher, dass der Greeting-Container angezeigt wird
+      summaryContainer.style.display = 'flex'; // Stellt sicher, dass der Summary-Container angezeigt wird
       greetingContainer.classList.remove('fadeOut', 'fadeIn');
       summaryContainer.classList.remove('fadeOut', 'fadeIn');
     }
   }
+
   adjustVisibility();
   window.addEventListener('resize', adjustVisibility);
 }
+
 window.addEventListener('load', initSummary);
-
-

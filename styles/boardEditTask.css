@@ -403,17 +403,7 @@ input[type='checkbox'] {
   margin-left: -8px;
 }
 
-@media (max-width: 1425px) {
-  .headline-task {
-    margin-right: 610px;
-  }
-}
-
 @media (max-width: 960px) {
-  .headline-task {
-    margin-right: 165px;
-  }
-
   .edit-add-task-container {
     display: flex;
     flex-direction: column;
@@ -496,27 +486,6 @@ input[type='checkbox'] {
 @media (max-width: 470px) {
   .headline-task {
     font-size: 48px;
-    margin-right: 80px;
-  }
-
-  .headline-task {
-    margin-right: 80px;
-  }
-
-  .edit-contact-container {
-    width: 100%;
-  }
-
-  .edit-add-task-container {
-    width: 100%;
-  }
-
-  #date {
-    width: 100%;
-  }
-
-  .edit-subtask-container {
-    width: 100%;
   }
 
   .edit-user-checkbox {

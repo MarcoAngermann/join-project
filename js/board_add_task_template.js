@@ -150,9 +150,9 @@ function renderCategorysHTML(i) {
   return /*html*/ `
           <li class="contactlist">
               <span for="">
-                <div tabindex="0" onclick="selectCategory(${i})">
+                <div class="categorylist" tabindex="0" onclick="selectCategory(${i})">
                   ${categorys[i]}
-                 </div>
+                </div>
               </span>
           </li>`;
 }
