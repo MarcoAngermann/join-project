@@ -184,10 +184,8 @@
 
 .amobile_nameContact {
     display: none;
-    flex-direction: column;
-    position: fixed;
+    flex-direction: column;    
     right: 20px;
-    bottom: 170px;
     gap: 15px;
     border: 1px solid #F6F7F8;
     border-radius: 10px;
@@ -658,7 +656,7 @@
     }
 
     .amobile_nameContact {
-        bottom: 190px;
+        bottom: -85px;
     }
 }
 
@@ -666,10 +664,6 @@
 
     .divList {
         width: 100%;
-    }
-
-    .amobile_nameContact {
-        bottom: 10px;
     }
 
     .btnMobileClose {
@@ -729,12 +723,7 @@
         height: 60px;
         width: auto;
     }
-
     .nameContact {
         font-size: 30px;
-    }
-
-    .amobile_nameContact {
-        bottom: 200px;
     }
 }

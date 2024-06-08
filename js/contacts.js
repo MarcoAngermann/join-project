@@ -72,7 +72,7 @@ function myFunc() {
   } else {
     document.getElementById("divContactDetails").style.display = "flex";
     document.getElementById("divContactList").style.display = "flex";
-    document.getElementById("amobile_nameContact").style.display="none";
+    document.getElementById("amobile_nameContact").style.display = "none";
   }
 }
 
@@ -81,6 +81,7 @@ function mobileDetails() {
   if (outWidth <= 710) {
     document.getElementById("divContactDetails").style.display = "flex";
     document.getElementById("divContactList").style.display = "none";
+    document.getElementById("divDetails").classList.remove('move-left');
   };
 }
 
@@ -121,11 +122,13 @@ function renderContactinList(i) {
     <div id="phone_contact">${contact['phone']}</div>
   </div>
   
-  <div class="mobileContact" onclick="openMobileDialog()"><img class="arrow" src="..//assets/icons/menu_ContactOptions.svg" /></div>
+  <div class="mobileContact" onclick="openMobileDialog()"><img class="arrow" src="..//assets/icons/menu_ContactOptions.svg" />
   <div class="amobile_nameContact" id="amobile_nameContact" style="display:none">
-    <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
-    <a onclick="deleteContact( ${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
-  </div>`;
+  <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
+  <a onclick="deleteContact( ${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
+</div>
+  </div>
+ `;
 }
 
 function openDialog(newContact, i) {
@@ -189,7 +192,7 @@ function closeDialog() {
   let dialog = document.getElementById('dialog');
   dialog.classList.add('d-none');
   let mobileMode = document.getElementById("amobile_nameContact");
-  mobileMode.style.display='none';
+  mobileMode.style.display = 'none';
 }
 
 function renderEmblem(name) {
