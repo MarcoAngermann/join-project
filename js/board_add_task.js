@@ -13,10 +13,6 @@ function showBoardAddTask(boardStatus) {
   restrictPastDate();
 }
 
-function closeAddTask() {
-  document.getElementById('showBoardAddTask').classList.add('dnone');
-}
-
 function resetElements(elements) {
   for (let i = 0; i < elements.length; i++) {
     elements[i].classList.remove('selected');
@@ -124,7 +120,7 @@ function showCategories() {
 function selectCategory(index) {
   let selectedCategory = categorys[index];
   document.getElementById('selectedCategory').innerHTML = selectedCategory;
-  showCategories(); // Hide the category list after selection
+  showCategories();
 }
 
 function restrictPastDate() {
@@ -203,8 +199,8 @@ function addSubtask() {
   }
   // Überprüfe, ob bereits 5 Subtasks vorhanden sind
   if (subtaskList.length < 5) {
-    document.getElementById('subtaskInput').placeholder = 'Add new Subtask';  
-    let newTask={'subtaskText':input, 'checked': false};
+    document.getElementById('subtaskInput').placeholder = 'Add new Subtask';
+    let newTask = { subtaskText: input, checked: false };
     subtaskList.push(newTask);
     renderSubtask();
     document.getElementById('subtaskInput').value = '';
@@ -299,11 +295,14 @@ async function createNewTaskBoard(boardStatus, event) {
     status: boardStatus,
     cardId: lastCardId + 1,
   };
-  resetUserDisplay();
-  await postData('tasks', task);
-  clearAllTasks(event);
-  closeAddTaskBoard();
-  updateHTML();
+  taskAddedToBoard();
+  setTimeout(async function () {
+    resetUserDisplay();
+    await postData('tasks', task);
+    clearAllTasks(event);
+    closeAddTaskBoard();
+    updateHTML();
+  }, 3000);
 }
 
 function clearAllTasks(event) {
@@ -321,6 +320,7 @@ function clearAllTasks(event) {
 }
 
 function closeAddTaskBoard() {
+  closeBoardAddTaskAnimation();
   document.getElementById('boardAddTask').classList.add('dnone');
 }
 
@@ -335,7 +335,8 @@ function clearDateAndPriority() {
 }
 
 function clearSelectedCategory() {
-  document.getElementById('selectedCategory').innerHTML = 'Select task category';
+  document.getElementById('selectedCategory').innerHTML =
+    'Select task category';
 }
 
 function clearSubtasks() {
@@ -350,7 +351,8 @@ function clearSubtaskInput() {
   subtaskInput.placeholder = 'Add new Subtask';
   subtaskInput.readOnly = false;
   subtaskInput.style.color = 'black';
-  document.getElementById('subtaskContainer').style.border = '1px solid #d1d1d1';
+  document.getElementById('subtaskContainer').style.border =
+    '1px solid #d1d1d1';
 }
 
 function resetUserDisplay() {
@@ -367,5 +369,21 @@ function clearAllCheckbox() {
   }
 }
 
-// progressbar erstellen anhand der subtasks die ich in
-//der bigCard mit den checkboxen anwähle
+function taskAddedToBoard() {
+  document.getElementById('boardAddedToTask').classList.remove('dnone');
+  setTimeout(function () {
+    document.getElementById('boardAddedToTask').classList.add('dnone');
+  }, 3000);
+}
+
+function boardAddTaskAnimation() {
+  let addTaskContainer = document.getElementById('addTaskMainContainer');
+  addTaskContainer.classList.remove('move-right');
+  addTaskContainer.classList.add('move-left');
+}
+
+function closeBoardAddTaskAnimation() {
+  let addTaskContainer = document.getElementById('addTaskMainContainer');
+  addTaskContainer.classList.add('move-right');
+  addTaskContainer.classList.remove('move-left');
+}

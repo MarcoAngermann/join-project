@@ -53,7 +53,7 @@
             </div>
           </div>
 
-          <button onclick="showBoardAddTask('toDo')">
+          <button onclick="showBoardAddTask('toDo'); boardAddTaskAnimation()">
             Add task
             <img src="..//assets/icons/add_icon_white.svg" />
           </button>
@@ -65,7 +65,7 @@
           <div class="todo-head">
             <h3>To Do</h3>
             <img
-              onclick="showBoardAddTask('toDo')"
+              onclick="showBoardAddTask('toDo'); boardAddTaskAnimation()"
               class="plusBtn-svg"
               src="..//assets/icons/plusbuttonBoard.svg"
             />
@@ -82,7 +82,7 @@
           <div class="inProgress-head">
             <h3>In Progress</h3>
             <img
-              onclick="showBoardAddTask('inProgress')"
+              onclick="showBoardAddTask('inProgress'); boardAddTaskAnimation()"
               class="plusBtn-svg"
               src="..//assets/icons/plusbuttonBoard.svg"
             />
@@ -100,7 +100,7 @@
           <div class="awaitFeedback-head">
             <h3>Await Feedback</h3>
             <img
-              onclick="showBoardAddTask('awaitFeedback')"
+              onclick="showBoardAddTask('awaitFeedback'); boardAddTaskAnimation()"
               class="plusBtn-svg"
               src="..//assets/icons/plusbuttonBoard.svg"
             />

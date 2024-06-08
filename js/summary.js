@@ -88,6 +88,7 @@ function convertDate(dateUrgent) {
 }
 
 function mobileGreeting() {
+<<<<<<< HEAD
   let summaryContainer = document.getElementById('summaryCardContainer');
   let greetingContainer = document.getElementById('greetingContainer');
   function showGreetingThenSummary() {
@@ -100,6 +101,13 @@ function mobileGreeting() {
       summaryContainer.style.display = 'flex';
       greetingContainer.style.display = 'none';
     }, 4000); 
+=======
+  outWidth = window.innerWidth;
+  if (outWidth <= 800) {
+    mobileSummaryGreetting();
+    document.getElementById('greetingContainer').style.display = 'dnone';
+    mobileSummaryShow();
+>>>>>>> 4911a18dc02947b7fc1fb967c164ba5100c5eb31
   }
 
   function adjustVisibility() {

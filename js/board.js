@@ -42,7 +42,7 @@ function renderEmptyBoard(status) {
 
 function renderSmallCardHTML(task) {
   return /*html*/ `
-    <div draggable="true" ondragstart="startDragging(${task.cardId})" id="${task.cardId}" class="smallcard" onclick="showBigCard(${task.cardId})">
+    <div draggable="true" ondragstart="startDragging(${task.cardId})" id="${task.cardId}" class="smallcard" onclick="showBigCard(${task.cardId}); openBigCardAnimation()">
       <div class="category">
         <h3>${task.category}</h3>
         <div class="mobileBoard" id="mobileBoard" onclick="openMobileOptions(${task.cardId},event)"><img class="imgMobile" src="../assets/icons/more_vert_icon.svg"/></div>
@@ -126,8 +126,8 @@ function renderSmallSubtasks(task) {
   }
 }
 
-function startDragging(id) {
-  currentDraggedElement = id;
+function startDragging(cardId) {
+  currentDraggedElement = cardId;
 }
 
 function allowDrop(event) {
@@ -163,6 +163,7 @@ function removeHighlight(id) {
 }
 //Dialog BigCard
 function closeBigCard() {
+  closeBigCardAnimation(`bigCard`);
   document.getElementById('showBigCard').classList.add('dnone');
 }
 
@@ -173,6 +174,7 @@ async function showBigCard(cardId) {
   content.innerHTML = renderBigCardHTML(cardId);
   showBigUsersEmblem(cardId);
   renderBigSubtasks(cardId);
+  openBigCardAnimation(`bigCard${cardId}`);
 }
 
 function renderBigCardHTML(cardId) {
@@ -181,7 +183,7 @@ function renderBigCardHTML(cardId) {
     <div id="bigCard${task.cardId}" class="bigCard"  onclick="dontClose()">
       <div class="big-header">
         <div><span>${task.category}</span></div>
-        <div><img class="close" onclick="closeBigCard()" src="../assets/icons/close_icon.svg" alt="schließen"/></div>
+        <div><img class="close" onclick="closeBigCard();" src="../assets/icons/close_icon.svg" alt="schließen"/></div>
       </div>
       <div class="big-title">
         <h1>${task.title}</h1>
@@ -437,7 +439,7 @@ mobilWindow.addEventListener('change', myFunc);
 // Funktion zur Überprüfung und Anpassung des Display-Styles
 function myFunc() {
   const elements = document.querySelectorAll('.mobileBoard');
-  elements.forEach(element => {
+  elements.forEach((element) => {
     if (mobilWindow.matches) {
       element.style.display = 'flex';
     } else {
@@ -450,11 +452,25 @@ function myFunc() {
 function mobileDetails() {
   const elements = document.querySelectorAll('.mobileBoard');
   outWidth = window.innerWidth;
-  elements.forEach(element => {
+  elements.forEach((element) => {
     if (outWidth <= 770) {
       element.style.display = 'flex';
     } else {
       element.style.display = 'none';
     }
   });
+}
+
+function openBigCardAnimation(cardId) {
+  let bigCard = document.getElementById(cardId);
+  if (bigCard) {
+    bigCard.classList.add('move-left');
+  }
+}
+
+function closeBigCardAnimation(cardId) {
+  let bigCard = document.getElementById(cardId);
+  if (bigCard) {
+    bigCard.classList.remove('move-left');
+  }
 }
