@@ -35,10 +35,8 @@
 }
 
 .headline-task {
-
   font-size: 61px;
   font-weight: 700;
-
 }
 
 .seperator {
@@ -140,7 +138,8 @@ textarea {
 }
 
 .btnClear:hover .iconCancelSvg {
-  filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg) brightness(91%) contrast(106%);
+  filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg)
+    brightness(91%) contrast(106%);
 }
 
 .midBtn-Color {
@@ -159,7 +158,7 @@ textarea {
 
 .required-field-text {
   z-index: 1;
-  margin-top: 170px;
+  margin-top: 110px;
   align-items: center;
   justify-content: center;
 }
@@ -178,15 +177,17 @@ textarea {
 
 .usersEmblem {
   display: inline-flex;
+  align-items: center;
   margin-left: 8px;
+  height: 40px;
 }
 
 .emblem {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 33px;
+  height: 33px;
   border-radius: 50%;
   background-color: #29abe2;
   color: white;
@@ -199,10 +200,9 @@ textarea {
   align-items: center;
   flex-direction: row;
   gap: 12px;
-  margin-bottom: 8px;
   cursor: pointer;
-  margin-top: 8px;
-  margin-left: 10px;
+  height: 40px;
+  padding: 10px;
 }
 
 .contactList:hover {
@@ -225,6 +225,7 @@ textarea {
   padding: 12px 16px 12px 16px;
   cursor: pointer;
   z-index: 2;
+  position: relative;
 }
 
 .contactContainer:hover {
@@ -251,9 +252,9 @@ textarea {
   width: 440px;
   overflow: auto;
   border-radius: 10px;
-  padding: 10px;
-  top: 570px;
-  z-index: 1;
+  top: 46px;
+  right: 0px;
+  z-index: 5;
 }
 
 input[type='checkbox'] {
@@ -262,19 +263,19 @@ input[type='checkbox'] {
 }
 
 .contactName {
-  width: 320px;
+  width: 80%;
 }
 
 .tasks {
   display: none;
   position: absolute;
   background-color: #ffffff;
-  width: 440px;
+  width: 441px;
   overflow: auto;
   border-radius: 10px;
-  padding: 10px;
-  top: 520px;
-  z-index: 1;
+  top: 47px;
+  right: -2px;
+  z-index: 5;
 }
 
 .tasks li:hover {
@@ -292,6 +293,7 @@ input[type='checkbox'] {
   border: 1px solid #d1d1d1;
   padding: 12px 16px 12px 16px;
   background-color: #ffffff;
+  position: relative;
 }
 
 .subtask-container input {
@@ -453,8 +455,6 @@ input[type='checkbox'] {
     margin-left: 260px;
     padding: 0px 25px 0px 25px;
   }
-
-
 }
 
 @media (max-width: 1200px) {
@@ -561,17 +561,8 @@ input[type='checkbox'] {
 
 @media (max-width: 1050px) {
   .main-container {
-    
     padding: 0px;
     margin-left: 100px;
-  }
-
-
-  .tasks {
-    top: 510px;
-  }
-  .users {
-    top: 563px;
   }
 }
 @media (max-width: 980px) {
@@ -585,8 +576,6 @@ input[type='checkbox'] {
     padding: 0px;
     margin-left: 20px;
   }
-
-
 
   .groupTask1-input {
     width: 350px;
@@ -611,7 +600,7 @@ input[type='checkbox'] {
   }
 
   .prio-container {
-    gap: 12px
+    gap: 12px;
   }
 
   .prioBtn {
@@ -664,10 +653,7 @@ input[type='checkbox'] {
     display: none;
   }
 
-
-
   .main-container {
-    margin-top: 200px;
     margin-left: 0px;
     align-items: center;
   }
@@ -709,7 +695,6 @@ input[type='checkbox'] {
 
   .users {
     width: 440px;
-    top: 585px;
   }
 
   .prio-container {
@@ -720,7 +705,6 @@ input[type='checkbox'] {
   .tasks {
     width: 440px;
     padding-top: 10px;
-    top: 890px;
   }
 
   .addTaskBtn-Container {
@@ -739,15 +723,10 @@ input[type='checkbox'] {
 }
 
 @media (max-width: 470px) {
-  .main-container {
-    margin-top: 250px;
-  }
-
   .headline-task {
     font-size: 48px;
+    margin-top: 120px;
   }
-
-
 
   .groupTask1-input {
     width: 300px;
@@ -760,8 +739,6 @@ input[type='checkbox'] {
   .groupTask2-input {
     width: 300px;
   }
-
-
 
   .main-container {
     align-items: normal;
@@ -780,7 +757,6 @@ input[type='checkbox'] {
   }
 
   .users {
-    top: 510px;
     width: 300px;
   }
 
@@ -808,10 +784,8 @@ input[type='checkbox'] {
   }
 
   .tasks {
-    top: 940px;
     width: 300px;
   }
-
 
   .user-checkbox {
     width: 20px !important;
@@ -824,7 +798,6 @@ input[type='checkbox'] {
   }
 
   .contactName {
-    width: 270px;
     font-size: 14px;
   }
 

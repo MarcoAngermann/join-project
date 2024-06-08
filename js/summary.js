@@ -91,9 +91,7 @@ function mobileSummaryGreetting() {
   document
     .getElementById('greetingContainer')
     .classList.add('animationSummary');
-  setTimeout(() => {
-    document.getElementById('summaryCardContainer').style.display = 'flex';
-  }, 1000);
+  document.getElementById('summaryCardContainer').style.display = 'flex';
 }
 
 function mobileSummaryShow() {
@@ -121,7 +119,7 @@ function myFunc() {
 function mobileGreeting() {
   outWidth = window.innerWidth;
   if (outWidth <= 800) {
-    mobileSummaryGreetting(setTimeout, 3000);
+    mobileSummaryGreetting();
     mobileSummaryShow();
   }
 }

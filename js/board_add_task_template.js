@@ -24,9 +24,9 @@ function renderBoardAddTaskHTML(boardStatus) {
         <span>Select user to assign</span>
         <img id="arrowDownUser" src="../assets/icons/arrow_down_icon.svg" alt="">
         <img id="arrowUpUser" src="../assets/icons/arrow_up_icon.svg" style="display: none;">
+        <ul id="users" class="users"></ul>
       </div>
       <div id="usersEmblem" class="users-emblem"></div>
-      <ul id="users" class="users"></ul>
       <div>
         <p class="required-field-text">
           <span class="required-color">*</span>This field is required
