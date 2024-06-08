@@ -37,6 +37,7 @@
 .headline-task {
   font-size: 61px;
   font-weight: 700;
+  width: 100%;
 }
 
 .seperator {
@@ -655,6 +656,10 @@ input[type='checkbox'] {
   .add-task-container {
     display: flex;
     flex-direction: column;
+  }
+
+  .headline-task {
+    padding-left: 10%;
   }
 
   .seperator {
