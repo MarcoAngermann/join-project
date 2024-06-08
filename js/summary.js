@@ -4,7 +4,7 @@ async function initSummary() {
   countsTaskStatus();
   displayGreeting();
   displayUser();
-  mobileGreeting();
+  mobileGreeting()
 }
 
 function getGreeting(isGuest) {
@@ -87,39 +87,34 @@ function convertDate(dateUrgent) {
   return date.toLocaleDateString('en-US', options);
 }
 
-function mobileSummaryGreetting() {
-  document
-    .getElementById('greetingContainer')
-    .classList.add('animationSummary');
-  document.getElementById('summaryCardContainer').style.display = 'flex';
-}
-
-function mobileSummaryShow() {
-  document
-    .getElementById('summaryCardContainer')
-    .classList.add('animationSummaryShine');
-}
-
-let mobilWindow = window.matchMedia('(max-width:800px)');
-mobilWindow.addEventListener('change', () => myFunc());
-function myFunc() {
-  if (mobilWindow.matches) {
-    mobileGreeting();
-  } else {
-    document
-      .getElementById('greetingContainer')
-      .classList.remove('animationSummary');
-    document.getElementById('greetingContainer').style.display = 'flex';
-    document
-      .getElementById('summaryCardContainer')
-      .classList.remove('animationSummaryShine');
-  }
-}
-
 function mobileGreeting() {
-  outWidth = window.innerWidth;
-  if (outWidth <= 800) {
-    mobileSummaryGreetting();
-    mobileSummaryShow();
+  let summaryContainer = document.getElementById('summaryCardContainer');
+  let greetingContainer = document.getElementById('greetingContainer');
+  function showGreetingThenSummary() {
+    summaryContainer.style.display = 'none';
+    greetingContainer.style.display = 'flex';
+    greetingContainer.classList.remove('fadeOut');
+    greetingContainer.classList.add('fadeIn');
+    setTimeout(function() {
+      greetingContainer.classList.remove('fadeIn');
+      summaryContainer.style.display = 'flex';
+      greetingContainer.style.display = 'none';
+    }, 4000); 
   }
+
+  function adjustVisibility() {
+    if (window.innerWidth < 800) {
+      showGreetingThenSummary();
+    } else {
+      greetingContainer.style.display = 'flex';
+      summaryContainer.style.display = 'flex';
+      greetingContainer.classList.remove('fadeOut', 'fadeIn');
+      summaryContainer.classList.remove('fadeOut', 'fadeIn');
+    }
+  }
+  adjustVisibility();
+  window.addEventListener('resize', adjustVisibility);
 }
+window.addEventListener('load', initSummary);
+
+

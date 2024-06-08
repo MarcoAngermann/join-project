@@ -557,3 +557,49 @@
     width: 25px;
   }
 }
+
+
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5; /* Halbtransparent bei 50% des Animationsverlaufs */
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5; /* Halbtransparent bei 50% des Animationsverlaufs */
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.summary-main-container .summary-card-container,
+.summary-main-container .greeting-container {
+  transition: opacity 1.5s ease-in-out; 
+}
+
+.hidden {
+  display: none;
+}
+
+.fadeOut {
+  animation: fadeOut 2s forwards; 
+}
+
+.fadeIn {
+  animation: fadeIn 2s forwards; 
+}
+
+
+
