@@ -151,7 +151,7 @@ function showUsersEmblem() {
     let contact = users[i];
     let contactListChecked = document.getElementById('contactList' + i);
     let checkedContact = document.getElementById(`checkbox${i}`);
-    if (checkedContact.checked == true) {      
+    if (checkedContact.checked == true) {
       contactListChecked.classList.add('contactListSelected');
       if (renderedCount < 5) {
         usersEmblem.innerHTML += renderEmblemUsers(contact);
@@ -159,8 +159,7 @@ function showUsersEmblem() {
       } else {
         extraCount++;
       }
-    }
-    else{
+    } else {
       contactListChecked.classList.remove('contactListSelected');
     }
   }
@@ -346,14 +345,19 @@ function createCardId(tasks) {
 async function createNewTask(event) {
   event.preventDefault();
   let selectedCategory = document.getElementById('selectedCategory').innerHTML;
-  let spanContactContainer = document.getElementById('selectedCategoryContainer');
+  let spanContactContainer = document.getElementById(
+    'selectedCategoryContainer'
+  );
   let categoryErrorMessage = document.getElementById('categoryErrorMessage');
-  if (selectedCategory === 'Select task category' || selectedCategory.trim() === '') {
+  if (
+    selectedCategory === 'Select task category' ||
+    selectedCategory.trim() === ''
+  ) {
     spanContactContainer.style.border = '1px solid red';
     categoryErrorMessage.style.color = 'red';
     categoryErrorMessage.style.display = 'flex';
     categoryErrorMessage.innerHTML = 'Please select a category';
-    return; 
+    return;
   }
   let lastCardId = createCardId(tasks);
   let selectedUserIds = getSelectedUserIds();

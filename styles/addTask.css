@@ -273,6 +273,7 @@ textarea {
   border-radius: 10px;
   top: 46px;
   right: 0px;
+  gap: 4px;
   z-index: 5;
   padding-inline-start: 0px;
 }
