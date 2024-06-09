@@ -467,8 +467,22 @@ input[type='checkbox'] {
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  height: 100vh;
+  margin-top: 150px;
   margin-left: 300px;
+}
+
+.categoryErrorMessage {
+  display: none;
+  align-items: center;
+  justify-content: start;
+  z-index: 99;
+  left: 16px;
+  top: 4px;
+  right: 0px;
+  position: absolute;
+  width: 300px;
+  height: 40px;
+  background-color: white;
 }
 
 @media (max-width: 1300px) {
@@ -751,7 +765,6 @@ input[type='checkbox'] {
 @media (max-width: 470px) {
   .headline-task {
     font-size: 48px;
-    margin-top: 120px;
   }
 
   .groupTask1-input {
@@ -835,5 +848,9 @@ input[type='checkbox'] {
 
   .spanContactContainer {
     font-size: 14px;
+  }
+
+  .categoryErrorMessage {
+    width: 200px;
   }
 }

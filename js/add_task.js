@@ -342,36 +342,16 @@ function createCardId(tasks) {
   return lastCardId; //
 }
 
-// async function createNewTask(event) {
-//   event.preventDefault();
-//   let lastCardId = createCardId(tasks);
-//   let selectedUserIds = getSelectedUserIds();
-//   task = {
-//     title: document.getElementById('title').value,
-//     description: document.getElementById('description').value,
-//     userId: selectedUserIds,
-//     date: document.getElementById('date').value,
-//     priority: getSelectedPrio(),
-//     category: document.getElementById('selectedCategory').innerHTML,
-//     subtask: subtaskList,
-//     status: 'toDo',
-//     cardId: lastCardId + 1,
-//   };
-//   resetUserDisplay();
-//   await postData('tasks', task);
-//   location.href = 'board.html';
-//   clearAllTasks(event);
-// }
-
 async function createNewTask(event) {
   event.preventDefault();
   let selectedCategory = document.getElementById('selectedCategory').innerHTML;
   let spanContactContainer = document.getElementById('selectedCategoryContainer');
-  let textChange = document.getElementById('selectedCategory');
+  let categoryErrorMessage = document.getElementById('categoryErrorMessage');
   if (selectedCategory === 'Select task category' || selectedCategory.trim() === '') {
     spanContactContainer.style.border = '1px solid red';
-    textChange.style.color = 'red';
-    textChange.innerHTML = 'Please select a task category';
+    categoryErrorMessage.style.color = 'red';
+    categoryErrorMessage.style.display = 'flex';
+    categoryErrorMessage.innerHTML = 'Please select a category';
     return; 
   }
   let lastCardId = createCardId(tasks);
@@ -392,6 +372,18 @@ async function createNewTask(event) {
   location.href = 'board.html';
   clearAllTasks(event);
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('arrowDownCategory').addEventListener('click', function() {
+    let spanContactContainer = document.getElementById('selectedCategoryContainer');
+    let categoryErrorMessage = document.getElementById('categoryErrorMessage');
+    spanContactContainer.style.border = ''; // Setzen Sie dies auf Ihren Standardborder-Stil
+    categoryErrorMessage.style.display = 'none'; // Setzen Sie diese Zeile auf 'flex'
+    categoryErrorMessage.style.color = ''; // Setzen Sie dies auf Ihre Standardtextfarbe
+    categoryErrorMessage.innerHTML = ''; // Entfernen Sie die Fehlermeldung
+  });
+
+});
 
 function clearAllTasks(event) {
   // Verhindert das Standardverhalten des Buttons (das Absenden des Formulars)
