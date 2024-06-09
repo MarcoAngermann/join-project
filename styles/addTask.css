@@ -222,11 +222,15 @@ textarea {
 }
 
 .contactListSelected{
-  background-color: rgb(9, 25, 49);
+  background-color: #2A3647;
   border: none;
-  outline: rgb(9, 25, 49);
+  outline: #2A3647;
   color: white;
   border-radius: 10px;
+}
+
+.contactListSelected:hover{
+  background-color: #2A3647;
 }
 
 .contactContainer {

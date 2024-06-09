@@ -194,6 +194,7 @@ function showPasswordConf() {
   }
 }
 
+
 function moveIcon() {
   document.getElementById('containerLog').style.display = 'none';
   document.getElementById('imgLogoID').classList.add('animation1');

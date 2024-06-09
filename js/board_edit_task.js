@@ -254,6 +254,7 @@ function showPickedUsersEmblems(cardId) {
     }
   }
   checkUserCheckboxesBasedOnEmblems();
+  showEditUsersEmblem();
 }
 
 function showEditUsersEmblem() {
@@ -264,14 +265,19 @@ function showEditUsersEmblem() {
   for (let i = 0; i < users.length; i++) {
     if (users[i].userId == 0) continue;
     let user = users[i];
+    let contactListChecked = document.getElementById('edit-contactlist' + i);
     let checkedContact = document.getElementById(`editCheckbox${i}`);
     if (checkedContact.checked == true) {
+      contactListChecked.classList.add('edit-contactListSelected');
       if (renderedCount < 5) {
         usersEmblem.innerHTML += renderEditEmblemUsers(user);
         renderedCount++;
       } else {
         extraCount++;
       }
+    }
+    else{
+      contactListChecked.classList.remove('edit-contactListSelected');
     }
   }
   if (extraCount > 0) {
