@@ -339,17 +339,47 @@ function createCardId(tasks) {
   return lastCardId; //
 }
 
+// async function createNewTask(event) {
+//   event.preventDefault();
+//   let lastCardId = createCardId(tasks);
+//   let selectedUserIds = getSelectedUserIds();
+//   task = {
+//     title: document.getElementById('title').value,
+//     description: document.getElementById('description').value,
+//     userId: selectedUserIds,
+//     date: document.getElementById('date').value,
+//     priority: getSelectedPrio(),
+//     category: document.getElementById('selectedCategory').innerHTML,
+//     subtask: subtaskList,
+//     status: 'toDo',
+//     cardId: lastCardId + 1,
+//   };
+//   resetUserDisplay();
+//   await postData('tasks', task);
+//   location.href = 'board.html';
+//   clearAllTasks(event);
+// }
+
 async function createNewTask(event) {
   event.preventDefault();
+  let selectedCategory = document.getElementById('selectedCategory').innerHTML;
+  let spanContactContainer = document.getElementById('selectedCategoryContainer');
+  let textChange = document.getElementById('selectedCategory');
+  if (selectedCategory === 'Select task category' || selectedCategory.trim() === '') {
+    spanContactContainer.style.border = '1px solid red';
+    textChange.style.color = 'red';
+    textChange.innerHTML = 'Please select a task category';
+    return; 
+  }
   let lastCardId = createCardId(tasks);
   let selectedUserIds = getSelectedUserIds();
-  task = {
+  let task = {
     title: document.getElementById('title').value,
     description: document.getElementById('description').value,
     userId: selectedUserIds,
     date: document.getElementById('date').value,
     priority: getSelectedPrio(),
-    category: document.getElementById('selectedCategory').innerHTML,
+    category: selectedCategory,
     subtask: subtaskList,
     status: 'toDo',
     cardId: lastCardId + 1,
