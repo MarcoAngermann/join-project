@@ -1,756 +1,749 @@
 .contactContainer {
-    display: flex;
-    flex-direction: row;
-    margin-left: 232px;
-    background-color: #F6F7F8;
-   height: 100vh;
+  display: flex;
+  flex-direction: row;
+  margin-left: 232px;
+  background-color: #f6f7f8;
+  height: 100vh;
 }
 
 .divContactList {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    width: 30%;
-    height: 100%;
-    box-shadow: 4px 0px 6px 0px #00000014;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 30%;
+  height: 100%;
+  box-shadow: 4px 0px 6px 0px #00000014;
 }
 
 .btnJoin {
-    position: sticky;
-    background-color: #2A3647;
-    color: #FFFFFF;
-    border-radius: 8px;
-    min-width: 90px;
-    max-width: max-content;
-    height: 49px;
-    border: 0.5px solid #2A3647;
-    padding: 0px 15px 0px 15px;
+  position: sticky;
+  background-color: #2a3647;
+  color: #ffffff;
+  border-radius: 8px;
+  min-width: 90px;
+  max-width: max-content;
+  height: 49px;
+  border: 0.5px solid #2a3647;
+  padding: 0px 15px 0px 15px;
 }
 
 .marginbtnJoin {
-    margin-top: 120px;
-    margin-bottom: 16px;
+  margin-top: 120px;
+  margin-bottom: 16px;
 }
 
-
 .btnJoin:hover {
-    cursor: pointer;
-    background-color: #29ABE2;
-    border: 0.5px solid #29ABE2;
-    text-decoration: none;
+  cursor: pointer;
+  background-color: #29abe2;
+  border: 0.5px solid #29abe2;
+  text-decoration: none;
 }
 
 .style_BtnTypography1 {
-    font-weight: 700;
-    font-size: 21px;
-    line-height: 24px;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 24px;
 }
 
 .style_InputTypography1 {
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
 }
 
-
 .btnGuest {
-    background-color: white;
-    color: #2A3647;
-    border-radius: 8px;
-    min-width: 90px;
-    height: 49px;
-    border: 0.5px solid #2A3647;
-    padding: 0px 15px 0px 15px;
+  background-color: white;
+  color: #2a3647;
+  border-radius: 8px;
+  min-width: 90px;
+  height: 49px;
+  border: 0.5px solid #2a3647;
+  padding: 0px 15px 0px 15px;
 }
 
 .btnGuest:hover {
-    cursor: pointer;
-    color: #29ABE2;
-    border: 0.5px solid #29ABE2;
+  cursor: pointer;
+  color: #29abe2;
+  border: 0.5px solid #29abe2;
 }
 
 .style_InputTypography1 {
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .iconContact {
-    width: 29px;
-    height: auto;
-    vertical-align: middle;
+  width: 29px;
+  height: auto;
+  vertical-align: middle;
 }
 
 .divList {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    overflow-x: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .divAlphabet {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-self: center;
-    width: 90%;
-    height: 58px;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-    text-align: left;
-    padding: 17px 36px 17px 36px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-self: center;
+  width: 90%;
+  height: 58px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+  padding: 17px 36px 17px 36px;
 }
 
 .divShortContact {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-self: center;
-    width: 95%;
-    height: 78px;
-    padding: 15px 24px 15px 24px;
-    gap: 35px;
-
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-self: center;
+  width: 95%;
+  height: 78px;
+  padding: 15px 24px 15px 24px;
+  gap: 35px;
 }
 
 .divShortContact:hover {
-    cursor: pointer;
-    background-color: #F6F7F8;
-    border-radius: 10px;
+  cursor: pointer;
+  background-color: #f6f7f8;
+  border-radius: 10px;
 }
 
 .divShortInfo {
-    display: flex;
-    flex-direction: column;
-    font-size: 16px;
-    font-weight: 400;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
 }
 
 .contactEmblem {
-    display: flex;
-    width: 42px;
-    height: 42px;
-    padding: 10px;
-    border-radius: 50%;
-    color: white;
-    font-weight: 400;
-    justify-content: center;
-    text-align: center;
+  display: flex;
+  width: 42px;
+  height: 42px;
+  padding: 10px;
+  border-radius: 50%;
+  color: white;
+  font-weight: 400;
+  justify-content: center;
+  text-align: center;
 }
 
 .divContactDetails {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 70%;
-    margin-top: 150px;
-    margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 70%;
+  margin-top: 150px;
+  margin-left: 50px;
+  overflow: hidden;
 }
 
 .divContactTitle {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 30px;
-    width: 100%;
-    height: 73px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  height: 73px;
 }
 
 .titleContact {
-    font-size: 61px;
-    font-weight: 700;
-    line-height: 73.2px;
-    text-align: start;
+  font-size: 61px;
+  font-weight: 700;
+  line-height: 73.2px;
+  text-align: start;
 }
 
 .seperator {
-    width: 0px;
-    height: 60px;
-    border: 1px solid #29ABE2;
+  width: 0px;
+  height: 60px;
+  border: 1px solid #29abe2;
 }
 
 .mobileContact {
-    justify-content: flex-end;
-    margin-right: 25px;
-    display: none;
-    cursor: pointer;
-    position: relative;
+  justify-content: flex-end;
+  margin-right: 25px;
+  display: none;
+  cursor: pointer;
+  position: relative;
 }
 
 .amobile_nameContact {
-    display: none;
-    flex-direction: column;
-    right: 20px;
-    gap: 15px;
-    border: 1px solid #F6F7F8;
-    border-radius: 10px;
-    width: max-content;
-    background-color: white;
-    padding: 15px;
-    box-shadow: 1px 0px 3px 0px #9fbdc1;
-    position: absolute;
+  display: none;
+  flex-direction: column;
+  right: 20px;
+  gap: 15px;
+  border: 1px solid #f6f7f8;
+  border-radius: 10px;
+  width: max-content;
+  background-color: white;
+  padding: 15px;
+  box-shadow: 1px 0px 3px 0px #9fbdc1;
+  position: absolute;
 }
 
 .amobile_nameContact :hover {
-    cursor: pointer;
-    color: #29ABE2;
-    font-weight: 400;
+  cursor: pointer;
+  color: #29abe2;
+  font-weight: 400;
 }
 
 .amobile_nameContact a:hover .imgBtns {
-    filter: invert(60%) sepia(88%) saturate(1665%) hue-rotate(165deg) brightness(93%) contrast(89%);
+  filter: invert(60%) sepia(88%) saturate(1665%) hue-rotate(165deg)
+    brightness(93%) contrast(89%);
 }
 
 .divDetails {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 364px;
-    margin-top: 50px;
-    left: 50px;
-    gap: 21px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 364px;
+  margin-top: 50px;
+  left: 50px;
+  gap: 21px;
 }
 
 @keyframes move-left {
-    from {
-        margin-left: 100%;
-    }
+  from {
+    margin-left: 100%;
+  }
 
-    to {
-        margin-left: 0%;
-    }
+  to {
+    margin-left: 0%;
+  }
 }
 
 .move-left {
-    animation: move-left 1s ease-in-out;
+  animation: move-left 1s ease-in-out;
 }
 
 .headlineContact {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 21px;
-    height: 120px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 21px;
+  height: 120px;
 }
 
 .emblemInfo {
-    width: 120px;
-    height: 120px;
-    padding: 10px;
-    border-radius: 50%;
-    color: white;
-    font-weight: 400;
-    font-size: 57px;
-    text-align: center;
-    justify-items: center;
-    align-content: center;
+  width: 120px;
+  height: 120px;
+  padding: 10px;
+  border-radius: 50%;
+  color: white;
+  font-weight: 400;
+  font-size: 57px;
+  text-align: center;
+  justify-items: center;
+  align-content: center;
 }
 
 .nameContact {
-    display: flex;
-    flex-direction: column;
-    gap: 13px;
-    font-size: 47px;
-
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  font-size: 47px;
 }
 
 .a_nameContact {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    font-weight: 400px;
-    gap: 13px;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 400px;
+  gap: 13px;
 }
 
 .a_nameContact img {
-    width: 24px;
-    height: 24px;
-    vertical-align: bottom;
+  width: 24px;
+  height: 24px;
+  vertical-align: bottom;
 }
 
 .a_nameContact a:hover {
-    cursor: pointer;
-    color: #29ABE2;
-    font-weight: 600;
+  cursor: pointer;
+  color: #29abe2;
+  font-weight: 600;
 }
 
 .a_nameContact a:hover .imgBtns {
-    filter: invert(60%) sepia(88%) saturate(1665%) hue-rotate(165deg) brightness(93%) contrast(89%);
+  filter: invert(60%) sepia(88%) saturate(1665%) hue-rotate(165deg)
+    brightness(93%) contrast(89%);
 }
 
-
 .info {
-    height: 74px;
-    font-size: 20px;
-    font-weight: 400px;
-    line-height: 24px;
-    align-content: center;
+  height: 74px;
+  font-size: 20px;
+  font-weight: 400px;
+  line-height: 24px;
+  align-content: center;
 }
 
 .styleDivinfo {
-    display: flex;
-    flex-direction: column;
-    font-size: 16px;
-    font-family: 400px;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  font-family: 400px;
+  gap: 15px;
 }
 
 /* Style pop_up dialog*/
 
 .dialog-bg {
-    background-color: rgba(0, 0, 0, 0.2);
-    z-index: 999;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .d-none {
-    display: none;
+  display: none;
 }
 
 .dialog {
-    display: flex;
-    flex-direction: row;
-    height: 592px;
-    background-color: white;
-    border: 1px solid lightgray;
-    border-radius: 20px;
-    align-items: center;
-    justify-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 592px;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 20px;
+  align-items: center;
+  justify-items: center;
 }
 
 .joinAddContact {
-    background-color: #2A3647;
-    border: 3px solid #2A3647;
-    border-radius: 20px 0px 0px 20px;
-    color: white;
-    height: 100%;
-    align-content: center;
-    padding: 0px 48px 0px 48px;
+  background-color: #2a3647;
+  border: 3px solid #2a3647;
+  border-radius: 20px 0px 0px 20px;
+  color: white;
+  height: 100%;
+  align-content: center;
+  padding: 0px 48px 0px 48px;
 }
 
 .iconJoinContact {
-    width: 55px;
-    height: auto;
-    margin-bottom: 16px;
+  width: 55px;
+  height: auto;
+  margin-bottom: 16px;
 }
 
 .textAdd {
-    font-size: 27px;
-    font-weight: 400;
-    line-height: 32.4px;
-    margin: 16px 0px 16px 0px;
+  font-size: 27px;
+  font-weight: 400;
+  line-height: 32.4px;
+  margin: 16px 0px 16px 0px;
 }
 
 .seperatorAdd {
-    width: 90px;
-    height: 0px;
-    border: 2px solid #29ABE2;
+  width: 90px;
+  height: 0px;
+  border: 2px solid #29abe2;
 }
 
 .iconEdit {
-    margin: 30px;
+  margin: 30px;
 }
 
 .addcontactForm {
-    display: flex;
-    gap: 32px;
-    margin-right: 40px;
-    margin-top: 170px;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  gap: 32px;
+  margin-right: 40px;
+  margin-top: 170px;
+  align-items: center;
+  justify-content: center;
 }
 
 .groupContact-input {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 422px;
-    height: 2165x;
-    gap: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 422px;
+  height: 2165x;
+  gap: 16px;
 }
 
 .inputsContact {
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    width: 100%;
-    gap: 10px;
-    border: 1px solid #D1D1D1;
-    border-radius: 10px;
-    padding: 12px 21px 12px 21px;
-    color: black;
-    cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  width: 100%;
+  gap: 10px;
+  border: 1px solid #d1d1d1;
+  border-radius: 10px;
+  padding: 12px 21px 12px 21px;
+  color: black;
+  cursor: pointer;
 }
 
 .divBtnForm {
-    display: flex;
-    margin-top: 32px;
-    gap: 24px;
-    align-content: center;
+  display: flex;
+  margin-top: 32px;
+  gap: 24px;
+  align-content: center;
 }
 
 .imgBtns {
-    vertical-align: middle;
-    background-color: transparent;
+  vertical-align: middle;
+  background-color: transparent;
 }
 
 .styleDivFormEdit {
-    height: 100%;
+  height: 100%;
 }
 
 .btnClose {
-    display: flex;
-    width: 32px;
-    height: 32px;
-    margin-top: 40px;
-    float: right;
-    margin-right: 48px;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    background-color: white;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  margin-top: 40px;
+  float: right;
+  margin-right: 48px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: white;
 }
 
 .btnClose:hover {
-    background-color: #F0F0F0;
-    border-radius: 50%;
+  background-color: #f0f0f0;
+  border-radius: 50%;
 }
 
 .btnMobileClose {
-    display: none;
-    width: 100%;
-    margin-right: 10px;
-    justify-content: flex-end;
-    align-items: center;
-    border: none;
-    background-color: #2A3647;
-    cursor: pointer;
+  display: none;
+  width: 100%;
+  margin-right: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  border: none;
+  background-color: #2a3647;
+  cursor: pointer;
 }
 
 .arrowWhite {
-    display: none;
-    background-color: #2A3647;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    padding: 8px;
-
+  display: none;
+  background-color: #2a3647;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  padding: 8px;
 }
 
 @media (max-width: 1425px) {
-    .sidebar {
-        display: flex !important;
-    }
+  .sidebar {
+    display: flex !important;
+  }
 
-    .mobile-taskbar {
-        display: none !important;
-    }
+  .mobile-taskbar {
+    display: none !important;
+  }
 }
 
+@media (max-width: 1345px) {
+  .divContactList {
+    width: 40%;
+  }
 
-@media (max-width:1345px) {
-    .divContactList {
-        width: 40%;
-    }
+  .divContactDetails {
+    width: 60%;
+    margin-left: 30px;
+  }
 
-    .divContactDetails {
-        width: 60%;
-        margin-left: 30px;
-    }
+  .divContactTitle p {
+    font-size: 18px;
+  }
 
-    .divContactTitle p {
-        font-size: 18px;
-    }
+  .titleContact {
+    font-size: 50px;
+  }
 
-    .titleContact {
-        font-size: 50px;
-    }
+  .headlineContact {
+    height: 80px;
+  }
 
-    .headlineContact {
-        height: 80px;
-    }
+  .nameContact {
+    font-size: 40px;
+  }
 
-    .nameContact {
-        font-size: 40px;
-    }
-
-
-    .emblemInfo {
-        width: auto;
-        height: 80px;
-        font-size: 50px;
-    }
+  .emblemInfo {
+    width: auto;
+    height: 80px;
+    font-size: 50px;
+  }
 }
 
-@media (max-width:1200px) {
-    .contactContainer {
-        margin-left: 200px;
-    }
+@media (max-width: 1200px) {
+  .contactContainer {
+    margin-left: 200px;
+  }
 
-    .joinAddContact {
-        padding: 0px 25px 0px 25px;
-    }
+  .joinAddContact {
+    padding: 0px 25px 0px 25px;
+  }
 
-    .iconEdit {
-        margin: 10px
-    }
+  .iconEdit {
+    margin: 10px;
+  }
 
-    .dialog {
-        height: 510px;
-    }
+  .dialog {
+    height: 510px;
+  }
 
-    .addcontactForm {
-        margin-top: 120px;
-    }
+  .addcontactForm {
+    margin-top: 120px;
+  }
 }
 
-@media (max-width:1050px) {
-    .sidebar {
-        display: none !important;
-    }
+@media (max-width: 1050px) {
+  .sidebar {
+    display: none !important;
+  }
 
-    .contactContainer {
-        margin-left: 0px !important;
-        display: flex;
-        justify-content: left;
-        height: calc(100vh - 80px);
-    }
+  .contactContainer {
+    margin-left: 0px !important;
+    display: flex;
+    justify-content: left;
+    height: calc(100vh - 80px);
+  }
 
-    .info {
-        height: 60px;
-    }
+  .info {
+    height: 60px;
+  }
 
-    .mobile-taskbar {
-        display: flex !important;
-    }
+  .mobile-taskbar {
+    display: flex !important;
+  }
 
-    .dialog {
-        height: 480px;
-        margin: 5px;
-    }
+  .dialog {
+    height: 480px;
+    margin: 5px;
+  }
 
-    .joinAddContact {
-        padding: 0px 28px 0px 28px;
-    }
+  .joinAddContact {
+    padding: 0px 28px 0px 28px;
+  }
 
-    .titleContact {
-        font-size: 40px;
-    }
+  .titleContact {
+    font-size: 40px;
+  }
 
-    .iconEdit {
-        margin: 10px;
-    }
+  .iconEdit {
+    margin: 10px;
+  }
 
-    .groupContact-input {
-        width: 370px;
-    }
+  .groupContact-input {
+    width: 370px;
+  }
 
-    .textAdd {
-        font-size: 24px;
-    }
+  .textAdd {
+    font-size: 24px;
+  }
 }
 
-@media (max-width:820px) {
-    .divShortInfo {
-        font-size: 13px;
-    }
+@media (max-width: 820px) {
+  .divShortInfo {
+    font-size: 13px;
+  }
 
-    .divContactList {
-        width: 40%;
-    }
+  .divContactList {
+    width: 40%;
+  }
 
-    .divShortContact {
-        gap: 15px;
-    }
+  .divShortContact {
+    gap: 15px;
+  }
 
-    .divContactTitle {
-        gap: 20px;
-    }
+  .divContactTitle {
+    gap: 20px;
+  }
 
-    .divContactTitle p {
-        font-size: 15px;
-    }
+  .divContactTitle p {
+    font-size: 15px;
+  }
 
-    .divContactDetails {
-        width: 60%;
-        margin-left: 20px;
-    }
+  .divContactDetails {
+    width: 60%;
+    margin-left: 20px;
+  }
 
-    .dialog {
-        flex-direction: column;
-        height: max-content;
-        width: max-content;
-    }
+  .dialog {
+    flex-direction: column;
+    height: max-content;
+    width: max-content;
+  }
 
-    .joinAddContact {
-        width: 100%;
-        height: 250px;
-        border-radius: 20px 20px 0px 0px;
-        align-content: flex-start;
-        padding-top: 30px;
-    }
+  .joinAddContact {
+    width: 100%;
+    height: 250px;
+    border-radius: 20px 20px 0px 0px;
+    align-content: flex-start;
+    padding-top: 30px;
+  }
 
-    .iconJoinContact {
-        display: none;
-    }
+  .iconJoinContact {
+    display: none;
+  }
 
-    .styleDivFormEdit {
-        height: 50%;
-    }
+  .styleDivFormEdit {
+    height: 50%;
+  }
 
-    .btnClose {
-        display: none;
-    }
+  .btnClose {
+    display: none;
+  }
 
-    .btnMobileClose {
-        display: flex;
-        margin-bottom: 35px;
-    }
+  .btnMobileClose {
+    display: flex;
+    margin-bottom: 35px;
+  }
 
-    .iconEdit {
-        position: fixed;
-        margin-top: 220px;
-    }
+  .iconEdit {
+    position: fixed;
+    margin-top: 220px;
+  }
 
-    .iconEdit img {
-        width: 70px;
-        height: 70px;
-    }
+  .iconEdit img {
+    width: 70px;
+    height: 70px;
+  }
 
-    .addcontactForm {
-        margin-top: 30px;
-        margin-right: 0px;
-        padding: 8px;
-    }
+  .addcontactForm {
+    margin-top: 30px;
+    margin-right: 0px;
+    padding: 8px;
+  }
 
-    .divBtnForm {
-        justify-content: center;
-        margin-top: 25px;
-        margin-bottom: 25px;
-    }
+  .divBtnForm {
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
 }
 
-@media (max-width:710px) {
-    .divList {
-        width: 70%;
-    }
+@media (max-width: 710px) {
+  .divList {
+    width: 70%;
+  }
 
-    .divContactDetails {
-        display: none;
-        width: 100%;
-        margin-top: 120px;
-        overflow-y: auto;
-    }
+  .divContactDetails {
+    display: none;
+    width: 100%;
+    margin-top: 120px;
+    overflow-y: auto;
+  }
 
-    .mobileContact {
-        display: flex;
-    }
+  .mobileContact {
+    display: flex;
+  }
 
-    .divContactList {
-        width: 100%;
-    }
+  .divContactList {
+    width: 100%;
+  }
 
-    .divShortInfo {
-        font-size: 16px;
-    }
+  .divShortInfo {
+    font-size: 16px;
+  }
 
-    .a_nameContact {
-        display: none;
-    }
+  .a_nameContact {
+    display: none;
+  }
 
-    .amobile_nameContact {
-        bottom: 25px;
-    }
+  .amobile_nameContact {
+    bottom: 25px;
+  }
 }
 
-@media (max-width:450px) {
+@media (max-width: 450px) {
+  .divList {
+    width: 100%;
+  }
 
-    .divList {
-        width: 100%;
-    }
+  .divDetails {
+    margin-top: 15px;
+  }
 
-    .divDetails {
-        margin-top: 15px;
-    }
+  .nameContact {
+    font-size: 35px;
+  }
 
-    .nameContact {
-        font-size: 35px;
-    }
+  .info {
+    height: 50px;
+  }
 
-    .info {
-        height: 50px;
-    }
+  .btnMobileClose {
+    margin-bottom: 20px;
+  }
 
-    .btnMobileClose {
-        margin-bottom: 20px;
-    }
+  .joinAddContact {
+    height: 250px;
+    border-radius: 20px 20px 0px 0px;
+    align-content: flex-start;
+    padding: 20px 20px 0px 20px;
+  }
 
-    .joinAddContact {
-        height: 250px;
-        border-radius: 20px 20px 0px 0px;
-        align-content: flex-start;
-        padding: 20px 20px 0px 20px;
-    }
-
-    .textAdd {
-        font-size: 25px;
-        margin: 12px 0px 12px 0px;
-    }
+  .textAdd {
+    font-size: 25px;
+    margin: 12px 0px 12px 0px;
+  }
 }
 
+@media (max-width: 395px) {
+  .divShortInfo {
+    font-size: 16px;
+  }
 
-@media (max-width:395px) {
-    .divShortInfo {
-        font-size: 16px;
-    }
+  .groupContact-input {
+    width: 290px;
+  }
 
-    .groupContact-input {
-        width: 290px;
-    }
+  .style_InputTypography1 {
+    font-size: 14px;
+  }
 
-    .style_InputTypography1 {
-        font-size: 14px;
-    }
+  .mobileContact {
+    margin-right: 10px;
+  }
 
-    .mobileContact {
-        margin-right: 10px;
-    }
+  .divContactTitle {
+    height: 50px;
+    margin-top: 15px;
+  }
 
-    .divContactTitle {
-        height: 50px;
-        margin-top: 15px;
-    }
+  .titleContact {
+    font-size: 30px;
+  }
 
-    .titleContact {
-        font-size: 30px;
-    }
+  .textAdd {
+    font-size: 20px;
+  }
 
-    .textAdd {
-        font-size: 20px;
-    }
+  .style_BtnTypography1 {
+    font-size: 16px;
+  }
 
-    .style_BtnTypography1 {
-        font-size: 16px;
-    }
+  .emblemInfo {
+    font-size: 25px;
+    height: 60px;
+    width: auto;
+  }
 
-    .emblemInfo {
-        font-size: 25px;
-        height: 60px;
-        width: auto;
-    }
-
-    .nameContact {
-        font-size: 30px;
-    }
+  .nameContact {
+    font-size: 30px;
+  }
 }
