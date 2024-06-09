@@ -193,6 +193,7 @@ function showPasswordConf() {
   }
 }
 
+
 function moveIcon() {
   setTimeout(() => {
     document.getElementById('containerLog').style.display = 'flex';

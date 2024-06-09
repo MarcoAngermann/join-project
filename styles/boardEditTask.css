@@ -185,6 +185,18 @@ textarea {
   width: 100%;
 }
 
+.edit-contactListSelected{
+  background-color: #2A3647;
+  border: none;
+  outline: #2A3647;
+  color: white;
+  border-radius: 10px;
+}
+
+.edit-contactListSelected:hover{
+  background-color: #2A3647;
+}
+
 .edit-contact-container {
   display: flex;
   align-items: center;
