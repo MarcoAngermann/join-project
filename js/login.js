@@ -1,5 +1,5 @@
 async function initLogin() {
-  moveIcons();
+  moveIcon();
   usersJson = await loadData('users');
 }
 let usersJson;
@@ -127,7 +127,6 @@ function backToLogin() {
   location.href = '../index.html';
 }
 
-
 function doLogin(event) {
   // Verhindern Sie das Standardverhalten des Formulars, falls diese Funktion als Event Handler verwendet wird
   if (event) event.preventDefault();
@@ -195,24 +194,21 @@ function showPasswordConf() {
 }
 
 function moveIcon() {
-  document.getElementById('containerLog').style.display = 'none';
-  document.getElementById('imgLogoID').classList.add('animation1');
-  document.getElementById('overlay').classList.add('animation2');
   setTimeout(() => {
     document.getElementById('containerLog').style.display = 'flex';
-  }, 1800);
+  }, 3000);
 }
-
-/*mobile function*/
-
-function moveIcons() {
-  outWidth = window.innerWidth;
-  if (outWidth <= 700) {
-    document.getElementById("imgLogoID").src = "./assets/icons/joinWhite.svg";
-    document.getElementById("overlay").style.backgroundColor = "#2A3647";
-    moveIcon();
-  }
-  else {
-    moveIcon();
-  }
-}
+//
+///*mobile function*/
+//
+//function moveIcons() {
+//  outWidth = window.innerWidth;
+//  if (outWidth <= 700) {
+//    document.getElementById("imgLogoID").src = "./assets/icons/joinWhite.svg";
+//    document.getElementById("overlay").style.backgroundColor = "#2A3647";
+//    moveIcon();
+//  }
+//  else {
+//    moveIcon();
+//  }
+//}

@@ -10,7 +10,7 @@ body {
   display: flex;
   max-width: 100%;
   height: 100vh;
-  background-color: #F6F7F8;
+  background-color: #f6f7f8;
   position: relative;
   overflow-y: hidden;
 }
@@ -19,7 +19,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 100vh;
   background-color: #f6f7f8;
   position: relative;
@@ -29,23 +29,22 @@ body {
   display: inline-flex;
   justify-content: space-between;
   width: 100%;
+  padding-top: 50px;
+  align-items: flex-start;
 }
 
 .imgLogo {
   display: flex;
   justify-content: flex-start;
-  width: 100px;
+  width: 120px;
   height: 120px;
 }
 
 .divSignUp {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 279px;
-  height: 49px;
-  margin-right: 77px;
-  gap: 35px;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 270px;
 }
 
 .mobile_divSignUp {
@@ -319,36 +318,8 @@ form label {
   100% {
     top: 80px;
     left: 60px;
-    height: 100px;    
+    height: 100px;
   }
-}
-
-@keyframes opacity {
-  0% {
-    opacity: 1;
-    display: flex;
-  }
-
-  100% {
-    display: none;
-  }
-}
-
-.imgLogoMove {
-  height: 100px;
-  display: flex;  
-  position: absolute;
-  top: 50%;
-  left: 50%;
-}
-
-.animation1 {
-  animation: moveLogo 2s ease-in;
-}
-
-.animation2 {
-  animation: opacity 2s ease-in-out;
-  display: none;
 }
 
 .d-none {
@@ -390,9 +361,7 @@ form label {
 
 /*Resposive Login*/
 
-
-@media(max-width:700px) {
- 
+@media (max-width: 700px) {
   .divSignUp {
     display: none;
   }
@@ -422,10 +391,8 @@ form label {
   }
 }
 
-
-
-@media(max-width:550px) {
-   .imgLogo {
+@media (max-width: 550px) {
+  .imgLogo {
     width: 50px;
     height: 70px;
     margin: 13px 0px 13px 57px;
@@ -466,9 +433,7 @@ form label {
   }
 }
 
-
-@media(max-width:460px) {
-
+@media (max-width: 460px) {
   .imgLogo {
     width: 40px;
     height: 60px;
@@ -550,3 +515,71 @@ form label {
     font-size: 14px;
   }
 }
+
+.main-container-login {
+  height: 100vh;
+  background-color: #f6f7f8;
+  position: relative;
+}
+
+.icon-container {
+  position: absolute;
+  animation: moveIcon 4s forwards; /* Gesamtdauer der Animation */
+  width: 200px; /* Startgröße des Containers */
+  height: 200px; /* Startgröße des Containers */
+}
+
+.icon-container img {
+  width: 100%; /* Größe relativ zum Container */
+  height: 100%; /* Größe relativ zum Container */
+}
+
+@keyframes moveIcon {
+  0%,
+  50% {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    width: 200px; /* Beibehalten der Startgröße */
+    height: 200px; /* Beibehalten der Startgröße */
+  }
+  100% {
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    opacity: -0.15;
+    width: 100px; /* Zielgröße des Containers */
+    height: 100px; /* Zielgröße des Containers */
+  }
+}
+
+/*
+@keyframes opacity {
+  0% {
+    opacity: 1;
+    display: flex;
+  }
+
+  100% {
+    display: none;
+  }
+}
+
+.imgLogoMove {
+  height: 100px;
+  display: flex;  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.animation1 {
+  animation: moveLogo 2s ease-in;
+}
+
+.animation2 {
+  animation: opacity 2s ease-in-out;
+  display: none;
+}
+*/

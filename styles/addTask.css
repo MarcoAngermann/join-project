@@ -221,7 +221,7 @@ textarea {
   width: 100%;
 }
 
-.contactListSelected{
+.contactListSelected {
   background-color: rgb(9, 25, 49);
   border: none;
   outline: rgb(9, 25, 49);
@@ -784,6 +784,8 @@ input[type='checkbox'] {
 
   .add-task-container {
     width: 100%;
+    align-items: center;
+    margin-top: 10px;
   }
 
   #date {
@@ -825,10 +827,6 @@ input[type='checkbox'] {
 
   .addTaskBtn-Container {
     margin-left: 0px;
-  }
-
-  .add-task-container {
-    align-items: center;
   }
 
   .spanContactContainer {
