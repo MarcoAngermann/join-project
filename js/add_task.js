@@ -88,15 +88,14 @@ function renderUsers() {
 function renderUsersHTML(contact, i) {
   return /*html*/ `
       <label for="checkbox${i}">
-          <li class="contactList">        
+          <li class="contactList" id="contactList${i}">        
               <div tabindex="0" class="emblem" style="background-color: ${contact.color}">
                 ${contact.emblem}
               </div> 
               <div class="contactName" >${contact.name}</div> 
               <input class="user-checkbox" onclick="showUsersEmblem()" type="checkbox" id="checkbox${i}" data-userid="${contact.userId}">          
           </li>
-      </label>
-        `;
+      </label> `;
 }
 
 function renderCategorys() {
@@ -149,14 +148,19 @@ function showUsersEmblem() {
   for (let i = 0; i < users.length; i++) {
     if (users[i].userId == 0) continue;
     let contact = users[i];
+    let contactListChecked = document.getElementById('contactList' + i);
     let checkedContact = document.getElementById(`checkbox${i}`);
-    if (checkedContact.checked == true) {
+    if (checkedContact.checked == true) {      
+      contactListChecked.classList.add('contactListSelected');
       if (renderedCount < 5) {
         usersEmblem.innerHTML += renderEmblemUsers(contact);
         renderedCount++;
       } else {
         extraCount++;
       }
+    }
+    else{
+      contactListChecked.classList.remove('contactListSelected');
     }
   }
   if (extraCount > 0) {

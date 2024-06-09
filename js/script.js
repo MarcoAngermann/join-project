@@ -69,6 +69,7 @@ function focusSidebar() {
     let linkHref = links[i].getAttribute('href');
     if (linkHref.replace('./', '') === currentPage.replace('?', '')) {
       links[i].focus();
+      links[i].classList.add('active');
       break; //Endet der Loop, wenn der href gefunde wird.
     }
   }

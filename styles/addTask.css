@@ -214,10 +214,19 @@ textarea {
 
 .contactList:hover {
   background-color: #f6f7f8;
+  border-radius: 10px;
 }
 
 .contactList span {
   width: 100%;
+}
+
+.contactListSelected{
+  background-color: rgb(9, 25, 49);
+  border: none;
+  outline: rgb(9, 25, 49);
+  color: white;
+  border-radius: 10px;
 }
 
 .contactContainer {
