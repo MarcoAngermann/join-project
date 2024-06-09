@@ -473,10 +473,6 @@ input[type='checkbox'] {
 }
 
 @media (max-width: 470px) {
-  .headline-task {
-    font-size: 48px;
-  }
-
   .edit-user-checkbox {
     width: 20px !important;
   }

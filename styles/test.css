@@ -1,0 +1,38 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightcyan;
+}
+
+.icon-container {
+  position: absolute;
+  animation: moveIcon 4s forwards; /* Gesamtdauer der Animation */
+}
+
+.icon-container img {
+  width: 50px; /* Größe des Icons */
+  height: 50px; /* Größe des Icons */
+  /* Keine Notwendigkeit, background-image hier zu definieren */
+}
+
+@keyframes moveIcon {
+  0%,
+  50% {
+    /* 0% bis 50% der Zeit bleibt das Icon in der Mitte */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  100% {
+    /* Bei 100% bewegt sich das Icon nach oben links und wird ausgeblendet */
+    top: 0;
+    left: 0;
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
