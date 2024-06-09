@@ -106,6 +106,7 @@ function renderCategorys() {
 }
 
 function showCategories() {
+  resetCategoryErrorMessage();
   if (document.getElementById('boardTasks').classList.contains('show')) {
     document.getElementById('boardTasks').classList.remove('show');
     document.getElementById('arrowDownCategory').style.display = 'block';
@@ -279,62 +280,74 @@ function createCardId(tasks) {
   return lastCardId; //
 }
 
-async function createNewTaskBoard(boardStatus, event) {
-  event.preventDefault();
-  console.log(boardStatus);
-  let lastCardId = createCardId(tasks);
-  let selectedUserIds = getSelectedUserIds();
-  task = {
-    title: document.getElementById('title').value,
-    description: document.getElementById('description').value,
-    userId: selectedUserIds,
-    date: document.getElementById('date').value,
-    priority: getSelectedPrio(),
-    category: document.getElementById('selectedCategory').innerHTML,
-    subtask: subtaskList,
-    status: boardStatus,
-    cardId: lastCardId + 1,
-  };
-  taskAddedToBoard();
-  setTimeout(async function () {
-    resetUserDisplay();
-    await postData('tasks', task);
-    clearAllTasks(event);
-    closeAddTaskBoard();
-    updateHTML();
-  }, 3000);
-}
-
-// async function createNewTaskBoard(event) {
+// async function createNewTaskBoard(boardStatus, event) {
 //   event.preventDefault();
-//   let selectedCategory = document.getElementById('selectedCategory').innerHTML;
-//   let spanContactContainer = document.getElementById('selectedCategoryContainer');
-//   let categoryErrorMessage = document.getElementById('categoryErrorMessage');
-//   if (selectedCategory === 'Select task category' || selectedCategory.trim() === '') {
-//     spanContactContainer.style.border = '1px solid red';
-//     categoryErrorMessage.style.color = 'red';
-//     categoryErrorMessage.style.display = 'flex';
-//     categoryErrorMessage.innerHTML = 'Please select a category';
-//     return; 
-//   }
+//   console.log(boardStatus);
 //   let lastCardId = createCardId(tasks);
 //   let selectedUserIds = getSelectedUserIds();
-//   let task = {
+//   task = {
 //     title: document.getElementById('title').value,
 //     description: document.getElementById('description').value,
 //     userId: selectedUserIds,
 //     date: document.getElementById('date').value,
 //     priority: getSelectedPrio(),
-//     category: selectedCategory,
+//     category: document.getElementById('selectedCategory').innerHTML,
 //     subtask: subtaskList,
-//     status: 'toDo',
+//     status: boardStatus,
 //     cardId: lastCardId + 1,
 //   };
-//   resetUserDisplay();
-//   await postData('tasks', task);
-//   location.href = 'board.html';
-//   clearAllTasks(event);
+//   taskAddedToBoard();
+//   setTimeout(async function () {
+//     resetUserDisplay();
+//     await postData('tasks', task);
+//     clearAllTasks(event);
+//     closeAddTaskBoard();
+//     updateHTML();
+//   }, 3000);
 // }
+
+async function createNewTaskBoard(boardStatus,event) {
+  event.preventDefault();
+  console.log(boardStatus);
+  let selectedCategory = document.getElementById('selectedCategory').innerHTML;
+  let spanContactContainer = document.getElementById('selectedCategoryContainer');
+  let categoryErrorMessage = document.getElementById('categoryErrorMessage');
+  if (selectedCategory === 'Select task category' || selectedCategory.trim() === '') {
+    spanContactContainer.style.border = '1px solid red';
+    categoryErrorMessage.style.color = 'red';
+    categoryErrorMessage.style.display = 'flex';
+    categoryErrorMessage.innerHTML = 'Please select a category';
+    return; 
+  }
+  let lastCardId = createCardId(tasks);
+  let selectedUserIds = getSelectedUserIds();
+  let task = {
+    title: document.getElementById('title').value,
+    description: document.getElementById('description').value,
+    userId: selectedUserIds,
+    date: document.getElementById('date').value,
+    priority: getSelectedPrio(),
+    category: selectedCategory,
+    subtask: subtaskList,
+    status: 'toDo',
+    cardId: lastCardId + 1,
+  };
+  resetUserDisplay();
+  await postData('tasks', task);
+  location.href = 'board.html';
+  clearAllTasks(event);
+}
+
+function resetCategoryErrorMessage() {
+  let spanContactContainer = document.getElementById(
+    'selectedCategoryContainer'
+  );
+  let categoryErrorMessage = document.getElementById('categoryErrorMessage');
+  spanContactContainer.style.border = '';
+  categoryErrorMessage.style.display = 'none';
+  categoryErrorMessage.style.color = '';
+  categoryErrorMessage.innerHTML = '';
+}
 
 // document.addEventListener('DOMContentLoaded', function() {
 //   document.getElementById('arrowDownCategory').addEventListener('click', function() {

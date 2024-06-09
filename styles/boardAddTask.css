@@ -662,3 +662,17 @@ input[type='checkbox'] {
     font-size: 16px;
   }
 }
+
+.categoryErrorMessage {
+  display: none;
+  align-items: center;
+  justify-content: start;
+  z-index: 99;
+  left: 16px;
+  top: 4px;
+  right: 0px;
+  position: absolute;
+  width: 300px;
+  height: 40px;
+  background-color: white;
+}

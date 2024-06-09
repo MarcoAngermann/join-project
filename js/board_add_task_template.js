@@ -76,11 +76,12 @@ function renderBoardAddTaskHTML(boardStatus) {
         </div>
       </div>
       <span>Category<span class="required-color">*</span></span>
-      <div onclick="showCategories()" class="contact-container">
+      <div onclick="showCategories()" class="contact-container" id="selectedCategoryContainer">
         <span id="selectedCategory">Select task category</span >
         <img id="arrowDownCategory" src="../assets/icons/arrow_down_icon.svg" alt="">
         <img id="arrowUpCategory" src="../assets/icons/arrow_up_icon.svg" style="display: none;">
-        <ul id="boardTasks" class="tasks"></ul> 
+        <ul id="boardTasks" class="tasks"></ul>
+        <span id="categoryErrorMessage" class="categoryErrorMessage"></span> 
       </div>      
       <span class="subtask-label">Subtask</span>
 

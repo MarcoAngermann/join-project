@@ -118,6 +118,7 @@ function renderCategorysHTML(i) {
 }
 
 function showCategories() {
+  resetCategoryErrorMessage();
   if (document.getElementById('tasks').classList.contains('show')) {
     document.getElementById('tasks').classList.remove('show');
     document.getElementById('arrowDownCategory').style.display = 'block';
@@ -373,17 +374,16 @@ async function createNewTask(event) {
   clearAllTasks(event);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('arrowDownCategory').addEventListener('click', function() {
-    let spanContactContainer = document.getElementById('selectedCategoryContainer');
-    let categoryErrorMessage = document.getElementById('categoryErrorMessage');
-    spanContactContainer.style.border = ''; 
-    categoryErrorMessage.style.display = 'none';
-    categoryErrorMessage.style.color = ''; 
-    categoryErrorMessage.innerHTML = ''; 
-  });
-
-});
+function resetCategoryErrorMessage() {
+  let spanContactContainer = document.getElementById(
+    'selectedCategoryContainer'
+  );
+  let categoryErrorMessage = document.getElementById('categoryErrorMessage');
+  spanContactContainer.style.border = '';
+  categoryErrorMessage.style.display = 'none';
+  categoryErrorMessage.style.color = '';
+  categoryErrorMessage.innerHTML = '';
+}
 
 function clearAllTasks(event) {
   // Verhindert das Standardverhalten des Buttons (das Absenden des Formulars)
