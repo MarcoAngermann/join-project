@@ -7,6 +7,8 @@
     <script src="./js/login.js"></script>
     <script src="./js/firebaseAPI.js"></script>
     <script src="./js/script.js"></script>
+    <script src="./js/signUp_template.js"></script>
+    <script src="./js/login_template.js"></script>
     <link
       rel="icon"
       type="image/x-icon"
@@ -18,25 +20,25 @@
   </head>
   <body onload="initLogin()">
     <div class="main-container-login">
-      <div class="icon-container">
+      <div id="" class="icon-container">
         <img src="../assets/icons/join_icon.svg" alt="" />
       </div>
       <div class="containerLog d-none" id="containerLog">
         <div class="headlineLogin">
           <img class="imgLogo" src="./assets/icons/join_login.svg" />
 
-          <div class="divSignUp">
+          <div id="divSignUp" class="divSignUp">
             <p class="styleTypography1">Not a Join user?</p>
             <a
+              onclick="renderSignUp()"
               class="btnJoin style_BtnTypography2"
               type="button"
-              href="./templates/signUp.html"
               >Sign up</a
             >
           </div>
         </div>
 
-        <form class="formLogin" onsubmit="return doLogin(event)">
+        <form id="formLogin" class="formLogin" onsubmit="return doLogin(event)">
           <h1 class="title underline">Log in</h1>
           <div class="groupLogin-input">
             <input
@@ -75,12 +77,12 @@
           </div>
         </form>
 
-        <div class="mobile_divSignUp">
+        <div id="mobileDivSignUp" class="mobile_divSignUp">
           <p class="styleTypography1">Not a Join user?</p>
           <a
             class="btnJoin style_BtnTypography2"
             type="button"
-            href="./templates/signUp.html"
+            onclick="renderSignUp()"
             >Sign up</a
           >
         </div>
@@ -100,10 +102,3 @@
     </div>
   </body>
 </html>
-
-<!--
-  monicas div
-  <div class="overlay" id="overlay">
-    <img class="imgLogoMove" id="imgLogoID" src="./assets/icons/join_login.svg" />
-  </div>
--->

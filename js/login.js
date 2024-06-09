@@ -123,10 +123,6 @@ function cleanContactControls() {
   document.getElementById('passwordConfirm').value = '';
 }
 
-function backToLogin() {
-  location.href = '../index.html';
-}
-
 function doLogin(event) {
   // Verhindern Sie das Standardverhalten des Formulars, falls diese Funktion als Event Handler verwendet wird
   if (event) event.preventDefault();
@@ -193,23 +189,51 @@ function showPasswordConf() {
   }
 }
 
-
 function moveIcon() {
   setTimeout(() => {
     document.getElementById('containerLog').style.display = 'flex';
   }, 3000);
 }
-//
-///*mobile function*/
-//
+
 //function moveIcons() {
 //  outWidth = window.innerWidth;
 //  if (outWidth <= 700) {
-//    document.getElementById("imgLogoID").src = "./assets/icons/joinWhite.svg";
-//    document.getElementById("overlay").style.backgroundColor = "#2A3647";
+//    document.getElementById('iconContainer').src =
+//      './assets/icons/joinWhite.svg';
+//    document.getElementById('containerLog').style.backgroundColor = '#2a3647';
+//    moveIcon();
+//  } else {
 //    moveIcon();
 //  }
-//  else {
-//    moveIcon();
-//  }
+//}
+
+function renderSignUp() {
+  let containerLog = document.getElementById('formLogin');
+
+  containerLog.innerHTML = renderSignUpHTML();
+  if (window.innerWidth <= 700) {
+    document
+      .getElementById('mobileDivSignUp')
+      .classList.add('d-none-important');
+  } else {
+    document.getElementById('divSignUp').classList.add('d-none');
+  }
+}
+
+function backToLogin() {
+  let containerLog = document.getElementById('formLogin');
+
+  containerLog.innerHTML = renderLoginHTML();
+  if (window.innerWidth <= 700) {
+    document
+      .getElementById('mobileDivSignUp')
+      .classList.remove('d-none-important');
+  } else {
+    document.getElementById('divSignUp').classList.remove('d-none');
+  }
+}
+
+// Monicas funktion
+//function backToLogin() {
+//  location.href = '../index.html';
 //}

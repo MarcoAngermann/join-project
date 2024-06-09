@@ -6,15 +6,6 @@ body {
   box-sizing: border-box;
 }
 
-.overlay {
-  display: flex;
-  max-width: 100%;
-  height: 100vh;
-  background-color: #f6f7f8;
-  position: relative;
-  overflow-y: hidden;
-}
-
 .containerLog {
   display: flex;
   align-items: center;
@@ -27,14 +18,14 @@ body {
 
 .headlineLogin {
   display: inline-flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
-  padding-top: 50px;
+  padding: 30px 30px 0px 30px;
   align-items: flex-start;
 }
 
 .imgLogo {
-  display: flex;
+  display: none;
   justify-content: flex-start;
   width: 120px;
   height: 120px;
@@ -43,7 +34,7 @@ body {
 .divSignUp {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   width: 270px;
 }
 
@@ -322,6 +313,10 @@ form label {
   }
 }
 
+.d-none-important {
+  display: none !important;
+}
+
 .d-none {
   display: none;
 }
@@ -370,11 +365,6 @@ form label {
     display: flex;
   }
 
-  .imgLogo {
-    width: 70px;
-    height: 90px;
-  }
-
   .title {
     font-size: 45px;
   }
@@ -392,12 +382,6 @@ form label {
 }
 
 @media (max-width: 550px) {
-  .imgLogo {
-    width: 50px;
-    height: 70px;
-    margin: 13px 0px 13px 57px;
-  }
-
   .title {
     font-size: 40px;
   }
@@ -434,12 +418,6 @@ form label {
 }
 
 @media (max-width: 460px) {
-  .imgLogo {
-    width: 40px;
-    height: 60px;
-    margin: 13px 0px 13px 37px;
-  }
-
   .title {
     font-size: 35px;
   }
@@ -527,6 +505,7 @@ form label {
   animation: moveIcon 4s forwards; /* Gesamtdauer der Animation */
   width: 200px; /* Startgröße des Containers */
   height: 200px; /* Startgröße des Containers */
+  z-index: 1;
 }
 
 .icon-container img {
@@ -540,46 +519,14 @@ form label {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 1;
     width: 200px; /* Beibehalten der Startgröße */
     height: 200px; /* Beibehalten der Startgröße */
   }
   100% {
-    top: 0;
-    left: 0;
+    top: 30px;
+    left: 30px;
     transform: translate(0, 0);
-    opacity: -0.15;
     width: 100px; /* Zielgröße des Containers */
     height: 100px; /* Zielgröße des Containers */
   }
 }
-
-/*
-@keyframes opacity {
-  0% {
-    opacity: 1;
-    display: flex;
-  }
-
-  100% {
-    display: none;
-  }
-}
-
-.imgLogoMove {
-  height: 100px;
-  display: flex;  
-  position: absolute;
-  top: 50%;
-  left: 50%;
-}
-
-.animation1 {
-  animation: moveLogo 2s ease-in;
-}
-
-.animation2 {
-  animation: opacity 2s ease-in-out;
-  display: none;
-}
-*/

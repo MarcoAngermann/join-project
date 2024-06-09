@@ -118,6 +118,7 @@ function renderCategorysHTML(i) {
 }
 
 function showCategories() {
+  resetCategoryErrorMessage();
   if (document.getElementById('tasks').classList.contains('show')) {
     document.getElementById('tasks').classList.remove('show');
     document.getElementById('arrowDownCategory').style.display = 'block';
@@ -150,7 +151,7 @@ function showUsersEmblem() {
     let contact = users[i];
     let contactListChecked = document.getElementById('contactList' + i);
     let checkedContact = document.getElementById(`checkbox${i}`);
-    if (checkedContact.checked == true) {      
+    if (checkedContact.checked == true) {
       contactListChecked.classList.add('contactListSelected');
       if (renderedCount < 5) {
         usersEmblem.innerHTML += renderEmblemUsers(contact);
@@ -158,8 +159,7 @@ function showUsersEmblem() {
       } else {
         extraCount++;
       }
-    }
-    else{
+    } else {
       contactListChecked.classList.remove('contactListSelected');
     }
   }
@@ -345,14 +345,19 @@ function createCardId(tasks) {
 async function createNewTask(event) {
   event.preventDefault();
   let selectedCategory = document.getElementById('selectedCategory').innerHTML;
-  let spanContactContainer = document.getElementById('selectedCategoryContainer');
+  let spanContactContainer = document.getElementById(
+    'selectedCategoryContainer'
+  );
   let categoryErrorMessage = document.getElementById('categoryErrorMessage');
-  if (selectedCategory === 'Select task category' || selectedCategory.trim() === '') {
+  if (
+    selectedCategory === 'Select task category' ||
+    selectedCategory.trim() === ''
+  ) {
     spanContactContainer.style.border = '1px solid red';
     categoryErrorMessage.style.color = 'red';
     categoryErrorMessage.style.display = 'flex';
     categoryErrorMessage.innerHTML = 'Please select a category';
-    return; 
+    return;
   }
   let lastCardId = createCardId(tasks);
   let selectedUserIds = getSelectedUserIds();
@@ -373,17 +378,16 @@ async function createNewTask(event) {
   clearAllTasks(event);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('arrowDownCategory').addEventListener('click', function() {
-    let spanContactContainer = document.getElementById('selectedCategoryContainer');
-    let categoryErrorMessage = document.getElementById('categoryErrorMessage');
-    spanContactContainer.style.border = ''; 
-    categoryErrorMessage.style.display = 'none';
-    categoryErrorMessage.style.color = ''; 
-    categoryErrorMessage.innerHTML = ''; 
-  });
-
-});
+function resetCategoryErrorMessage() {
+  let spanContactContainer = document.getElementById(
+    'selectedCategoryContainer'
+  );
+  let categoryErrorMessage = document.getElementById('categoryErrorMessage');
+  spanContactContainer.style.border = '';
+  categoryErrorMessage.style.display = 'none';
+  categoryErrorMessage.style.color = '';
+  categoryErrorMessage.innerHTML = '';
+}
 
 function clearAllTasks(event) {
   // Verhindert das Standardverhalten des Buttons (das Absenden des Formulars)
