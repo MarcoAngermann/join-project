@@ -136,13 +136,6 @@ textarea {
   justify-content: flex-end;
 }
 
-.required-field-text {
-  z-index: 1;
-  margin-top: 170px;
-  align-items: center;
-  justify-content: center;
-}
-
 .edit-required-color {
   color: red;
 }
@@ -410,10 +403,6 @@ input[type='checkbox'] {
   }
 
   .seperator {
-    display: none;
-  }
-
-  .required-field-text {
     display: none;
   }
 
