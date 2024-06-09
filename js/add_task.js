@@ -377,10 +377,10 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('arrowDownCategory').addEventListener('click', function() {
     let spanContactContainer = document.getElementById('selectedCategoryContainer');
     let categoryErrorMessage = document.getElementById('categoryErrorMessage');
-    spanContactContainer.style.border = ''; // Setzen Sie dies auf Ihren Standardborder-Stil
-    categoryErrorMessage.style.display = 'none'; // Setzen Sie diese Zeile auf 'flex'
-    categoryErrorMessage.style.color = ''; // Setzen Sie dies auf Ihre Standardtextfarbe
-    categoryErrorMessage.innerHTML = ''; // Entfernen Sie die Fehlermeldung
+    spanContactContainer.style.border = ''; 
+    categoryErrorMessage.style.display = 'none';
+    categoryErrorMessage.style.color = ''; 
+    categoryErrorMessage.innerHTML = ''; 
   });
 
 });
