@@ -34,7 +34,7 @@ html {
     top: 0;
     left: 0;
     transform: translate(0, 0);
-    opacity: 0.1;
+    opacity: -0.15;
     width: 50px; /* Zielgröße des Containers */
     height: 50px; /* Zielgröße des Containers */
   }
