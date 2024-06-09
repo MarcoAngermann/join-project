@@ -305,6 +305,49 @@ async function createNewTaskBoard(boardStatus, event) {
   }, 3000);
 }
 
+// async function createNewTaskBoard(event) {
+//   event.preventDefault();
+//   let selectedCategory = document.getElementById('selectedCategory').innerHTML;
+//   let spanContactContainer = document.getElementById('selectedCategoryContainer');
+//   let categoryErrorMessage = document.getElementById('categoryErrorMessage');
+//   if (selectedCategory === 'Select task category' || selectedCategory.trim() === '') {
+//     spanContactContainer.style.border = '1px solid red';
+//     categoryErrorMessage.style.color = 'red';
+//     categoryErrorMessage.style.display = 'flex';
+//     categoryErrorMessage.innerHTML = 'Please select a category';
+//     return; 
+//   }
+//   let lastCardId = createCardId(tasks);
+//   let selectedUserIds = getSelectedUserIds();
+//   let task = {
+//     title: document.getElementById('title').value,
+//     description: document.getElementById('description').value,
+//     userId: selectedUserIds,
+//     date: document.getElementById('date').value,
+//     priority: getSelectedPrio(),
+//     category: selectedCategory,
+//     subtask: subtaskList,
+//     status: 'toDo',
+//     cardId: lastCardId + 1,
+//   };
+//   resetUserDisplay();
+//   await postData('tasks', task);
+//   location.href = 'board.html';
+//   clearAllTasks(event);
+// }
+
+// document.addEventListener('DOMContentLoaded', function() {
+//   document.getElementById('arrowDownCategory').addEventListener('click', function() {
+//     let spanContactContainer = document.getElementById('selectedCategoryContainer');
+//     let categoryErrorMessage = document.getElementById('categoryErrorMessage');
+//     spanContactContainer.style.border = ''; 
+//     categoryErrorMessage.style.display = 'none';
+//     categoryErrorMessage.style.color = ''; 
+//     categoryErrorMessage.innerHTML = ''; 
+//   });
+
+// });
+
 function clearAllTasks(event) {
   // Verhindert das Standardverhalten des Buttons (das Absenden des Formulars)
   event.preventDefault();
