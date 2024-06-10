@@ -42,15 +42,33 @@ function renderEmptyBoard(status) {
 
 function renderSmallCardHTML(task) {
   return /*html*/ `
-    <div draggable="true" ondragstart="startDragging(${task.cardId})" id="${task.cardId}" class="smallcard" onclick="showBigCard(${task.cardId}); openBigCardAnimation()">
+    <div draggable="true" ondragstart="startDragging(${task.cardId})" id="${
+    task.cardId
+  }" class="smallcard" onclick="showBigCard(${
+    task.cardId
+  }); openBigCardAnimation()">
       <div class="category">
-        <h3 style='background-color:${getBackgroundCategory(task)}'>${task.category}</h3>
-        <div class="mobileBoard" id="mobileBoard" onclick="openMobileOptions(${task.cardId},event)"><img class="imgMobile" src="../assets/icons/more_vert_icon.svg"/></div>
-        <div class="amobile_boardOptions" id="amobile_boardOptions${task.cardId}" style="display:none">            
-            <p class="mobileClose"><b>Move To...</b><button class="btnClose" onclick="closeMobilOptions(event,${task.cardId})"><b>X</b></button></p>
-            <a onclick="mobilemoveTo('toDo',${task.cardId},event)">To&nbsp;Do</a>
-            <a onclick="mobilemoveTo('inProgress',${task.cardId},event)">In&nbsp;Progress</a>
-            <a onclick="mobilemoveTo('awaitFeedback',${task.cardId},event)">Await&nbsp;Feedback</a>
+        <h3 style='background-color:${getBackgroundCategory(task)}'>${
+    task.category
+  }</h3>
+        <div class="mobileBoard" id="mobileBoard" onclick="openMobileOptions(${
+          task.cardId
+        },event)"><img class="imgMobile" src="../assets/icons/more_vert_icon.svg"/></div>
+        <div class="amobile_boardOptions" id="amobile_boardOptions${
+          task.cardId
+        }" style="display:none">            
+            <p class="mobileClose"><b>Move To...</b><button class="btnClose" onclick="closeMobilOptions(event,${
+              task.cardId
+            })"><b>X</b></button></p>
+            <a onclick="mobilemoveTo('toDo',${
+              task.cardId
+            },event)">To&nbsp;Do</a>
+            <a onclick="mobilemoveTo('inProgress',${
+              task.cardId
+            },event)">In&nbsp;Progress</a>
+            <a onclick="mobilemoveTo('awaitFeedback',${
+              task.cardId
+            },event)">Await&nbsp;Feedback</a>
             <a onclick="mobilemoveTo('done',${task.cardId},event)">Done</a>
         </div>                   
       </div>
@@ -76,10 +94,14 @@ function renderSmallCardHTML(task) {
 
 function getBackgroundCategory(task) {
   switch (task.category) {
-    case 'User Story': return '#0038FF';
-    case 'Technical Task': return '#1FD7C1';
-    case 'Development': return '#FFBB2B';
-    case 'Editing': return '#FF5EB3';
+    case 'User Story':
+      return '#0038FF';
+    case 'Technical Task':
+      return '#1FD7C1';
+    case 'Development':
+      return '#FFBB2B';
+    case 'Editing':
+      return '#FF5EB3';
   }
 }
 
@@ -148,7 +170,7 @@ async function moveTo(event, status) {
   // Find the task object with the cardId equal to currentDraggedElement
   const task = tasks.find((t) => t.cardId == currentDraggedElement);
   task.status = status;
-  // Update the board and HTML
+  removeHighlight(status);
   await updateBoard(status); // Assuming updateBoard is an async function
   await updateHTML();
 }
@@ -163,12 +185,12 @@ async function updateBoard(status) {
   }
 }
 
-function highlight(id) {
-  document.getElementById(id).classList.add('drag-area-highlight');
+function highlight(cardId) {
+  document.getElementById(cardId).classList.add('drag-area-highlight');
 }
 
-function removeHighlight(id) {
-  document.getElementById(id).classList.remove('drag-area-highlight');
+function removeHighlight(status) {
+  document.getElementById(status).classList.remove('drag-area-highlight');
 }
 //Dialog BigCard
 function closeBigCard() {
@@ -191,7 +213,9 @@ function renderBigCardHTML(cardId) {
   return /*html*/ `
     <div id="bigCard${task.cardId}" class="bigCard"  onclick="dontClose()">
       <div class="big-header">
-        <div><span class="bigTaskCategory" style='background-color:${getBackgroundCategory(task)}'>${task.category}</span></div>
+        <div><span class="bigTaskCategory" style='background-color:${getBackgroundCategory(
+          task
+        )}'>${task.category}</span></div>
         <div><img class="close" onclick="closeBigCard();" src="../assets/icons/close_icon.svg" alt="schließen"/></div>
       </div>
       <div class="big-title">
@@ -221,12 +245,16 @@ function renderBigCardHTML(cardId) {
         </div>
       </div>
       <div class="bigCard-edit">
-        <div id="bigDelete" class="big-delete" onclick="deleteTaskOfBoard(${task.cardId})">
+        <div id="bigDelete" class="big-delete" onclick="deleteTaskOfBoard(${
+          task.cardId
+        })">
           <img  src="../assets/icons/delete_contact_icon.svg" alt="">
           <span>Delete</span>
         </div>
         <div class="big-seperator"></div>
-        <div id="bigEdit" class="big-edit" onclick="editTaskOfBoard(${task.cardId})">
+        <div id="bigEdit" class="big-edit" onclick="editTaskOfBoard(${
+          task.cardId
+        })">
           <img src="../assets/icons/edit-contacts_icon.svg" alt="">
           <span>Edit</span>
         </div>
@@ -277,8 +305,9 @@ function renderBigSubtasksHTML(cardId, subtask, j) {
   return /*html*/ `
       <label for="checkbox${j}">
           <li class="bigSubtaskList">
-              <input class="big-card-checkbox" onclick="checkedSubtask(${cardId}, ${j})" type="checkbox"  ${subtask.checked ? 'checked' : ''
-    } id="checkbox${j}" data-userid="${j}">
+              <input class="big-card-checkbox" onclick="checkedSubtask(${cardId}, ${j})" type="checkbox"  ${
+    subtask.checked ? 'checked' : ''
+  } id="checkbox${j}" data-userid="${j}">
               <div class="contactName">${subtask.subtaskText}</div>
           </li>
       </label>`;

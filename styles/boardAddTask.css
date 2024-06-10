@@ -528,7 +528,7 @@ input[type='checkbox'] {
 }
 
 .move-left {
-  animation: move-left 3s ease-in-out;
+  animation: move-left 1s ease-in-out;
 }
 
 @keyframes move-right {

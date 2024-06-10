@@ -202,7 +202,7 @@
   color: #2a3647;
 }
 
-.category h3{
+.category h3 {
   color: white;
   padding: 5px 15px 5px 15px;
   border-radius: 10px;
@@ -227,7 +227,7 @@
     brightness(91%) contrast(106%);
 }
 
-.bigTaskCategory{
+.bigTaskCategory {
   color: white;
   padding: 5px 25px 5px 25px;
   border-radius: 10px;
@@ -295,20 +295,6 @@ progress[value]::-webkit-progress-value {
   display: flex;
   width: 40%;
   font-size: 12px;
-}
-
-@keyframes move-left {
-  from {
-    margin-left: 120%;
-  }
-
-  to {
-    margin-left: 0%;
-  }
-}
-
-.move-left {
-  animation: move-left 1s ease-in-out;
 }
 
 @media (max-width: 1050px) {

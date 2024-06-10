@@ -182,16 +182,21 @@
 .amobile_boardOptions {
   position: absolute;
   flex-direction: column;
-  gap: 5px;
+  justify-content: space-around;
+  width: 70%;
+  height: 100%;
   top: 5px;
   right: 5px;
   border: 1px solid #f6f7f8;
   border-radius: 10px;
-  width: max-content;
   background-color: white;
   padding: 10px;
   box-shadow: 1px 0px 3px 0px #9fbdc1;
-  font-size: 12px;
+  font-size: 16px;
+}
+
+.amobile_boardOptions {
+  text-align: center;
 }
 
 .amobile_boardOptions a:hover {
@@ -200,7 +205,6 @@
   font-weight: 400;
   background-color: #29abe2;
   border-radius: 10px;
-  padding: 0px 2px 0px 8px;
 }
 
 .mobileClose {

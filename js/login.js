@@ -224,13 +224,13 @@ function joinAnimation() {
   let mobileanimationwhite = document.getElementById(
     'mobileIconContainerWhite'
   );
+  let mainContainerLogin = document.getElementById('mainContainerLogin');
 
   if (700 <= window.innerWidth) {
     animation.classList.remove('d-none');
     animation.classList.add('icon-container');
   } else {
-    document.getElementById('mainContainerLogin').style.backgroundColor =
-      '#06192c';
+    mainContainerLogin.style.backgroundColor = '#06192c';
     mobileanimation.classList.remove('d-none');
     mobileanimationwhite.classList.remove('d-none');
     mobileanimation.classList.add('mobile-icon-container');
