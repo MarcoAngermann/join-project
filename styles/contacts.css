@@ -183,13 +183,13 @@
 .amobile_nameContact {
   display: none;
   flex-direction: column;
-  right: 20px;
-  gap: 15px;
+  right: 5px;
+  gap: 10px;
   border: 1px solid #f6f7f8;
   border-radius: 10px;
   width: max-content;
   background-color: white;
-  padding: 15px;
+  padding: 10px;
   box-shadow: 1px 0px 3px 0px #9fbdc1;
   position: absolute;
 }
@@ -665,7 +665,7 @@
   }
 
   .amobile_nameContact {
-    bottom: 25px;
+    bottom: 30px;
   }
 }
 
@@ -717,7 +717,7 @@
   }
 
   .mobileContact {
-    margin-right: 10px;
+    margin-right: 5px;
   }
 
   .divContactTitle {

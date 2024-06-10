@@ -4,19 +4,19 @@ function renderSignUpHTML() {
 
             <div class="headlineSignUp">
                 <a class="a_headlineSignUp" onclick="backToLogin()"><img class="icoArrowLeft"
-                        src="../assets/icons/arrow-left-line.svg"></i></a>
+                        src="./assets/icons/arrow-left-line.svg"></i></a>
                 <h1 class="title underline">Sign up</h1>
             </div>
             <div class="groupSignUp-input">
                 <input class="inputs style_InputTypography1" type="text" id="name"
-                    style="background-image: url(../assets/icons/personInput_icon.svg)" placeholder="Name" required>
+                    style="background-image: url(./assets/icons/personInput_icon.svg)" placeholder="Name" required>
                 <input class="inputs style_InputTypography1" type="email" id="email"
-                    style="background-image: url(../assets/icons/mail_icon.svg)" placeholder="Email" required>
+                    style="background-image: url(./assets/icons/mail_icon.svg)" placeholder="Email" required>
                 <input class="inputs style_InputTypography1" id="password"
-                    style="background-image: url(../assets/icons/lock_icon.svg)" placeholder="Password"
+                    style="background-image: url(./assets/icons/lock_icon.svg)" placeholder="Password"
                     onkeyup="keyDown()" onclick="showPassword()" required>
                 <input class="inputs style_InputTypography1" name="confirmPass"
-                    style="background-image: url(../assets/icons/lock_icon.svg)" id="passwordConfirm"
+                    style="background-image: url(./assets/icons/lock_icon.svg)" id="passwordConfirm"
                     placeholder="Confirm Password" onkeyup="keyDownConf()" onclick="showPasswordConf()" required>
                 <span id="pwErrorCheck" style="color: red; display: none;"> * Password and confirmPass are not the
                     same</span>
@@ -33,7 +33,7 @@ function renderSignUpHTML() {
 
 
         <div id="dialogSingUp" class="dialog-bg d-none">
-            <img class="dialog" src="..//assets/icons/You_Signed_Up_successfully_animation_icon.svg">
+            <img class="dialog" src="./assets/icons/You_Signed_Up_successfully_animation_icon.svg">
         </div>
 
     </div>
