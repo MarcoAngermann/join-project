@@ -19,15 +19,19 @@ let colors = [
 let categorys = ['Technical Task', 'User Story', 'Development', 'Editing'];
 let users = [];
 let tasks = [];
+let isTasksArrayLoading = false;
 
 async function tasksArray() {
-  tasks = [];
+  
+  console.log('Tasks array reset:', tasks); 
+  
   let tasksJson = await loadData('tasks');
+  console.log('Loaded tasks JSON:', tasksJson); 
   for (let key in tasksJson) {
     let task = tasksJson[key];
     tasks.push(task);
   }
-  console.log('Tasks array:', tasks); // Debugging line
+  console.log('Tasks array after loading data:', tasks); 
 }
 
 async function usersArray() {
@@ -112,5 +116,30 @@ async function openSidebarRules() {
     mobileSidebarRules.style.display = "none";
     let arrowBack = document.getElementById('backSummaryRules');
     arrowBack.href = '../index.html';
+  }
+}
+
+
+
+async function tasksArray() {
+  if (isTasksArrayLoading) {
+    return; // Exit if already loading
+  }
+  isTasksArrayLoading = true;
+  try {
+    console.log('Calling tasksArray function'); // Debugging line
+    tasks = []; // Ensure tasks array is cleared before populating
+    console.log('Tasks array after reset:', tasks); // Debugging line
+
+    let tasksJson = await loadData('tasks');
+    console.log('Loaded tasks JSON:', tasksJson); // Debugging line
+
+    for (let key in tasksJson) {
+      let task = tasksJson[key];
+      tasks.push(task);
+    }
+    console.log('Tasks array after loading data:', tasks); // Debugging line
+  } finally {
+    isTasksArrayLoading = false;
   }
 }
