@@ -22,16 +22,26 @@ let tasks = [];
 let isTasksArrayLoading = false;
 
 async function tasksArray() {
-  
-  console.log('Tasks array reset:', tasks); 
-  
-  let tasksJson = await loadData('tasks');
-  console.log('Loaded tasks JSON:', tasksJson); 
-  for (let key in tasksJson) {
-    let task = tasksJson[key];
-    tasks.push(task);
+  if (isTasksArrayLoading) {
+    return; 
   }
-  console.log('Tasks array after loading data:', tasks); 
+  isTasksArrayLoading = true;
+  try {
+    console.log('Calling tasksArray function'); 
+    tasks = []; 
+    console.log('Tasks array after reset:', tasks); 
+
+    let tasksJson = await loadData('tasks');
+    console.log('Loaded tasks JSON:', tasksJson); 
+
+    for (let key in tasksJson) {
+      let task = tasksJson[key];
+      tasks.push(task);
+    }
+    console.log('Tasks array after loading data:', tasks); 
+  } finally {
+    isTasksArrayLoading = false;
+  }
 }
 
 async function usersArray() {
@@ -136,25 +146,4 @@ async function openSidebarRules() {
 
 
 
-async function tasksArray() {
-  if (isTasksArrayLoading) {
-    return; // Exit if already loading
-  }
-  isTasksArrayLoading = true;
-  try {
-    console.log('Calling tasksArray function'); // Debugging line
-    tasks = []; // Ensure tasks array is cleared before populating
-    console.log('Tasks array after reset:', tasks); // Debugging line
 
-    let tasksJson = await loadData('tasks');
-    console.log('Loaded tasks JSON:', tasksJson); // Debugging line
-
-    for (let key in tasksJson) {
-      let task = tasksJson[key];
-      tasks.push(task);
-    }
-    console.log('Tasks array after loading data:', tasks); // Debugging line
-  } finally {
-    isTasksArrayLoading = false;
-  }
-}
