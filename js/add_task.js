@@ -109,7 +109,7 @@ function renderCategorysHTML(i) {
   return /*html*/ `
           <li class="contactList">
                 <span for="">
-                    <div class="categorylist" tabindex="0" onclick="selectCategory(${i})">
+                    <div class="categorylist" tabindex="0" onclick="selectCategory(event, ${i})">
                       ${categorys[i]}
                     </div>
                 </span>
@@ -130,11 +130,17 @@ function showCategories() {
   }
 }
 
-function selectCategory(index) {
+function selectCategory(event, index) {
+  event.stopPropagation(); 
   let selectedCategory = categorys[index];
   document.getElementById('selectedCategory').innerHTML = selectedCategory;
-  showCategories(); // Hide the category list after selection
+  showCategories(); 
 }
+
+function resetCategoryErrorMessage() {
+  document.getElementById('categoryErrorMessage').innerHTML = '';
+}
+
 
 function restrictPastDate() {
   let dateInput = document.getElementById('date');
