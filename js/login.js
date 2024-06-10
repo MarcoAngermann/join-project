@@ -1,4 +1,5 @@
 async function initLogin() {
+  joinAnimation();
   moveIcon();
   usersJson = await loadData('users');
 }
@@ -217,7 +218,22 @@ function backToLogin() {
   }
 }
 
-// Monicas funktion
-//function backToLogin() {
-//  location.href = '../index.html';
-//}
+function joinAnimation() {
+  let animation = document.getElementById('iconContainer');
+  let mobileanimation = document.getElementById('mobileIconContainer');
+  let mobileanimationwhite = document.getElementById(
+    'mobileIconContainerWhite'
+  );
+
+  if (700 <= window.innerWidth) {
+    animation.classList.remove('d-none');
+    animation.classList.add('icon-container');
+  } else {
+    document.getElementById('mainContainerLogin').style.backgroundColor =
+      '#06192c';
+    mobileanimation.classList.remove('d-none');
+    mobileanimationwhite.classList.remove('d-none');
+    mobileanimation.classList.add('mobile-icon-container');
+    mobileanimationwhite.classList.add('mobile-icon-container-white');
+  }
+}

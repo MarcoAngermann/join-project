@@ -230,6 +230,7 @@ textarea {
   height: 40px;
   padding: 0 10px;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .categorylist {
@@ -244,6 +245,17 @@ textarea {
 
 .contactlist span {
   width: 100%;
+}
+
+.contactListSelected {
+  background-color: #2a3647;
+  border: none;
+  outline: #2a3647;
+  color: white;
+}
+
+.contactListSelected:hover {
+  background-color: #091931;
 }
 
 .contact-container {

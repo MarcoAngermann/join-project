@@ -136,16 +136,20 @@ function showUsersEmblem() {
   let renderedCount = 0;
   let extraCount = 0;
   for (let i = 0; i < users.length; i++) {
-    if (users[i]['userId'] == 0) continue;
+    if (users[i].userId == 0) continue;
     let contact = users[i];
+    let contactListChecked = document.getElementById('contactList' + i);
     let checkedContact = document.getElementById(`checkbox${i}`);
     if (checkedContact.checked == true) {
+      contactListChecked.classList.add('contactListSelected');
       if (renderedCount < 5) {
         usersEmblem.innerHTML += renderEmblemUsers(contact);
         renderedCount++;
       } else {
         extraCount++;
       }
+    } else {
+      contactListChecked.classList.remove('contactListSelected');
     }
   }
   if (extraCount > 0) {
@@ -306,18 +310,23 @@ function createCardId(tasks) {
 //   }, 3000);
 // }
 
-async function createNewTaskBoard(boardStatus,event) {
+async function createNewTaskBoard(boardStatus, event) {
   event.preventDefault();
   console.log(boardStatus);
   let selectedCategory = document.getElementById('selectedCategory').innerHTML;
-  let spanContactContainer = document.getElementById('selectedCategoryContainer');
+  let spanContactContainer = document.getElementById(
+    'selectedCategoryContainer'
+  );
   let categoryErrorMessage = document.getElementById('categoryErrorMessage');
-  if (selectedCategory === 'Select task category' || selectedCategory.trim() === '') {
+  if (
+    selectedCategory === 'Select task category' ||
+    selectedCategory.trim() === ''
+  ) {
     spanContactContainer.style.border = '1px solid red';
     categoryErrorMessage.style.color = 'red';
     categoryErrorMessage.style.display = 'flex';
     categoryErrorMessage.innerHTML = 'Please select a category';
-    return; 
+    return;
   }
   let lastCardId = createCardId(tasks);
   let selectedUserIds = getSelectedUserIds();
@@ -353,10 +362,10 @@ function resetCategoryErrorMessage() {
 //   document.getElementById('arrowDownCategory').addEventListener('click', function() {
 //     let spanContactContainer = document.getElementById('selectedCategoryContainer');
 //     let categoryErrorMessage = document.getElementById('categoryErrorMessage');
-//     spanContactContainer.style.border = ''; 
+//     spanContactContainer.style.border = '';
 //     categoryErrorMessage.style.display = 'none';
-//     categoryErrorMessage.style.color = ''; 
-//     categoryErrorMessage.innerHTML = ''; 
+//     categoryErrorMessage.style.color = '';
+//     categoryErrorMessage.innerHTML = '';
 //   });
 
 // });

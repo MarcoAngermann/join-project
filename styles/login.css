@@ -406,24 +406,6 @@ form label {
     width: 60px;
     height: 60px;
   }
-
-  @keyframes moveIcon {
-    0%,
-    50% {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 200px; /* Beibehalten der Startgröße */
-      height: 200px; /* Beibehalten der Startgröße */
-    }
-    100% {
-      top: 30px;
-      left: 30px;
-      transform: translate(0, 0);
-      width: 60px; /* Zielgröße des Containers */
-      height: 60px; /* Zielgröße des Containers */
-    }
-  }
 }
 
 @media (max-width: 460px) {
@@ -537,5 +519,71 @@ form label {
     transform: translate(0, 0);
     width: 100px; /* Zielgröße des Containers */
     height: 100px; /* Zielgröße des Containers */
+  }
+}
+
+.mobile-icon-container {
+  position: absolute;
+  animation: moveMobileIcon 4s forwards; /* Gesamtdauer der Animation */
+  width: 100px; /* Startgröße des Containers */
+  height: 100px; /* Startgröße des Containers */
+  z-index: 1;
+}
+
+.mobile-icon-container img {
+  width: 100%; /* Größe relativ zum Container */
+  height: 100%; /* Größe relativ zum Container */
+}
+
+@keyframes moveMobileIcon {
+  0%,
+  50% {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px; /* Beibehalten der Startgröße */
+    height: 100px; /* Beibehalten der Startgröße */
+    opacity: 0;
+  }
+  100% {
+    top: 30px;
+    left: 30px;
+    transform: translate(0, 0);
+    width: 50px; /* Zielgröße des Containers */
+    height: 50px; /* Zielgröße des Containers */
+    opacity: 1;
+  }
+}
+
+.mobile-icon-container-white {
+  position: absolute;
+  animation: moveMobileIcon2 4s forwards; /* Gesamtdauer der Animation */
+  width: 100px; /* Startgröße des Containers */
+  height: 100px; /* Startgröße des Containers */
+  z-index: 1;
+}
+
+.mobile-icon-container-white img {
+  width: 100%; /* Größe relativ zum Container */
+  height: 100%; /* Größe relativ zum Container */
+}
+
+@keyframes moveMobileIcon2 {
+  0%,
+  50% {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px; /* Beibehalten der Startgröße */
+    height: 100px; /* Beibehalten der Startgröße */
+    opacity: 1;
+  }
+  100% {
+    top: 30px;
+    left: 30px;
+    transform: translate(0, 0);
+    width: 50px; /* Zielgröße des Containers */
+    height: 50px; /* Zielgröße des Containers */
+    opacity: 0;
   }
 }
