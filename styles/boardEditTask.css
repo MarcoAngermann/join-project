@@ -232,11 +232,11 @@ textarea {
   position: absolute;
   background-color: #ffffff;
   height: 170px;
-  width: 438px;
+  width: 440px;
   overflow: auto;
   border-radius: 10px;
   top: 50px;
-  right: 1px;
+  right: -2px;
   gap: 4px;
   padding-inline-start: 0px;
   z-index: 2;
