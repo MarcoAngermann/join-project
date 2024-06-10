@@ -137,7 +137,7 @@ function renderBoardAddTaskHTML(boardStatus) {
 function renderUsersHTML(user, i) {
   return /*html*/ `
       <label for="checkbox${i}">
-          <li class="contactlist">        
+          <li class="contactlist" id="contactList${i}">        
               <div tabindex="0" class="emblem" style="background-color: ${user.color}">
                 ${user.emblem}
               </div> 
