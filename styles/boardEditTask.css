@@ -168,13 +168,12 @@ textarea {
 
 .edit-contactlist {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  gap: 8px;
+  gap: 12px;
   height: 40px;
-  padding: 0 16px;
   cursor: pointer;
+  padding: 0px 20px;
   border-radius: 10px;
 }
 
