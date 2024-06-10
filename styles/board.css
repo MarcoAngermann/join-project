@@ -202,6 +202,13 @@
   color: #2a3647;
 }
 
+.category h3{
+  color: white;
+  padding: 5px 15px 5px 15px;
+  border-radius: 10px;
+  font-weight: 400;
+}
+
 .imgMobile {
   height: 35px;
   width: 35px;
@@ -218,6 +225,14 @@
   cursor: pointer;
   filter: invert(53%) sepia(100%) saturate(305%) hue-rotate(153deg)
     brightness(91%) contrast(106%);
+}
+
+.bigTaskCategory{
+  color: white;
+  padding: 5px 25px 5px 25px;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 24px;
 }
 
 .big-subtasks {

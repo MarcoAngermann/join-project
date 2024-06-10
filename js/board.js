@@ -44,7 +44,7 @@ function renderSmallCardHTML(task) {
   return /*html*/ `
     <div draggable="true" ondragstart="startDragging(${task.cardId})" id="${task.cardId}" class="smallcard" onclick="showBigCard(${task.cardId}); openBigCardAnimation()">
       <div class="category">
-        <h3>${task.category}</h3>
+        <h3 style='background-color:${getBackgroundCategory(task)}'>${task.category}</h3>
         <div class="mobileBoard" id="mobileBoard" onclick="openMobileOptions(${task.cardId},event)"><img class="imgMobile" src="../assets/icons/more_vert_icon.svg"/></div>
         <div class="amobile_boardOptions" id="amobile_boardOptions${task.cardId}" style="display:none">            
             <p class="mobileClose"><b>Move To...</b><button class="btnClose" onclick="closeMobilOptions(event,${task.cardId})"><b>X</b></button></p>
@@ -72,6 +72,15 @@ function renderSmallCardHTML(task) {
       </div>
     </div> 
   `;
+}
+
+function getBackgroundCategory(task) {
+  switch (task.category) {
+    case 'User Story': return '#0038FF';
+    case 'Technical Task': return '#1FD7C1';
+    case 'Development': return '#FFBB2B';
+    case 'Editing': return '#FF5EB3';
+  }
 }
 
 function showSmallUsersEmblem(task) {
@@ -182,7 +191,7 @@ function renderBigCardHTML(cardId) {
   return /*html*/ `
     <div id="bigCard${task.cardId}" class="bigCard"  onclick="dontClose()">
       <div class="big-header">
-        <div><span>${task.category}</span></div>
+        <div><span class="bigTaskCategory" style='background-color:${getBackgroundCategory(task)}'>${task.category}</span></div>
         <div><img class="close" onclick="closeBigCard();" src="../assets/icons/close_icon.svg" alt="schließen"/></div>
       </div>
       <div class="big-title">
@@ -268,9 +277,8 @@ function renderBigSubtasksHTML(cardId, subtask, j) {
   return /*html*/ `
       <label for="checkbox${j}">
           <li class="bigSubtaskList">
-              <input class="big-card-checkbox" onclick="checkedSubtask(${cardId}, ${j})" type="checkbox"  ${
-    subtask.checked ? 'checked' : ''
-  } id="checkbox${j}" data-userid="${j}">
+              <input class="big-card-checkbox" onclick="checkedSubtask(${cardId}, ${j})" type="checkbox"  ${subtask.checked ? 'checked' : ''
+    } id="checkbox${j}" data-userid="${j}">
               <div class="contactName">${subtask.subtaskText}</div>
           </li>
       </label>`;
