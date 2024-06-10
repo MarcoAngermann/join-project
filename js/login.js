@@ -195,41 +195,25 @@ function moveIcon() {
   }, 3000);
 }
 
-//function moveIcons() {
-//  outWidth = window.innerWidth;
-//  if (outWidth <= 700) {
-//    document.getElementById('iconContainer').src =
-//      './assets/icons/joinWhite.svg';
-//    document.getElementById('containerLog').style.backgroundColor = '#2a3647';
-//    moveIcon();
-//  } else {
-//    moveIcon();
-//  }
-//}
-
 function renderSignUp() {
-  let containerLog = document.getElementById('formLogin');
+  let mainLoginContainer = document.getElementById('mainLoginContainer');
 
-  containerLog.innerHTML = renderSignUpHTML();
-  if (window.innerWidth <= 700) {
-    document
-      .getElementById('mobileDivSignUp')
-      .classList.add('d-none-important');
-  } else {
+  mainLoginContainer.innerHTML = renderSignUpHTML();
+  if (700 <= window.innerWidth) {
     document.getElementById('divSignUp').classList.add('d-none');
   }
 }
 
 function backToLogin() {
-  let containerLog = document.getElementById('formLogin');
+  let mainLoginContainer = document.getElementById('mainLoginContainer');
 
-  containerLog.innerHTML = renderLoginHTML();
-  if (window.innerWidth <= 700) {
+  mainLoginContainer.innerHTML = renderLoginHTML();
+  if (700 <= window.innerWidth) {
+    document.getElementById('divSignUp').classList.remove('d-none');
+  } else {
     document
       .getElementById('mobileDivSignUp')
       .classList.remove('d-none-important');
-  } else {
-    document.getElementById('divSignUp').classList.remove('d-none');
   }
 }
 

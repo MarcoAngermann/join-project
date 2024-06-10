@@ -38,5 +38,14 @@ function renderLoginHTML() {
       </button>
     </div>
   </form>
+        <div id="mobileDivSignUp" class="mobile_divSignUp">
+          <p class="styleTypography1">Not a Join user?</p>
+          <a
+            class="btnJoin style_BtnTypography2"
+            type="button"
+            onclick="renderSignUp()"
+            >Sign up</a
+          >
+        </div>
   `;
 }
