@@ -56,6 +56,7 @@ async function includeHTML() {
     }
   }
   focusSidebar();
+  focusMobileSidebar()
   getuseremblem();
   openSidebarRules();
 }
@@ -67,13 +68,27 @@ function errorFunction() {
 /*function zum focus() in der Sidebar zu generieren*/
 function focusSidebar() {
   let currentPage = window.location.href.split('/').pop();
-  let menu = document.getElementById('menu');
+  let menu = document.getElementById('mysidebar');
   let links = menu.getElementsByTagName('a');
   for (let i = 0; i < links.length; i++) {
     let linkHref = links[i].getAttribute('href');
     if (linkHref.replace('./', '') === currentPage.replace('?', '')) {
       links[i].focus();
       links[i].classList.add('active');
+      break; //Endet der Loop, wenn der href gefunde wird.
+    }
+  }
+}
+
+function focusMobileSidebar() {
+  let currentPage = window.location.href.split('/').pop();
+  let mobileMenu = document.getElementById('mobile-menu');
+  let mobileLinks = mobileMenu.getElementsByTagName('a');
+  for (let i = 0; i < mobileLinks.length; i++) {
+    let linkHref = mobileLinks[i].getAttribute('href');
+    if (linkHref.replace('./', '') === currentPage.replace('?', '')) {
+      mobileLinks[i].focus();
+      mobileLinks[i].classList.add('active');
       break; //Endet der Loop, wenn der href gefunde wird.
     }
   }
