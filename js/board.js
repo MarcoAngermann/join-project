@@ -454,6 +454,8 @@ function updateProgressBarDisplay(cardId, subtasks) {
   }
 }
 
+//mobile Board
+
 async function mobilemoveTo(status, cardId, event) {
   event.stopPropagation();
   currentDraggedElement = cardId;
@@ -462,15 +464,10 @@ async function mobilemoveTo(status, cardId, event) {
 
 function openMobileOptions(cardId, status ,event) {
   event.stopPropagation();
-  disabledMoveToStatusLink(status, cardId);
-  document.getElementById('amobile_boardOptions' + cardId).style.display =
-    'flex';
-} 
-
-function disabledMoveToStatusLink(status, cardId){    
   let link = document.getElementById('moveTo_'+ cardId + '_' + status);  
-      link.classList.add('disabled');    
-  }
+  link.classList.add('disabled');    
+  document.getElementById('amobile_boardOptions' + cardId).style.display = 'flex';
+} 
 
 function closeMobilOptions(event, cardId) {
   event.stopPropagation();
