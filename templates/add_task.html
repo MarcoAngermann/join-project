@@ -25,7 +25,12 @@
     
   <h1 class="headline-task">Add Task</h1>
   <form class="add-task-container" onsubmit="createNewTask(event);">
-    <div id="boardAddedToTask" class="board-added-to-task"></div>
+    <div id="taskAddedToBoard" class="task-added-to-board">
+      <div id="taskAddedToBoardStyle" class="task-added-to-board-style">
+        <span>Task added to board</span>
+        <img src="../assets/icons/board.svg" alt="">
+      </div>
+    </div>
     <div class="groupTask1-input">
       <span>Title<span class="required-color">*</span></span>
       <input id="title" type="text" required />
@@ -141,6 +146,11 @@
 
         <div id="subtask" class="subtask"></div>
         <div type="submit" class="addTaskBtn-Container">
+          <div>
+            <p class="required-field-text-mobile dnone">
+              <span class="required-color">*</span>This field is required
+            </p>
+          </div>
           <button formnovalidate class="btnClear" onclick="clearAllTasks(event)">
             Clear
             <img class="iconCancelSvg" src="../assets/icons/cancel.svg">           
