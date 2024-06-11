@@ -72,7 +72,10 @@ function myFunc() {
   } else {
     document.getElementById("divContactDetails").style.display = "flex";
     document.getElementById("divContactList").style.display = "flex";
-    document.getElementById("amobile_nameContact").style.display = "none";
+    let amobileDiv = document.getElementById("amobile_nameContact");
+    if (amobileDiv != null) {
+      amobileDiv.style.display = "none";
+    }
   }
 }
 
@@ -94,20 +97,21 @@ function backMobileContListe() {
 }
 function openMobileDialog() {
   let mobileMode = document.getElementById("amobile_nameContact");
-  if (mobileMode.style.display == "none") {
-    mobileMode.style.display = "flex";
+  if (mobileMode != null) {
+    if (mobileMode.style.display == "none") {
+      mobileMode.style.display = "flex";
+    }
+    else {
+      mobileMode.style.display = "none";
+    }
   }
-  else {
-    mobileMode.style.display = "none";
-  }
-
 }
 function renderContactinList(i) {
   return ` 
   <div class="headlineContact">
-      <div class="emblemInfo" id="emblem" style="background-color: ${contact['color']}">${contact['emblem']}</div>
+      <div class="emblemInfo" id="emblem" style="background-color: ${contacts[i]['color']}">${contacts[i]['emblem']}</div>
       <div class="nameContact">
-          ${contact['name']}
+          ${contacts[i]['name']}
         <div class="a_nameContact" id="a_nameContact">
             <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
             <a onclick="deleteContact(${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
@@ -117,9 +121,9 @@ function renderContactinList(i) {
   <div class="info">Contact Information</div>
   <div class="styleDivinfo">
     <div><b>Email</b></div>
-    <a id="email_contact">${contact['email']}</a>
+    <a id="email_contact">${contacts[i]['email']}</a>
     <div><b>Phone</b></div>
-    <div id="phone_contact">${contact['phone']}</div> 
+    <div id="phone_contact">${contacts[i]['phone']}</div> 
   
     <div class="mobileContact" onclick="openMobileDialog()"><img class="arrow" src="..//assets/icons/menu_ContactOptions.svg" />
       <div class="amobile_nameContact" id="amobile_nameContact" style="display:none">
@@ -188,11 +192,14 @@ src="../assets/icons/closeWhite_icon.svg"></button>
 }
 
 function closeDialog() {
+  let mobileMode = document.getElementById("amobile_nameContact");
+  if (mobileMode != null && mobileMode.style.display == 'flex') {
+    mobileMode.style.display = 'none';
+  }
   let dialog = document.getElementById('dialog');
   dialog.classList.add('d-none');
-  let mobileMode = document.getElementById("amobile_nameContact");
-  mobileMode.style.display = 'none';
 }
+
 
 function renderEmblem(name) {
   let aux = name.split(' ');
@@ -235,10 +242,32 @@ async function newContact(event) {
   };
   contacts.push(newContact);
   await postData('contacts', newContact);
+  showNewContactDetails(newContact);
+}
+
+function showNewContactDetails(newContact) {
   closeDialog();
   cleanContactControls();
   renderListContact();
+  document.getElementById('contactCreated').classList.remove('d-none');
+  for (let i = 0; i < contacts.length; i++) {    
+    if (newContact.name == contacts[i].name) {
+      let infoContact = document.getElementById('divDetails');
+      infoContact.innerHTML = ' ';
+      infoContact.classList.remove('move-left');
+      infoContact.innerHTML += renderContactinList(i);
+      mobileDetails();
+    }
+  }
+  contactCreatedDiv();
 }
+
+function contactCreatedDiv() {
+  setTimeout(() => {
+    document.getElementById('contactCreated').classList.add('d-none');
+  }, 2400);
+}
+
 
 function cleanContactControls() {
   document.getElementById('nameContact').value = '';
@@ -278,6 +307,9 @@ async function deleteContact(i) {
   document.getElementById('divDetails').innerHTML = '';
   await firebaseDelete(contactDelete);
   renderListContact();
+  if ( window.innerWidth <= 710) {
+    backMobileContListe();
+  }
 }
 
 async function firebaseDelete(contactDelete) {
@@ -289,3 +321,4 @@ async function firebaseDelete(contactDelete) {
     }
   }
 }
+
