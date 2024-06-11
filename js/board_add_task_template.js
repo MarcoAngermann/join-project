@@ -3,8 +3,11 @@ function renderBoardAddTaskHTML(boardStatus) {
   return /*html*/ `
 
   <div id="addTaskMainContainer" class="add-task-main-container" onclick="dontClose()">
-  <div id="boardAddedToTask" class="board-added-to-task dnone">
-    <img src="../assets/icons/task_added_to_board_animation.svg" alt="">
+  <div id="taskAddedToBoard" class="task-added-to-board dnone">
+    <div class="task-added-to-board-style">
+      <span>Task added to board</span>
+      <img src="../assets/icons/board.svg" alt="">
+    </div>
   </div>
   <div class="task-top">
       <h1 class="headline-task">Add Task</h1>

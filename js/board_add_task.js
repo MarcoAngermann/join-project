@@ -439,9 +439,9 @@ function clearAllCheckbox() {
 }
 
 function taskAddedToBoard() {
-  document.getElementById('boardAddedToTask').classList.remove('dnone');
+  document.getElementById('taskAddedToBoard').classList.remove('dnone');
   setTimeout(function () {
-    document.getElementById('boardAddedToTask').classList.add('dnone');
+    document.getElementById('taskAddedToBoard').classList.add('dnone');
   }, 3000);
 }
 
