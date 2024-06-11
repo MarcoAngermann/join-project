@@ -458,11 +458,14 @@ function clearAllCheckbox() {
 }
 
 function taskAddedToBoard() {
-  let boardAddedToTask = document.getElementById('boardAddedToTask');
+  let boardAddedToTask = document.getElementById('taskAddedToBoard');
+  let boardAddedToTaskContainer = document.getElementById(
+    'taskAddedToBoardStyle'
+  );
   boardAddedToTask.style.display = 'flex';
-  boardAddedToTask.classList.add('move-top');
+  boardAddedToTaskContainer.classList.add('move-top');
   setTimeout(function () {
-    document.getElementById('boardAddedToTask').style.display = 'none';
+    document.getElementById('taskAddedToBoard').style.display = 'none';
   }, 3000);
 }
 

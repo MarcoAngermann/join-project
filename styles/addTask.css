@@ -484,7 +484,7 @@ input[type='checkbox'] {
   background-color: white;
 }
 
-.board-added-to-task {
+.task-added-to-board {
   display: none;
   align-items: center;
   justify-content: center;
@@ -494,7 +494,20 @@ input[type='checkbox'] {
   left: 0;
   bottom: 0;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+}
+
+.task-added-to-board-style {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 70px;
+  width: 300px;
+  border-radius: 20px;
+  background-color: #2a3647;
+  color: #ffffff;
+  font-size: 20px;
 }
 
 @keyframes move-top {
