@@ -118,10 +118,15 @@ function showCategories() {
   }
 }
 
-function selectCategory(index) {
+function selectCategory(event,index) {
+  event.stopPropagation();
   let selectedCategory = categorys[index];
   document.getElementById('selectedCategory').innerHTML = selectedCategory;
-  showCategories();
+  showCategories(); 
+}
+
+function resetCategoryErrorMessage() {
+  document.getElementById('categoryErrorMessage').innerHTML = '';
 }
 
 function restrictPastDate() {
