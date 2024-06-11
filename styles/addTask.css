@@ -484,6 +484,33 @@ input[type='checkbox'] {
   background-color: white;
 }
 
+.board-added-to-task {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+@keyframes move-top {
+  from {
+    margin-top: 150%;
+  }
+
+  to {
+    margin-left: 0%;
+  }
+}
+
+.move-top {
+  animation: move-top 1s ease-in-out;
+}
+
 @media (max-width: 1300px) {
   .main-container {
     align-items: flex-start;

@@ -22,8 +22,10 @@
   <div w3-include-html="../templates/header.html"></div>
   <div w3-include-html="../templates/mobile_taskbar.html"></div>
   <div class="main-container">
+    
   <h1 class="headline-task">Add Task</h1>
   <form class="add-task-container" onsubmit="createNewTask(event);">
+    <div id="boardAddedToTask" class="board-added-to-task"></div>
     <div class="groupTask1-input">
       <span>Title<span class="required-color">*</span></span>
       <input id="title" type="text" required />

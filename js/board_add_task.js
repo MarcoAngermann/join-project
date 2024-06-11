@@ -346,10 +346,14 @@ async function createNewTaskBoard(boardStatus, event) {
     status: 'toDo',
     cardId: lastCardId + 1,
   };
-  resetUserDisplay();
-  await postData('tasks', task);
-  location.href = 'board.html';
-  clearAllTasks(event);
+  taskAddedToBoard();
+  setTimeout(async function () {
+    resetUserDisplay();
+    await postData('tasks', task);
+    clearAllTasks(event);
+    closeAddTaskBoard();
+    updateHTML();
+  }, 3000);
 }
 
 function resetCategoryErrorMessage() {

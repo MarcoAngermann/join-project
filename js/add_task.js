@@ -131,16 +131,15 @@ function showCategories() {
 }
 
 function selectCategory(event, index) {
-  event.stopPropagation(); 
+  event.stopPropagation();
   let selectedCategory = categorys[index];
   document.getElementById('selectedCategory').innerHTML = selectedCategory;
-  showCategories(); 
+  showCategories();
 }
 
 function resetCategoryErrorMessage() {
   document.getElementById('categoryErrorMessage').innerHTML = '';
 }
-
 
 function restrictPastDate() {
   let dateInput = document.getElementById('date');
@@ -378,10 +377,13 @@ async function createNewTask(event) {
     status: 'toDo',
     cardId: lastCardId + 1,
   };
-  resetUserDisplay();
-  await postData('tasks', task);
-  location.href = 'board.html';
-  clearAllTasks(event);
+  taskAddedToBoard();
+  setTimeout(async function () {
+    resetUserDisplay();
+    await postData('tasks', task);
+    location.href = 'board.html';
+    clearAllTasks(event);
+  }, 3000);
 }
 
 function resetCategoryErrorMessage() {
@@ -454,3 +456,19 @@ function clearAllCheckbox() {
     checkboxes[i].checked = false;
   }
 }
+
+function taskAddedToBoard() {
+  let boardAddedToTask = document.getElementById('boardAddedToTask');
+  boardAddedToTask.style.display = 'flex';
+  boardAddedToTask.classList.add('move-top');
+  setTimeout(function () {
+    document.getElementById('boardAddedToTask').style.display = 'none';
+  }, 3000);
+}
+
+//function taskAddedToBoard() {
+//  document.getElementById('boardAddedToTask').classList.remove('dnone');
+//  setTimeout(function () {
+//    document.getElementById('boardAddedToTask').classList.add('dnone');
+//  }, 3000);
+//}
