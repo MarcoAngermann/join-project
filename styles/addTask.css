@@ -150,11 +150,9 @@ textarea {
 
 .addTaskBtn-Container {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   gap: 16px;
-  margin-left: 100px;
 }
 
 .required-field-text {
@@ -575,10 +573,6 @@ input[type='checkbox'] {
     width: 400px;
   }
 
-  .addTaskBtn-Container {
-    margin-left: 15px;
-  }
-
   .btnClear {
     width: 100px;
     font-size: 18px;
@@ -703,10 +697,6 @@ input[type='checkbox'] {
     font-size: 16px;
   }
 
-  .addTaskBtn-Container {
-    margin-left: 15px;
-  }
-
   .btnClear {
     width: 100px;
     font-size: 18px;
@@ -725,7 +715,11 @@ input[type='checkbox'] {
   }
 
   .headline-task {
+    position: fixed;
+    top: 90px;
+    background-color: #f6f7f8;
     padding-left: 10%;
+    padding-top: 20px;
   }
 
   .seperator {
@@ -735,6 +729,8 @@ input[type='checkbox'] {
   .main-container {
     margin-left: 0px;
     align-items: center;
+    margin-top: 180px;
+    margin-bottom: 90px;
   }
 
   .required-field-text {
@@ -787,12 +783,20 @@ input[type='checkbox'] {
   }
 
   .addTaskBtn-Container {
-    margin-left: 15px;
+    justify-content: space-between;
+        position: fixed;
+        bottom: 75px;
+        background-color: #f6f7f8;
+        padding-bottom: 20px;
+    }
   }
 
   .btnClear {
-    width: 100px;
-    font-size: 18px;
+    display: none;
+  }
+
+  .required-field-text-mobile {
+    display: flex;
   }
 
   .btnTask {
@@ -879,10 +883,6 @@ input[type='checkbox'] {
 
   .contactName {
     font-size: 14px;
-  }
-
-  .addTaskBtn-Container {
-    margin-left: 0px;
   }
 
   .spanContactContainer {
