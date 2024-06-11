@@ -130,7 +130,6 @@ function doLogin(event) {
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
   let userExists = false;
-
   for (let key in usersJson) {
     let user = usersJson[key];
     if (email === user.email && password === user.password) {
@@ -142,13 +141,20 @@ function doLogin(event) {
       return;
     }
   }
-
   if (!userExists) {
-    console.log('Login failed: User not found or password incorrect');
-    alert(
-      'Login fehlgeschlagen: Benutzer nicht gefunden oder Passwort falsch.'
-    );
+    errorLogin();
+    // console.log('Login failed: User not found or password incorrect');
+    // alert(
+    //   'Login fehlgeschlagen: Benutzer nicht gefunden oder Passwort falsch.'
+    // );
   }
+}
+
+function errorLogin() {
+  document.getElementById('loginError').classList.remove('dnone');
+  setTimeout(function () {
+    document.getElementById('loginError').classList.add('dnone');
+  }, 3000);
 }
 
 function getGuestLogin(event) {

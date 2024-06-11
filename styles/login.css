@@ -6,6 +6,10 @@ body {
   box-sizing: border-box;
 }
 
+.dnone {
+  display: none !important;
+}
+
 .containerLog {
   display: flex;
   align-items: center;
@@ -366,6 +370,32 @@ form label {
     padding: 35px 45px 35px 45px;
     gap: 22px;
   }
+}
+
+.error-login {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 475px;
+  right: 0;
+  left: 385px;
+  bottom: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.8);
+} 
+
+.error-login-style {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  height: 70px;
+  width: 300px;
+  border-radius: 20px;
+  background-color: #2a3647;
+  color: #ffffff;
+  font-size: 20px;
 }
 
 @media (max-width: 550px) {
