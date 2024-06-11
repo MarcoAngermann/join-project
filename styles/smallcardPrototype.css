@@ -207,6 +207,18 @@
   border-radius: 10px;
 }
 
+.disabled { 
+  pointer-events: none; 
+  cursor: default !important; 
+  color: #a5a7a7;
+} 
+
+.disabled:hover,
+.disabled:focus,
+.disabled:active{
+  cursor: default !important;
+}
+
 .mobileClose {
   justify-content: space-between;
   align-items: center;
