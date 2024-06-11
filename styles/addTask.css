@@ -784,25 +784,24 @@ input[type='checkbox'] {
 
   .addTaskBtn-Container {
     justify-content: space-between;
-        position: fixed;
-        bottom: 75px;
-        background-color: #f6f7f8;
-        padding-bottom: 20px;
-    }
+    position: fixed;
+    bottom: 75px;
+    background-color: #f6f7f8;
+    padding-bottom: 20px;
   }
+}
 
-  .btnClear {
-    display: none;
-  }
+.btnClear {
+  display: none;
+}
 
-  .required-field-text-mobile {
-    display: flex;
-  }
+.required-field-text-mobile {
+  display: flex;
+}
 
-  .btnTask {
-    width: 180px;
-    font-size: 18px;
-  }
+.btnTask {
+  width: 180px;
+  font-size: 18px;
 }
 
 @media (max-width: 470px) {
