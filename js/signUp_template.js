@@ -27,7 +27,7 @@ function renderSignUpHTML() {
             </div>
 
             <div class="divBtn">
-                <button class="btnDisabled style_BtnTypography1" type="submit" id="btnSignUp">Sign up</button>
+                <button class="btn-disabled style_BtnTypography1" type="submit" id="btnSignUp">Sign up</button>
             </div>
         </form>
 

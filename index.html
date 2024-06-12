@@ -26,25 +26,30 @@
         <img src="./assets/icons/joinWhite.svg" alt="" />
       </div>
       <div class="containerLog d-none" id="containerLog">
-        <div class="headlineLogin">
-          <div id="divSignUp" class="divSignUp">
+        <div class="headline-login">
+          <div id="divSignUp" class="div-signup">
             <p class="styleTypography1">Not a Join user?</p>
             <a
               onclick="renderSignUp()"
-              class="btnJoin style_BtnTypography2"
+              class="btn-login style_BtnTypography2"
               type="button"
               >Sign up</a
             >
           </div>
         </div>
+        <div id="errorMessageContainer" class="error-message-container dnone">
+          <div id="loginError" class="error-login-style error-login ">Login failed: </br>Password or Email incorrect</div>
+        </div>
         
         <div id="mainLoginContainer" class="main-login-container">
+         
           <form
             id="formLogin"
-            class="formLogin"
+            class="form-login"
             onsubmit="return doLogin(event)"
           >
             <h1 class="title underline">Log in</h1>
+         
             <div class="groupLogin-input">
               <input
                 class="inputs style_InputTypography1"
@@ -63,7 +68,7 @@
                 placeholder="Password"
                 required
               />
-              <div id="loginError" class="error-login-style error-login dnone">Login failed: </br>Password or Email is incorrect</div>
+             
             </div>
           
             <div class="box-remember style_InputTypography2">
@@ -71,11 +76,11 @@
               <label for="remember"> Remember me</label>
             </div>
             <div class="divBtn">
-              <button class="btnJoin style_BtnTypography1" type="submit">
+              <button class="btn-login style_BtnTypography1" type="submit">
                 Log in
               </button>
               <button
-                class="btnGuest style_BtnTypography1"
+                class="btn-guest style_BtnTypography1"
                 id="Guest_Login"
                 onclick="getGuestLogin(event)"
               >
@@ -86,7 +91,7 @@
           <div id="mobileDivSignUp" class="mobile_divSignUp">
             <p class="styleTypography1">Not a Join user?</p>
             <a
-              class="btnJoin style_BtnTypography2"
+              class="btn-login style_BtnTypography2"
               type="button"
               onclick="renderSignUp()"
               >Sign up</a

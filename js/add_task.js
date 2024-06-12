@@ -48,7 +48,7 @@ function setPriorityStyles(
 }
 
 function togglePriority(priority) {
-  let elements = document.getElementsByClassName('prioBtn');
+  let elements = document.getElementsByClassName('prio-button');
   resetElements(elements);
 
   // Hintergrundfarbe, Textfarbe und SVG-Farbe basierend auf der ausgewählten Priorität festlegen
@@ -64,7 +64,7 @@ function togglePriority(priority) {
 
 // Speichern Sie die ursprüngliche Farbe jedes SVGs
 window.onload = function () {
-  let elements = document.getElementsByClassName('prioBtn');
+  let elements = document.getElementsByClassName('prio-button');
   for (let i = 0; i < elements.length; i++) {
     let svgPaths = elements[i].querySelectorAll('svg path');
     if (svgPaths) {

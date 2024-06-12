@@ -30,6 +30,9 @@
     font-weight: 400;
     font-size: 16px;
     gap: 8px;
+    width: 90px;
+    padding: 8px;
+    border-radius: 15px;
 }
 
 .a-nav-mobile:hover {
@@ -63,5 +66,7 @@
 @media (max-width: 470px) {
     .a-nav-mobile {
         font-size: 12px;
+        width: 65px;
+        padding: 6px;     
     }
 }

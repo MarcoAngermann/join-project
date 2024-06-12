@@ -9,7 +9,7 @@ function init() {
   let btn = document.getElementById('btnSignUp');
   btn.setAttribute('disabled', '');
   btn.classList.remove('btnJoin');
-  btn.classList.add('btnDisabled');
+  btn.classList.add('btn-disabled');
 }
 
 function isChecked() {
@@ -18,7 +18,7 @@ function isChecked() {
     const btn = document.getElementById('btnSignUp');
     btn.removeAttribute('disabled', '');
     btn.classList.add('btnJoin');
-    btn.classList.remove('btnDisabled');
+    btn.classList.remove('btn-disabled');
   } else {
     init();
   }
@@ -143,17 +143,13 @@ function doLogin(event) {
   }
   if (!userExists) {
     errorLogin();
-    // console.log('Login failed: User not found or password incorrect');
-    // alert(
-    //   'Login fehlgeschlagen: Benutzer nicht gefunden oder Passwort falsch.'
-    // );
   }
 }
 
 function errorLogin() {
-  document.getElementById('loginError').classList.remove('dnone');
+  document.getElementById('errorMessageContainer').classList.remove('dnone');
   setTimeout(function () {
-    document.getElementById('loginError').classList.add('dnone');
+    document.getElementById('errorMessageContainer').classList.add('dnone');
   }, 3000);
 }
 

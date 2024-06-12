@@ -53,24 +53,25 @@ function renderSmallCardHTML(task) {
   }</h3>
         <div class="mobileBoard" id="mobileBoard" onclick="openMobileOptions(${
           task.cardId
-        },event)"><img class="imgMobile" src="../assets/icons/more_vert_icon.svg"/></div>
+        }, '${task.status}', event)"><img class="imgMobile" src="../assets/icons/more_vert_icon.svg"/></div>
         <div class="amobile_boardOptions" id="amobile_boardOptions${
           task.cardId
         }" style="display:none">            
             <p class="mobileClose"><b>Move To...</b><button class="btnClose" onclick="closeMobilOptions(event,${
               task.cardId
             })"><b>X</b></button></p>
-            <a onclick="mobilemoveTo('toDo',${
+            <a id="moveTo_${task.cardId}_toDo" onclick="mobilemoveTo('toDo',${
               task.cardId
             },event)">To&nbsp;Do</a>
-            <a onclick="mobilemoveTo('inProgress',${
+            <a id="moveTo_${task.cardId}_inProgress" onclick="mobilemoveTo('inProgress',${
               task.cardId
             },event)">In&nbsp;Progress</a>
-            <a onclick="mobilemoveTo('awaitFeedback',${
+            <a id="moveTo_${task.cardId}_awaitFeedback" onclick="mobilemoveTo('awaitFeedback',${
               task.cardId
             },event)">Await&nbsp;Feedback</a>
-            <a onclick="mobilemoveTo('done',${task.cardId},event)">Done</a>
-        </div>                   
+            <a id="moveTo_${task.cardId}_done" onclick="mobilemoveTo('done',${task.cardId},event)">Done</a>
+        </div>  
+                         
       </div>
       <div class="title">
         <h4>${task.title}</h4>
@@ -453,17 +454,21 @@ function updateProgressBarDisplay(cardId, subtasks) {
   }
 }
 
+//mobile Board
+
 async function mobilemoveTo(status, cardId, event) {
   event.stopPropagation();
   currentDraggedElement = cardId;
   moveTo(event, status);
 }
 
-function openMobileOptions(cardId, event) {
+function openMobileOptions(cardId, status ,event) {
   event.stopPropagation();
-  document.getElementById('amobile_boardOptions' + cardId).style.display =
-    'flex';
-}
+  let link = document.getElementById('moveTo_'+ cardId + '_' + status);  
+  link.classList.add('disabled');    
+  document.getElementById('amobile_boardOptions' + cardId).style.display = 'flex';
+} 
+
 function closeMobilOptions(event, cardId) {
   event.stopPropagation();
   document.getElementById('amobile_boardOptions' + cardId).style.display =

@@ -20,7 +20,7 @@ body {
   position: relative;
 }
 
-.headlineLogin {
+.headline-login {
   display: inline-flex;
   justify-content: flex-end;
   width: 100%;
@@ -28,14 +28,14 @@ body {
   align-items: flex-start;
 }
 
-.imgLogo {
+.img-logo {
   display: none;
   justify-content: flex-start;
   width: 120px;
   height: 120px;
 }
 
-.divSignUp {
+.div-signup {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -78,7 +78,7 @@ body {
 }
 
 /*Style_Buttons dunkle Blau*/
-.btnJoin {
+.btn-login {
   background-color: #2a3647;
   color: #ffffff;
   border-radius: 8px;
@@ -89,13 +89,13 @@ body {
   text-decoration: none;
 }
 
-.btnJoin:hover {
+.btn-login:hover {
   cursor: pointer;
   background-color: #29abe2;
   border: 0.5px solid #29abe2;
 }
 
-.btnGuest {
+.btn-guest {
   background-color: white;
   color: #2a3647;
   border-radius: 8px;
@@ -105,13 +105,13 @@ body {
   padding: 0px 15px 0px 15px;
 }
 
-.btnGuest:hover {
+.btn-guest:hover {
   cursor: pointer;
   color: #29abe2;
   border: 0.5px solid #29abe2;
 }
 
-.btnDisabled {
+.btn-disabled {
   background-color: #f6f7f8;
   color: #89898a;
   border-radius: 8px;
@@ -121,7 +121,7 @@ body {
   padding: 0px 15px 0px 15px;
 }
 
-.formLogin {
+.form-login {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -352,6 +352,15 @@ form label {
     display: none;
   }
 
+  .error-login {
+    /* position: relative;
+    top: 244px !important;
+    left: 99px !important;
+    right: 0;
+    bottom: 0; */
+    z-index: 10;
+  }
+
   .mobile_divSignUp {
     display: flex;
   }
@@ -364,7 +373,7 @@ form label {
     padding-bottom: 5px;
   }
 
-  .formLogin {
+  .form-login {
     width: 530px;
     height: 400px;
     padding: 35px 45px 35px 45px;
@@ -376,26 +385,33 @@ form label {
   display: none;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 475px;
-  right: 0;
-  left: 385px;
-  bottom: 0;
-  z-index: 10;
+  z-index: 99;
   background-color: rgba(0, 0, 0, 0.8);
 } 
 
 .error-login-style {
   display: flex;
-  justify-content: space-evenly;
+  padding: 20px;
   align-items: center;
   text-align: center;
-  height: 70px;
-  width: 300px;
   border-radius: 20px;
-  background-color: #ff0008;
-  color: #ffffff;
+  background-color: #2a3647;
+  color: #ff0000;
   font-size: 20px;
+}
+
+.error-message-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: hidden;
 }
 
 @media (max-width: 550px) {
@@ -413,11 +429,11 @@ form label {
     font-size: 18px;
   }
 
-  .btnGuest {
+  .btn-guest {
     height: 40px;
   }
 
-  .btnJoin {
+  .btn-login {
     height: 40px;
   }
 
@@ -426,7 +442,7 @@ form label {
     height: 160px;
   }
 
-  .formLogin {
+  .form-login {
     width: 450px;
     height: 530px;
     padding: 25px;
@@ -450,7 +466,7 @@ form label {
     height: 160px;
   }
 
-  .formLogin {
+  .form-login {
     width: 315px;
     height: 430px;
     padding: 25px;
