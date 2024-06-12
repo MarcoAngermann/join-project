@@ -352,6 +352,15 @@ form label {
     display: none;
   }
 
+  .error-login {
+    /* position: relative;
+    top: 244px !important;
+    left: 99px !important;
+    right: 0;
+    bottom: 0; */
+    z-index: 10;
+  }
+
   .mobile_divSignUp {
     display: flex;
   }
@@ -376,26 +385,33 @@ form label {
   display: none;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: 475px;
-  right: 0;
-  left: 385px;
-  bottom: 0;
-  z-index: 10;
+  z-index: 99;
   background-color: rgba(0, 0, 0, 0.8);
 } 
 
 .error-login-style {
   display: flex;
-  justify-content: space-evenly;
+  padding: 20px;
   align-items: center;
   text-align: center;
-  height: 70px;
-  width: 300px;
   border-radius: 20px;
-  background-color: #ff0008;
-  color: #ffffff;
+  background-color: #2a3647;
+  color: #ff0000;
   font-size: 20px;
+}
+
+.errorMessageContainer {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: hidden;
 }
 
 @media (max-width: 550px) {

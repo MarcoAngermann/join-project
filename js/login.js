@@ -147,9 +147,9 @@ function doLogin(event) {
 }
 
 function errorLogin() {
-  document.getElementById('loginError').classList.remove('dnone');
+  document.getElementById('errorMessageContainer').classList.remove('dnone');
   setTimeout(function () {
-    document.getElementById('loginError').classList.add('dnone');
+    document.getElementById('errorMessageContainer').classList.add('dnone');
   }, 3000);
 }
 
