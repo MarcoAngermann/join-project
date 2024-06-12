@@ -323,7 +323,7 @@ progress[value]::-webkit-progress-value {
 @media (max-width: 800px) {
   .edit-main {
     flex-direction: column;
-    padding-bottom: 50px;
+    padding-bottom: 100px;
   }
 
   .drag-area {
