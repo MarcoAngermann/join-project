@@ -143,10 +143,6 @@ function doLogin(event) {
   }
   if (!userExists) {
     errorLogin();
-    // console.log('Login failed: User not found or password incorrect');
-    // alert(
-    //   'Login fehlgeschlagen: Benutzer nicht gefunden oder Passwort falsch.'
-    // );
   }
 }
 
