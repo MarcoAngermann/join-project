@@ -241,3 +241,7 @@ function validateForm() {
     isChecked();
   }
 }
+
+function resetError() {
+  document.getElementById('pwErrorCheck').style.display = 'none';
+}

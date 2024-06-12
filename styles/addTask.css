@@ -127,7 +127,7 @@ textarea {
   border: 1px solid;
 }
 
-.btnTask:hover {
+.btn-task:hover {
   background-color: #29abe2;
   border: 0.5px solid #29abe2;
   cursor: pointer;
@@ -527,7 +527,7 @@ input[type='checkbox'] {
   .main-container {
     align-items: flex-start;
     margin-left: 260px;
-    padding: 0px 25px 0px 25px;
+    padding: 0px 25px 16px 25px;
   }
 }
 
@@ -576,11 +576,6 @@ input[type='checkbox'] {
 
   .btnClear {
     width: 100px;
-    font-size: 18px;
-  }
-
-  .btnTask {
-    width: 180px;
     font-size: 18px;
   }
 }
@@ -780,7 +775,7 @@ input[type='checkbox'] {
     width: 100%;
     left: 0;
     background-color: #f6f7f8;
-    padding-bottom: 20px;
+    padding-bottom: 16px;
   }
 
   .required-field-text-mobile {
