@@ -23,7 +23,8 @@
             <img class="img-logo" id="imgLogoID" src="../assets/icons/join_login.svg">
         </div>
 
-        <form class="formSignUp" id="formSignUp" onsubmit="AddUser(event)">
+        <form oninput="validateForm()" class="formSignUp" id="formSignUp" onsubmit="AddUser(event)">
+
             <div class="headlineSignUp">
                 <a class="a_headlineSignUp" onclick="backToLogin()"><img class="icoArrowLeft"
                         src="../assets/icons/arrow-left-line.svg"></i></a>
@@ -36,25 +37,27 @@
                     style="background-image: url(../assets/icons/mail_icon.svg)" placeholder="Email" required>
                 <input class="inputs style_InputTypography1" id="password"
                     style="background-image: url(../assets/icons/lock_icon.svg)" placeholder="Password"
-                    onkeyup="keyDown()" onclick="showPassword()" required>
+                    onclick="showPassword()" required>
                 <input class="inputs style_InputTypography1" name="confirmPass"
                     style="background-image: url(../assets/icons/lock_icon.svg)" id="passwordConfirm"
-                    placeholder="Confirm Password" onkeyup="keyDownConf()" onclick="showPasswordConf()" required>
-                <span id="pwErrorCheck" style="color: red; display: none;"> * Password and confirmPass are not the
-                    same</span>
+                    placeholder="Confirm Password"  onclick="showPasswordConf()" required>
+                    <div class="confirm-error">
+                    <span id="pwErrorCheck" class="pw-error-check" ></span>
+                </div>
             </div>
             <div class="box-rememberSignup style_InputTypography2">
-                <input class="checkBox" type="checkbox" id="acepptRules" onchange="isChecked()">
+                <input class="checkBox" type="checkbox" id="acepptRules">
                 <span for="remember"> I accept the &nbsp; <a class="a_formSignUp" href="./privacy_policy.html"> Privacy policy</a></span>
             </div>
 
             <div class="divBtn">
-                <button class="btnJoin style_BtnTypography1" type="submit" id="btnSignUp">Sign up</button>
+                <button class="btn-disabled style_BtnTypography1" type="submit" id="btnSignUp">Sign up</button>
             </div>
         </form>
+
         <div class="footerLogin">
-            <a class="a_footer style_InputTypography2" href="./privacy_policy.html">Privacy Policy</a>
-            <a class="a_footer style_InputTypography2" href="./legal_notice.html">Legal notice</a>
+            <a class="a_footer style_InputTypography2" href="../privacy_policy.html">Privacy Policy</a>
+            <a class="a_footer style_InputTypography2" href="../legal_notice.html">Legal notice</a>
         </div>
 
 

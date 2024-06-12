@@ -14,10 +14,10 @@ function renderSignUpHTML() {
                     style="background-image: url(./assets/icons/mail_icon.svg)" placeholder="Email" required>
                 <input class="inputs style_InputTypography1" id="password"
                     style="background-image: url(./assets/icons/lock_icon.svg)" placeholder="Password"
-                    onkeyup="keyDown()" onclick="showPassword()" required>
+                    onclick="showPassword()" required>
                 <input class="inputs style_InputTypography1" name="confirmPass"
                     style="background-image: url(./assets/icons/lock_icon.svg)" id="passwordConfirm"
-                    placeholder="Confirm Password" onkeyup="keyDownConf()" onclick="showPasswordConf()" required>
+                    placeholder="Confirm Password" onclick="showPasswordConf()" required>
                 <span id="pwErrorCheck" style="color: red; display: none;"> * Password and confirmPass are not the
                     same</span>
             </div>
@@ -35,7 +35,5 @@ function renderSignUpHTML() {
         <div id="dialogSingUp" class="dialog-bg d-none">
             <img class="dialog" src="./assets/icons/You_Signed_Up_successfully_animation_icon.svg">
         </div>
-
-    </div>
     `;
 }

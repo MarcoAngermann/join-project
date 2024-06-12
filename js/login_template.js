@@ -14,7 +14,6 @@ function renderLoginHTML() {
       <input
         class="inputs style_InputTypography1"
         id="password"
-        onkeydown="keyDown()"
         onclick="showPassword()"
         style="background-image: url(./assets/icons/lock_icon.svg)"
         placeholder="Password"

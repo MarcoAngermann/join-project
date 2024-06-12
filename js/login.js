@@ -8,20 +8,15 @@ let usersJson;
 function init() {
   let btn = document.getElementById('btnSignUp');
   btn.setAttribute('disabled', '');
-  btn.classList.remove('btnJoin');
+  btn.classList.remove('btn-join');
   btn.classList.add('btn-disabled');
 }
 
 function isChecked() {
-  let checkBox = document.getElementById('acepptRules');
-  if (checkBox.checked == true) {
-    const btn = document.getElementById('btnSignUp');
-    btn.removeAttribute('disabled', '');
-    btn.classList.add('btnJoin');
-    btn.classList.remove('btn-disabled');
-  } else {
-    init();
-  }
+  const btn = document.getElementById('btnSignUp');
+  btn.removeAttribute('disabled', '');
+  btn.classList.add('btn-join');
+  btn.classList.remove('btn-disabled');
 }
 
 // Funktion, um zu überprüfen, ob die E-Mail bereits existiert
@@ -45,6 +40,8 @@ async function AddUser(event) {
   // Überprüfen, ob das Passwort mit der Bestätigung übereinstimmt
   if (password !== confirmpassword) {
     document.getElementById('pwErrorCheck').style.display = 'flex';
+    document.getElementById('pwErrorCheck').innerText =
+      '* Passwords are not the same';
     return false;
   }
 
@@ -160,34 +157,24 @@ function getGuestLogin(event) {
   location.href = './templates/summary.html';
 }
 
-function keyDown() {
-  let image = document.getElementById('password');
-  image.style.backgroundImage = "url('./assets/icons/visibility.svg')";
-}
-
 function showPassword() {
   let image = document.getElementById('password');
   if (image.type == 'password') {
-    image.style.backgroundImage = "url('./assets/icons/visibility_off.svg')";
+    image.style.backgroundImage = "url('../assets/icons/visibility.svg')";
     image.type = 'text';
   } else {
-    image.style.backgroundImage = "url('./assets/icons/visibility.svg')";
+    image.style.backgroundImage = "url('../assets/icons/visibility_off.svg')";
     image.type = 'password';
   }
-}
-
-function keyDownConf() {
-  let image = document.getElementById('passwordConfirm');
-  image.style.backgroundImage = "url('./assets/icons/visibility.svg')";
 }
 
 function showPasswordConf() {
   let image = document.getElementById('passwordConfirm');
   if (image.type == 'password') {
-    image.style.backgroundImage = "url('./assets/icons/visibility_off.svg')";
+    image.style.backgroundImage = "url('../assets/icons/visibility.svg')";
     image.type = 'text';
   } else {
-    image.style.backgroundImage = "url('./assets/icons/visibility.svg')";
+    image.style.backgroundImage = "url('../assets/icons/visibility_off.svg')";
     image.type = 'password';
   }
 }
@@ -198,19 +185,15 @@ function moveIcon() {
   }, 3000);
 }
 
-function renderSignUp() {
-  let mainLoginContainer = document.getElementById('mainLoginContainer');
-
-  mainLoginContainer.innerHTML = renderSignUpHTML();
+function signUp() {
+  location.href = './templates/signUp.html';
   if (700 <= window.innerWidth) {
     document.getElementById('divSignUp').classList.add('d-none');
   }
 }
 
 function backToLogin() {
-  let mainLoginContainer = document.getElementById('mainLoginContainer');
-
-  mainLoginContainer.innerHTML = renderLoginHTML();
+  location.href = '../index.html';
   if (700 <= window.innerWidth) {
     document.getElementById('divSignUp').classList.remove('d-none');
   } else {
@@ -237,5 +220,24 @@ function joinAnimation() {
     mobileanimationwhite.classList.remove('d-none');
     mobileanimation.classList.add('mobile-icon-container');
     mobileanimationwhite.classList.add('mobile-icon-container-white');
+  }
+}
+
+function validateForm() {
+  let name = document.getElementById('name').value;
+  let email = document.getElementById('email').value;
+  let password = document.getElementById('password').value;
+  let confirmpassword = document.getElementById('passwordConfirm').value;
+  let checkBox = document.getElementById('acepptRules');
+  if (
+    name == '' ||
+    email == '' ||
+    password == '' ||
+    confirmpassword == '' ||
+    checkBox.checked == false
+  ) {
+    init();
+  } else {
+    isChecked();
   }
 }

@@ -468,10 +468,3 @@ function taskAddedToBoard() {
     document.getElementById('taskAddedToBoard').style.display = 'none';
   }, 3000);
 }
-
-//function taskAddedToBoard() {
-//  document.getElementById('boardAddedToTask').classList.remove('dnone');
-//  setTimeout(function () {
-//    document.getElementById('boardAddedToTask').classList.add('dnone');
-//  }, 3000);
-//}

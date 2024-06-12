@@ -59,6 +59,17 @@ body {
   line-height: 24px;
 }
 
+.confirm-error {
+  height: 15px;
+  width: 100%;
+}
+
+.pw-error-check {
+  color: red;
+  display: none;
+  font-size: 14px;
+}
+
 .style_BtnTypography2 {
   font-weight: 700;
   font-size: 16px;
@@ -75,6 +86,23 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 19.2px;
+}
+
+.btn-join {
+  background-color: #2a3647;
+  color: #ffffff;
+  border-radius: 8px;
+  min-width: 90px;
+  height: 49px;
+  border: 0.5px solid #2a3647;
+  padding: 0px 20px 0px 20px;
+  text-decoration: none;
+}
+
+.btn-join:hover {
+  cursor: pointer;
+  background-color: #29abe2;
+  border: 0.5px solid #29abe2;
 }
 
 /*Style_Buttons dunkle Blau*/
@@ -269,7 +297,6 @@ form label {
   align-items: center;
   flex-direction: column;
   width: 598px;
-  height: 630px;
   padding: 48px 88px 48px 88px;
   border-radius: 30px;
   box-shadow: 0px 0px 14px 3px #0000000a;
@@ -348,7 +375,7 @@ form label {
 /*Resposive Login*/
 
 @media (max-width: 700px) {
-  .divSignUp {
+  .div-signup {
     display: none;
   }
 
@@ -387,7 +414,7 @@ form label {
   justify-content: center;
   z-index: 99;
   background-color: rgba(0, 0, 0, 0.8);
-} 
+}
 
 .error-login-style {
   display: flex;
@@ -422,7 +449,6 @@ form label {
   .divBtn {
     flex-direction: column;
     gap: 15px;
-    margin-top: 15px;
   }
 
   .style_BtnTypography1 {
@@ -494,7 +520,6 @@ form label {
 
   .formSignUp {
     width: 480px;
-    height: 560px;
     padding: 28px 38px 28px 38px;
   }
 }
@@ -502,7 +527,6 @@ form label {
 @media (max-width: 500px) {
   .formSignUp {
     width: 380px;
-    height: 560px;
     padding: 28px 38px 28px 38px;
   }
 
@@ -519,7 +543,6 @@ form label {
 @media (max-width: 400px) {
   .formSignUp {
     width: 315px;
-    height: 560px;
     padding: 8px 18px 8px 18px;
   }
 
