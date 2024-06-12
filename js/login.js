@@ -9,7 +9,7 @@ function init() {
   let btn = document.getElementById('btnSignUp');
   btn.setAttribute('disabled', '');
   btn.classList.remove('btnJoin');
-  btn.classList.add('btnDisabled');
+  btn.classList.add('btn-disabled');
 }
 
 function isChecked() {
@@ -18,7 +18,7 @@ function isChecked() {
     const btn = document.getElementById('btnSignUp');
     btn.removeAttribute('disabled', '');
     btn.classList.add('btnJoin');
-    btn.classList.remove('btnDisabled');
+    btn.classList.remove('btn-disabled');
   } else {
     init();
   }
