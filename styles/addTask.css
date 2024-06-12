@@ -72,7 +72,7 @@
   gap: 16px;
 }
 
-.prioBtn {
+.prio-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,7 +87,7 @@
   font-size: 21px;
 }
 
-.prioBtn:hover {
+.prio-button:hover {
   cursor: pointer;
 }
 
@@ -95,7 +95,7 @@ textarea {
   resize: none;
 }
 
-.btnTask {
+.btn-task {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -673,7 +673,7 @@ input[type='checkbox'] {
     gap: 12px;
   }
 
-  .prioBtn {
+  .prio-button {
     width: 125px;
     font-size: 18px;
   }
@@ -858,7 +858,7 @@ input[type='checkbox'] {
     width: 100%;
   }
 
-  .prioBtn {
+  .prio-button {
     width: 100%;
   }
 
