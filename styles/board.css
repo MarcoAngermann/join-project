@@ -54,11 +54,11 @@
   align-items: center;
   color: #b5b4b4;
   background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
 }
 
 .edit-main {
   display: flex;
-  flex-wrap: wrap;
   margin-top: 24px;
   gap: 18px;
 }
@@ -321,6 +321,52 @@ progress[value]::-webkit-progress-value {
 }
 
 @media (max-width: 800px) {
+  .edit-main {
+    flex-direction: column;
+    padding-bottom: 50px;
+  }
+
+  .drag-area {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .todo {
+    width: 100%;
+  }
+
+  .inProgress {
+    width: 100%;
+  }
+
+  .awaitFeedback {
+    width: 100%;
+  }
+
+  .done {
+    width: 100%;
+  }
+
+  .todo-head {
+    padding-right: 20px;
+  }
+
+  .inProgress-head {
+    padding-right: 20px;
+  }
+
+  .awaitFeedback-head {
+    padding-right: 20px;
+  }
+
+  .done-head {
+    padding-right: 20px;
+  }
+
+  .empty-board {
+    width: 40%;
+  }
+
   .top h1 {
     font-size: 48px;
   }
@@ -359,11 +405,6 @@ progress[value]::-webkit-progress-value {
   .input-area {
     width: 450px;
     height: 40px;
-  }
-
-  .drag-area {
-    flex-direction: row;
-    flex-wrap: wrap;
   }
 }
 

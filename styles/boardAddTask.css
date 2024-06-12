@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
@@ -596,7 +596,10 @@ input[type='checkbox'] {
   .add-task-main-container {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     padding: 40px 20px 40px 20px;
+    height: 600px;
+    overflow: auto;
   }
 }
 
@@ -645,10 +648,6 @@ input[type='checkbox'] {
 
   .group-task2-input {
     gap: 10px;
-  }
-
-  .addtask-button-container {
-    margin-bottom: 90px;
   }
 }
 

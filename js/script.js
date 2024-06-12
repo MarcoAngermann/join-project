@@ -23,22 +23,22 @@ let isTasksArrayLoading = false;
 
 async function tasksArray() {
   if (isTasksArrayLoading) {
-    return; 
+    return;
   }
   isTasksArrayLoading = true;
   try {
-    console.log('Calling tasksArray function'); 
-    tasks = []; 
-    console.log('Tasks array after reset:', tasks); 
+    console.log('Calling tasksArray function');
+    tasks = [];
+    console.log('Tasks array after reset:', tasks);
 
     let tasksJson = await loadData('tasks');
-    console.log('Loaded tasks JSON:', tasksJson); 
+    console.log('Loaded tasks JSON:', tasksJson);
 
     for (let key in tasksJson) {
       let task = tasksJson[key];
       tasks.push(task);
     }
-    console.log('Tasks array after loading data:', tasks); 
+    console.log('Tasks array after loading data:', tasks);
   } finally {
     isTasksArrayLoading = false;
   }
@@ -66,7 +66,7 @@ async function includeHTML() {
     }
   }
   focusSidebar();
-  focusMobileSidebar()
+  focusMobileSidebar();
   getuseremblem();
   openSidebarRules();
 }
@@ -121,9 +121,8 @@ async function getuseremblem() {
   if (currentUser != null) {
     let emblemUser = document.getElementById('emblemUser');
     emblemUser.innerHTML = currentUser.emblem;
-  }
-  else {
-    emblemUser.innerHTML = "";
+  } else {
+    emblemUser.innerHTML = '';
   }
 }
 
@@ -137,13 +136,9 @@ async function openSidebarRules() {
   let sidebarRules = document.getElementById('menu');
   let mobileSidebarRules = document.getElementById('mobile-mysidebar');
   if (currentUser == null) {
-    sidebarRules.style.display = "none";
-    mobileSidebarRules.style.display = "none";
+    sidebarRules.style.display = 'none';
+    mobileSidebarRules.style.display = 'none';
     let arrowBack = document.getElementById('backSummaryRules');
-    arrowBack.href = '../index.html';
+    arrowBack.href = './index.html';
   }
 }
-
-
-
-
