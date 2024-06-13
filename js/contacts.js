@@ -24,15 +24,15 @@ function renderListContact() {
       i == 0 ||
       contact['name'].slice(0, 1) != contacts[i - 1]['name'].slice(0, 1)
     ) {
-      contentList.innerHTML += `<div class="divAlphabet">${contact['name']
+      contentList.innerHTML += `<div class="a-z-contact-list ">${contact['name']
         .slice(0, 1)
         .toUpperCase()}</div>`;
     }
     contentList.innerHTML += `
-            <div class="divShortContact" onclick="showDetailContact(${i})">
-            <div class="contactEmblem" style="background-color: ${contact['color']
+            <div class="contact-list-container" onclick="showDetailContact(${i})">
+            <div class="contact-emblem" style="background-color: ${contact['color']
       }"> ${renderEmblem(contact['name'])} </div>
-            <div class="divShortInfo">
+            <div class="contact-info-container">
                     <p>${contact['name']}</p>
                     <a>${contact['email']}</a>
             </div>
@@ -164,7 +164,7 @@ function renderContactDialog(title1, functionNew, btnText) {
 <button class="btnMobileClose" onclick="closeDialog()"><img class="imgBtns"
 src="../assets/icons/closeWhite_icon.svg"></button>
   <img class="iconJoinContact" src="../assets/icons/joinWhite.svg">
-  <div class="titleContact">${title1}</div>
+  <div class="contact-details-title">${title1}</div>
   <div id="textAdd" class="textAdd">Task are better with a team</div>
   <div class="seperatorAdd"></div>
 </div>
@@ -176,15 +176,15 @@ src="../assets/icons/closeWhite_icon.svg"></button>
       src="../assets/icons/cancel.svg"></button>
   <form class="addcontactForm" onsubmit=${functionNew}>
     <div class="groupContact-input">
-      <input class="inputsContact style_InputTypography1" type="text" id="nameContact"
+      <input class="inputsContact inputfield-text-style" type="text" id="nameContact"
         style="background-image: url(../assets/icons/personInput_icon.svg)" placeholder="Name" required>
-      <input class="inputsContact style_InputTypography1" type="email" id="emailContact"
+      <input class="inputsContact inputfield-text-style" type="email" id="emailContact"
         style="background-image: url(../assets/icons/mail_icon.svg)" placeholder="Email" required>
-      <input class="inputsContact style_InputTypography1" type="tel" id="phoneContact"
+      <input class="inputsContact inputfield-text-style" type="tel" id="phoneContact"
         style="background-image: url(../assets/icons/call_icon.svg)" placeholder="Phone" required>
       <div class="divBtnForm">
-        <button class="btnGuest style_InputTypography1" onclick="closeDialog()">Cancel <b>X</b></button>
-        <button class="btnJoin style_BtnTypography1" type="submit">${btnText} <img class="imgBtns" src="../assets/icons/checkWhite.svg"></button>
+        <button class="button-guest inputfield-text-style" onclick="closeDialog()">Cancel <b>X</b></button>
+        <button class="add-contact-button-mobile button-text-style" type="submit">${btnText} <img class="imgBtns" src="../assets/icons/checkWhite.svg"></button>
       </div>
   </form>
 </div>
