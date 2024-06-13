@@ -676,10 +676,6 @@
 }
 
 @media (max-width: 710px) {
-  .contacts-list-style {
-    width: 70%;
-  }
-
   .contact-details-container {
     display: none;
     width: 100%;
@@ -709,7 +705,7 @@
 }
 
 @media (max-width: 450px) {
-  .divList {
+  .contacts-container {
     width: 100%;
   }
 
