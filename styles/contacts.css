@@ -40,7 +40,7 @@
   height: 49px;
   border: 0.5px solid #2a3647;
   padding: 0px 15px 0px 15px;
-  
+
 }
 
 .add-contact-button:hover {
@@ -104,7 +104,7 @@
   line-height: 24px;
   text-align: left;
   padding: 17px 36px 17px 36px;
-  border-bottom: 2px solid #D1D1D1 ; 
+  border-bottom: 2px solid #D1D1D1;
 }
 
 .contact-list-container {
@@ -205,7 +205,7 @@
   font-weight: 400;
 }
 
-.mobile-dropdown-menu a:hover .button-images  {
+.mobile-dropdown-menu a:hover .button-images {
   filter: invert(60%) sepia(88%) saturate(1665%) hue-rotate(165deg) brightness(93%) contrast(89%);
 }
 
@@ -252,6 +252,7 @@
   text-align: center;
   justify-items: center;
   align-content: center;
+  margin-left: 10px;
 }
 
 .name-contact {
@@ -429,10 +430,10 @@
 }
 
 .animation-container {
-  position: relative; 
-  width: 100%; 
-  height: 74px; 
-  overflow: hidden; 
+  position: relative;
+  width: 100%;
+  height: 74px;
+  overflow: hidden;
   bottom: 120px;
 }
 
@@ -454,15 +455,15 @@
     margin-left: 100%;
   }
 
- 40%, 60% {
+  40%,
+  60% {
     margin-left: calc(50% - 150px);
   }
 
- 100% {
+  100% {
     margin-left: 100%;
   }
 }
-
 
 .button-mobile-close {
   display: none;
@@ -629,7 +630,7 @@
 
   .join-add-contact {
     width: 100%;
-    height: 250px;
+    height: 240px;
     border-radius: 20px 20px 0px 0px;
     align-content: flex-start;
     padding-top: 30px;
@@ -639,7 +640,10 @@
     display: none;
   }
 
-  .form-edit-style  {
+.emblem-info{
+  margin-top: -40px;
+}
+  .form-edit-style {
     height: 50%;
   }
 
@@ -654,7 +658,7 @@
 
   .edit-icon {
     position: fixed;
-    margin-top: 220px;
+    margin-top: 205px;
   }
 
   .edit-icon img {
@@ -672,6 +676,10 @@
     justify-content: center;
     margin-top: 25px;
     margin-bottom: 25px;
+  }
+
+  .inputfield-text-style {
+    font-size: 18px;
   }
 }
 
@@ -726,7 +734,7 @@
   }
 
   .join-add-contact {
-    height: 250px;
+    height: 240px;
     border-radius: 20px 20px 0px 0px;
     align-content: flex-start;
     padding: 20px 20px 0px 20px;
@@ -735,6 +743,10 @@
   .add-text {
     font-size: 25px;
     margin: 12px 0px 12px 0px;
+  }
+
+  .inputfield-text-style {
+    font-size: 14px;
   }
 }
 
@@ -776,6 +788,7 @@
     font-size: 25px;
     height: 60px;
     width: auto;
+    margin-top: -30px;
   }
 
   .name-contact {
