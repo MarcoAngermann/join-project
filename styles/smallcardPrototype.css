@@ -11,6 +11,10 @@
   background-color: #ffffff;
 }
 
+.smallcard:hover {
+  rotate: -3deg;
+}
+
 .information {
   display: flex;
   justify-content: space-between;
