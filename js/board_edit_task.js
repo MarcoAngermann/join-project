@@ -91,7 +91,7 @@ function editAddSubtask() {
     boardEdit[0].subtask.push(newSubtask);
     document.getElementById('editSubtaskInput').value = '';
     renderEditSubtask(boardEdit[0].subtask);
-    //editRemoveSubtask();
+    editRemoveSubtask();
   }
 }
 
@@ -131,6 +131,9 @@ function editThisSubtask(i) {
 
 function editCheckSubtask(i) {
   document.getElementById(`editSubtaskList${i}`).readOnly = true;
+  boardEdit[0].subtask[i].subtaskText = document.getElementById(
+    `editSubtaskList${i}`
+  ).value;
   edit = document.getElementById(`edit-images${i}`);
   edit.innerHTML = checkThisSubtaskHTML(i);
   document

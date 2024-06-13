@@ -343,7 +343,7 @@ async function createNewTaskBoard(boardStatus, event) {
     priority: getSelectedPrio(),
     category: selectedCategory,
     subtask: subtaskList,
-    status: 'toDo',
+    status: boardStatus,
     cardId: lastCardId + 1,
   };
   taskAddedToBoard();
@@ -366,18 +366,6 @@ function resetCategoryErrorMessage() {
   categoryErrorMessage.style.color = '';
   categoryErrorMessage.innerHTML = '';
 }
-
-// document.addEventListener('DOMContentLoaded', function() {
-//   document.getElementById('arrowDownCategory').addEventListener('click', function() {
-//     let spanContactContainer = document.getElementById('selectedCategoryContainer');
-//     let categoryErrorMessage = document.getElementById('categoryErrorMessage');
-//     spanContactContainer.style.border = '';
-//     categoryErrorMessage.style.display = 'none';
-//     categoryErrorMessage.style.color = '';
-//     categoryErrorMessage.innerHTML = '';
-//   });
-
-// });
 
 function clearAllTasks(event) {
   // Verhindert das Standardverhalten des Buttons (das Absenden des Formulars)
