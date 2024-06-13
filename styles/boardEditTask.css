@@ -185,14 +185,14 @@ textarea {
   width: 100%;
 }
 
-.edit-contactListSelected {
+.edit-contactlist-selected {
   background-color: #2a3647;
   border: none;
   outline: #2a3647;
   color: white;
 }
 
-.edit-contactListSelected:hover {
+.edit-contactlist-selected:hover {
   background-color: #091931;
 }
 

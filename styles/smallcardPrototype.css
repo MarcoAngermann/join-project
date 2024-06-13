@@ -32,7 +32,7 @@
   max-height: 60px;
 }
 
-.showBigCard {
+.show-bigcard {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,7 +50,7 @@
   display: none;
 }
 
-.bigCard {
+.bigcard {
   display: flex;
   flex-direction: column;
   width: 550px;
@@ -101,11 +101,11 @@
   border-radius: 50%;
 }
 
-.bigCard img:hover {
+.bigcard img:hover {
   cursor: pointer;
 }
 
-.bigCard-edit {
+.bigcard-edit {
   display: flex;
   justify-content: flex-end;
   gap: 8px;
@@ -136,7 +136,7 @@
   display: inline-flex;
 }
 
-.bigUserEmblem {
+.big-useremblem {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -147,12 +147,12 @@
   font-weight: 400;
 }
 
-.smallUsersEmblem {
+.small-usersemblem {
   display: flex;
   margin-left: 8px;
 }
 
-.smallUserEmblem {
+.small-useremblem {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -241,7 +241,7 @@
 }
 
 @media (max-width: 800px) {
-  .bigCard {
+  .bigcard {
     height: 75%;
     width: 80%;
   }
@@ -260,7 +260,7 @@
 }
 
 @media (max-width: 600px) {
-  .bigCard {
+  .bigcard {
     width: 100%;
     padding: 30px 24px 30px 20px;
   }

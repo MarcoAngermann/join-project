@@ -87,7 +87,7 @@ function editAddSubtask() {
   // Überprüfe, ob bereits 5 Subtasks vorhanden sind
   if (boardEdit[0].subtask.length < 5) {
     document.getElementById('editSubtaskInput').placeholder = 'Add new Subtask';
-    let newSubtask={'subtaskText':input, 'checked': false};
+    let newSubtask = { subtaskText: input, checked: false };
     boardEdit[0].subtask.push(newSubtask);
     document.getElementById('editSubtaskInput').value = '';
     renderEditSubtask(boardEdit[0].subtask);
@@ -101,7 +101,8 @@ function editDeleteSubtask(i) {
   document.getElementById('editSubtaskInput').value = '';
   document.getElementById('editSubtaskInput').readOnly = false;
   document.getElementById('editSubtaskInput').style = 'color:black;';
-  document.getElementById('editSubtaskContainer').style.border = '1px solid #d1d1d1';
+  document.getElementById('editSubtaskContainer').style.border =
+    '1px solid #d1d1d1';
 }
 
 function renderEditSubtask(subtasks) {
@@ -119,8 +120,12 @@ function editThisSubtask(i) {
   document.getElementById(`editSubtaskList${i}`).readOnly = false;
   edit = document.getElementById(`edit-images${i}`);
   edit.innerHTML = editThisSubtaskHTML(i);
-  document.getElementById(`edit-main-subtask-container${i}`).classList.remove('edit-subtasklist');
-  document.getElementById(`edit-main-subtask-container${i}`).classList.add('edit-list');
+  document
+    .getElementById(`edit-main-subtask-container${i}`)
+    .classList.remove('edit-subtasklist');
+  document
+    .getElementById(`edit-main-subtask-container${i}`)
+    .classList.add('edit-list');
   document.getElementById(`edit-images${i}`).classList.add('flex');
 }
 
@@ -128,8 +133,12 @@ function editCheckSubtask(i) {
   document.getElementById(`editSubtaskList${i}`).readOnly = true;
   edit = document.getElementById(`edit-images${i}`);
   edit.innerHTML = checkThisSubtaskHTML(i);
-  document.getElementById(`edit-main-subtask-container${i}`).classList.add('edit-subtasklist');
-  document.getElementById(`edit-main-subtask-container${i}`).classList.remove('edit-list');
+  document
+    .getElementById(`edit-main-subtask-container${i}`)
+    .classList.add('edit-subtasklist');
+  document
+    .getElementById(`edit-main-subtask-container${i}`)
+    .classList.remove('edit-list');
   document.getElementById(`edit-images${i}`).classList.remove('flex');
 }
 
@@ -175,7 +184,7 @@ function editTogglePriority(priority) {
   let elements = document.getElementsByClassName('edit-priobtn');
   resetEditElements(elements);
   // Hintergrundfarbe, Textfarbe und SVG-Farbe basierend auf der ausgewählten Priorität festlegen
-  let selectedElement = document.getElementById('edit'+ priority+ 'Prio');
+  let selectedElement = document.getElementById('edit' + priority + 'Prio');
   if (priority === 'urgent') {
     setEditPriorityStyles(selectedElement, '#FF3D00', 'white', 'white');
   } else if (priority === 'medium') {
@@ -268,16 +277,15 @@ function showEditUsersEmblem() {
     let contactListChecked = document.getElementById('edit-contactlist' + i);
     let checkedContact = document.getElementById(`editCheckbox${i}`);
     if (checkedContact.checked == true) {
-      contactListChecked.classList.add('edit-contactListSelected');
+      contactListChecked.classList.add('edit-contactlist-selected');
       if (renderedCount < 5) {
         usersEmblem.innerHTML += renderEditEmblemUsers(user);
         renderedCount++;
       } else {
         extraCount++;
       }
-    }
-    else{
-      contactListChecked.classList.remove('edit-contactListSelected');
+    } else {
+      contactListChecked.classList.remove('edit-contactlist-selected');
     }
   }
   if (extraCount > 0) {
@@ -333,7 +341,7 @@ async function updateEditBoard(cardId, updatedTask) {
   for (let key in tasksJSON) {
     let task = tasksJSON[key];
     if (task.cardId == cardId) {
-      await putData(`tasks/${key}/`,updatedTask);
+      await putData(`tasks/${key}/`, updatedTask);
     }
   }
 }

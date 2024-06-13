@@ -27,21 +27,20 @@ h3 {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 3px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
   background: #ffffff;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #344358; 
+  background: #344358;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  
-  background: #2a3647; 
+  background: #2a3647;
 }

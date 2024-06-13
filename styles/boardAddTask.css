@@ -265,14 +265,14 @@ textarea {
   width: 100%;
 }
 
-.contactListSelected {
+.contactlist-selected {
   background-color: #2a3647;
   border: none;
   outline: #2a3647;
   color: white;
 }
 
-.contactListSelected:hover {
+.contactlist-selected:hover {
   background-color: #091931;
 }
 

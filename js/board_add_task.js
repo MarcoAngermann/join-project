@@ -118,11 +118,11 @@ function showCategories() {
   }
 }
 
-function selectCategory(event,index) {
+function selectCategory(event, index) {
   event.stopPropagation();
   let selectedCategory = categorys[index];
   document.getElementById('selectedCategory').innerHTML = selectedCategory;
-  showCategories(); 
+  showCategories();
 }
 
 function resetCategoryErrorMessage() {
@@ -146,7 +146,7 @@ function showUsersEmblem() {
     let contactListChecked = document.getElementById('contactList' + i);
     let checkedContact = document.getElementById(`checkbox${i}`);
     if (checkedContact.checked == true) {
-      contactListChecked.classList.add('contactListSelected');
+      contactListChecked.classList.add('contactlist-selected');
       if (renderedCount < 5) {
         usersEmblem.innerHTML += renderEmblemUsers(contact);
         renderedCount++;
@@ -154,7 +154,7 @@ function showUsersEmblem() {
         extraCount++;
       }
     } else {
-      contactListChecked.classList.remove('contactListSelected');
+      contactListChecked.classList.remove('contactlist-selected');
     }
   }
   if (extraCount > 0) {
@@ -268,7 +268,7 @@ function getSelectedPrio() {
 
 function getSelectedUserIds() {
   let checkboxes = document.querySelectorAll(
-    '.contactList input[type="checkbox"]:checked'
+    '.contactlist input[type="checkbox"]:checked'
   );
   let selectedUserIds = [];
   for (let checkbox of checkboxes) {

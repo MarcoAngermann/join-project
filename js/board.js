@@ -53,7 +53,9 @@ function renderSmallCardHTML(task) {
   }</h3>
         <div class="mobileBoard" id="mobileBoard" onclick="openMobileOptions(${
           task.cardId
-        }, '${task.status}', event)"><img class="imgMobile" src="../assets/icons/more_vert_icon.svg"/></div>
+        }, '${
+    task.status
+  }', event)"><img class="imgMobile" src="../assets/icons/more_vert_icon.svg"/></div>
         <div class="amobile_boardOptions" id="amobile_boardOptions${
           task.cardId
         }" style="display:none">            
@@ -61,15 +63,21 @@ function renderSmallCardHTML(task) {
               task.cardId
             })"><b>X</b></button></p>
             <a id="moveTo_${task.cardId}_toDo" onclick="mobilemoveTo('toDo',${
+    task.cardId
+  },event)">To&nbsp;Do</a>
+            <a id="moveTo_${
               task.cardId
-            },event)">To&nbsp;Do</a>
-            <a id="moveTo_${task.cardId}_inProgress" onclick="mobilemoveTo('inProgress',${
+            }_inProgress" onclick="mobilemoveTo('inProgress',${
+    task.cardId
+  },event)">In&nbsp;Progress</a>
+            <a id="moveTo_${
               task.cardId
-            },event)">In&nbsp;Progress</a>
-            <a id="moveTo_${task.cardId}_awaitFeedback" onclick="mobilemoveTo('awaitFeedback',${
-              task.cardId
-            },event)">Await&nbsp;Feedback</a>
-            <a id="moveTo_${task.cardId}_done" onclick="mobilemoveTo('done',${task.cardId},event)">Done</a>
+            }_awaitFeedback" onclick="mobilemoveTo('awaitFeedback',${
+    task.cardId
+  },event)">Await&nbsp;Feedback</a>
+            <a id="moveTo_${task.cardId}_done" onclick="mobilemoveTo('done',${
+    task.cardId
+  },event)">Done</a>
         </div>  
                          
       </div>
@@ -84,7 +92,9 @@ function renderSmallCardHTML(task) {
       <p class="subtask-progress-count" id="subtasksCount${task.cardId}"></p>
       </div>
       <div class="information">
-        <div class="smallUsersEmblem" id="smallUsersEmblem${task.cardId}"></div>
+        <div class="small-usersemblem" id="smallUsersEmblem${
+          task.cardId
+        }"></div>
         <div class="priority" id="priority${task.cardId}">
             <img src="../assets/icons/${task.priority}.svg" alt="">
         </div>
@@ -141,7 +151,7 @@ function renderGreyEmblem(remainingCount) {
 
 function renderSmallUsersEmblem(user) {
   return /*html*/ `
-      <div class="smallUserEmblem" style="background-color: ${user.color}" id="${user.userId}">
+      <div class="small-useremblem" style="background-color: ${user.color}" id="${user.userId}">
       ${user.emblem}
     </div>  `;
 }
@@ -212,9 +222,9 @@ async function showBigCard(cardId) {
 function renderBigCardHTML(cardId) {
   let task = tasks.find((t) => t.cardId == cardId);
   return /*html*/ `
-    <div id="bigCard${task.cardId}" class="bigCard"  onclick="dontClose()">
+    <div id="bigCard${task.cardId}" class="bigcard"  onclick="dontClose()">
       <div class="big-header">
-        <div><span class="bigTaskCategory" style='background-color:${getBackgroundCategory(
+        <div><span class="big-task-category" style='background-color:${getBackgroundCategory(
           task
         )}'>${task.category}</span></div>
         <div><img class="close" onclick="closeBigCard();" src="../assets/icons/close_icon.svg" alt="schließen"/></div>
@@ -245,7 +255,7 @@ function renderBigCardHTML(cardId) {
         <div id="bigSubtasks" class="bigSubtasks">
         </div>
       </div>
-      <div class="bigCard-edit">
+      <div class="bigcard-edit">
         <div id="bigDelete" class="big-delete" onclick="deleteTaskOfBoard(${
           task.cardId
         })">
@@ -282,7 +292,7 @@ async function showBigUsersEmblem(cardId) {
 function renderBigEmblemUsers(user) {
   return /*html*/ `
   <div class="big-single-user">
-      <div class="bigUserEmblem" style="background-color: ${user.color}" id="${user.userId}">
+      <div class="big-useremblem" style="background-color: ${user.color}" id="${user.userId}">
         ${user.emblem}
       </div>  
       <span>${user.name}</span>
@@ -305,11 +315,11 @@ async function renderBigSubtasks(cardId) {
 function renderBigSubtasksHTML(cardId, subtask, j) {
   return /*html*/ `
       <label for="checkbox${j}">
-          <li class="bigSubtaskList">
+          <li class="big-subtasklist">
               <input class="big-card-checkbox" onclick="checkedSubtask(${cardId}, ${j})" type="checkbox"  ${
     subtask.checked ? 'checked' : ''
   } id="checkbox${j}" data-userid="${j}">
-              <div class="contactName">${subtask.subtaskText}</div>
+              <div class="contactname">${subtask.subtaskText}</div>
           </li>
       </label>`;
 }
@@ -397,7 +407,7 @@ function getElementIdByStatus(status) {
 
 function getSelectedUserIds() {
   let checkboxes = document.querySelectorAll(
-    '.contactList input[type="checkbox"]:checked'
+    '.contactlist input[type="checkbox"]:checked'
   );
   let selectedUserIds = [];
   for (let checkbox of checkboxes) {
@@ -462,12 +472,13 @@ async function mobilemoveTo(status, cardId, event) {
   moveTo(event, status);
 }
 
-function openMobileOptions(cardId, status ,event) {
+function openMobileOptions(cardId, status, event) {
   event.stopPropagation();
-  let link = document.getElementById('moveTo_'+ cardId + '_' + status);  
-  link.classList.add('disabled');    
-  document.getElementById('amobile_boardOptions' + cardId).style.display = 'flex';
-} 
+  let link = document.getElementById('moveTo_' + cardId + '_' + status);
+  link.classList.add('disabled');
+  document.getElementById('amobile_boardOptions' + cardId).style.display =
+    'flex';
+}
 
 function closeMobilOptions(event, cardId) {
   event.stopPropagation();

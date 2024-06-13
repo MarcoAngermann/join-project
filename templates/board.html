@@ -31,7 +31,7 @@
         <div class="top-left">
           <h1>Board</h1>
           <img
-            class="topPlus"
+            class="top-add-task"
             onclick="showBoardAddTask('toDo')"
             src="..//assets/icons/add_icon_white.svg"
           />
@@ -66,7 +66,7 @@
             <h3>To Do</h3>
             <img
               onclick="showBoardAddTask('toDo'); boardAddTaskAnimation()"
-              class="plusBtn-svg"
+              class="plus-btn-svg"
               src="..//assets/icons/plusbuttonBoard.svg"
             />
           </div>
@@ -78,12 +78,12 @@
             ondragleave="removeHighlight('toDo')"
           ></div>
         </div>
-        <div class="inProgress">
-          <div class="inProgress-head">
+        <div class="in-progress">
+          <div class="in-progress-head">
             <h3>In Progress</h3>
             <img
               onclick="showBoardAddTask('inProgress'); boardAddTaskAnimation()"
-              class="plusBtn-svg"
+              class="plus-btn-svg"
               src="..//assets/icons/plusbuttonBoard.svg"
             />
           </div>
@@ -96,12 +96,12 @@
           ></div>
         </div>
 
-        <div class="awaitFeedback">
-          <div class="awaitFeedback-head">
+        <div class="await-feedback">
+          <div class="await-feedback-head">
             <h3>Await Feedback</h3>
             <img
               onclick="showBoardAddTask('awaitFeedback'); boardAddTaskAnimation()"
-              class="plusBtn-svg"
+              class="plus-btn-svg"
               src="..//assets/icons/plusbuttonBoard.svg"
             />
           </div>
@@ -127,7 +127,7 @@
           ></div>
         </div>
         <div onclick="closeBigCard()">
-          <div id="showBigCard" class="showBigCard dnone"></div>
+          <div id="showBigCard" class="show-bigcard dnone"></div>
         </div>
         <div
           onclick="closeAddTaskBoard()"
