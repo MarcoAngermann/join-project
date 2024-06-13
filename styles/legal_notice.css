@@ -1,4 +1,4 @@
-.legal_notice {
+.legal-notice {
   margin: 200px 100px 32px 300px;
   position: sticky;
   display: flex;
@@ -17,7 +17,7 @@
 }
 
 @media (max-width: 1425px) {
-  .legal_notice {
+  .legal-notice {
     margin: 200px 100px 32px 300px;
   }
 
@@ -27,7 +27,7 @@
 }
 
 @media (max-width: 1050px) {
-  .legal_notice {
+  .legal-notice {
     margin: 200px 50px 32px 80px;
   }
 
@@ -42,7 +42,7 @@
 
 
 @media (max-width: 500px) {
-  .legal_notice {
+  .legal-notice {
     margin: 200px 30px 32px 30px;
   }
 
@@ -56,7 +56,7 @@
 }
 
 @media (max-width: 380px) {
-  .legal_notice {
+  .legal-notice {
     margin: 200px 10px 32px 10px;
   }
 
