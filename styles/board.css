@@ -60,7 +60,10 @@
 .edit-main {
   display: flex;
   margin-top: 24px;
+  height: calc(100vh - 260px);
   gap: 18px;
+  overflow: auto;
+  flex-wrap: wrap;
 }
 
 .todo {
@@ -184,7 +187,6 @@
 .drag-area {
   height: 100%;
   border-radius: 10px;
-  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -324,6 +326,7 @@ progress[value]::-webkit-progress-value {
   .edit-main {
     flex-direction: column;
     padding-bottom: 100px;
+    flex-wrap: nowrap;
   }
 
   .drag-area {
