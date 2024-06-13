@@ -31,7 +31,7 @@
         <img src="../assets/icons/board.svg" alt="">
       </div>
     </div>
-    <div class="groupTask1-input">
+    <div class="first-task-input-container">
       <span>Title<span class="required-color">*</span></span>
       <input id="title" type="text" required />
       <span>Description</span>
@@ -40,13 +40,13 @@
 
 
 
-      <div onclick="showUsers()" class="contactContainer">
-        <span class="spanContactContainer">Select user to assign</span>
+      <div onclick="showUsers()" class="contact-container">
+        <span class="select-user-text">Select user to assign</span>
         <img id="arrowDownUser" src="../assets/icons/arrow_down_icon.svg" alt="">
         <img id="arrowUpUser" src="../assets/icons/arrow_up_icon.svg" style="display: none;">
         <ul id="users" class="users"></ul>
       </div>
-      <div id="usersEmblem" class="usersEmblem"></div>
+      <div id="usersEmblem" class="users-emblem"></div>
       
       <div>
         <p class="required-field-text">
@@ -55,7 +55,7 @@
       </div>
     </div>
     <div class="seperator"></div>
-    <div class="groupTask2-input">
+    <div class="second-task-input-container">
       <span>Due date<span class="required-color">*</span></span>
       <input id="date" type="date" required />
       <span>Prio</span>
@@ -71,7 +71,7 @@
               fill="#FF3D00" />
           </svg>
         </div>
-        <div class="prio-button midBtn-Color" id="midPrio"  onclick="togglePriority('medium')">
+        <div class="prio-button medium-button-color" id="midPrio"  onclick="togglePriority('medium')">
           Medium
           <svg width="21" height="8" viewBox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -99,12 +99,12 @@
 
 
 
-      <div onclick="showCategories()" class="contactContainer"id="selectedCategoryContainer">
-        <span class="spanContactContainer"  id="selectedCategory">Select task category</span>
+      <div onclick="showCategories()" class="contact-container"id="selectedCategoryContainer">
+        <span class="select-user-text"  id="selectedCategory">Select task category</span>
         <img id="arrowDownCategory" src="../assets/icons/arrow_down_icon.svg" alt="">
         <img id="arrowUpCategory" src="../assets/icons/arrow_up_icon.svg" style="display: none;">       
         <ul id="tasks" class="tasks"></ul>
-        <span id="categoryErrorMessage" class="categoryErrorMessage"></span>
+        <span id="categoryErrorMessage" class="category-error-message"></span>
       </div>
       
       
@@ -145,13 +145,13 @@
         </div>
 
         <div id="subtask" class="subtask"></div>
-        <div type="submit" class="addTaskBtn-Container">
+        <div type="submit" class="task-button-container">
           <div>
             <p class="required-field-text-mobile dnone">
               <span class="required-color">*</span>This field is required
             </p>
           </div>
-          <button formnovalidate class="btnClear" onclick="clearAllTasks(event)">
+          <button formnovalidate class="clear-button" onclick="clearAllTasks(event)">
             Clear
             <img class="iconCancelSvg" src="../assets/icons/cancel.svg">           
           </button>

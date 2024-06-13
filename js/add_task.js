@@ -88,11 +88,11 @@ function renderUsers() {
 function renderUsersHTML(contact, i) {
   return /*html*/ `
       <label for="checkbox${i}">
-          <li class="contactList" id="contactList${i}">        
+          <li class="contact-list" id="contactList${i}">        
               <div tabindex="0" class="emblem" style="background-color: ${contact.color}">
                 ${contact.emblem}
               </div> 
-              <div class="contactName" >${contact.name}</div> 
+              <div class="contact-name" >${contact.name}</div> 
               <input class="user-checkbox" onclick="showUsersEmblem()" type="checkbox" id="checkbox${i}" data-userid="${contact.userId}">          
           </li>
       </label> `;
@@ -107,9 +107,9 @@ function renderCategorys() {
 }
 function renderCategorysHTML(i) {
   return /*html*/ `
-          <li class="contactList">
+          <li class="contact-list">
                 <span for="">
-                    <div class="categorylist" tabindex="0" onclick="selectCategory(event, ${i})">
+                    <div class="category-list" tabindex="0" onclick="selectCategory(event, ${i})">
                       ${categorys[i]}
                     </div>
                 </span>
@@ -157,7 +157,7 @@ function showUsersEmblem() {
     let contactListChecked = document.getElementById('contactList' + i);
     let checkedContact = document.getElementById(`checkbox${i}`);
     if (checkedContact.checked == true) {
-      contactListChecked.classList.add('contactListSelected');
+      contactListChecked.classList.add('contact-list-selected');
       if (renderedCount < 5) {
         usersEmblem.innerHTML += renderEmblemUsers(contact);
         renderedCount++;
@@ -165,7 +165,7 @@ function showUsersEmblem() {
         extraCount++;
       }
     } else {
-      contactListChecked.classList.remove('contactListSelected');
+      contactListChecked.classList.remove('contact-list-selected');
     }
   }
   if (extraCount > 0) {
@@ -264,7 +264,7 @@ function renderSubtask() {
 
 function renderSubtaskHTML(i) {
   return /*html*/ `
-    <div class="subtaskList" id="mainSubtask-container${i}">
+    <div class="subtask-list" id="mainSubtask-container${i}">
             <input
               readonly
               type="text"
@@ -286,10 +286,10 @@ function editSubtask(i) {
   edit.innerHTML = editSubtaskHTML(i);
   document
     .getElementById(`mainSubtask-container${i}`)
-    .classList.remove('subtaskList');
+    .classList.remove('subtask-list');
   document
     .getElementById(`mainSubtask-container${i}`)
-    .classList.add('editsubtaskList');
+    .classList.add('edit-subtask-list');
   document.getElementById(`edit-images${i}`).classList.add('flex');
 }
 
