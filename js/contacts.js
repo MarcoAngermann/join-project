@@ -108,9 +108,9 @@ function openMobileDialog() {
 }
 function renderContactinList(i) {
   return ` 
-  <div class="headlineContact">
-      <div class="emblemInfo" id="emblem" style="background-color: ${contacts[i]['color']}">${contacts[i]['emblem']}</div>
-      <div class="nameContact">
+  <div class="headline-contact">
+      <div class="emblem-info" id="emblem" style="background-color: ${contacts[i]['color']}">${contacts[i]['emblem']}</div>
+      <div class="name-contact">
           ${contacts[i]['name']}
         <div class="a_nameContact" id="a_nameContact">
             <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
@@ -125,8 +125,8 @@ function renderContactinList(i) {
     <div><b>Phone</b></div>
     <div id="phone_contact">${contacts[i]['phone']}</div> 
   
-    <div class="mobileContact" onclick="openMobileDialog()"><img class="arrow" src="..//assets/icons/menu_ContactOptions.svg" />
-      <div class="amobile_nameContact" id="amobile_nameContact" style="display:none">
+    <div class="mobile-contact" onclick="openMobileDialog()"><img class="arrow" src="..//assets/icons/menu_ContactOptions.svg" />
+      <div class="mobile-dropdown-menu" id="amobile_nameContact" style="display:none">
         <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
         <a onclick="deleteContact( ${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
       </div>
@@ -149,7 +149,7 @@ function openDialog(newContact, i) {
     let btnText = 'Save';
     dialog.innerHTML = renderContactDialog(title1, functionNew, btnText);
     document.getElementById('iconContact').outerHTML =
-      `<div class="emblemInfo" id="emblemContact" style="background-color: ${contact['color']}">${contact['emblem']}</div>`;
+      `<div class="emblem-info" id="emblemContact" style="background-color: ${contact['color']}">${contact['emblem']}</div>`;
     document.getElementById('textAdd').classList.add('d-none');
     document.getElementById('nameContact').value = contact['name'];
     document.getElementById('emailContact').value = contact['email'];
