@@ -177,7 +177,7 @@
   border: 1px solid #29abe2;
 }
 
-.mobileContact {
+.mobile-contact {
   justify-content: flex-end;
   margin-right: 25px;
   display: none;
@@ -185,7 +185,7 @@
   position: relative;
 }
 
-.amobile_nameContact {
+.mobile-dropdown-menu {
   display: none;
   flex-direction: column;
   right: 5px;
@@ -199,17 +199,17 @@
   position: absolute;
 }
 
-.amobile_nameContact :hover {
+.mobile-dropdown-menu :hover {
   cursor: pointer;
   color: #29abe2;
   font-weight: 400;
 }
 
-.amobile_nameContact a:hover .imgBtns {
+.mobile-dropdown-menu a:hover .button-images  {
   filter: invert(60%) sepia(88%) saturate(1665%) hue-rotate(165deg) brightness(93%) contrast(89%);
 }
 
-.divDetails {
+.contacts-details-container {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -233,7 +233,7 @@
   animation: move-left 1s ease-in-out;
 }
 
-.headlineContact {
+.headline-contact {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -241,7 +241,7 @@
   height: 120px;
 }
 
-.emblemInfo {
+.emblem-info {
   width: 120px;
   height: 120px;
   padding: 10px;
@@ -254,14 +254,14 @@
   align-content: center;
 }
 
-.nameContact {
+.name-contact {
   display: flex;
   flex-direction: column;
   gap: 13px;
   font-size: 47px;
 }
 
-.a_nameContact {
+.a-name-contact {
   display: flex;
   align-items: center;
   font-size: 16px;
@@ -269,19 +269,19 @@
   gap: 13px;
 }
 
-.a_nameContact img {
+.a-name-contact img {
   width: 24px;
   height: 24px;
   vertical-align: bottom;
 }
 
-.a_nameContact a:hover {
+.a-name-contact a:hover {
   cursor: pointer;
   color: #29abe2;
   font-weight: 600;
 }
 
-.a_nameContact a:hover .imgBtns {
+.a-name-contact a:hover .button-images {
   filter: invert(60%) sepia(88%) saturate(1665%) hue-rotate(165deg) brightness(93%) contrast(89%);
 }
 
@@ -293,7 +293,7 @@
   align-content: center;
 }
 
-.styleDivinfo {
+.contact-information {
   display: flex;
   flex-direction: column;
   font-size: 16px;
@@ -331,7 +331,7 @@
   justify-items: center;
 }
 
-.joinAddContact {
+.join-add-contact {
   background-color: #2a3647;
   border: 3px solid #2a3647;
   border-radius: 20px 0px 0px 20px;
@@ -341,30 +341,30 @@
   padding: 0px 48px 0px 48px;
 }
 
-.iconJoinContact {
+.icon-join-contact {
   width: 55px;
   height: auto;
   margin-bottom: 16px;
 }
 
-.textAdd {
+.add-text {
   font-size: 27px;
   font-weight: 400;
   line-height: 32.4px;
   margin: 16px 0px 16px 0px;
 }
 
-.seperatorAdd {
+.seperator-add {
   width: 90px;
   height: 0px;
   border: 2px solid #29abe2;
 }
 
-.iconEdit {
+.edit-icon {
   margin: 30px;
 }
 
-.addcontactForm {
+.add-contact-form {
   display: flex;
   gap: 32px;
   margin-right: 40px;
@@ -373,7 +373,7 @@
   justify-content: center;
 }
 
-.groupContact-input {
+.group-contact-input {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -382,7 +382,7 @@
   gap: 16px;
 }
 
-.inputsContact {
+.inputs-contact {
   background-repeat: no-repeat;
   background-position: right 10px center;
   width: 100%;
@@ -394,23 +394,23 @@
   cursor: pointer;
 }
 
-.divBtnForm {
+.form-button {
   display: flex;
   margin-top: 32px;
   gap: 24px;
   align-content: center;
 }
 
-.imgBtns {
+.button-images {
   vertical-align: middle;
   background-color: transparent;
 }
 
-.styleDivFormEdit {
+.form-edit-style {
   height: 100%;
 }
 
-.btnClose {
+.button-close {
   display: flex;
   width: 32px;
   height: 32px;
@@ -423,7 +423,7 @@
   background-color: white;
 }
 
-.btnClose:hover {
+.button-close:hover {
   background-color: #f0f0f0;
   border-radius: 50%;
 }
@@ -436,7 +436,7 @@
   bottom: 120px;
 }
 
-.contactCreated {
+.contact-created {
   position: absolute;
   width: 315px;
   height: 74px;
@@ -464,7 +464,7 @@
 }
 
 
-.btnMobileClose {
+.button-mobile-close {
   display: none;
   width: 100%;
   margin-right: 10px;
@@ -475,7 +475,7 @@
   cursor: pointer;
 }
 
-.arrowWhite {
+.white-arrow {
   display: none;
   background-color: #2a3647;
   width: 28px;
@@ -512,15 +512,15 @@
     font-size: 50px;
   }
 
-  .headlineContact {
+  .headline-contact {
     height: 80px;
   }
 
-  .nameContact {
+  .name-contact {
     font-size: 40px;
   }
 
-  .emblemInfo {
+  .emblem-info {
     width: auto;
     height: 80px;
     font-size: 40px;
@@ -532,11 +532,11 @@
     margin-left: 200px;
   }
 
-  .joinAddContact {
+  .join-add-contact {
     padding: 0px 25px 0px 25px;
   }
 
-  .iconEdit {
+  .edit-icon {
     margin: 10px;
   }
 
@@ -544,7 +544,7 @@
     height: 510px;
   }
 
-  .addcontactForm {
+  .add-contact-form {
     margin-top: 120px;
   }
 }
@@ -574,7 +574,7 @@
     margin: 5px;
   }
 
-  .joinAddContact {
+  .join-add-contact {
     padding: 0px 28px 0px 28px;
   }
 
@@ -582,15 +582,15 @@
     font-size: 40px;
   }
 
-  .iconEdit {
+  .edit-icon {
     margin: 10px;
   }
 
-  .groupContact-input {
+  .group-contact-input {
     width: 370px;
   }
 
-  .textAdd {
+  .add-text {
     font-size: 24px;
   }
 }
@@ -627,7 +627,7 @@
     width: max-content;
   }
 
-  .joinAddContact {
+  .join-add-contact {
     width: 100%;
     height: 250px;
     border-radius: 20px 20px 0px 0px;
@@ -635,40 +635,40 @@
     padding-top: 30px;
   }
 
-  .iconJoinContact {
+  .icon-join-contact {
     display: none;
   }
 
-  .styleDivFormEdit {
+  .form-edit-style  {
     height: 50%;
   }
 
-  .btnClose {
+  .button-close {
     display: none;
   }
 
-  .btnMobileClose {
+  .button-mobile-close {
     display: flex;
     margin-bottom: 35px;
   }
 
-  .iconEdit {
+  .edit-icon {
     position: fixed;
     margin-top: 220px;
   }
 
-  .iconEdit img {
+  .edit-icon img {
     width: 70px;
     height: 70px;
   }
 
-  .addcontactForm {
+  .add-contact-form {
     margin-top: 30px;
     margin-right: 0px;
     padding: 8px;
   }
 
-  .divBtnForm {
+  .form-button {
     justify-content: center;
     margin-top: 25px;
     margin-bottom: 25px;
@@ -687,7 +687,7 @@
     overflow-y: auto;
   }
 
-  .mobileContact {
+  .mobile-contact {
     display: flex;
   }
 
@@ -699,11 +699,11 @@
     font-size: 16px;
   }
 
-  .a_nameContact {
+  .a-name-contact {
     display: none;
   }
 
-  .amobile_nameContact {
+  .mobile-dropdown-menu {
     top: 25px;
   }
 }
@@ -713,11 +713,11 @@
     width: 100%;
   }
 
-  .divDetails {
+  .contacts-details-container {
     margin-top: 15px;
   }
 
-  .nameContact {
+  .name-contact {
     font-size: 35px;
   }
 
@@ -725,18 +725,18 @@
     height: 50px;
   }
 
-  .btnMobileClose {
+  .button-mobile-close {
     margin-bottom: 20px;
   }
 
-  .joinAddContact {
+  .join-add-contact {
     height: 250px;
     border-radius: 20px 20px 0px 0px;
     align-content: flex-start;
     padding: 20px 20px 0px 20px;
   }
 
-  .textAdd {
+  .add-text {
     font-size: 25px;
     margin: 12px 0px 12px 0px;
   }
@@ -747,7 +747,7 @@
     font-size: 16px;
   }
 
-  .groupContact-input {
+  .group-contact-input {
     width: 290px;
   }
 
@@ -755,7 +755,7 @@
     font-size: 14px;
   }
 
-  .mobileContact {
+  .mobile-contact {
     margin-right: 5px;
   }
 
@@ -768,7 +768,7 @@
     font-size: 30px;
   }
 
-  .textAdd {
+  .add-text {
     font-size: 20px;
   }
 
@@ -776,13 +776,13 @@
     font-size: 16px;
   }
 
-  .emblemInfo {
+  .emblem-info {
     font-size: 25px;
     height: 60px;
     width: auto;
   }
 
-  .nameContact {
+  .name-contact {
     font-size: 30px;
   }
 }

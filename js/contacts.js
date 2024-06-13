@@ -108,25 +108,25 @@ function openMobileDialog() {
 }
 function renderContactinList(i) {
   return ` 
-  <div class="headlineContact">
-      <div class="emblemInfo" id="emblem" style="background-color: ${contacts[i]['color']}">${contacts[i]['emblem']}</div>
-      <div class="nameContact">
+  <div class="headline-contact">
+      <div class="emblem-info" id="emblem" style="background-color: ${contacts[i]['color']}">${contacts[i]['emblem']}</div>
+      <div class="name-contact">
           ${contacts[i]['name']}
-        <div class="a_nameContact" id="a_nameContact">
+        <div class="a-name-contact" id="a_nameContact">
             <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
             <a onclick="deleteContact(${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
         </div>
       </div>
   </div>
   <div class="info">Contact Information</div>
-  <div class="styleDivinfo">
+  <div class="contact-information">
     <div><b>Email</b></div>
     <a id="email_contact">${contacts[i]['email']}</a>
     <div><b>Phone</b></div>
     <div id="phone_contact">${contacts[i]['phone']}</div> 
   
-    <div class="mobileContact" onclick="openMobileDialog()"><img class="arrow" src="..//assets/icons/menu_ContactOptions.svg" />
-      <div class="amobile_nameContact" id="amobile_nameContact" style="display:none">
+    <div class="mobile-contact" onclick="openMobileDialog()"><img class="arrow" src="..//assets/icons/menu_ContactOptions.svg" />
+      <div class="mobile-dropdown-menu" id="amobile_nameContact" style="display:none">
         <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
         <a onclick="deleteContact( ${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
       </div>
@@ -149,7 +149,7 @@ function openDialog(newContact, i) {
     let btnText = 'Save';
     dialog.innerHTML = renderContactDialog(title1, functionNew, btnText);
     document.getElementById('iconContact').outerHTML =
-      `<div class="emblemInfo" id="emblemContact" style="background-color: ${contact['color']}">${contact['emblem']}</div>`;
+      `<div class="emblem-info" id="emblemContact" style="background-color: ${contact['color']}">${contact['emblem']}</div>`;
     document.getElementById('textAdd').classList.add('d-none');
     document.getElementById('nameContact').value = contact['name'];
     document.getElementById('emailContact').value = contact['email'];
@@ -160,31 +160,31 @@ function openDialog(newContact, i) {
 function renderContactDialog(title1, functionNew, btnText) {
   return `
 <div class="dialog">
-<div class="joinAddContact">
-<button class="btnMobileClose" onclick="closeDialog()"><img class="imgBtns"
+<div class="join-add-contact">
+<button class="button-mobile-close" onclick="closeDialog()"><img class="imgBtns"
 src="../assets/icons/closeWhite_icon.svg"></button>
-  <img class="iconJoinContact" src="../assets/icons/joinWhite.svg">
+  <img class="icon-join-contact" src="../assets/icons/joinWhite.svg">
   <div class="contact-details-title">${title1}</div>
-  <div id="textAdd" class="textAdd">Task are better with a team</div>
-  <div class="seperatorAdd"></div>
+  <div id="textAdd" class="add-text">Task are better with a team</div>
+  <div class="seperator-add"></div>
 </div>
-<div class="iconEdit" id="iconContact"><img src="../assets/icons/person_icon.svg">
+<div class="edit-icon" id="iconContact"><img src="../assets/icons/person_icon.svg">
 </div>
 
-<div class="styleDivFormEdit">
-  <button class="btnClose" onclick="closeDialog()"><img class="imgBtns"
+<div class="form-edit-style">
+  <button class="button-close" onclick="closeDialog()"><img class="button-images "
       src="../assets/icons/cancel.svg"></button>
-  <form class="addcontactForm" onsubmit=${functionNew}>
-    <div class="groupContact-input">
-      <input class="inputsContact inputfield-text-style" type="text" id="nameContact"
+  <form class="add-contact-form" onsubmit=${functionNew}>
+    <div class="group-contact-input">
+      <input class="inputs-contact inputfield-text-style" type="text" id="nameContact"
         style="background-image: url(../assets/icons/personInput_icon.svg)" placeholder="Name" required>
-      <input class="inputsContact inputfield-text-style" type="email" id="emailContact"
+      <input class="inputs-contact inputfield-text-style" type="email" id="emailContact"
         style="background-image: url(../assets/icons/mail_icon.svg)" placeholder="Email" required>
-      <input class="inputsContact inputfield-text-style" type="tel" id="phoneContact"
+      <input class="inputs-contact inputfield-text-style" type="tel" id="phoneContact"
         style="background-image: url(../assets/icons/call_icon.svg)" placeholder="Phone" required>
-      <div class="divBtnForm">
+      <div class="form-button">
         <button class="button-guest inputfield-text-style" onclick="closeDialog()">Cancel <b>X</b></button>
-        <button class="add-contact-button-mobile button-text-style" type="submit">${btnText} <img class="imgBtns" src="../assets/icons/checkWhite.svg"></button>
+        <button class="add-contact-button-mobile button-text-style" type="submit">${btnText} <img class="button-images " src="../assets/icons/checkWhite.svg"></button>
       </div>
   </form>
 </div>
