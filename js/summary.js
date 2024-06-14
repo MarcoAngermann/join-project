@@ -1,3 +1,9 @@
+/**
+ * Initializes the summary by including HTML, fetching tasks, counting task statuses,
+ * displaying a greeting, displaying a user, and handling mobile greeting.
+ *
+ * @return {Promise<void>} A promise that resolves when the initialization is complete.
+ */
 async function initSummary() {
   await includeHTML();
   await tasksArray();
@@ -7,6 +13,12 @@ async function initSummary() {
   mobileGreeting();
 }
 
+/**
+ * Returns a greeting based on the current time and whether the user is a guest or not.
+ *
+ * @param {boolean} isGuest - Whether the user is a guest or not.
+ * @return {string} The greeting message.
+ */
 function getGreeting(isGuest) {
   let time = new Date().getHours();
   let greeting;
@@ -22,12 +34,33 @@ function getGreeting(isGuest) {
   return greeting;
 }
 
+/**
+ * Displays a greeting message based on the current time and whether the user is a guest or not.
+ *
+ * @return {Promise<void>} A promise that resolves when the greeting message has been displayed.
+ */
+async function displayGreeting() {
+  // Fetch the current user from the server
+  let currentUser = await getUserLogin();
+
+  // Check if the user is a guest
+  let isGuest = currentUser.userId == 0;
+
+  // Update the greeting message in the HTML
+  document.getElementById('greetText').innerHTML = getGreeting(isGuest);
+}
 async function displayGreeting() {
   let currentUser = await getUserLogin();
   let isGuest = currentUser.userId == 0;
   document.getElementById('greetText').innerHTML = getGreeting(isGuest);
 }
 
+/**
+ * Asynchronously displays the current user's name in the HTML element with the id 'greetUserName'.
+ * If the user is a guest (userId == 0), the element's innerHTML is set to an empty string.
+ *
+ * @return {Promise<void>} A Promise that resolves when the user's name has been displayed.
+ */
 async function displayUser() {
   let currentUser = await getUserLogin();
   let currentUserName = document.getElementById('greetUserName');
@@ -45,6 +78,10 @@ let done = 0;
 let urgent = 0;
 let dateUrgent = '2100-01-01';
 
+/**
+ * Loops through tasks array, counts task status and priority, and updates corresponding counters.
+ *
+ */
 function countsTaskStatus() {
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].status == 'toDo') {
@@ -66,6 +103,11 @@ function countsTaskStatus() {
   rendernCountTasks();
 }
 
+/**
+ * Updates the count of tasks in the DOM based on the current values of the `todo`, `done`, `inProgress`, `awaitFeedback`, `tasks.length`, and `urgent` variables.
+ *
+ * @return {void} This function does not return anything.
+ */
 function rendernCountTasks() {
   document.getElementById('toDoCount').innerHTML = todo;
   document.getElementById('doneCount').innerHTML = done;
@@ -81,12 +123,25 @@ function rendernCountTasks() {
   }
 }
 
+/**
+ * Converts a given date string into a formatted date string.
+ *
+ * @param {string} dateUrgent - The date string to be converted.
+ * @return {string} The formatted date string.
+ */
 function convertDate(dateUrgent) {
   let date = new Date(dateUrgent);
   let options = { month: 'long', day: 'numeric', year: 'numeric' };
   return date.toLocaleDateString('en-US', options);
 }
 
+/**
+ * Displays a greeting message on mobile devices and then shows the summary card.
+ * The greeting message is displayed for 4 seconds before the summary card is shown.
+ * The visibility of the greeting and summary cards is adjusted based on the window width.
+ *
+ * @return {void} This function does not return anything.
+ */
 function mobileGreeting() {
   let summaryContainer = document.getElementById('summaryCardContainer');
   let greetingContainer = document.getElementById('greetingContainer');
@@ -106,6 +161,14 @@ function mobileGreeting() {
     }, 4000);
   }
 
+  /**
+ * Adjusts the visibility of the greeting and summary containers based on the window width.
+ * If the window width is less than 800 pixels, the function calls the `showGreetingThenSummary` function.
+ * Otherwise, it clears the `greetingTimeout`, sets the display style of the greeting and summary containers to 'flex',
+ * and removes the 'fadeOut' and 'fadeIn' classes from the greeting and summary containers.
+ *
+ * @return {void} This function does not return anything.
+ */
   function adjustVisibility() {
     if (window.innerWidth < 800) {
       showGreetingThenSummary();
