@@ -1,9 +1,7 @@
 let subtaskList = [];
 
 function showBoardAddTask(boardStatus) {
-  console.log(boardStatus);
   document.getElementById('boardAddTask').classList.remove('dnone');
-  console.log('Status:', boardStatus);
   let content = document.getElementById('boardAddTask');
   content.innerHTML = '';
   content.innerHTML = renderBoardAddTaskHTML(boardStatus);
@@ -207,7 +205,6 @@ function addSubtask() {
       'Bitte etwas eingeben!';
     return;
   }
-  // Überprüfe, ob bereits 5 Subtasks vorhanden sind
   if (subtaskList.length < 5) {
     document.getElementById('subtaskInput').placeholder = 'Add new Subtask';
     let newTask = { subtaskText: input, checked: false };
@@ -288,32 +285,6 @@ function createCardId(tasks) {
   console.log(lastCardId);
   return lastCardId; //
 }
-
-// async function createNewTaskBoard(boardStatus, event) {
-//   event.preventDefault();
-//   console.log(boardStatus);
-//   let lastCardId = createCardId(tasks);
-//   let selectedUserIds = getSelectedUserIds();
-//   task = {
-//     title: document.getElementById('title').value,
-//     description: document.getElementById('description').value,
-//     userId: selectedUserIds,
-//     date: document.getElementById('date').value,
-//     priority: getSelectedPrio(),
-//     category: document.getElementById('selectedCategory').innerHTML,
-//     subtask: subtaskList,
-//     status: boardStatus,
-//     cardId: lastCardId + 1,
-//   };
-//   taskAddedToBoard();
-//   setTimeout(async function () {
-//     resetUserDisplay();
-//     await postData('tasks', task);
-//     clearAllTasks(event);
-//     closeAddTaskBoard();
-//     updateHTML();
-//   }, 3000);
-// }
 
 async function createNewTaskBoard(boardStatus, event) {
   event.preventDefault();
