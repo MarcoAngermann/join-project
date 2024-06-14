@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,14 +16,14 @@
   <script src="../js/script.js"></script>
   <title>Join contacts</title>
 </head>
+
 <body onload="initContact()">
   <div w3-include-html="../templates/sidebar.html"></div>
   <div w3-include-html="../templates/header.html"></div>
   <div w3-include-html="../templates/mobile_taskbar.html"></div>
   <div class="contacts-container">
     <div class="contacts-list" id="divContactList">
-      <button class="add-contact-button button-text-style" type="button" id="button"
-        onclick="openDialog(true, -1)">
+      <button class="add-contact-button button-text-style" type="button" id="button" onclick="openDialog(true, -1)">
         Add new contact
         <img class="icon-contact" src="../assets/icons/person_add_icon.svg" />
       </button>
@@ -41,8 +42,9 @@
     </div>
   </div>
   <div id="dialog" class="dialog-bg d-none"></div>
-  <div class="animation-container d-none"  id="contactCreated">
+  <div class="animation-container d-none" id="contactCreated">
     <div class="contact-created ">Contact succesfully created</div>
   </div>
 </body>
+
 </html>

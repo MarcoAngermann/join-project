@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../styles/fonts.css" />
     <link rel="icons" href="./assets/icons/join_icon.svg" />
 </head>
+
 <body onload="init()">
     <div class="containerLog" id="containerLog">
         <div class="headlineLogin">
@@ -36,13 +37,14 @@
                 <input class="inputs style_InputTypography1" name="confirmPass"
                     style="background-image: url(../assets/icons/lock_icon.svg)" id="passwordConfirm"
                     placeholder="Confirm Password" onkeyup="resetError()" onclick="showPasswordConf()" required>
-                    <div class="confirm-error">
-                        <span id="pwErrorCheck" class="pw-error-check" ></span>
-                    </div>
+                <div class="confirm-error">
+                    <span id="pwErrorCheck" class="pw-error-check"></span>
+                </div>
             </div>
             <div class="box-rememberSignup style_InputTypography2">
                 <input class="checkBox" type="checkbox" id="acepptRules">
-                <span for="remember"> I accept the &nbsp; <a class="a_formSignUp" href="./privacy_policy.html"> Privacy policy</a></span>
+                <span for="remember"> I accept the &nbsp; <a class="a_formSignUp" href="./privacy_policy.html"> Privacy
+                        policy</a></span>
             </div>
             <div class="divBtn">
                 <button class="btn-disabled style_BtnTypography1" type="submit" id="btnSignUp">Sign up</button>
@@ -57,4 +59,5 @@
         </div>
     </div>
 </body>
+
 </html>
