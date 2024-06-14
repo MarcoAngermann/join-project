@@ -121,15 +121,26 @@ function showSmallUsersEmblem(task) {
     `smallUsersEmblem${task.cardId}`
   );
   smallUsersEmblem.innerHTML = '';
+
+  let { renderedCount, extraCount } = renderUserEmblems(task, smallUsersEmblem);
+
+  if (extraCount > 0) {
+    smallUsersEmblem.innerHTML += renderGreyEmblem(extraCount);
+  }
+}
+
+function renderUserEmblems(task, container) {
   let renderedCount = 0;
   let extraCount = 0;
+
   if (task.userId && task.userId.length > 0) {
     for (let userId of task.userId) {
       if (userId == 0) continue;
-      let user = users.find((u) => u.userId == userId);
+
+      let user = findUserById(userId);
       if (user) {
         if (renderedCount < 5) {
-          smallUsersEmblem.innerHTML += renderSmallUsersEmblem(user);
+          container.innerHTML += renderSmallUsersEmblem(user);
           renderedCount++;
         } else {
           extraCount++;
@@ -137,10 +148,14 @@ function showSmallUsersEmblem(task) {
       }
     }
   }
-  if (extraCount > 0) {
-    smallUsersEmblem.innerHTML += renderGreyEmblem(extraCount);
-  }
+
+  return { renderedCount, extraCount };
 }
+
+function findUserById(userId) {
+  return users.find((u) => u.userId == userId);
+}
+
 function renderGreyEmblem(extraCount) {
   return `<div class="grey-emblem">+${extraCount}</div>`;
 }
@@ -274,19 +289,31 @@ function renderBigCardHTML(cardId) {
   `;
 }
 
+// Hauptfunktion, um die Embleme der großen Benutzer anzuzeigen
 async function showBigUsersEmblem(cardId) {
   let bigUsersEmblem = document.getElementById('bigUsersEmblem');
   bigUsersEmblem.innerHTML = '';
-  const task = tasks.find((t) => t.cardId == cardId);
+
+  const task = findTaskByCardId(cardId);
   if (task && task.userId) {
     for (let userId of task.userId) {
       if (userId == 0) continue; // Skip if userId is 0
-      let user = users.find((u) => u.userId == userId);
+      let user = findUserById(userId);
       if (user) {
         bigUsersEmblem.innerHTML += renderBigEmblemUsers(user);
       }
     }
   }
+}
+
+// Funktion, um den Task anhand der cardId zu finden
+function findTaskByCardId(cardId) {
+  return tasks.find((t) => t.cardId == cardId);
+}
+
+// Funktion, um den User anhand der userId zu finden
+function findUserById(userId) {
+  return users.find((u) => u.userId == userId);
 }
 
 function renderBigEmblemUsers(user) {
@@ -440,28 +467,43 @@ function renderProgressBar(cardId, tasks) {
 }
 
 function updateProgressBarDisplay(cardId, subtasks) {
-  let checkedSubtasks = 0;
   if (subtasks != null && subtasks.length > 0) {
-    for (let i = 0; i < subtasks.length; i++) {
-      if (subtasks[i].checked == true) {
-        checkedSubtasks += 1;
-      }
-    }
-    let percent = checkedSubtasks / subtasks.length;
-    percent = Math.round(percent * 100).toFixed(0);
-    let colorProgressBar = document.getElementById(
-      `subtaskProgressBar${cardId}`
-    );
-    colorProgressBar.value = percent;
-    let subtasksCount = document.getElementById(`subtasksCount${cardId}`);
-    subtasksCount.innerHTML =
-      checkedSubtasks + '/' + subtasks.length + ' Subtasks';
+    let checkedSubtasks = countCheckedSubtasks(subtasks);
+    let percent = calculateProgress(checkedSubtasks, subtasks.length);
+    updateProgressBar(cardId, percent);
+    updateSubtasksCountDisplay(cardId, checkedSubtasks, subtasks.length);
   } else {
     let colorProgressBar = document.getElementById(
       `subtaskProgressBar${cardId}`
     );
     colorProgressBar.style.display = 'none';
   }
+}
+
+function countCheckedSubtasks(subtasks) {
+  let checkedSubtasks = 0;
+  for (let i = 0; i < subtasks.length; i++) {
+    if (subtasks[i].checked === true) {
+      checkedSubtasks += 1;
+    }
+  }
+  return checkedSubtasks;
+}
+
+function calculateProgress(checkedSubtasks, totalSubtasks) {
+  if (totalSubtasks === 0) return 0;
+  let percent = checkedSubtasks / totalSubtasks;
+  return Math.round(percent * 100).toFixed(0);
+}
+
+function updateProgressBar(cardId, percent) {
+  let colorProgressBar = document.getElementById(`subtaskProgressBar${cardId}`);
+  colorProgressBar.value = percent;
+}
+
+function updateSubtasksCountDisplay(cardId, checkedSubtasks, totalSubtasks) {
+  let subtasksCount = document.getElementById(`subtasksCount${cardId}`);
+  subtasksCount.innerHTML = `${checkedSubtasks}/${totalSubtasks} Subtasks`;
 }
 
 //mobile Board

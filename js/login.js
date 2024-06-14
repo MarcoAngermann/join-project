@@ -86,67 +86,6 @@ async function emailExists(email) {
   }
   return false; // E-Mail existiert nicht
 }
-// Funktion, um zu überprüfen, ob die E-Mail bereits existiert
-//async function emailExists(email) {
-//  let usersJson = await loadData('users');
-//  for (let key in usersJson) {
-//    if (usersJson[key].email === email) {
-//      return true; // E-Mail existiert bereits
-//    }
-//  }
-//  return false; // E-Mail existiert nicht
-//}
-//
-//async function AddUser(event) {
-//  event.preventDefault();
-//  let name = document.getElementById('name').value;
-//  let email = document.getElementById('email').value;
-//  let password = document.getElementById('password').value;
-//  let confirmpassword = document.getElementById('passwordConfirm').value;
-//
-//  // Überprüfen, ob das Passwort mit der Bestätigung übereinstimmt
-//  if (password !== confirmpassword) {
-//    document.getElementById('pwErrorCheck').style.display = 'flex';
-//    document.getElementById('pwErrorCheck').innerText =
-//      '* Passwords are not the same';
-//    return false;
-//  }
-//
-//  // Überprüfen, ob die E-Mail bereits vorhanden ist
-//  if (await emailExists(email)) {
-//    // Wenn die E-Mail bereits vorhanden ist, handle entsprechend
-//    document.getElementById('email').value = ''; // Email-Input leeren
-//    document.getElementById('email').value = 'Diese E-Mail existiert bereits';
-//    document.getElementById('email').style = 'color:red; font-weight:bold;';
-//    document.getElementById('email').style.border = '2px solid red';
-//    return false;
-//  }
-//
-//  let user = {
-//    userId: (await findLastUserId()) + 1,
-//    name: name,
-//    email: email,
-//    password: password,
-//    emblem: getEmblemUser(name),
-//    color: colorRandom(),
-//  };
-//  await postData('users', user);
-//  document.getElementById('dialogSingUp').style.display = 'flex';
-//  await sleep(3000);
-//  cleanContactControls();
-//  backToLogin();
-//}
-//
-//// Funktion, um zu überprüfen, ob die E-Mail bereits existiert
-//async function emailExists(email) {
-//  let usersJson = await loadData('users');
-//  for (let key in usersJson) {
-//    if (usersJson[key].email === email) {
-//      return true; // E-Mail existiert bereits
-//    }
-//  }
-//  return false; // E-Mail existiert nicht
-//}
 
 function colorRandom() {
   return colors[Math.floor(Math.random() * colors.length)];
