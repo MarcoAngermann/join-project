@@ -19,17 +19,6 @@ function isChecked() {
   btn.classList.remove('btn-disabled');
 }
 
-// Funktion, um zu überprüfen, ob die E-Mail bereits existiert
-async function emailExists(email) {
-  let usersJson = await loadData('users');
-  for (let key in usersJson) {
-    if (usersJson[key].email === email) {
-      return true; // E-Mail existiert bereits
-    }
-  }
-  return false; // E-Mail existiert nicht
-}
-
 async function AddUser(event) {
   event.preventDefault();
   let name = document.getElementById('name').value;
@@ -37,26 +26,44 @@ async function AddUser(event) {
   let password = document.getElementById('password').value;
   let confirmpassword = document.getElementById('passwordConfirm').value;
 
-  // Überprüfen, ob das Passwort mit der Bestätigung übereinstimmt
-  if (password !== confirmpassword) {
-    document.getElementById('pwErrorCheck').style.display = 'flex';
-    document.getElementById('pwErrorCheck').innerText =
-      '* Passwords are not the same';
+  if (!validatePasswords(password, confirmpassword)) {
+    showPasswordError();
     return false;
   }
 
-  // Überprüfen, ob die E-Mail bereits vorhanden ist
   if (await emailExists(email)) {
-    // Wenn die E-Mail bereits vorhanden ist, handle entsprechend
-    document.getElementById('email').value = ''; // Email-Input leeren
-    document.getElementById('email').value = 'Diese E-Mail existiert bereits';
-    document.getElementById('email').style = 'color:red; font-weight:bold;';
-    document.getElementById('email').style.border = '2px solid red';
+    checkEmailExist();
     return false;
   }
 
-  // Wenn die E-Mail nicht vorhanden ist, neuen Benutzer erstellen
-  let user = {
+  let user = await createUser(name, email, password);
+  await postData('users', user);
+  showSignUpDialog();
+  await sleep(3000);
+  cleanContactControls();
+  backToLogin();
+}
+
+function validatePasswords(password, confirmpassword) {
+  return password === confirmpassword;
+}
+
+function showPasswordError() {
+  let pwErrorElement = document.getElementById('pwErrorCheck');
+  pwErrorElement.style.display = 'flex';
+  pwErrorElement.innerText = '* Passwords are not the same';
+}
+
+function checkEmailExist() {
+  let emailElement = document.getElementById('email');
+  emailElement.value = ''; // Email-Input leeren
+  emailElement.value = 'Diese E-Mail existiert bereits';
+  emailElement.style = 'color:red; font-weight:bold;';
+  emailElement.style.border = '2px solid red';
+}
+
+async function createUser(name, email, password) {
+  return {
     userId: (await findLastUserId()) + 1,
     name: name,
     email: email,
@@ -64,14 +71,12 @@ async function AddUser(event) {
     emblem: getEmblemUser(name),
     color: colorRandom(),
   };
-  await postData('users', user);
-  document.getElementById('dialogSingUp').style.display = 'flex';
-  await sleep(3000);
-  cleanContactControls();
-  backToLogin();
 }
 
-// Funktion, um zu überprüfen, ob die E-Mail bereits existiert
+function showSignUpDialog() {
+  document.getElementById('dialogSingUp').style.display = 'flex';
+}
+
 async function emailExists(email) {
   let usersJson = await loadData('users');
   for (let key in usersJson) {
@@ -81,6 +86,67 @@ async function emailExists(email) {
   }
   return false; // E-Mail existiert nicht
 }
+// Funktion, um zu überprüfen, ob die E-Mail bereits existiert
+//async function emailExists(email) {
+//  let usersJson = await loadData('users');
+//  for (let key in usersJson) {
+//    if (usersJson[key].email === email) {
+//      return true; // E-Mail existiert bereits
+//    }
+//  }
+//  return false; // E-Mail existiert nicht
+//}
+//
+//async function AddUser(event) {
+//  event.preventDefault();
+//  let name = document.getElementById('name').value;
+//  let email = document.getElementById('email').value;
+//  let password = document.getElementById('password').value;
+//  let confirmpassword = document.getElementById('passwordConfirm').value;
+//
+//  // Überprüfen, ob das Passwort mit der Bestätigung übereinstimmt
+//  if (password !== confirmpassword) {
+//    document.getElementById('pwErrorCheck').style.display = 'flex';
+//    document.getElementById('pwErrorCheck').innerText =
+//      '* Passwords are not the same';
+//    return false;
+//  }
+//
+//  // Überprüfen, ob die E-Mail bereits vorhanden ist
+//  if (await emailExists(email)) {
+//    // Wenn die E-Mail bereits vorhanden ist, handle entsprechend
+//    document.getElementById('email').value = ''; // Email-Input leeren
+//    document.getElementById('email').value = 'Diese E-Mail existiert bereits';
+//    document.getElementById('email').style = 'color:red; font-weight:bold;';
+//    document.getElementById('email').style.border = '2px solid red';
+//    return false;
+//  }
+//
+//  let user = {
+//    userId: (await findLastUserId()) + 1,
+//    name: name,
+//    email: email,
+//    password: password,
+//    emblem: getEmblemUser(name),
+//    color: colorRandom(),
+//  };
+//  await postData('users', user);
+//  document.getElementById('dialogSingUp').style.display = 'flex';
+//  await sleep(3000);
+//  cleanContactControls();
+//  backToLogin();
+//}
+//
+//// Funktion, um zu überprüfen, ob die E-Mail bereits existiert
+//async function emailExists(email) {
+//  let usersJson = await loadData('users');
+//  for (let key in usersJson) {
+//    if (usersJson[key].email === email) {
+//      return true; // E-Mail existiert bereits
+//    }
+//  }
+//  return false; // E-Mail existiert nicht
+//}
 
 function colorRandom() {
   return colors[Math.floor(Math.random() * colors.length)];
@@ -122,25 +188,34 @@ function cleanContactControls() {
 }
 
 function doLogin(event) {
-  // Verhindern Sie das Standardverhalten des Formulars, falls diese Funktion als Event Handler verwendet wird
   if (event) event.preventDefault();
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
-  let userExists = false;
+
+  if (checkUserExist(email, password)) {
+    console.log('Login successful');
+    window.location.href = './templates/summary.html';
+  } else {
+    showLoginError();
+    return false;
+  }
+}
+
+function checkUserExist(email, password) {
   for (let key in usersJson) {
     let user = usersJson[key];
     if (email === user.email && password === user.password) {
-      userExists = true;
-      let userId = user.userId;
-      window.sessionStorage.setItem('userId', userId);
-      console.log('Login successful');
-      window.location.href = './templates/summary.html';
-      return;
+      window.sessionStorage.setItem('userId', user.userId);
+      return true;
     }
   }
-  if (!userExists) {
-    errorLogin();
-  }
+  return false;
+}
+
+function showLoginError() {
+  let loginErrorElement = document.getElementById('loginErrorCheck');
+  loginErrorElement.style.display = 'flex';
+  loginErrorElement.innerText = '* user does not exist or wrong password';
 }
 
 function errorLogin() {
@@ -223,7 +298,7 @@ function joinAnimation() {
   }
 }
 
-function validateForm() {
+function validateSignUpForm() {
   let name = document.getElementById('name').value;
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
@@ -244,4 +319,8 @@ function validateForm() {
 
 function resetError() {
   document.getElementById('pwErrorCheck').style.display = 'none';
+}
+
+function resetErrorLogIn() {
+  document.getElementById('loginErrorCheck').style.display = 'none';
 }

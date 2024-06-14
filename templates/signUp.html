@@ -23,7 +23,7 @@
             <img class="img-logo" id="imgLogoID" src="../assets/icons/join_login.svg">
         </div>
 
-        <form oninput="validateForm()" class="formSignUp" id="formSignUp" onsubmit="AddUser(event)">
+        <form oninput="validateSignUpForm()" class="formSignUp" id="formSignUp" onsubmit="AddUser(event)">
 
             <div class="headlineSignUp">
                 <a class="a_headlineSignUp" onclick="backToLogin()"><img class="icoArrowLeft"
@@ -42,8 +42,8 @@
                     style="background-image: url(../assets/icons/lock_icon.svg)" id="passwordConfirm"
                     placeholder="Confirm Password" onkeyup="resetError()" onclick="showPasswordConf()" required>
                     <div class="confirm-error">
-                    <span id="pwErrorCheck" class="pw-error-check" ></span>
-                </div>
+                        <span id="pwErrorCheck" class="pw-error-check" ></span>
+                    </div>
             </div>
             <div class="box-rememberSignup style_InputTypography2">
                 <input class="checkBox" type="checkbox" id="acepptRules">
