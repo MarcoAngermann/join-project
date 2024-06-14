@@ -17,7 +17,7 @@
   overflow-y: auto;
 }
 
-.divSubSidebar {
+.div-sub-sidebar {
   gap: 100px;
   display: flex;
   flex-direction: column;
