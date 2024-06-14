@@ -147,6 +147,10 @@ function mobileGreeting() {
   let greetingContainer = document.getElementById('greetingContainer');
   let greetingTimeout;
 
+    /**
+   * Executes a series of actions to show a greeting message followed by displaying the summary card.
+   *
+   */
   function showGreetingThenSummary() {
     clearTimeout(greetingTimeout); // Löscht den vorherigen Timeout, falls vorhanden
     summaryContainer.style.display = 'none';
