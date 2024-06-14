@@ -204,6 +204,6 @@ async function openSidebarRules() {
     sidebarRules.style.display = 'none';
     mobileSidebarRules.style.display = 'none';
     let arrowBack = document.getElementById('backSummaryRules');
-    arrowBack.href = './index.html';
+    arrowBack.href = '../index.html';
   }
 }
