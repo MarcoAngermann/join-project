@@ -10,7 +10,6 @@ function showMenu() {
  * Listens for a click event on the window and closes all dropdowns except the one with the 'useremblem' class.
  *
  * @param {Event} event - The click event object
- * @return {void} 
  */
 window.onclick = function (event) {
   if (!event.target.matches('.useremblem')) {

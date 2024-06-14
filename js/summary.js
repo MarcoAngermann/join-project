@@ -100,8 +100,6 @@ function countsTaskStatus() {
 
 /**
  * Updates the count of tasks in the DOM based on the current values of the `todo`, `done`, `inProgress`, `awaitFeedback`, `tasks.length`, and `urgent` variables.
- *
- * @return {void} This function does not return anything.
  */
 function rendernCountTasks() {
   document.getElementById('toDoCount').innerHTML = todo;
