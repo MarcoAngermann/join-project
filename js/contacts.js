@@ -4,6 +4,8 @@ async function initContact() {
   renderListContact();
 }
 
+//async functions
+
 let contacts = [];
 
 async function contactsArray() {
@@ -13,6 +15,74 @@ async function contactsArray() {
     contacts.push(contact);
   }
 }
+
+async function newContact(event) {
+  event.preventDefault();
+  let lastContactId = findLastContactId(contacts);
+  let nameContact = document.getElementById('nameContact').value;
+  let nameContactUpper = nameContact[0].toUpperCase() + nameContact.slice(1);
+  let newContact = {
+    contactId: lastContactId + 1,
+    name: nameContactUpper,
+    email: document.getElementById('emailContact').value,
+    phone: document.getElementById('phoneContact').value,
+    emblem: renderEmblem(nameContact),
+    color: colorRandom(),
+  };
+  contacts.push(newContact);
+  await postData('contacts', newContact);
+  showNewContactDetails(newContact);
+}
+
+async function editContact(event, i) {
+  event.preventDefault();
+  contactEdit = contacts[i];
+  contactEdit['name'] = document.getElementById('nameContact').value;
+  contactEdit['email'] = document.getElementById('emailContact').value;
+  contactEdit['phone'] = document.getElementById('phoneContact').value;
+  contactEdit['emblem'] = renderEmblem(
+    document.getElementById('nameContact').value
+  );
+  await firebaseUpdate(contactEdit);
+  closeDialog();
+  cleanContactControls();
+  renderListContact();
+  showDetailContact(i);
+}
+
+async function deleteContact(i) {
+  let contactDelete = contacts[i];
+  contacts.splice(i, 1);
+  document.getElementById('divDetails').innerHTML = '';
+  await firebaseDelete(contactDelete);
+  renderListContact();
+  if (window.innerWidth <= 710) {
+    backMobileContListe();
+  }
+}
+
+
+async function firebaseUpdate(contactEdit) {
+  let contactsJson = await loadData('contacts');
+  for (key in contactsJson) {
+    let contactDB = contactsJson[key];
+    if (contactDB.contactId == contactEdit.contactId) {
+      putData('contacts/' + [key], contactEdit);
+    }
+  }
+}
+
+async function firebaseDelete(contactDelete) {
+  let contactsJson = await loadData('contacts');
+  for (key in contactsJson) {
+    let contactDB = contactsJson[key];
+    if (contactDB.contactId == contactDelete.contactId) {
+      deleteData('contacts/' + [key]);
+    }
+  }
+}
+
+// render functions
 
 function renderListContact() {
   let contentList = document.getElementById('divList');
@@ -29,15 +99,92 @@ function renderListContact() {
         .toUpperCase()}</div>`;
     }
     contentList.innerHTML += `
-            <div class="contact-list-container" onclick="showDetailContact(${i})">
-            <div class="contact-emblem" style="background-color: ${contact['color']
+    <div class="contact-list-container" onclick="showDetailContact(${i})">
+    <div class="contact-emblem" style="background-color: ${contact['color']
       }"> ${renderEmblem(contact['name'])} </div>
-            <div class="contact-info-container">
-                    <p>${contact['name']}</p>
-                    <a>${contact['email']}</a>
-            </div>
-            </div>`;
+    <div class="contact-info-container">
+            <p>${contact['name']}</p>
+            <a>${contact['email']}</a>
+    </div>
+    </div>`;
   }
+}
+
+function renderContactinList(i) {
+  return ` 
+  <div class="headline-contact">
+      <div class="emblem-info" id="emblem" style="background-color: ${contacts[i]['color']}">${contacts[i]['emblem']}</div>
+      <div class="name-contact">
+          ${contacts[i]['name']}
+        <div class="a-name-contact" id="a_nameContact">
+            <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
+            <a onclick="deleteContact(${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
+        </div>
+      </div>
+  </div>
+  <div class="info">Contact Information</div>
+  <div class="contact-information">
+    <div><b>Email</b></div>
+    <a id="email_contact">${contacts[i]['email']}</a>
+    <div><b>Phone</b></div>
+    <div id="phone_contact">${contacts[i]['phone']}</div> 
+  
+    <div class="mobile-contact" onclick="openMobileDialog()"><img class="arrow" src="..//assets/icons/menu_ContactOptions.svg" />
+      <div class="mobile-dropdown-menu" id="amobile_nameContact" style="display:none">
+        <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
+        <a onclick="deleteContact( ${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
+      </div>
+    </div>
+  </div> `;
+}
+
+function renderContactDialog(title1, functionNew, btnText) {
+  return `
+<div class="dialog">
+<div class="join-add-contact">
+<button class="button-mobile-close" onclick="closeDialog()"><img class="imgBtns"
+src="../assets/icons/closeWhite_icon.svg"></button>
+  <img class="icon-join-contact" src="../assets/icons/joinWhite.svg">
+  <div class="contact-details-title">${title1}</div>
+  <div id="textAdd" class="add-text">Task are better with a team</div>
+  <div class="seperator-add"></div>
+</div>
+<div class="edit-icon" id="iconContact"><img src="../assets/icons/person_icon.svg">
+</div>
+<div class="form-edit-style">
+  <button class="button-close" onclick="closeDialog()"><img class="button-images "
+      src="../assets/icons/cancel.svg"></button>
+  <form class="add-contact-form" onsubmit=${functionNew}>
+    <div class="group-contact-input">
+      <input class="inputs-contact inputfield-text-style" type="text" id="nameContact"
+        style="background-image: url(../assets/icons/personInput_icon.svg)" placeholder="Name" required/>
+      <input class="inputs-contact inputfield-text-style" type="email" id="emailContact"
+        style="background-image: url(../assets/icons/mail_icon.svg)" placeholder="Email" required/>
+      <input class="inputs-contact inputfield-text-style" type="tel" id="phoneContact"
+        style="background-image: url(../assets/icons/call_icon.svg)" placeholder="Phone" required/>
+      <div class="form-button">
+        <button class="button-guest inputfield-text-style" type="button" onclick="closeDialog()">Cancel <b>X</b></button>
+        <button class="add-contact-button-mobile button-text-style" type="submit">${btnText} <img class="button-images " src="../assets/icons/checkWhite.svg"></button>
+      </div>
+    </div>
+  </form>
+</div>  
+</div>`;
+}
+
+function renderEmblem(name) {
+  let aux = name.split(' ');
+  let capital = '';
+  for (let j = 0; j < aux.length; j++) {
+    if (j <= 1) {
+      capital += aux[j].slice(0, 1).toUpperCase();
+    }
+  }
+  return capital;
+}
+
+function colorRandom() {
+  return colors[Math.floor(Math.random() * colors.length)];
 }
 
 function sortContacts() {
@@ -52,6 +199,7 @@ function sortContacts() {
   });
 }
 
+//contacts functions
 function showDetailContact(i) {
   contact = contacts[i];
   let infoContact = document.getElementById('divDetails');
@@ -63,6 +211,74 @@ function showDetailContact(i) {
   mobileDetails();
 }
 
+function openDialog(newContact, i) {
+  let dialog = document.getElementById('dialog');
+  dialog.classList.remove('d-none');
+  if (newContact == true) {
+    let functionNew = 'newContact(event)';
+    dialog.innerHTML = renderContactDialog('Add contact', functionNew, 'Create Contact');
+  } else {
+    let contact = contacts[i];
+    let functionNew = 'editContact(event,' + i + ')';
+    dialog.innerHTML = renderContactDialog('Edit contact', functionNew, 'Save');
+    document.getElementById('iconContact').outerHTML =
+      `<div class="emblem-info" id="emblemContact" style="background-color: ${contact['color']}">${contact['emblem']}</div>`;
+    document.getElementById('textAdd').classList.add('d-none');
+    document.getElementById('nameContact').value = contact['name'];
+    document.getElementById('emailContact').value = contact['email'];
+    document.getElementById('phoneContact').value = contact['phone'];
+  }
+}
+
+function closeDialog() {
+  let mobileMode = document.getElementById("amobile_nameContact");
+  if (mobileMode != null && mobileMode.style.display == 'flex') {
+    mobileMode.style.display = 'none';
+  }
+  let dialog = document.getElementById('dialog');
+  dialog.classList.add('d-none');
+}
+
+function findLastContactId(contacts) {
+  let lastId = 1;
+  for (let i = 1; i < contacts.length; i++) {
+    if (contacts[i].contactId > lastId) {
+      lastId = contacts[i].contactId;
+    }
+  }
+  return lastId; // found the last contact.id
+}
+
+function showNewContactDetails(newContact) {
+  closeDialog();
+  cleanContactControls();
+  renderListContact();
+  document.getElementById('contactCreated').classList.remove('d-none');
+  for (let i = 0; i < contacts.length; i++) {
+    if (newContact.name == contacts[i].name) {
+      let infoContact = document.getElementById('divDetails');
+      infoContact.innerHTML = ' ';
+      infoContact.classList.remove('move-left');
+      infoContact.innerHTML += renderContactinList(i);
+      mobileDetails();
+    }
+  }
+  contactCreatedDiv();
+}
+
+function contactCreatedDiv() {
+  setTimeout(() => {
+    document.getElementById('contactCreated').classList.add('d-none');
+  }, 2400);
+}
+
+function cleanContactControls() {
+  document.getElementById('nameContact').value = '';
+  document.getElementById('emailContact').value = '';
+  document.getElementById('phoneContact').value = '';
+}
+
+// mobile functions
 let mobilWindow = window.matchMedia('(max-width:710px)');
 mobilWindow.addEventListener('change', () => myFunc());
 function myFunc() {
@@ -95,6 +311,7 @@ function backMobileContListe() {
     document.getElementById("divContactList").style.display = "flex";
   };
 }
+
 function openMobileDialog() {
   let mobileMode = document.getElementById("amobile_nameContact");
   if (mobileMode != null) {
@@ -103,219 +320,6 @@ function openMobileDialog() {
     }
     else {
       mobileMode.style.display = "none";
-    }
-  }
-}
-function renderContactinList(i) {
-  return ` 
-  <div class="headline-contact">
-      <div class="emblem-info" id="emblem" style="background-color: ${contacts[i]['color']}">${contacts[i]['emblem']}</div>
-      <div class="name-contact">
-          ${contacts[i]['name']}
-        <div class="a-name-contact" id="a_nameContact">
-            <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
-            <a onclick="deleteContact(${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
-        </div>
-      </div>
-  </div>
-  <div class="info">Contact Information</div>
-  <div class="contact-information">
-    <div><b>Email</b></div>
-    <a id="email_contact">${contacts[i]['email']}</a>
-    <div><b>Phone</b></div>
-    <div id="phone_contact">${contacts[i]['phone']}</div> 
-  
-    <div class="mobile-contact" onclick="openMobileDialog()"><img class="arrow" src="..//assets/icons/menu_ContactOptions.svg" />
-      <div class="mobile-dropdown-menu" id="amobile_nameContact" style="display:none">
-        <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
-        <a onclick="deleteContact( ${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
-      </div>
-    </div>
-  </div> `;
-}
-
-function openDialog(newContact, i) {
-  let dialog = document.getElementById('dialog');
-  dialog.classList.remove('d-none');
-  if (newContact == true) {
-    let functionNew = 'newContact(event)';
-    dialog.innerHTML = renderContactDialog('Add contact', functionNew, 'Create Contact');
-  } else {
-    let contact = contacts[i];
-    let functionNew = 'editContact(event,' + i + ')';
-    dialog.innerHTML = renderContactDialog('Edit contact', functionNew,'Save');
-    document.getElementById('iconContact').outerHTML =
-      `<div class="emblem-info" id="emblemContact" style="background-color: ${contact['color']}">${contact['emblem']}</div>`;
-    document.getElementById('textAdd').classList.add('d-none');
-    document.getElementById('nameContact').value = contact['name'];
-    document.getElementById('emailContact').value = contact['email'];
-    document.getElementById('phoneContact').value = contact['phone'];
-  }
-}
-
-
-function renderContactDialog(title1, functionNew, btnText) {
-  return `
-<div class="dialog">
-<div class="join-add-contact">
-<button class="button-mobile-close" onclick="closeDialog()"><img class="imgBtns"
-src="../assets/icons/closeWhite_icon.svg"></button>
-  <img class="icon-join-contact" src="../assets/icons/joinWhite.svg">
-  <div class="contact-details-title">${title1}</div>
-  <div id="textAdd" class="add-text">Task are better with a team</div>
-  <div class="seperator-add"></div>
-</div>
-<div class="edit-icon" id="iconContact"><img src="../assets/icons/person_icon.svg">
-</div>
-
-<div class="form-edit-style">
-  <button class="button-close" onclick="closeDialog()"><img class="button-images "
-      src="../assets/icons/cancel.svg"></button>
-  <form class="add-contact-form" onsubmit=${functionNew}>
-    <div class="group-contact-input">
-      <input class="inputs-contact inputfield-text-style" type="text" id="nameContact"
-        style="background-image: url(../assets/icons/personInput_icon.svg)" placeholder="Name" required/>
-      <input class="inputs-contact inputfield-text-style" type="email" id="emailContact"
-        style="background-image: url(../assets/icons/mail_icon.svg)" placeholder="Email" required/>
-      <input class="inputs-contact inputfield-text-style" type="tel" id="phoneContact"
-        style="background-image: url(../assets/icons/call_icon.svg)" placeholder="Phone" required/>
-      <div class="form-button">
-        <button class="button-guest inputfield-text-style" type="button" onclick="closeDialog()">Cancel <b>X</b></button>
-        <button class="add-contact-button-mobile button-text-style" type="submit">${btnText} <img class="button-images " src="../assets/icons/checkWhite.svg"></button>
-      </div>
-    </div>
-  </form>
-</div>  
-</div>`;
-}
-
-function closeDialog() {
-  let mobileMode = document.getElementById("amobile_nameContact");
-  if (mobileMode != null && mobileMode.style.display == 'flex') {
-    mobileMode.style.display = 'none';
-  }
-  let dialog = document.getElementById('dialog');
-  dialog.classList.add('d-none');
-}
-
-
-function renderEmblem(name) {
-  let aux = name.split(' ');
-  let capital = '';
-  for (let j = 0; j < aux.length; j++) {
-    if (j <= 1) {
-      capital += aux[j].slice(0, 1).toUpperCase();
-    }
-  }
-  return capital;
-}
-
-function colorRandom() {
-  return colors[Math.floor(Math.random() * colors.length)];
-}
-
-function findLastContactId(contacts) {
-  let lastId = 1;
-  for (let i = 1; i < contacts.length; i++) {
-    if (contacts[i].contactId > lastId) {
-      lastId = contacts[i].contactId;
-    }
-  }
-  return lastId; // found the last contact.id
-}
-
-async function newContact(event) {
-  event.preventDefault();
-  let lastContactId = findLastContactId(contacts);
-  let nameContact = document.getElementById('nameContact').value;
-  let nameContactUpper = nameContact[0].toUpperCase() + nameContact.slice(1);
-
-  let newContact = {
-    contactId: lastContactId + 1,
-    name: nameContactUpper,
-    email: document.getElementById('emailContact').value,
-    phone: document.getElementById('phoneContact').value,
-    emblem: renderEmblem(nameContact),
-    color: colorRandom(),
-  };
-  contacts.push(newContact);
-  await postData('contacts', newContact);
-  showNewContactDetails(newContact);
-}
-
-function showNewContactDetails(newContact) {
-  closeDialog();
-  cleanContactControls();
-  renderListContact();
-  document.getElementById('contactCreated').classList.remove('d-none');
-  for (let i = 0; i < contacts.length; i++) {    
-    if (newContact.name == contacts[i].name) {
-      let infoContact = document.getElementById('divDetails');
-      infoContact.innerHTML = ' ';
-      infoContact.classList.remove('move-left');
-      infoContact.innerHTML += renderContactinList(i);
-      mobileDetails();
-    }
-  }
-  contactCreatedDiv();
-}
-
-function contactCreatedDiv() {
-  setTimeout(() => {
-    document.getElementById('contactCreated').classList.add('d-none');
-  }, 2400);
-}
-
-
-function cleanContactControls() {
-  document.getElementById('nameContact').value = '';
-  document.getElementById('emailContact').value = '';
-  document.getElementById('phoneContact').value = '';
-}
-
-async function editContact(event, i) {
-  event.preventDefault();
-  contactEdit = contacts[i];
-  contactEdit['name'] = document.getElementById('nameContact').value;
-  contactEdit['email'] = document.getElementById('emailContact').value;
-  contactEdit['phone'] = document.getElementById('phoneContact').value;
-  contactEdit['emblem'] = renderEmblem(
-    document.getElementById('nameContact').value
-  );
-  await firebaseUpdate(contactEdit);
-  closeDialog();
-  cleanContactControls();
-  renderListContact();
-  showDetailContact(i);
-}
-
-async function firebaseUpdate(contactEdit) {
-  let contactsJson = await loadData('contacts');
-  for (key in contactsJson) {
-    let contactDB = contactsJson[key];
-    if (contactDB.contactId == contactEdit.contactId) {
-      putData('contacts/' + [key], contactEdit);
-    }
-  }
-}
-
-async function deleteContact(i) {
-  let contactDelete = contacts[i];
-  contacts.splice(i, 1);
-  document.getElementById('divDetails').innerHTML = '';
-  await firebaseDelete(contactDelete);
-  renderListContact();
-  if ( window.innerWidth <= 710) {
-    backMobileContListe();
-  }
-}
-
-async function firebaseDelete(contactDelete) {
-  let contactsJson = await loadData('contacts');
-  for (key in contactsJson) {
-    let contactDB = contactsJson[key];
-    if (contactDB.contactId == contactDelete.contactId) {
-      deleteData('contacts/' + [key]);
     }
   }
 }
