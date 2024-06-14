@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,20 +9,17 @@
   <link rel="stylesheet" href="../styles/fonts.css" />
   <link rel="stylesheet" href="../styles/mobile_taskbar.css">
   <link rel="icon" href="../assets/icons/join_icon.svg" />
-
   <script src="../js/firebaseAPI.js"></script>
   <script src="../js/script.js"></script>
   <script src="../js/add_task.js"></script>
   <script src="../js/header.js"></script>
   <title>Join add-task</title>
 </head>
-
 <body onload="initAdd()">
   <div w3-include-html="../templates/sidebar.html"></div>
   <div w3-include-html="../templates/header.html"></div>
   <div w3-include-html="../templates/mobile_taskbar.html"></div>
-  <div class="main-container">
-    
+  <div class="main-container"> 
   <h1 class="headline-task">Add Task</h1>
   <form class="add-task-container" onsubmit="createNewTask(event);">
     <div id="taskAddedToBoard" class="task-added-to-board">
@@ -38,9 +34,6 @@
       <span>Description</span>
       <textarea name="" id="description" cols="30" rows="5"></textarea>
       <span>Assigned to</span>
-
-
-
       <div onclick="showUsers()" class="contact-container">
         <span class="select-user-text">Select user to assign</span>
         <img id="arrowDownUser" src="../assets/icons/arrow_down_icon.svg" alt="">
@@ -48,7 +41,6 @@
         <ul id="users" class="users"></ul>
       </div>
       <div id="usersEmblem" class="users-emblem"></div>
-      
       <div>
         <p class="required-field-text">
           <span class="required-color">*</span>This field is required
@@ -96,10 +88,6 @@
         </div>
       </div>
       <span>Category<span class="required-color">*</span></span>
-
-
-
-
       <div onclick="showCategories()" class="contact-container"id="selectedCategoryContainer">
         <span class="select-user-text"  id="selectedCategory">Select task category</span>
         <img id="arrowDownCategory" src="../assets/icons/arrow_down_icon.svg" alt="">
@@ -107,13 +95,7 @@
         <ul id="tasks" class="tasks"></ul>
         <span id="categoryErrorMessage" class="category-error-message"></span>
       </div>
-      
-      
-
-
-      
       <span class="subtaskLabel">Subtask</span>
-
         <div class="subtask-container" id="subtaskContainer">
           <input
             type="text"
@@ -144,7 +126,6 @@
             </div>
           </div>
         </div>
-
         <div id="subtask" class="subtask"></div>
         <div type="submit" class="task-button-container">
           <div>
@@ -167,7 +148,3 @@
   </div>
   </body>
 </html>
-
-<!--
-  ein div zu viel am schließen am Ende der Formvalidation
--->

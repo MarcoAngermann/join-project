@@ -12,17 +12,12 @@
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="../styles/fonts.css" />
     <link rel="icons" href="./assets/icons/join_icon.svg" />
-
-
 </head>
-
 <body onload="init()">
-
     <div class="containerLog" id="containerLog">
         <div class="headlineLogin">
             <img class="img-logo" id="imgLogoID" src="../assets/icons/join_login.svg">
         </div>
-
         <form oninput="validateSignUpForm()" class="formSignUp" id="formSignUp" onsubmit="AddUser(event)">
 
             <div class="headlineSignUp">
@@ -49,23 +44,17 @@
                 <input class="checkBox" type="checkbox" id="acepptRules">
                 <span for="remember"> I accept the &nbsp; <a class="a_formSignUp" href="./privacy_policy.html"> Privacy policy</a></span>
             </div>
-
             <div class="divBtn">
                 <button class="btn-disabled style_BtnTypography1" type="submit" id="btnSignUp">Sign up</button>
             </div>
         </form>
-
         <div class="footerLogin">
             <a class="a_footer style_InputTypography2" href="../privacy_policy.html">Privacy Policy</a>
             <a class="a_footer style_InputTypography2" href="../legal_notice.html">Legal notice</a>
         </div>
-
-
         <div id="dialogSingUp" class="dialog-bg d-none">
             <img class="dialog" src="../assets/icons/You_Signed_Up_successfully_animation_icon.svg">
         </div>
-
     </div>
 </body>
-
 </html>

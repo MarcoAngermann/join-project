@@ -40,13 +40,8 @@ function getGreeting(isGuest) {
  * @return {Promise<void>} A promise that resolves when the greeting message has been displayed.
  */
 async function displayGreeting() {
-  // Fetch the current user from the server
   let currentUser = await getUserLogin();
-
-  // Check if the user is a guest
   let isGuest = currentUser.userId == 0;
-
-  // Update the greeting message in the HTML
   document.getElementById('greetText').innerHTML = getGreeting(isGuest);
 }
 async function displayGreeting() {

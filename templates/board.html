@@ -25,7 +25,6 @@
     <div w3-include-html="../templates/sidebar.html"></div>
     <div w3-include-html="../templates/header.html"></div>
     <div w3-include-html="../templates/mobile_taskbar.html"></div>
-
     <div class="board-container">
       <section class="top">
         <div class="top-left">
@@ -52,14 +51,12 @@
               />
             </div>
           </div>
-
           <button onclick="showBoardAddTask('toDo'); boardAddTaskAnimation()">
             Add task
             <img src="..//assets/icons/add_icon_white.svg" />
           </button>
         </div>
       </section>
-
       <section class="edit-main">
         <div class="todo">
           <div class="todo-head">
@@ -95,7 +92,6 @@
             ondragleave="removeHighlight('inProgress')"
           ></div>
         </div>
-
         <div class="await-feedback">
           <div class="await-feedback-head">
             <h3>Await Feedback</h3>
@@ -113,7 +109,6 @@
             ondragleave="removeHighlight('awaitFeedback')"
           ></div>
         </div>
-
         <div class="done">
           <div class="done-head">
             <h3>Done</h3>
