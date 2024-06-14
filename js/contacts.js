@@ -138,16 +138,12 @@ function openDialog(newContact, i) {
   let dialog = document.getElementById('dialog');
   dialog.classList.remove('d-none');
   if (newContact == true) {
-    let title1 = 'Add contact';
     let functionNew = 'newContact(event)';
-    let btnText = 'Create Contact';
-    dialog.innerHTML = renderContactDialog(title1, functionNew, btnText);
+    dialog.innerHTML = renderContactDialog('Add contact', functionNew, 'Create Contact');
   } else {
     let contact = contacts[i];
-    let title1 = 'Edit contact';
     let functionNew = 'editContact(event,' + i + ')';
-    let btnText = 'Save';
-    dialog.innerHTML = renderContactDialog(title1, functionNew, btnText);
+    dialog.innerHTML = renderContactDialog('Edit contact', functionNew,'Save');
     document.getElementById('iconContact').outerHTML =
       `<div class="emblem-info" id="emblemContact" style="background-color: ${contact['color']}">${contact['emblem']}</div>`;
     document.getElementById('textAdd').classList.add('d-none');
@@ -156,6 +152,7 @@ function openDialog(newContact, i) {
     document.getElementById('phoneContact').value = contact['phone'];
   }
 }
+
 
 function renderContactDialog(title1, functionNew, btnText) {
   return `
@@ -177,17 +174,18 @@ src="../assets/icons/closeWhite_icon.svg"></button>
   <form class="add-contact-form" onsubmit=${functionNew}>
     <div class="group-contact-input">
       <input class="inputs-contact inputfield-text-style" type="text" id="nameContact"
-        style="background-image: url(../assets/icons/personInput_icon.svg)" placeholder="Name" required>
+        style="background-image: url(../assets/icons/personInput_icon.svg)" placeholder="Name" required/>
       <input class="inputs-contact inputfield-text-style" type="email" id="emailContact"
-        style="background-image: url(../assets/icons/mail_icon.svg)" placeholder="Email" required>
+        style="background-image: url(../assets/icons/mail_icon.svg)" placeholder="Email" required/>
       <input class="inputs-contact inputfield-text-style" type="tel" id="phoneContact"
-        style="background-image: url(../assets/icons/call_icon.svg)" placeholder="Phone" required>
+        style="background-image: url(../assets/icons/call_icon.svg)" placeholder="Phone" required/>
       <div class="form-button">
-        <button class="button-guest inputfield-text-style" onclick="closeDialog()">Cancel <b>X</b></button>
+        <button class="button-guest inputfield-text-style" type="button" onclick="closeDialog()">Cancel <b>X</b></button>
         <button class="add-contact-button-mobile button-text-style" type="submit">${btnText} <img class="button-images " src="../assets/icons/checkWhite.svg"></button>
       </div>
+    </div>
   </form>
-</div>
+</div>  
 </div>`;
 }
 
