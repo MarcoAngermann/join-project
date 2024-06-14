@@ -327,7 +327,7 @@ function getSelectedPrio() {
 
 function getSelectedUserIds() {
   let checkboxes = document.querySelectorAll(
-    '.contactList input[type="checkbox"]:checked'
+    '.contact-list input[type="checkbox"]:checked'
   );
   let selectedUserIds = [];
   for (let checkbox of checkboxes) {

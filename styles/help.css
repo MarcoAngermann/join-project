@@ -13,7 +13,7 @@ h3 {
 }
 
 .help-container {
-  margin: 200px 100px 32px 300px;
+  margin: 150px 32px 32px 250px;
 }
 
 .title-help {
@@ -65,16 +65,21 @@ h3 {
   font-weight: bold;
 }
 
-.privacy_policy {
-  margin: 200px 100px 32px 300px;
-}
-
 @media (max-width: 1425px) {
-  .help-container {
-    margin: 100px 16px 32px 16px;
-  }
-
   .text {
     margin-bottom: 100px;
   }
 }
+
+@media (max-width: 1050px) {
+  .help-container {
+    margin: 150px 32px 32px 50px;
+  }
+  }
+
+  @media (max-width: 450px) {
+    .help-container {
+      margin: 150px 20px 32px 20px;
+    }
+    }
+  
