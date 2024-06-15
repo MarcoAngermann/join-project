@@ -140,12 +140,12 @@ function mobileGreeting() {
   let greetingContainer = document.getElementById('greetingContainer');
   let greetingTimeout;
 
-    /**
+  /**
    * Executes a series of actions to show a greeting message followed by displaying the summary card.
    *
    */
   function showGreetingThenSummary() {
-    clearTimeout(greetingTimeout); // Löscht den vorherigen Timeout, falls vorhanden
+    clearTimeout(greetingTimeout);
     summaryContainer.style.display = 'none';
     greetingContainer.style.display = 'flex';
     greetingContainer.classList.remove('fadeOut');
@@ -159,20 +159,20 @@ function mobileGreeting() {
   }
 
   /**
- * Adjusts the visibility of the greeting and summary containers based on the window width.
- * If the window width is less than 800 pixels, the function calls the `showGreetingThenSummary` function.
- * Otherwise, it clears the `greetingTimeout`, sets the display style of the greeting and summary containers to 'flex',
- * and removes the 'fadeOut' and 'fadeIn' classes from the greeting and summary containers.
- *
- * @return {void} This function does not return anything.
- */
+   * Adjusts the visibility of the greeting and summary containers based on the window width.
+   * If the window width is less than 800 pixels, the function calls the `showGreetingThenSummary` function.
+   * Otherwise, it clears the `greetingTimeout`, sets the display style of the greeting and summary containers to 'flex',
+   * and removes the 'fadeOut' and 'fadeIn' classes from the greeting and summary containers.
+   *
+   * @return {void} This function does not return anything.
+   */
   function adjustVisibility() {
     if (window.innerWidth < 800) {
       showGreetingThenSummary();
     } else {
-      clearTimeout(greetingTimeout); // Löscht den Timeout, um zu verhindern, dass der Greeting-Container verschwindet
-      greetingContainer.style.display = 'flex'; // Stellt sicher, dass der Greeting-Container angezeigt wird
-      summaryContainer.style.display = 'flex'; // Stellt sicher, dass der Summary-Container angezeigt wird
+      clearTimeout(greetingTimeout);
+      greetingContainer.style.display = 'flex';
+      summaryContainer.style.display = 'flex';
       greetingContainer.classList.remove('fadeOut', 'fadeIn');
       summaryContainer.classList.remove('fadeOut', 'fadeIn');
     }

@@ -1,3 +1,8 @@
+/**
+ * Renders the login form HTML as a string.
+ *
+ * @return {string} The HTML string representing the login form.
+ */
 function renderLoginHTML() {
   return /*html*/ `
   <form id="formLogin" class="formLogin" onsubmit="return doLogin(event)">

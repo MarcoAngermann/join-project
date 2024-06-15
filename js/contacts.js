@@ -1,3 +1,9 @@
+/**
+ * Initializes the contact functionality by including HTML, loading contacts data asynchronously,
+ * and rendering the list of contacts.
+ *
+ * @return {Promise<void>} A promise that resolves when the initialization is complete.
+ */
 async function initContact() {
   await includeHTML();
   await contactsArray();
@@ -8,6 +14,10 @@ async function initContact() {
 
 let contacts = [];
 
+/**
+ * Asynchronously loads contacts data from the server and populates the contacts array.
+ *
+ */
 async function contactsArray() {
   let contactsJson = await loadData('contacts');
   for (key in contactsJson) {
@@ -16,6 +26,12 @@ async function contactsArray() {
   }
 }
 
+/**
+ * Creates a new contact and adds it to the contacts array.
+ *
+ * @param {Event} event - The event object for the form submission.
+ * @return {Promise<void>} - A promise that resolves when the new contact is added and saved to the server.
+ */
 async function newContact(event) {
   event.preventDefault();
   let lastContactId = findLastContactId(contacts);
@@ -34,6 +50,13 @@ async function newContact(event) {
   showNewContactDetails(newContact);
 }
 
+/**
+ * Asynchronously edits a contact by updating its properties and saving the changes to the server.
+ *
+ * @param {Event} event - The event object for the form submission.
+ * @param {number} i - The index of the contact to be edited in the contacts array.
+ * @return {Promise<void>} A promise that resolves when the contact is successfully edited and saved.
+ */
 async function editContact(event, i) {
   event.preventDefault();
   contactEdit = contacts[i];
@@ -50,6 +73,14 @@ async function editContact(event, i) {
   showDetailContact(i);
 }
 
+/**
+ * Asynchronously deletes a contact by removing it from the contacts array, clearing the details div,
+ * deleting the contact from the server, and re-rendering the list of contacts. If the window width is
+ * less than or equal to 710 pixels, it also navigates back to the mobile contact list.
+ *
+ * @param {number} i - The index of the contact to be deleted in the contacts array.
+ * @return {Promise<void>} A promise that resolves when the contact is successfully deleted.
+ */
 async function deleteContact(i) {
   let contactDelete = contacts[i];
   contacts.splice(i, 1);
@@ -61,7 +92,13 @@ async function deleteContact(i) {
   }
 }
 
-
+/**
+ * Updates a contact in the Firebase database by finding the contact with the matching contactId
+ * and replacing it with the new contact data provided in the contactEdit parameter.
+ *
+ * @param {Object} contactEdit - The updated contact data to be applied.
+ * @return {Promise<void>} A promise that resolves when the contact is successfully updated.
+ */
 async function firebaseUpdate(contactEdit) {
   let contactsJson = await loadData('contacts');
   for (key in contactsJson) {
@@ -72,6 +109,13 @@ async function firebaseUpdate(contactEdit) {
   }
 }
 
+/**
+ * Deletes a contact from the Firebase database by finding the contact with the matching contactId
+ * and deleting it.
+ *
+ * @param {Object} contactDelete - The contact object to be deleted.
+ * @return {Promise<void>} A promise that resolves when the contact is successfully deleted.
+ */
 async function firebaseDelete(contactDelete) {
   let contactsJson = await loadData('contacts');
   for (key in contactsJson) {
@@ -82,8 +126,16 @@ async function firebaseDelete(contactDelete) {
   }
 }
 
-// render functions
-
+/**
+ * Renders the contact list on the webpage by populating the contentList element with
+ * the contact information. The contacts are sorted alphabetically before rendering.
+ * The function iterates through the contacts array and creates HTML elements for each contact.
+ * If the contact's name starts with a different letter than the previous contact, a new
+ * div element is created with the first letter of the contact's name in uppercase.
+ * The contact's name, email, and emblem are displayed in the contact list container div.
+ *
+ * @return {void} This function does not return anything.
+ */
 function renderListContact() {
   let contentList = document.getElementById('divList');
   contentList.innerHTML = '';
@@ -100,8 +152,9 @@ function renderListContact() {
     }
     contentList.innerHTML += `
     <div class="contact-list-container" onclick="showDetailContact(${i})">
-    <div class="contact-emblem" style="background-color: ${contact['color']
-      }"> ${renderEmblem(contact['name'])} </div>
+    <div class="contact-emblem" style="background-color: ${
+      contact['color']
+    }"> ${renderEmblem(contact['name'])} </div>
     <div class="contact-info-container">
             <p>${contact['name']}</p>
             <a>${contact['email']}</a>
@@ -110,8 +163,14 @@ function renderListContact() {
   }
 }
 
+/**
+ * Renders a contact in a list format.
+ *
+ * @param {number} i - The index of the contact in the contacts array.
+ * @return {string} The HTML string representing the contact in a list format.
+ */
 function renderContactinList(i) {
-  return ` 
+  return /*html*/ `
   <div class="headline-contact">
       <div class="emblem-info" id="emblem" style="background-color: ${contacts[i]['color']}">${contacts[i]['emblem']}</div>
       <div class="name-contact">
@@ -138,8 +197,16 @@ function renderContactinList(i) {
   </div> `;
 }
 
+/**
+ * Renders a contact dialog with the given title, function, and button text.
+ *
+ * @param {string} title1 - The title of the contact dialog.
+ * @param {function} functionNew - The function to be called when the form is submitted.
+ * @param {string} btnText - The text of the submit button.
+ * @return {string} The HTML string representing the contact dialog.
+ */
 function renderContactDialog(title1, functionNew, btnText) {
-  return `
+  return /*html*/ `
 <div class="dialog">
 <div class="join-add-contact">
 <button class="button-mobile-close" onclick="closeDialog()"><img class="imgBtns"
@@ -172,6 +239,12 @@ src="../assets/icons/closeWhite_icon.svg"></button>
 </div>`;
 }
 
+/**
+ * Generates an emblem based on the given name.
+ *
+ * @param {string} name - The name to generate the emblem from.
+ * @return {string} The generated emblem.
+ */
 function renderEmblem(name) {
   let aux = name.split(' ');
   let capital = '';
@@ -183,10 +256,20 @@ function renderEmblem(name) {
   return capital;
 }
 
+/**
+ * Generates a random color from the given array of colors.
+ *
+ * @return {string} The randomly generated color.
+ */
 function colorRandom() {
   return colors[Math.floor(Math.random() * colors.length)];
 }
 
+/**
+ * Sorts the contacts array in ascending order based on the contact's name.
+ *
+ * @return {void} This function does not return anything.
+ */
 function sortContacts() {
   contacts = contacts.sort((a, b) => {
     if (a.name > b.name) {
@@ -199,7 +282,12 @@ function sortContacts() {
   });
 }
 
-//contacts functions
+/**
+ * Displays detailed information about a specific contact.
+ *
+ * @param {number} i - The index of the contact in the contacts array.
+ * @return {void} This function does not return anything.
+ */
 function showDetailContact(i) {
   contact = contacts[i];
   let infoContact = document.getElementById('divDetails');
@@ -211,18 +299,30 @@ function showDetailContact(i) {
   mobileDetails();
 }
 
+/**
+ * Opens a dialog box for adding or editing a contact.
+ *
+ * @param {boolean} newContact - Indicates whether to open the dialog for adding a new contact or editing an existing one.
+ * @param {number} i - The index of the contact in the contacts array (only used when editing an existing contact).
+ * @return {void} This function does not return anything.
+ */
 function openDialog(newContact, i) {
   let dialog = document.getElementById('dialog');
   dialog.classList.remove('d-none');
   if (newContact == true) {
     let functionNew = 'newContact(event)';
-    dialog.innerHTML = renderContactDialog('Add contact', functionNew, 'Create Contact');
+    dialog.innerHTML = renderContactDialog(
+      'Add contact',
+      functionNew,
+      'Create Contact'
+    );
   } else {
     let contact = contacts[i];
     let functionNew = 'editContact(event,' + i + ')';
     dialog.innerHTML = renderContactDialog('Edit contact', functionNew, 'Save');
-    document.getElementById('iconContact').outerHTML =
-      `<div class="emblem-info" id="emblemContact" style="background-color: ${contact['color']}">${contact['emblem']}</div>`;
+    document.getElementById(
+      'iconContact'
+    ).outerHTML = `<div class="emblem-info" id="emblemContact" style="background-color: ${contact['color']}">${contact['emblem']}</div>`;
     document.getElementById('textAdd').classList.add('d-none');
     document.getElementById('nameContact').value = contact['name'];
     document.getElementById('emailContact').value = contact['email'];
@@ -230,8 +330,13 @@ function openDialog(newContact, i) {
   }
 }
 
+/**
+ * Closes the dialog box.
+ *
+ * @return {void} This function does not return anything.
+ */
 function closeDialog() {
-  let mobileMode = document.getElementById("amobile_nameContact");
+  let mobileMode = document.getElementById('amobile_nameContact');
   if (mobileMode != null && mobileMode.style.display == 'flex') {
     mobileMode.style.display = 'none';
   }
@@ -239,6 +344,12 @@ function closeDialog() {
   dialog.classList.add('d-none');
 }
 
+/**
+ * Finds the last contact ID in the given array of contacts.
+ *
+ * @param {Array} contacts - An array of contact objects.
+ * @return {number} The last contact ID found in the array.
+ */
 function findLastContactId(contacts) {
   let lastId = 1;
   for (let i = 1; i < contacts.length; i++) {
@@ -249,6 +360,12 @@ function findLastContactId(contacts) {
   return lastId; // found the last contact.id
 }
 
+/**
+ * Displays the details of a newly created contact.
+ *
+ * @param {Object} newContact - The newly created contact object.
+ * @return {void} This function does not return a value.
+ */
 function showNewContactDetails(newContact) {
   closeDialog();
   cleanContactControls();
@@ -266,61 +383,90 @@ function showNewContactDetails(newContact) {
   contactCreatedDiv();
 }
 
+/**
+ * Sets a timeout to hide the 'contactCreated' element after 2400 milliseconds.
+ *
+ * @return {void} This function does not return a value.
+ */
 function contactCreatedDiv() {
   setTimeout(() => {
     document.getElementById('contactCreated').classList.add('d-none');
   }, 2400);
 }
 
+/**
+ * Clears the values of the 'nameContact', 'emailContact', and 'phoneContact' input fields.
+ *
+ * @return {void} This function does not return a value.
+ */
 function cleanContactControls() {
   document.getElementById('nameContact').value = '';
   document.getElementById('emailContact').value = '';
   document.getElementById('phoneContact').value = '';
 }
 
-// mobile functions
 let mobilWindow = window.matchMedia('(max-width:710px)');
 mobilWindow.addEventListener('change', () => myFunc());
+
+/**
+ * Function to handle mobile window changes and adjust contact details display accordingly.
+ *
+ */
 function myFunc() {
   if (mobilWindow.matches) {
-    document.getElementById("divContactDetails").style.display = "none";
-    document.getElementById("divContactList").style.display = "flex";
+    document.getElementById('divContactDetails').style.display = 'none';
+    document.getElementById('divContactList').style.display = 'flex';
   } else {
-    document.getElementById("divContactDetails").style.display = "flex";
-    document.getElementById("divContactList").style.display = "flex";
-    let amobileDiv = document.getElementById("amobile_nameContact");
+    document.getElementById('divContactDetails').style.display = 'flex';
+    document.getElementById('divContactList').style.display = 'flex';
+    let amobileDiv = document.getElementById('amobile_nameContact');
     if (amobileDiv != null) {
-      amobileDiv.style.display = "none";
+      amobileDiv.style.display = 'none';
     }
   }
 }
 
+/**
+ * Toggles the display of the contact details and contact list based on the window width.
+ * If the window width is less than or equal to 710 pixels, the contact details are displayed and the contact list is hidden.
+ * The 'move-left' class is removed from the 'divDetails' element.
+ *
+ * @return {void} This function does not return a value.
+ */
 function mobileDetails() {
   outWidth = window.innerWidth;
   if (outWidth <= 710) {
-    document.getElementById("divContactDetails").style.display = "flex";
-    document.getElementById("divContactList").style.display = "none";
-    document.getElementById("divDetails").classList.remove('move-left');
-  };
-}
-
-function backMobileContListe() {
-  outWidth = window.innerWidth;
-  if (outWidth <= 710) {
-    document.getElementById("divContactDetails").style.display = "none";
-    document.getElementById("divContactList").style.display = "flex";
-  };
-}
-
-function openMobileDialog() {
-  let mobileMode = document.getElementById("amobile_nameContact");
-  if (mobileMode != null) {
-    if (mobileMode.style.display == "none") {
-      mobileMode.style.display = "flex";
-    }
-    else {
-      mobileMode.style.display = "none";
-    }
+    document.getElementById('divContactDetails').style.display = 'flex';
+    document.getElementById('divContactList').style.display = 'none';
+    document.getElementById('divDetails').classList.remove('move-left');
   }
 }
 
+/**
+ * Hides the contact details and displays the contact list when the window width is less than or equal to 710 pixels.
+ *
+ * @return {void} This function does not return a value.
+ */
+function backMobileContListe() {
+  outWidth = window.innerWidth;
+  if (outWidth <= 710) {
+    document.getElementById('divContactDetails').style.display = 'none';
+    document.getElementById('divContactList').style.display = 'flex';
+  }
+}
+
+/**
+ * Toggles the display of the "mobileMode" element. If the element is currently hidden, it will be displayed as a flex container. If it is already displayed, it will be hidden.
+ *
+ * @return {void} This function does not return a value.
+ */
+function openMobileDialog() {
+  let mobileMode = document.getElementById('amobile_nameContact');
+  if (mobileMode != null) {
+    if (mobileMode.style.display == 'none') {
+      mobileMode.style.display = 'flex';
+    } else {
+      mobileMode.style.display = 'none';
+    }
+  }
+}

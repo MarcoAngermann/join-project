@@ -5,6 +5,7 @@
   margin-left: 260px;
   background-color: #f6f7f8;
   max-width: 1425px;
+  height: calc(100vh - 130px);
 }
 
 .search {

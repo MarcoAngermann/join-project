@@ -1,3 +1,8 @@
+/**
+ * Renders the HTML for the sign-up form.
+ *
+ * @return {string} The HTML code for the sign-up form.
+ */
 function renderSignUpHTML() {
   return /*html*/ `
         <form class="formSignUp" id="formSignUp" onsubmit="AddUser(event)">

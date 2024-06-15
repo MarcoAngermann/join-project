@@ -1,3 +1,12 @@
+/**
+ * Edits a task on the board by finding the task with the given cardId, creating an object with the task's information,
+ * adding the object to the boardEdit array, logging the boardEdit array, setting the innerHTML of the element with the
+ * id 'showBigCard' to the result of the boardAddTaskEdit function with the cardId parameter, and calling the renderInformation
+ * function with the cardId parameter.
+ *
+ * @param {string} cardId - The id of the card associated with the task to be edited.
+ * @return {void} This function does not return anything.
+ */
 function editTaskOfBoard(cardId) {
   let task = tasks.find((t) => t.cardId == cardId);
   let information = {
@@ -16,11 +25,22 @@ function editTaskOfBoard(cardId) {
   renderInformation(cardId);
 }
 
+/**
+ * Closes the edit board by hiding the 'showBigCard' element and resetting the boardEdit array.
+ *
+ * @return {void} This function does not return anything.
+ */
 function closeEditBoard() {
   document.getElementById('showBigCard').classList.add('dnone');
   boardEdit = [];
 }
 
+/**
+ * Renders information of a task based on the cardId.
+ *
+ * @param {number} cardId - The unique identifier of the task.
+ * @return {void} This function does not return anything.
+ */
 function renderInformation(cardId) {
   let task = tasks.find((t) => t.cardId == cardId);
   document.getElementById('editTitle').value = task.title;
@@ -33,6 +53,11 @@ function renderInformation(cardId) {
   renderEditSubtask(task.subtask);
 }
 
+/**
+ * Toggles the visibility of the 'editUsers' element and updates the arrow icons accordingly.
+ *
+ * @return {void} This function does not return a value.
+ */
 function showEditUsers() {
   if (document.getElementById('editUsers').classList.contains('show')) {
     document.getElementById('editUsers').classList.remove('show');
@@ -44,6 +69,16 @@ function showEditUsers() {
     document.getElementById('arrowUpUser').style.display = 'block';
   }
 }
+
+/**
+ * Changes the visibility of the subtask buttons based on the length of the subtask array.
+ * If the length is less than 5, the 'editSubtaskRightRegular' button is hidden and the
+ * 'editSubtaskRightAdd' button is shown. Otherwise, the 'editSubtaskInput' field is set to
+ * read-only and its style is changed to display an error message. The border of the
+ * 'editSubtaskContainer' is also changed to red.
+ *
+ * @return {void}
+ */
 function editChangeButtonsSubtask() {
   if (!Array.isArray(boardEdit[0].subtask)) {
     boardEdit[0].subtask = [];
@@ -62,6 +97,11 @@ function editChangeButtonsSubtask() {
   }
 }
 
+/**
+ * Resets the value of the 'editSubtaskInput' element and updates the visibility of the subtask buttons.
+ *
+ * @return {void} This function does not return anything.
+ */
 function editRemoveSubtask() {
   subtask = document.getElementById('editSubtaskInput');
   subtask.value = '';
@@ -69,11 +109,27 @@ function editRemoveSubtask() {
   document.getElementById('editSubtaskRightAdd').classList.add('dnone');
 }
 
+/**
+ * Hides the 'editSubtaskRightAdd' button and shows the 'editSubtaskRightRegular' button.
+ *
+ * @return {void} This function does not return anything.
+ */
 function editRemoveIcons() {
   document.getElementById('editSubtaskRightRegular').classList.remove('dnone');
   document.getElementById('editSubtaskRightAdd').classList.add('dnone');
 }
 
+/**
+ * Adds a new subtask to the boardEdit object if the input is not empty and there are less than 5 subtasks already.
+ * If the input is empty, it sets the placeholder of the input field to 'Bitte etwas eingeben!'.
+ * If there are already 5 subtasks, it sets the placeholder of the input field to 'Add new Subtask'.
+ * It then creates a new subtask object with the input value and sets the checked property to false.
+ * The new subtask is then added to the boardEdit object's subtask array.
+ * The input field is cleared and the editSubtaskInput element is re-rendered with the new subtask.
+ * The editRemoveSubtask function is called to reset the input field and update the visibility of the subtask buttons.
+ *
+ * @return {void} This function does not return anything.
+ */
 function editAddSubtask() {
   let input = document.getElementById('editSubtaskInput').value;
   if (input == '') {
@@ -84,7 +140,6 @@ function editAddSubtask() {
   if (!boardEdit[0].subtask) {
     return;
   }
-  // Überprüfe, ob bereits 5 Subtasks vorhanden sind
   if (boardEdit[0].subtask.length < 5) {
     document.getElementById('editSubtaskInput').placeholder = 'Add new Subtask';
     let newSubtask = { subtaskText: input, checked: false };
@@ -95,6 +150,17 @@ function editAddSubtask() {
   }
 }
 
+/**
+ * Deletes a subtask from the boardEdit object's subtask array at the specified index.
+ * Renders the edit subtask section with the updated subtask list.
+ * Resets the value of the 'editSubtaskInput' element.
+ * Sets the 'editSubtaskInput' element to be editable.
+ * Sets the color of the 'editSubtaskInput' element to black.
+ * Sets the border of the 'editSubtaskContainer' element to '1px solid #d1d1d1'.
+ *
+ * @param {number} i - The index of the subtask to be deleted.
+ * @return {void} This function does not return anything.
+ */
 function editDeleteSubtask(i) {
   boardEdit[0].subtask.splice(i, 1);
   renderEditSubtask(boardEdit[0].subtask);
@@ -105,6 +171,12 @@ function editDeleteSubtask(i) {
     '1px solid #d1d1d1';
 }
 
+/**
+ * Renders the subtasks in the 'editSubtask' element on the page.
+ *
+ * @param {Array} subtasks - An array of subtask objects.
+ * @return {void} This function does not return anything.
+ */
 function renderEditSubtask(subtasks) {
   let editSubtask = document.getElementById('editSubtask');
   editSubtask.innerHTML = '';
@@ -116,6 +188,12 @@ function renderEditSubtask(subtasks) {
   }
 }
 
+/**
+ * Edits the subtask at the specified index.
+ *
+ * @param {number} i - The index of the subtask to edit.
+ * @return {void} This function does not return anything.
+ */
 function editThisSubtask(i) {
   document.getElementById(`editSubtaskList${i}`).readOnly = false;
   edit = document.getElementById(`edit-images${i}`);
@@ -129,6 +207,12 @@ function editThisSubtask(i) {
   document.getElementById(`edit-images${i}`).classList.add('flex');
 }
 
+/**
+ * Edits the subtask at the specified index.
+ *
+ * @param {number} i - The index of the subtask to edit.
+ * @return {void} This function does not return anything.
+ */
 function editCheckSubtask(i) {
   document.getElementById(`editSubtaskList${i}`).readOnly = true;
   boardEdit[0].subtask[i].subtaskText = document.getElementById(
@@ -145,6 +229,12 @@ function editCheckSubtask(i) {
   document.getElementById(`edit-images${i}`).classList.remove('flex');
 }
 
+/**
+ * Resets the style and color of the given elements, and restores the original color of their SVG paths if they have one.
+ *
+ * @param {Array<HTMLElement>} elements - The elements to reset.
+ * @return {void} This function does not return anything.
+ */
 function resetEditElements(elements) {
   for (let i = 0; i < elements.length; i++) {
     elements[i].classList.remove('edit-selected');
@@ -153,7 +243,6 @@ function resetEditElements(elements) {
     let svgPaths = elements[i].querySelectorAll('svg path');
     if (svgPaths) {
       for (let j = 0; j < svgPaths.length; j++) {
-        // Setze die ursprüngliche Farbe des SVGs zurück, wenn die Priorität 'medium' ist
         if (elements[i].getAttribute('onclick').includes('medium')) {
           svgPaths[j].style.fill = '#FFA800';
         } else {
@@ -164,6 +253,14 @@ function resetEditElements(elements) {
   }
 }
 
+/**
+ * Sets the styles for a selected element based on the provided background color, text color, and SVG color.
+ *
+ * @param {HTMLElement} selectedElement - The element to set the styles for.
+ * @param {string} backgroundColor - The background color to set for the element.
+ * @param {string} textColor - The text color to set for the element.
+ * @param {string} svgColor - The SVG color to set for the element's SVG paths.
+ */
 function setEditPriorityStyles(
   selectedElement,
   backgroundColor,
@@ -183,10 +280,15 @@ function setEditPriorityStyles(
   }
 }
 
+/**
+ * Toggles the priority of elements based on the provided priority.
+ *
+ * @param {string} priority - The priority to toggle. Must be one of 'urgent', 'medium', or 'low'.
+ * @return {void} This function does not return a value.
+ */
 function editTogglePriority(priority) {
   let elements = document.getElementsByClassName('edit-priobtn');
   resetEditElements(elements);
-  // Hintergrundfarbe, Textfarbe und SVG-Farbe basierend auf der ausgewählten Priorität festlegen
   let selectedElement = document.getElementById('edit' + priority + 'Prio');
   if (priority === 'urgent') {
     setEditPriorityStyles(selectedElement, '#FF3D00', 'white', 'white');
@@ -197,6 +299,10 @@ function editTogglePriority(priority) {
   }
 }
 
+/**
+ * Initializes the original color attribute for SVG paths within elements with the 'edit-priobtn' class on window load.
+ *
+ */
 window.onload = function () {
   let elements = document.getElementsByClassName('edit-priobtn');
   for (let i = 0; i < elements.length; i++) {
@@ -209,6 +315,11 @@ window.onload = function () {
   }
 };
 
+/**
+ * Retrieves the selected priority from the edit buttons.
+ *
+ * @return {string} The selected priority ('urgent', 'low', or 'medium').
+ */
 function getEditSelectedPrio() {
   let urgentBtn = document.getElementById('editurgentPrio');
   let lowprioBtn = document.getElementById('editlowPrio');
@@ -221,12 +332,22 @@ function getEditSelectedPrio() {
   }
 }
 
+/**
+ * Restricts the date input field to allow only future dates for the edit date input field.
+ *
+ * @return {void} This function does not return a value.
+ */
 function restrictEditPastDate() {
   let dateInput = document.getElementById('editDate');
   let today = new Date().toISOString().split('T')[0];
   dateInput.setAttribute('min', today);
 }
 
+/**
+ * Renders the edit users by appending their HTML representation to the 'editUsers' element.
+ *
+ * @return {void} This function does not return a value.
+ */
 function renderEditUsers() {
   let content = document.getElementById('editUsers');
 
@@ -238,6 +359,14 @@ function renderEditUsers() {
 }
 
 let hiddenUserIds = new Set();
+/**
+ * Displays the user emblems for the given card ID in the 'editUsersEmblem' element.
+ * Only renders up to 5 emblems, with any additional emblems displayed as grey.
+ * Hides any user emblems that are not present in the 'task.userId' array.
+ *
+ * @param {string} cardId - The ID of the card to display emblems for.
+ * @return {void} This function does not return a value.
+ */
 function showPickedUsersEmblems(cardId) {
   let editUsersEmblem = document.getElementById('editUsersEmblem');
   editUsersEmblem.innerHTML = '';
@@ -247,7 +376,6 @@ function showPickedUsersEmblems(cardId) {
   if (task && task.userId) {
     for (let userId of task.userId) {
       if (userId == 0) continue;
-
       let user = users.find((u) => u.userId == userId);
       if (user && renderedCount < 5) {
         editUsersEmblem.innerHTML += renderEditEmblemUsers(user);
@@ -258,7 +386,7 @@ function showPickedUsersEmblems(cardId) {
     }
     hiddenUserIds.clear();
     if (extraCount > 0) {
-      let hiddenUsers = task.userId.slice(5); // Angenommen, es gibt maximal 5 sichtbare Embleme
+      let hiddenUsers = task.userId.slice(5);
       for (let userId of hiddenUsers) {
         hiddenUserIds.add(userId);
       }
@@ -269,6 +397,12 @@ function showPickedUsersEmblems(cardId) {
   showEditUsersEmblem();
 }
 
+/**
+ * Renders the emblem for each user in the 'editUsersEmblem' element based on the checked state of their checkbox.
+ * If the number of rendered emblems exceeds 5, additional emblems are rendered as grey.
+ *
+ * @return {void} This function does not return a value.
+ */
 function showEditUsersEmblem() {
   let usersEmblem = document.getElementById('editUsersEmblem');
   usersEmblem.innerHTML = '';
@@ -296,20 +430,19 @@ function showEditUsersEmblem() {
   }
 }
 
+/**
+ * Updates the state of user checkboxes based on the rendered emblems.
+ *
+ * @return {void} This function does not return a value.
+ */
 function checkUserCheckboxesBasedOnEmblems() {
-  // Sammle alle Embleme, die im 'editUsersEmblem' Bereich gerendert wurden
   let renderedEmblems = document.querySelectorAll(
     '#editUsersEmblem .edit-emblem'
   );
   let renderedUserIds = new Set();
-
-  // Füge die ID jedes gerenderten Emblems zum Set hinzu
   for (let emblem of renderedEmblems) {
     renderedUserIds.add(emblem.id);
   }
-
-  // Durchlaufe alle Benutzer-Checkboxen und setze sie auf 'checked',
-  // wenn ihre 'data-userid' in den gerenderten User-IDs enthalten ist
   let userCheckboxes = document.querySelectorAll('.edit-user-checkbox');
   for (let checkbox of userCheckboxes) {
     let userId = checkbox.dataset.userid;
@@ -317,6 +450,13 @@ function checkUserCheckboxesBasedOnEmblems() {
   }
 }
 
+/**
+ * Edits a task by updating its properties and saving the changes.
+ *
+ * @param {number} cardId - The ID of the card associated with the task.
+ * @param {Event} event - The event object that triggered the function.
+ * @return {Promise<void>} A promise that resolves when the task is successfully edited and the UI is updated.
+ */
 async function editTask(cardId, event) {
   event.preventDefault();
   let selectedUserIds = getEditSelectedUserIds();
@@ -339,6 +479,13 @@ async function editTask(cardId, event) {
   showBigCard(cardId);
 }
 
+/**
+ * Updates the task board with the updated task information.
+ *
+ * @param {number} cardId - The ID of the card associated with the task.
+ * @param {Object} updatedTask - The updated task object containing the new task information.
+ * @return {Promise<void>} A promise that resolves when the task board is successfully updated.
+ */
 async function updateEditBoard(cardId, updatedTask) {
   let tasksJSON = await loadData('tasks');
   for (let key in tasksJSON) {
@@ -349,6 +496,11 @@ async function updateEditBoard(cardId, updatedTask) {
   }
 }
 
+/**
+ * Resets the display for the user section by hiding it and updating the arrow icons.
+ *
+ * @return {void} This function does not return a value.
+ */
 function resetEditUserDisplay() {
   let users = document.getElementById('editUsers');
   users.classList.remove('show');
@@ -356,7 +508,11 @@ function resetEditUserDisplay() {
   document.getElementById('arrowUpUser').style.display = 'none';
 }
 
-// wird später beim Ok benötigt
+/**
+ * Retrieves the IDs of all selected checkboxes in the '.edit-contactlist' element.
+ *
+ * @return {Array<string>} An array of selected user IDs.
+ */
 function getEditSelectedUserIds() {
   let checkboxes = document.querySelectorAll(
     '.edit-contactlist input[type="checkbox"]:checked'

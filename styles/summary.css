@@ -196,6 +196,7 @@
   display: flex;
   margin-top: 150px;
   margin-left: 300px;
+  height: calc(100vh - 250px);
 }
 
 .summary-card-medium-container {
@@ -255,6 +256,7 @@
   flex-direction: column;
   width: 600px;
   margin-right: 30px;
+  overflow-y: auto;
 }
 
 /* summary mobil animation Greetting */
@@ -558,8 +560,6 @@
   }
 }
 
-
-
 @keyframes fadeOut {
   0% {
     opacity: 1;
@@ -586,7 +586,7 @@
 
 .summary-main-container .summary-card-container,
 .summary-main-container .greeting-container {
-  transition: opacity 1.5s ease-in-out; 
+  transition: opacity 1.5s ease-in-out;
 }
 
 .hidden {
@@ -594,12 +594,9 @@
 }
 
 .fadeOut {
-  animation: fadeOut 2s forwards; 
+  animation: fadeOut 2s forwards;
 }
 
 .fadeIn {
-  animation: fadeIn 2s forwards; 
+  animation: fadeIn 2s forwards;
 }
-
-
-
