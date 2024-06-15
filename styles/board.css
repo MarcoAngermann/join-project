@@ -395,6 +395,10 @@ progress[value]::-webkit-progress-value {
 }
 
 @media (max-width: 650px) {
+  .board-container {
+    margin-left: 30px;
+  }
+
   .top-add-task {
     display: flex;
   }
