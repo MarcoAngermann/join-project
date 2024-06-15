@@ -385,11 +385,6 @@ form label {
   }
 
   .error-login {
-    /* position: relative;
-    top: 244px !important;
-    left: 99px !important;
-    right: 0;
-    bottom: 0; */
     z-index: 10;
   }
 
@@ -407,7 +402,7 @@ form label {
 
   .form-login {
     width: 530px;
-    height: 400px;
+    height: 420px;
     padding: 35px 45px 35px 45px;
     gap: 22px;
   }
@@ -477,7 +472,7 @@ form label {
     width: 450px;
     height: 530px;
     padding: 25px;
-    gap: 15px;
+    gap: 30px;
   }
 
   .icon-container {
@@ -499,9 +494,8 @@ form label {
 
   .form-login {
     width: 315px;
-    height: 430px;
+    height: 460px;
     padding: 25px;
-    gap: 15px;
   }
 
   .style_BtnTypography1 {
