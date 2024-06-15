@@ -44,7 +44,7 @@ async function AddUser(event) {
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
   let confirmpassword = document.getElementById('passwordConfirm').value;
-  if (!password === confirmpassword) {
+  if (password != confirmpassword) {
     showPasswordError();
     return false;
   }
