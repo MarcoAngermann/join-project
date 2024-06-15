@@ -223,6 +223,12 @@ function restrictPastDate() {
 /**
  * Renders users' emblems based on certain conditions.
  *
+ * This function retrieves the 'usersEmblem' element from the DOM and clears its content.
+ * It then iterates over the 'users' array, skipping any users with a 'userId' of 0.
+ * For each user, it checks if the corresponding checkbox is checked. If it is, it adds the 'contact-list-selected' class to the corresponding 'contactList' element,
+ * and either renders the user's emblem or increments the 'extraCount' if there are already 5 emblems rendered.
+ * If the checkbox is not checked, it removes the 'contact-list-selected' class.
+ * After iterating over all users, if there are any extra emblems to render, it renders them with the 'renderGreyEmblem' function.
  */
 function showUsersEmblem() {
   let usersEmblem = document.getElementById('usersEmblem');

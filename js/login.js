@@ -113,6 +113,15 @@ function showSignUpDialog() {
 }
 
 /**
+ * Shows the login dialog by setting the display style of the 'dialogLogin' element to 'flex'.
+ *
+ * @return {void} This function does not return a value.
+ */
+function showLoginDialog() {
+  document.getElementById('dialogLogin').style.display = 'flex';
+}
+
+/**
  * Checks if an email already exists in the users data.
  *
  * @param {string} email - The email to check.
@@ -199,13 +208,15 @@ function cleanContactControls() {
  * @param {Event} event - The event object that triggered the function.
  * @return {boolean} Returns false if login fails, otherwise redirects to the summary page.
  */
-function doLogin(event) {
+async function doLogin(event) {
   if (event) event.preventDefault();
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
 
   if (checkUserExist(email, password)) {
     console.log('Login successful');
+    showLoginDialog();
+    await sleep(3000);
     window.location.href = './templates/summary.html';
   } else {
     showLoginError();
