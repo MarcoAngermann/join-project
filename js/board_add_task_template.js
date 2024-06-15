@@ -254,7 +254,6 @@ function editSubtaskHTML(i) {
 
 /**
  * Generates HTML elements for editing a subtask.
- *
  * @param {number} i - The index of the subtask.
  * @return {string} The HTML elements for editing a subtask.
  */
