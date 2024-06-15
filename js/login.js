@@ -3,7 +3,6 @@
  * - Calls the joinAnimation function to animate the login process.
  * - Calls the moveIcon function to move the icon to the desired position.
  * - Loads the users data by calling the loadData function with the parameter 'users'.
- *
  * @return {Promise<void>} A Promise that resolves when the login process is completed.
  */
 async function initLogin() {
@@ -25,7 +24,6 @@ function init() {
 
 /**
  * Enables the button element with the id 'btnSignUp' by removing the 'disabled' attribute and updating its class.
- *
  * @return {void} This function does not return anything.
  */
 function isChecked() {
@@ -37,7 +35,6 @@ function isChecked() {
 
 /**
  * Adds a user to the system by validating the user's input and creating a new user.
- *
  * @param {Event} event - The event object triggered by the form submission.
  * @return {Promise<boolean>} A promise that resolves to true if the user is successfully added, or false if there is an error.
  */
@@ -74,7 +71,6 @@ function showPasswordError() {
 
 /**
  * Updates the email input element to display an error message for an existing email.
- *
  */
 function checkEmailExist() {
   let emailElement = document.getElementById('email');
@@ -86,7 +82,6 @@ function checkEmailExist() {
 
 /**
  * Creates a new user object with the given name, email, and password.
- *
  * @param {string} name - The name of the user.
  * @param {string} email - The email of the user.
  * @param {string} password - The password of the user.
@@ -105,7 +100,6 @@ async function createUser(name, email, password) {
 
 /**
  * Displays the sign up dialog by setting the display style of the 'dialogSingUp' element to 'flex'.
- *
  * @return {void} This function does not return a value.
  */
 function showSignUpDialog() {
@@ -114,7 +108,6 @@ function showSignUpDialog() {
 
 /**
  * Shows the login dialog by setting the display style of the 'dialogLogin' element to 'flex'.
- *
  * @return {void} This function does not return a value.
  */
 function showLoginDialog() {
@@ -123,7 +116,6 @@ function showLoginDialog() {
 
 /**
  * Checks if an email already exists in the users data.
- *
  * @param {string} email - The email to check.
  * @return {Promise<boolean>} A promise that resolves to true if the email already exists, false otherwise.
  */
@@ -131,15 +123,14 @@ async function emailExists(email) {
   let usersJson = await loadData('users');
   for (let key in usersJson) {
     if (usersJson[key].email === email) {
-      return true; // E-Mail existiert bereits
+      return true;
     }
   }
-  return false; // E-Mail existiert nicht
+  return false;
 }
 
 /**
  * Generates a random color from the `colors` array.
- *
  * @return {string} A randomly selected color from the `colors` array.
  */
 function colorRandom() {
@@ -148,7 +139,6 @@ function colorRandom() {
 
 /**
  * Generates initials from a given name.
- *
  * @param {string} name - The name from which to generate initials.
  * @return {string} The initials generated from the name.
  */
@@ -166,7 +156,6 @@ function getEmblemUser(name) {
 /**
  * Finds the last user ID from the 'users' data by iterating through the users
  * and comparing their IDs. Returns the last user ID found.
- *
  * @return {Promise<number>} The last user ID found in the 'users' data.
  */
 async function findLastUserId() {
@@ -178,12 +167,11 @@ async function findLastUserId() {
       lastId = user.userId;
     }
   }
-  return lastId; // found the last contact.id
+  return lastId;
 }
 
 /**
  * Creates a promise that resolves after the specified time.
- *
  * @param {number} ms - The time in milliseconds to sleep.
  * @return {Promise} A promise that resolves after the specified time.
  */
@@ -193,7 +181,6 @@ let sleep = function (ms) {
 
 /**
  * Clears the input values of the contact form.
- *
  */
 function cleanContactControls() {
   document.getElementById('name').value = '';
@@ -204,7 +191,6 @@ function cleanContactControls() {
 
 /**
  * Handles the login process.
- *
  * @param {Event} event - The event object that triggered the function.
  * @return {boolean} Returns false if login fails, otherwise redirects to the summary page.
  */
@@ -212,7 +198,6 @@ async function doLogin(event) {
   if (event) event.preventDefault();
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
-
   if (checkUserExist(email, password)) {
     console.log('Login successful');
     showLoginDialog();
@@ -226,7 +211,6 @@ async function doLogin(event) {
 
 /**
  * Checks if a user with the provided email and password exists in the usersJson object.
- *
  * @param {string} email - The email of the user to be checked.
  * @param {string} password - The password of the user to be checked.
  * @return {boolean} Returns true if a user with the given email and password exists, false otherwise.
@@ -254,7 +238,6 @@ function showLoginError() {
 /**
  * Displays an error message on the webpage for a login failure. The error message
  * is displayed for 3 seconds before being hidden.
- *
  * @return {void} This function does not return anything.
  */
 function errorLogin() {
@@ -266,7 +249,6 @@ function errorLogin() {
 
 /**
  * Sets the userId in the session storage to 0 and redirects the user to the summary page.
- *
  * @param {Event} event - The event object representing the form submission.
  * @return {void} This function does not return anything.
  */
@@ -290,7 +272,6 @@ function showPassword() {
 
 /**
  * Function to toggle password visibility.
- *
  */
 function showPasswordConf() {
   let image = document.getElementById('passwordConfirm');
@@ -305,7 +286,6 @@ function showPasswordConf() {
 
 /**
  * Moves the icon to the container after a delay of 3000 milliseconds.
- *
  * @return {void} This function does not return anything.
  */
 function moveIcon() {
@@ -316,7 +296,6 @@ function moveIcon() {
 
 /**
  * Redirects the user to the sign up page and hides the sign up div if the window width is 700 or more.
- *
  * @return {void} This function does not return anything.
  */
 function signUp() {
@@ -328,7 +307,6 @@ function signUp() {
 
 /**
  * Redirects the user back to the login page and hides the sign up div if the window width is 700 or more.
- *
  * @return {void} This function does not return anything.
  */
 function backToLogin() {
@@ -344,7 +322,6 @@ function backToLogin() {
 
 /**
  * Toggles the visibility and styling of the animation elements based on the window width.
- *
  * @return {void} This function does not return anything.
  */
 function joinAnimation() {
@@ -354,7 +331,6 @@ function joinAnimation() {
     'mobileIconContainerWhite'
   );
   let mainContainerLogin = document.getElementById('mainContainerLogin');
-
   if (700 <= window.innerWidth) {
     animation.classList.remove('d-none');
     animation.classList.add('icon-container');
@@ -369,7 +345,6 @@ function joinAnimation() {
 
 /**
  * Validates the sign-up form fields for name, email, password, confirm password, and checkbox.
- *
  * @return {void} Calls either the init() function or isChecked() based on form field validation.
  */
 function validateSignUpForm() {
@@ -393,7 +368,6 @@ function validateSignUpForm() {
 
 /**
  * Hides the password error message element.
- *
  * @return {void} This function does not return anything.
  */
 function resetError() {
@@ -402,7 +376,6 @@ function resetError() {
 
 /**
  * Hides the login error check element.
- *
  * @return {void} This function does not return anything.
  */
 function resetErrorLogIn() {

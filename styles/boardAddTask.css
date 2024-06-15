@@ -443,6 +443,7 @@ input[type='checkbox'] {
   width: 100%;
   cursor: pointer;
   padding: 0;
+  height: 21px;
 }
 
 .editsubtaskList {
@@ -465,6 +466,7 @@ input[type='checkbox'] {
   width: 100%;
   cursor: pointer;
   padding: 0;
+  height: 21px;
 }
 
 .editsubtaskList img:hover {

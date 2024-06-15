@@ -3,7 +3,6 @@
  * adding the object to the boardEdit array, logging the boardEdit array, setting the innerHTML of the element with the
  * id 'showBigCard' to the result of the boardAddTaskEdit function with the cardId parameter, and calling the renderInformation
  * function with the cardId parameter.
- *
  * @param {string} cardId - The id of the card associated with the task to be edited.
  * @return {void} This function does not return anything.
  */
@@ -27,7 +26,6 @@ function editTaskOfBoard(cardId) {
 
 /**
  * Closes the edit board by hiding the 'showBigCard' element and resetting the boardEdit array.
- *
  * @return {void} This function does not return anything.
  */
 function closeEditBoard() {
@@ -37,7 +35,6 @@ function closeEditBoard() {
 
 /**
  * Renders information of a task based on the cardId.
- *
  * @param {number} cardId - The unique identifier of the task.
  * @return {void} This function does not return anything.
  */
@@ -55,7 +52,6 @@ function renderInformation(cardId) {
 
 /**
  * Toggles the visibility of the 'editUsers' element and updates the arrow icons accordingly.
- *
  * @return {void} This function does not return a value.
  */
 function showEditUsers() {
@@ -71,55 +67,6 @@ function showEditUsers() {
 }
 
 /**
- * Changes the visibility of the subtask buttons based on the length of the subtask array.
- * If the length is less than 5, the 'editSubtaskRightRegular' button is hidden and the
- * 'editSubtaskRightAdd' button is shown. Otherwise, the 'editSubtaskInput' field is set to
- * read-only and its style is changed to display an error message. The border of the
- * 'editSubtaskContainer' is also changed to red.
- *
- * @return {void}
- */
-function editChangeButtonsSubtask() {
-  if (!Array.isArray(boardEdit[0].subtask)) {
-    boardEdit[0].subtask = [];
-  }
-
-  if (boardEdit[0].subtask.length < 5) {
-    document.getElementById('editSubtaskRightRegular').classList.add('dnone');
-    document.getElementById('editSubtaskRightAdd').classList.remove('dnone');
-  } else {
-    document.getElementById('editSubtaskInput').style =
-      'color:red; font-weight:bold;';
-    document.getElementById('editSubtaskInput').readOnly = true;
-    document.getElementById('editSubtaskInput').value = 'Maximal 5 Subtasks!';
-    document.getElementById('editSubtaskContainer').style.border =
-      '1px solid red';
-  }
-}
-
-/**
- * Resets the value of the 'editSubtaskInput' element and updates the visibility of the subtask buttons.
- *
- * @return {void} This function does not return anything.
- */
-function editRemoveSubtask() {
-  subtask = document.getElementById('editSubtaskInput');
-  subtask.value = '';
-  document.getElementById('editSubtaskRightRegular').classList.remove('dnone');
-  document.getElementById('editSubtaskRightAdd').classList.add('dnone');
-}
-
-/**
- * Hides the 'editSubtaskRightAdd' button and shows the 'editSubtaskRightRegular' button.
- *
- * @return {void} This function does not return anything.
- */
-function editRemoveIcons() {
-  document.getElementById('editSubtaskRightRegular').classList.remove('dnone');
-  document.getElementById('editSubtaskRightAdd').classList.add('dnone');
-}
-
-/**
  * Adds a new subtask to the boardEdit object if the input is not empty and there are less than 5 subtasks already.
  * If the input is empty, it sets the placeholder of the input field to 'Bitte etwas eingeben!'.
  * If there are already 5 subtasks, it sets the placeholder of the input field to 'Add new Subtask'.
@@ -127,7 +74,6 @@ function editRemoveIcons() {
  * The new subtask is then added to the boardEdit object's subtask array.
  * The input field is cleared and the editSubtaskInput element is re-rendered with the new subtask.
  * The editRemoveSubtask function is called to reset the input field and update the visibility of the subtask buttons.
- *
  * @return {void} This function does not return anything.
  */
 function editAddSubtask() {
@@ -151,29 +97,7 @@ function editAddSubtask() {
 }
 
 /**
- * Deletes a subtask from the boardEdit object's subtask array at the specified index.
- * Renders the edit subtask section with the updated subtask list.
- * Resets the value of the 'editSubtaskInput' element.
- * Sets the 'editSubtaskInput' element to be editable.
- * Sets the color of the 'editSubtaskInput' element to black.
- * Sets the border of the 'editSubtaskContainer' element to '1px solid #d1d1d1'.
- *
- * @param {number} i - The index of the subtask to be deleted.
- * @return {void} This function does not return anything.
- */
-function editDeleteSubtask(i) {
-  boardEdit[0].subtask.splice(i, 1);
-  renderEditSubtask(boardEdit[0].subtask);
-  document.getElementById('editSubtaskInput').value = '';
-  document.getElementById('editSubtaskInput').readOnly = false;
-  document.getElementById('editSubtaskInput').style = 'color:black;';
-  document.getElementById('editSubtaskContainer').style.border =
-    '1px solid #d1d1d1';
-}
-
-/**
  * Renders the subtasks in the 'editSubtask' element on the page.
- *
  * @param {Array} subtasks - An array of subtask objects.
  * @return {void} This function does not return anything.
  */
@@ -189,49 +113,7 @@ function renderEditSubtask(subtasks) {
 }
 
 /**
- * Edits the subtask at the specified index.
- *
- * @param {number} i - The index of the subtask to edit.
- * @return {void} This function does not return anything.
- */
-function editThisSubtask(i) {
-  document.getElementById(`editSubtaskList${i}`).readOnly = false;
-  edit = document.getElementById(`edit-images${i}`);
-  edit.innerHTML = editThisSubtaskHTML(i);
-  document
-    .getElementById(`edit-main-subtask-container${i}`)
-    .classList.remove('edit-subtasklist');
-  document
-    .getElementById(`edit-main-subtask-container${i}`)
-    .classList.add('edit-list');
-  document.getElementById(`edit-images${i}`).classList.add('flex');
-}
-
-/**
- * Edits the subtask at the specified index.
- *
- * @param {number} i - The index of the subtask to edit.
- * @return {void} This function does not return anything.
- */
-function editCheckSubtask(i) {
-  document.getElementById(`editSubtaskList${i}`).readOnly = true;
-  boardEdit[0].subtask[i].subtaskText = document.getElementById(
-    `editSubtaskList${i}`
-  ).value;
-  edit = document.getElementById(`edit-images${i}`);
-  edit.innerHTML = checkThisSubtaskHTML(i);
-  document
-    .getElementById(`edit-main-subtask-container${i}`)
-    .classList.add('edit-subtasklist');
-  document
-    .getElementById(`edit-main-subtask-container${i}`)
-    .classList.remove('edit-list');
-  document.getElementById(`edit-images${i}`).classList.remove('flex');
-}
-
-/**
  * Resets the style and color of the given elements, and restores the original color of their SVG paths if they have one.
- *
  * @param {Array<HTMLElement>} elements - The elements to reset.
  * @return {void} This function does not return anything.
  */
@@ -255,7 +137,6 @@ function resetEditElements(elements) {
 
 /**
  * Sets the styles for a selected element based on the provided background color, text color, and SVG color.
- *
  * @param {HTMLElement} selectedElement - The element to set the styles for.
  * @param {string} backgroundColor - The background color to set for the element.
  * @param {string} textColor - The text color to set for the element.
@@ -282,7 +163,6 @@ function setEditPriorityStyles(
 
 /**
  * Toggles the priority of elements based on the provided priority.
- *
  * @param {string} priority - The priority to toggle. Must be one of 'urgent', 'medium', or 'low'.
  * @return {void} This function does not return a value.
  */
@@ -301,7 +181,6 @@ function editTogglePriority(priority) {
 
 /**
  * Initializes the original color attribute for SVG paths within elements with the 'edit-priobtn' class on window load.
- *
  */
 window.onload = function () {
   let elements = document.getElementsByClassName('edit-priobtn');
@@ -317,7 +196,6 @@ window.onload = function () {
 
 /**
  * Retrieves the selected priority from the edit buttons.
- *
  * @return {string} The selected priority ('urgent', 'low', or 'medium').
  */
 function getEditSelectedPrio() {
@@ -334,7 +212,6 @@ function getEditSelectedPrio() {
 
 /**
  * Restricts the date input field to allow only future dates for the edit date input field.
- *
  * @return {void} This function does not return a value.
  */
 function restrictEditPastDate() {
@@ -345,7 +222,6 @@ function restrictEditPastDate() {
 
 /**
  * Renders the edit users by appending their HTML representation to the 'editUsers' element.
- *
  * @return {void} This function does not return a value.
  */
 function renderEditUsers() {
@@ -363,7 +239,6 @@ let hiddenUserIds = new Set();
  * Displays the user emblems for the given card ID in the 'editUsersEmblem' element.
  * Only renders up to 5 emblems, with any additional emblems displayed as grey.
  * Hides any user emblems that are not present in the 'task.userId' array.
- *
  * @param {string} cardId - The ID of the card to display emblems for.
  * @return {void} This function does not return a value.
  */
@@ -400,7 +275,6 @@ function showPickedUsersEmblems(cardId) {
 /**
  * Renders the emblem for each user in the 'editUsersEmblem' element based on the checked state of their checkbox.
  * If the number of rendered emblems exceeds 5, additional emblems are rendered as grey.
- *
  * @return {void} This function does not return a value.
  */
 function showEditUsersEmblem() {
@@ -432,7 +306,6 @@ function showEditUsersEmblem() {
 
 /**
  * Updates the state of user checkboxes based on the rendered emblems.
- *
  * @return {void} This function does not return a value.
  */
 function checkUserCheckboxesBasedOnEmblems() {
@@ -452,7 +325,6 @@ function checkUserCheckboxesBasedOnEmblems() {
 
 /**
  * Edits a task by updating its properties and saving the changes.
- *
  * @param {number} cardId - The ID of the card associated with the task.
  * @param {Event} event - The event object that triggered the function.
  * @return {Promise<void>} A promise that resolves when the task is successfully edited and the UI is updated.
@@ -481,7 +353,6 @@ async function editTask(cardId, event) {
 
 /**
  * Updates the task board with the updated task information.
- *
  * @param {number} cardId - The ID of the card associated with the task.
  * @param {Object} updatedTask - The updated task object containing the new task information.
  * @return {Promise<void>} A promise that resolves when the task board is successfully updated.
@@ -498,7 +369,6 @@ async function updateEditBoard(cardId, updatedTask) {
 
 /**
  * Resets the display for the user section by hiding it and updating the arrow icons.
- *
  * @return {void} This function does not return a value.
  */
 function resetEditUserDisplay() {
@@ -510,7 +380,6 @@ function resetEditUserDisplay() {
 
 /**
  * Retrieves the IDs of all selected checkboxes in the '.edit-contactlist' element.
- *
  * @return {Array<string>} An array of selected user IDs.
  */
 function getEditSelectedUserIds() {

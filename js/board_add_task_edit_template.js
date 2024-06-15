@@ -1,6 +1,5 @@
 /**
  * Generates the HTML for the board task edit form.
- *
  * @param {string} cardId - The ID of the card being edited.
  * @return {string} The HTML code for the board task edit form.
  */
@@ -101,7 +100,6 @@ function boardAddTaskEdit(cardId) {
 
 /**
  * Renders the HTML for an edit subtask list with the given subtasks and index.
- *
  * @param {string} subtasks - The subtasks to display in the input field.
  * @param {number} i - The index of the subtask list.
  * @return {string} The HTML for the edit subtask list.
@@ -126,7 +124,6 @@ function renderEditSubtaskHTML(subtasks, i) {
 
 /**
  * Generates the HTML for an edit task element.
- *
  * @param {number} i - The index of the task in the list.
  * @return {string} The HTML for the edit task element.
  */
@@ -140,7 +137,6 @@ function editThisSubtaskHTML(i) {
 
 /**
  * Generates the HTML for a check task element.
- *
  * @param {number} i - The index of the task in the list.
  * @return {string} The HTML for the check task element.
  */
@@ -154,7 +150,6 @@ function checkThisSubtaskHTML(i) {
 
 /**
  * Renders the HTML for an edit user element.
- *
  * @param {Object} user - The user object containing information about the user.
  * @param {number} i - The index of the user in the list.
  * @return {string} The HTML for the edit user element.
@@ -174,7 +169,6 @@ function renderEditUsersHTML(user, i) {
 
 /**
  * Renders the HTML for an edit emblem user element.
- *
  * @param {Object} user - The user object containing information about the user.
  * @return {string} The HTML for the edit emblem user element.
  */
@@ -190,7 +184,6 @@ function renderEditEmblemUsers(user) {
 
 /**
  * Renders a grey emblem with the provided extra count.
- *
  * @param {number} extraCount - The extra count to display in the emblem.
  * @return {string} The HTML string for the grey emblem with the extra count.
  */
@@ -200,7 +193,6 @@ function renderGreyEmblem(extraCount) {
 
 /**
  * Renders a grey emblem with the provided remaining count.
- *
  * @param {number} remainingCount - The count to display in the emblem.
  * @return {string} The HTML string for the grey emblem with the remaining count.
  */
@@ -210,7 +202,6 @@ function renderGreyEmblem(remainingCount) {
 
 /**
  * Renders emblem for a user.
- *
  * @param {Object} user - The user object containing color, userId, and emblem.
  * @return {string} The HTML string for the user's emblem.
  */

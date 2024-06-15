@@ -1,6 +1,5 @@
 /**
  * Function that toggles the 'show' class of the element with the id 'dropdownContent'.
- *
  */
 function showMenu() {
   document.getElementById('dropdownContent').classList.toggle('show');
@@ -8,7 +7,6 @@ function showMenu() {
 
 /**
  * Listens for a click event on the window and closes all dropdowns except the one with the 'useremblem' class.
- *
  * @param {Event} event - The click event object
  */
 window.onclick = function (event) {
@@ -23,4 +21,3 @@ window.onclick = function (event) {
     }
   }
 };
-

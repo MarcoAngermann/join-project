@@ -1,7 +1,6 @@
 /**
  * Initializes the contact functionality by including HTML, loading contacts data asynchronously,
  * and rendering the list of contacts.
- *
  * @return {Promise<void>} A promise that resolves when the initialization is complete.
  */
 async function initContact() {
@@ -10,12 +9,10 @@ async function initContact() {
   renderListContact();
 }
 
-
 let contacts = [];
 
 /**
  * Asynchronously loads contacts data from the server and populates the contacts array.
- *
  */
 async function contactsArray() {
   let contactsJson = await loadData('contacts');
@@ -27,7 +24,6 @@ async function contactsArray() {
 
 /**
  * Creates a new contact and adds it to the contacts array.
- *
  * @param {Event} event - The event object for the form submission.
  * @return {Promise<void>} - A promise that resolves when the new contact is added and saved to the server.
  */
@@ -51,7 +47,6 @@ async function newContact(event) {
 
 /**
  * Asynchronously edits a contact by updating its properties and saving the changes to the server.
- *
  * @param {Event} event - The event object for the form submission.
  * @param {number} i - The index of the contact to be edited in the contacts array.
  * @return {Promise<void>} A promise that resolves when the contact is successfully edited and saved.
@@ -76,7 +71,6 @@ async function editContact(event, i) {
  * Asynchronously deletes a contact by removing it from the contacts array, clearing the details div,
  * deleting the contact from the server, and re-rendering the list of contacts. If the window width is
  * less than or equal to 710 pixels, it also navigates back to the mobile contact list.
- *
  * @param {number} i - The index of the contact to be deleted in the contacts array.
  * @return {Promise<void>} A promise that resolves when the contact is successfully deleted.
  */
@@ -94,7 +88,6 @@ async function deleteContact(i) {
 /**
  * Updates a contact in the Firebase database by finding the contact with the matching contactId
  * and replacing it with the new contact data provided in the contactEdit parameter.
- *
  * @param {Object} contactEdit - The updated contact data to be applied.
  * @return {Promise<void>} A promise that resolves when the contact is successfully updated.
  */
@@ -111,7 +104,6 @@ async function firebaseUpdate(contactEdit) {
 /**
  * Deletes a contact from the Firebase database by finding the contact with the matching contactId
  * and deleting it.
- *
  * @param {Object} contactDelete - The contact object to be deleted.
  * @return {Promise<void>} A promise that resolves when the contact is successfully deleted.
  */
@@ -125,11 +117,8 @@ async function firebaseDelete(contactDelete) {
   }
 }
 
-
-
 /**
  * Generates an emblem based on the given name.
- *
  * @param {string} name - The name to generate the emblem from.
  * @return {string} The generated emblem.
  */
@@ -146,7 +135,6 @@ function renderEmblem(name) {
 
 /**
  * Generates a random color from the given array of colors.
- *
  * @return {string} The randomly generated color.
  */
 function colorRandom() {
@@ -155,7 +143,6 @@ function colorRandom() {
 
 /**
  * Sorts the contacts array in ascending order based on the contact's name.
- *
  * @return {void} This function does not return anything.
  */
 function sortContacts() {
@@ -172,7 +159,6 @@ function sortContacts() {
 
 /**
  * Displays detailed information about a specific contact.
- *
  * @param {number} i - The index of the contact in the contacts array.
  * @return {void} This function does not return anything.
  */
@@ -189,7 +175,6 @@ function showDetailContact(i) {
 
 /**
  * Opens a dialog box for adding or editing a contact.
- *
  * @param {boolean} newContact - Indicates whether to open the dialog for adding a new contact or editing an existing one.
  * @param {number} i - The index of the contact in the contacts array (only used when editing an existing contact).
  * @return {void} This function does not return anything.
@@ -220,7 +205,6 @@ function openDialog(newContact, i) {
 
 /**
  * Closes the dialog box.
- *
  * @return {void} This function does not return anything.
  */
 function closeDialog() {
@@ -234,7 +218,6 @@ function closeDialog() {
 
 /**
  * Finds the last contact ID in the given array of contacts.
- *
  * @param {Array} contacts - An array of contact objects.
  * @return {number} The last contact ID found in the array.
  */
@@ -250,7 +233,6 @@ function findLastContactId(contacts) {
 
 /**
  * Displays the details of a newly created contact.
- *
  * @param {Object} newContact - The newly created contact object.
  * @return {void} This function does not return a value.
  */
@@ -273,7 +255,6 @@ function showNewContactDetails(newContact) {
 
 /**
  * Sets a timeout to hide the 'contactCreated' element after 2400 milliseconds.
- *
  * @return {void} This function does not return a value.
  */
 function contactCreatedDiv() {
@@ -284,7 +265,6 @@ function contactCreatedDiv() {
 
 /**
  * Clears the values of the 'nameContact', 'emailContact', and 'phoneContact' input fields.
- *
  * @return {void} This function does not return a value.
  */
 function cleanContactControls() {
@@ -298,7 +278,6 @@ mobilWindow.addEventListener('change', () => myFunc());
 
 /**
  * Function to handle mobile window changes and adjust contact details display accordingly.
- *
  */
 function myFunc() {
   if (mobilWindow.matches) {
@@ -318,7 +297,6 @@ function myFunc() {
  * Toggles the display of the contact details and contact list based on the window width.
  * If the window width is less than or equal to 710 pixels, the contact details are displayed and the contact list is hidden.
  * The 'move-left' class is removed from the 'divDetails' element.
- *
  * @return {void} This function does not return a value.
  */
 function mobileDetails() {
@@ -332,7 +310,6 @@ function mobileDetails() {
 
 /**
  * Hides the contact details and displays the contact list when the window width is less than or equal to 710 pixels.
- *
  * @return {void} This function does not return a value.
  */
 function backMobileContListe() {
@@ -345,7 +322,6 @@ function backMobileContListe() {
 
 /**
  * Toggles the display of the "mobileMode" element. If the element is currently hidden, it will be displayed as a flex container. If it is already displayed, it will be hidden.
- *
  * @return {void} This function does not return a value.
  */
 function openMobileDialog() {

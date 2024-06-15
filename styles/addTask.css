@@ -543,7 +543,7 @@ input[type='checkbox'] {
     width: 400px;
   }
 
-  .second-task-input-container{
+  .second-task-input-container {
     width: 400px;
     gap: 14px;
   }
@@ -592,7 +592,7 @@ input[type='checkbox'] {
     width: 380px;
   }
 
-  .second-task-input-container{
+  .second-task-input-container {
     width: 380px;
     gap: 12px;
   }
@@ -730,7 +730,7 @@ input[type='checkbox'] {
     width: 440px;
   }
 
-  .second-task-input-container{
+  .second-task-input-container {
     width: 440px;
     gap: 12px;
     margin-bottom: 100px;
@@ -770,6 +770,7 @@ input[type='checkbox'] {
     left: 0;
     background-color: #f6f7f8;
     padding-bottom: 16px;
+    z-index: 10;
   }
 
   .required-field-text-mobile {

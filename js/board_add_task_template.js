@@ -1,6 +1,5 @@
 /**
  * Renders the HTML for adding a task to a board.
- *
  * @param {string} boardStatus - The status of the board.
  * @return {string} The HTML code for adding a task to a board.
  */
@@ -93,7 +92,6 @@ function renderBoardAddTaskHTML(boardStatus) {
         <span id="categoryErrorMessage" class="categoryErrorMessage"></span> 
       </div>      
       <span class="subtask-label">Subtask</span>
-
         <div class="subtask-container" id="subtaskContainer">
           <input
             type="text"
@@ -124,7 +122,6 @@ function renderBoardAddTaskHTML(boardStatus) {
             </div>
           </div>
         </div>
-
         <div id="subtask" class="subtask"></div>
         <div type="submit" class="addtask-button-container">
           <button formnovalidate class="clear-button" onclick="clearAllTasks(event)">
@@ -145,7 +142,6 @@ function renderBoardAddTaskHTML(boardStatus) {
 
 /**
  * Renders the HTML for a user in the contact list.
- *
  * @param {Object} user - The user object containing the user's information.
  * @param {number} i - The index of the user in the list.
  * @return {string} The HTML string representing the user in the contact list.
@@ -166,7 +162,6 @@ function renderUsersHTML(user, i) {
 
 /**
  * Renders the HTML for a category in the category list.
- *
  * @param {number} i - The index of the category in the list.
  * @return {string} The HTML string representing the category in the category list.
  */
@@ -183,7 +178,6 @@ function renderCategorysHTML(i) {
 
 /**
  * Renders a grey emblem with the specified extra count.
- *
  * @param {number} extraCount - The additional count to display on the emblem.
  * @return {string} The HTML for the grey emblem with the extra count.
  */
@@ -203,7 +197,6 @@ function renderGreyEmblem(remainingCount) {
 
 /**
  * Renders an emblem for a given contact.
- *
  * @param {Object} contact - The contact object containing color, emblem, and userId properties.
  * @return {string} The HTML string representing the emblem.
  */
@@ -216,7 +209,6 @@ function renderEmblemUsers(contact) {
 
 /**
  * Renders a subtask HTML element with the given index.
- *
  * @param {number} i - The index of the subtask.
  * @return {string} The HTML string representing the subtask element.
  */
@@ -240,7 +232,6 @@ function renderSubtaskHTML(i) {
 
 /**
  * Returns an HTML string representing the edit subtask image elements with the given index.
- *
  * @param {number} i - The index of the subtask.
  * @return {string} The HTML string representing the edit subtask image elements.
  */

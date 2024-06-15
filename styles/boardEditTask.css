@@ -336,6 +336,7 @@ input[type='checkbox'] {
   width: 100%;
   cursor: pointer;
   padding: 0;
+  height: 21px;
 }
 
 .edit-list {
@@ -358,6 +359,7 @@ input[type='checkbox'] {
   width: 100%;
   cursor: pointer;
   padding: 0;
+  height: 21px;
 }
 
 .edit-list img:hover {

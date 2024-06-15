@@ -5,24 +5,23 @@
  * If the contact's name starts with a different letter than the previous contact, a new
  * div element is created with the first letter of the contact's name in uppercase.
  * The contact's name, email, and emblem are displayed in the contact list container div.
- *
  * @return {void} This function does not return anything.
  */
 function renderListContact() {
-    let contentList = document.getElementById('divList');
-    contentList.innerHTML = '';
-    sortContacts();
-    for (let i = 0; i < contacts.length; i++) {
-      const contact = contacts[i];
-      if (
-        i == 0 ||
-        contact['name'].slice(0, 1) != contacts[i - 1]['name'].slice(0, 1)
-      ) {
-        contentList.innerHTML += `<div class="a-z-contact-list ">${contact['name']
-          .slice(0, 1)
-          .toUpperCase()}</div>`;
-      }
-      contentList.innerHTML += `
+  let contentList = document.getElementById('divList');
+  contentList.innerHTML = '';
+  sortContacts();
+  for (let i = 0; i < contacts.length; i++) {
+    const contact = contacts[i];
+    if (
+      i == 0 ||
+      contact['name'].slice(0, 1) != contacts[i - 1]['name'].slice(0, 1)
+    ) {
+      contentList.innerHTML += `<div class="a-z-contact-list ">${contact['name']
+        .slice(0, 1)
+        .toUpperCase()}</div>`;
+    }
+    contentList.innerHTML += `
       <div class="contact-list-container" onclick="showDetailContact(${i})">
       <div class="contact-emblem" style="background-color: ${
         contact['color']
@@ -32,18 +31,16 @@ function renderListContact() {
               <a>${contact['email']}</a>
       </div>
       </div>`;
-    }
   }
+}
 
-  
 /**
  * Renders a contact in a list format.
- *
  * @param {number} i - The index of the contact in the contacts array.
  * @return {string} The HTML string representing the contact in a list format.
  */
 function renderContactinList(i) {
-    return /*html*/ `
+  return /*html*/ `
     <div class="headline-contact">
         <div class="emblem-info" id="emblem" style="background-color: ${contacts[i]['color']}">${contacts[i]['emblem']}</div>
         <div class="name-contact">
@@ -68,20 +65,17 @@ function renderContactinList(i) {
         </div>
       </div>
     </div> `;
-  }
-  
+}
 
-  
 /**
  * Renders a contact dialog with the given title, function, and button text.
- *
  * @param {string} title1 - The title of the contact dialog.
  * @param {function} functionNew - The function to be called when the form is submitted.
  * @param {string} btnText - The text of the submit button.
  * @return {string} The HTML string representing the contact dialog.
  */
 function renderContactDialog(title1, functionNew, btnText) {
-    return /*html*/ `
+  return /*html*/ `
   <div class="dialog">
   <div class="join-add-contact">
   <button class="button-mobile-close" onclick="closeDialog()"><img class="imgBtns"
@@ -112,5 +106,4 @@ function renderContactDialog(title1, functionNew, btnText) {
     </form>
   </div>  
   </div>`;
-  }
-  
+}
