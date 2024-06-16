@@ -97,7 +97,7 @@ function renderContactDialog(title1, functionNew, btnText) {
           style="background-image: url(../assets/icons/personInput_icon.svg)" placeholder="Name" required/>
         <input class="inputs-contact inputfield-text-style" type="email" id="emailContact"
           style="background-image: url(../assets/icons/mail_icon.svg)" placeholder="Email" required/>
-        <input class="inputs-contact inputfield-text-style" type="tel" id="phoneContact"
+        <input class="inputs-contact inputfield-text-style" pattern="[0-9+ ]{6,20}" type="tel" id="phoneContact"
           style="background-image: url(../assets/icons/call_icon.svg)" placeholder="Phone" required/>
         <div class="form-button">
           <button class="button-guest inputfield-text-style" type="button" onclick="closeDialog()">Delete</button>
