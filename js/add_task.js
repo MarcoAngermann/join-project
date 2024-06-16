@@ -122,11 +122,25 @@ function renderUsers() {
  */
 function renderCategorys() {
   let task = document.getElementById('tasks');
-
   for (let i = 0; i < categorys.length; i++) {
     task.innerHTML += renderCategorysHTML(i);
   }
 }
+
+document.addEventListener('click', function (event) {
+  let categoryContainer = document.getElementById('selectedCategoryContainer');
+  let tasksContainer = document.getElementById('tasks');
+  let arrowDownCategory = document.getElementById('arrowDownCategory');
+  let arrowUpCategory = document.getElementById('arrowUpCategory');
+
+  if (!categoryContainer.contains(event.target)) {
+    if (tasksContainer.classList.contains('show')) {
+      tasksContainer.classList.remove('show');
+      arrowDownCategory.style.display = 'block';
+      arrowUpCategory.style.display = 'none';
+    }
+  }
+});
 
 /**
  * Toggles the visibility of the category list and the corresponding arrow icons.
@@ -211,6 +225,23 @@ function showUsersEmblem() {
     usersEmblem.innerHTML += renderGreyEmblem(extraCount);
   }
 }
+
+document.addEventListener('click', function (event) {
+  let usersContainer = document.getElementById('users');
+  let arrowDownUser = document.getElementById('arrowDownUser');
+  let arrowUpUser = document.getElementById('arrowUpUser');
+  let contactContainer = document.querySelector('.contact-container');
+  if (
+    !usersContainer.contains(event.target) &&
+    !contactContainer.contains(event.target)
+  ) {
+    if (usersContainer.classList.contains('show')) {
+      usersContainer.classList.remove('show');
+      arrowDownUser.style.display = 'block';
+      arrowUpUser.style.display = 'none';
+    }
+  }
+});
 
 /**
  * Toggles the visibility of the user list and the corresponding arrow icons.

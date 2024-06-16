@@ -165,6 +165,10 @@ function sortContacts() {
 function showDetailContact(i) {
   contact = contacts[i];
   let infoContact = document.getElementById('divDetails');
+  let contactListContainer = document.getElementById(
+    `contactListContainer${i}`
+  );
+  contactListContainer.classList.add('contact-list-container-selected');
   infoContact.innerHTML = ' ';
   infoContact.classList.remove('move-left');
   infoContact.offsetWidth;

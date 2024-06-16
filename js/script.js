@@ -128,7 +128,7 @@ function focusMobileSidebar() {
     if (linkHref.replace('./', '') === currentPage.replace('?', '')) {
       mobileLinks[i].focus();
       mobileLinks[i].classList.add('active');
-      break; //Endet der Loop, wenn der href gefunde wird.
+      break;
     }
   }
 }

@@ -21,8 +21,8 @@ function renderListContact() {
         .slice(0, 1)
         .toUpperCase()}</div>`;
     }
-    contentList.innerHTML += `
-      <div class="contact-list-container" onclick="showDetailContact(${i})">
+    contentList.innerHTML += /*html*/ `
+      <div id="contactListContainer${i}" class="contact-list-container" onclick="showDetailContact(${i})">
       <div class="contact-emblem" style="background-color: ${
         contact['color']
       }"> ${renderEmblem(contact['name'])} </div>
@@ -30,7 +30,8 @@ function renderListContact() {
               <p>${contact['name']}</p>
               <a>${contact['email']}</a>
       </div>
-      </div>`;
+      </div>
+      `;
   }
 }
 
@@ -46,8 +47,8 @@ function renderContactinList(i) {
         <div class="name-contact">
             ${contacts[i]['name']}
           <div class="a-name-contact" id="a_nameContact">
-              <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
-              <a onclick="deleteContact(${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
+              <a class="dflex-align-center" onclick="openDialog(false, ${i})"><img class="img-btns" src="../assets/icons/edit-contacts_icon.svg"> Edit</a>
+              <a class="dflex-align-center" onclick="deleteContact(${i})"><img class="img-btns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
           </div>
         </div>
     </div>
@@ -60,8 +61,8 @@ function renderContactinList(i) {
     
       <div class="mobile-contact" onclick="openMobileDialog()"><img class="arrow" src="..//assets/icons/menu_ContactOptions.svg" />
         <div class="mobile-dropdown-menu" id="amobile_nameContact" style="display:none">
-          <a onclick="openDialog(false, ${i})"><img class="imgBtns" src="../assets/icons/edit_contacts_icon.svg"> Edit</a>
-          <a onclick="deleteContact( ${i})"><img class="imgBtns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
+          <a class="dflex-align-center" onclick="openDialog(false, ${i})"><img class="img-btns" src="../assets/icons/edit-contacts_icon.svg"> Edit</a>
+          <a class="dflex-align-center" onclick="deleteContact( ${i})"><img class="img-btns" src="../assets/icons/delete_contact_icon.svg"> Delete</a>
         </div>
       </div>
     </div> `;
@@ -99,7 +100,7 @@ function renderContactDialog(title1, functionNew, btnText) {
         <input class="inputs-contact inputfield-text-style" type="tel" id="phoneContact"
           style="background-image: url(../assets/icons/call_icon.svg)" placeholder="Phone" required/>
         <div class="form-button">
-          <button class="button-guest inputfield-text-style" type="button" onclick="closeDialog()">Cancel <b>X</b></button>
+          <button class="button-guest inputfield-text-style" type="button" onclick="closeDialog()">Delete</button>
           <button class="add-contact-button-mobile button-text-style" type="submit">${btnText} <img class="button-images " src="../assets/icons/checkWhite.svg"></button>
         </div>
       </div>

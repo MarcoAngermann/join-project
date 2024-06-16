@@ -203,6 +203,11 @@ function showUsersEmblem() {
   }
 }
 
+/**
+ * Toggles the visibility of the 'users' element and updates the display style of the 'arrowDownUser' and 'arrowUpUser' elements accordingly.
+ *
+ * @return {void} This function does not return a value.
+ */
 function showUsers() {
   if (document.getElementById('users').classList.contains('show')) {
     document.getElementById('users').classList.remove('show');

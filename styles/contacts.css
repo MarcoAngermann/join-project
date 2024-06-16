@@ -40,10 +40,9 @@
   height: 49px;
   border: 0.5px solid #2a3647;
   padding: 0px 15px 0px 15px;
-
 }
 
-.add-contact-button:hover {
+.add-contact-button-mobile:hover {
   cursor: pointer;
   background-color: #29abe2;
   border: 0.5px solid #29abe2;
@@ -104,13 +103,14 @@
   line-height: 24px;
   text-align: left;
   padding: 17px 36px 17px 36px;
-  border-bottom: 2px solid #D1D1D1;
+  border-bottom: 2px solid #d1d1d1;
 }
 
 .contact-list-container {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: center;
   align-self: center;
   width: 95%;
   height: 78px;
@@ -120,8 +120,20 @@
 
 .contact-list-container:hover {
   cursor: pointer;
-  background-color: #f6f7f8;
+  background-color: #e2e4e5;
   border-radius: 10px;
+}
+
+.contact-list-container-selected {
+  background-color: #2a3647;
+  border: none;
+  border-radius: 10px;
+  outline: #2a3647;
+  color: white;
+}
+
+.contact-list-container-selected:hover {
+  background-color: #091931;
 }
 
 .contact-info-container {
@@ -199,14 +211,9 @@
   position: absolute;
 }
 
-.mobile-dropdown-menu :hover {
-  cursor: pointer;
-  color: #29abe2;
-  font-weight: 400;
-}
-
-.mobile-dropdown-menu a:hover .button-images {
-  filter: invert(60%) sepia(88%) saturate(1665%) hue-rotate(165deg) brightness(93%) contrast(89%);
+.mobile-dropdown-menu a:hover {
+  filter: invert(60%) sepia(88%) saturate(1665%) hue-rotate(165deg)
+    brightness(93%) contrast(89%);
 }
 
 .contacts-details-container {
@@ -270,20 +277,15 @@
   gap: 13px;
 }
 
-.a-name-contact img {
-  width: 24px;
-  height: 24px;
-  vertical-align: bottom;
-}
-
 .a-name-contact a:hover {
+  filter: invert(60%) sepia(88%) saturate(1665%) hue-rotate(165deg)
+    brightness(93%) contrast(89%);
   cursor: pointer;
-  color: #29abe2;
-  font-weight: 600;
 }
 
 .a-name-contact a:hover .button-images {
-  filter: invert(60%) sepia(88%) saturate(1665%) hue-rotate(165deg) brightness(93%) contrast(89%);
+  filter: invert(60%) sepia(88%) saturate(1665%) hue-rotate(165deg)
+    brightness(93%) contrast(89%);
 }
 
 .info {
@@ -441,7 +443,7 @@
   position: absolute;
   width: 315px;
   height: 74px;
-  background-color: #2A3647;
+  background-color: #2a3647;
   color: white;
   border-radius: 20px;
   text-align: center;
@@ -485,6 +487,11 @@
   padding: 8px;
 }
 
+.dflex-align-center {
+  display: flex;
+  align-items: center;
+}
+
 @media (max-width: 1425px) {
   .sidebar {
     display: flex !important;
@@ -522,7 +529,7 @@
   }
 
   .emblem-info {
-    width: auto;
+    width: 80px;
     height: 80px;
     font-size: 40px;
   }
@@ -640,9 +647,9 @@
     display: none;
   }
 
-.emblem-info{
-  margin-top: -40px;
-}
+  .emblem-info {
+    margin-top: -40px;
+  }
   .form-edit-style {
     height: 50%;
   }

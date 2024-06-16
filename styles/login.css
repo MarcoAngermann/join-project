@@ -441,6 +441,17 @@ form label {
   overflow: hidden;
 }
 
+@media (max-width: 620px) {
+  .a_headlineSignUp {
+    margin-top: 25px;
+  }
+
+  .formSignUp {
+    width: 480px;
+    padding: 28px 38px 28px 38px;
+  }
+}
+
 @media (max-width: 550px) {
   .title {
     font-size: 40px;
@@ -511,18 +522,6 @@ form label {
   }
 }
 
-/*responsive SignUp*/
-@media (max-width: 620px) {
-  .a_headlineSignUp {
-    margin-top: 25px;
-  }
-
-  .formSignUp {
-    width: 480px;
-    padding: 28px 38px 28px 38px;
-  }
-}
-
 @media (max-width: 500px) {
   .formSignUp {
     width: 380px;
@@ -562,7 +561,7 @@ form label {
 
 .icon-container {
   position: absolute;
-  animation: moveIcon 4s forwards;
+  animation: moveIcon 2s forwards;
   width: 200px;
   height: 200px;
   z-index: 1;

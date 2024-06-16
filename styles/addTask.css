@@ -212,12 +212,12 @@ textarea {
   height: 40px;
 }
 
-.contact-list:hover {
-  background-color: #e2e4e5;
-}
-
 .contact-list span {
   width: 100%;
+}
+
+.contact-list:hover {
+  background-color: #e2e4e5;
 }
 
 .contact-list-selected {
@@ -265,11 +265,11 @@ textarea {
   display: none;
   position: absolute;
   background-color: #ffffff;
-  height: 150px;
+  height: 170px;
   width: 440px;
   overflow: auto;
   border-radius: 10px;
-  top: 46px;
+  top: 48px;
   right: 0px;
   gap: 4px;
   z-index: 5;
