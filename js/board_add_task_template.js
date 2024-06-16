@@ -4,7 +4,6 @@
  * @return {string} The HTML code for adding a task to a board.
  */
 function renderBoardAddTaskHTML(boardStatus) {
-  console.log(boardStatus);
   return /*html*/ `
 
   <div id="addTaskMainContainer" class="add-task-main-container" onclick="dontClose()">
