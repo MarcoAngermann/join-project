@@ -163,12 +163,45 @@ function sortContacts() {
  * @return {void} This function does not return anything.
  */
 function showDetailContact(i) {
-  contact = contacts[i];
-  let infoContact = document.getElementById('divDetails');
+  removeSelectedClassFromAllContacts();
+  addSelectedClassToCurrentContact(i);
+  displayContactDetails(i);
+}
+
+/**
+ * Removes the 'contact-list-container-selected' class from all contact list containers.
+ * This function ensures that no contact list container is marked as selected.
+ * @return {void} This function does not return anything.
+ */
+function removeSelectedClassFromAllContacts() {
+  let allContactContainers = document.querySelectorAll(
+    '.contact-list-container'
+  );
+  for (let i = 0; i < allContactContainers.length; i++) {
+    let container = allContactContainers[i];
+    container.classList.remove('contact-list-container-selected');
+  }
+}
+
+/**
+ * Adds the 'contact-list-container-selected' class to the currently selected contact.
+ * @param {number} i - The index of the contact in the contacts array.
+ * @return {void} This function does not return anything.
+ */
+function addSelectedClassToCurrentContact(i) {
   let contactListContainer = document.getElementById(
     `contactListContainer${i}`
   );
   contactListContainer.classList.add('contact-list-container-selected');
+}
+
+/**
+ * Displays the details of the selected contact.
+ * @param {number} i - The index of the contact in the contacts array.
+ * @return {void} This function does not return anything.
+ */
+function displayContactDetails(i) {
+  let infoContact = document.getElementById('divDetails');
   infoContact.innerHTML = ' ';
   infoContact.classList.remove('move-left');
   infoContact.offsetWidth;

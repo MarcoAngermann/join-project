@@ -27,8 +27,8 @@ function renderListContact() {
         contact['color']
       }"> ${renderEmblem(contact['name'])} </div>
       <div class="contact-info-container">
-              <p>${contact['name']}</p>
-              <a>${contact['email']}</a>
+          <p>${contact['name']}</p>
+          <a>${contact['email']}</a>
       </div>
       </div>
       `;

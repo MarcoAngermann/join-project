@@ -10,7 +10,6 @@ function showBoardAddTask(boardStatus) {
   let content = document.getElementById('boardAddTask');
   content.innerHTML = '';
   content.innerHTML = renderBoardAddTaskHTML(boardStatus);
-  console.log(boardStatus);
   renderUsers();
   renderCategorys();
   restrictPastDate();
@@ -288,7 +287,6 @@ function createCardId(tasks) {
  */
 async function createNewTaskBoard(boardStatus, event) {
   event.preventDefault();
-  console.log(boardStatus);
   let selectedCategory = document.getElementById('selectedCategory').innerHTML;
   let spanContactContainer = document.getElementById(
     'selectedCategoryContainer'

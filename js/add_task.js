@@ -303,6 +303,12 @@ function getSelectedUserIds() {
   return selectedUserIds;
 }
 
+/**
+ * Generates a new card ID based on the existing tasks.
+ *
+ * @param {Array<Object>} tasks - An array of task objects containing cardId.
+ * @return {number} The new card ID.
+ */
 function createCardId(tasks) {
   let lastCardId = -1;
   for (let i = 0; i < tasks.length; i++) {
