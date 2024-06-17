@@ -221,6 +221,23 @@ function showUsers() {
   }
 }
 
+document.addEventListener('click', function (event) {
+  let usersContainer = document.getElementById('users');
+  let arrowDownUser = document.getElementById('arrowDownUser');
+  let arrowUpUser = document.getElementById('arrowUpUser');
+  let contactContainer = document.querySelector('.contact-container');
+  if (
+    !usersContainer.contains(event.target) &&
+    !contactContainer.contains(event.target)
+  ) {
+    if (usersContainer.classList.contains('show')) {
+      usersContainer.classList.remove('show');
+      arrowDownUser.style.display = 'block';
+      arrowUpUser.style.display = 'none';
+    }
+  }
+});
+
 /**
  * Renders the subtask list by updating the HTML content of the 'subtask' element.
  * @return {void} This function does not return a value.

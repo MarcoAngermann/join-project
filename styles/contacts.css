@@ -30,6 +30,13 @@
   margin-bottom: 16px;
 }
 
+.add-contact-button:hover {
+  cursor: pointer;
+  background-color: #29abe2;
+  border: 0.5px solid #29abe2;
+  text-decoration: none;
+}
+
 .add-contact-button-mobile {
   position: sticky;
   background-color: #2a3647;
