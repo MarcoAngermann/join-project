@@ -238,6 +238,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: start;
+  height: 620px;
 }
 
 .summary-card-container {
