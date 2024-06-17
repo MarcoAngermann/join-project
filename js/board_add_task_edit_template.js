@@ -5,7 +5,7 @@
  */
 function boardAddTaskEdit(cardId) {
   return /*html*/ `
-    <div class="edit-add-task" onclick="dontClose()">
+    <div class="edit-add-task" onclick="dontCloseEdit()">
         <form class="edit-add-task-container" onsubmit="editTask(${cardId},event);">
             <div class="edit-task-header">               
                 <img class="close-edit-board" onclick="closeEditBoard()" src="../assets/icons/close_icon.svg" alt="schließen" />
@@ -162,7 +162,7 @@ function renderEditUsersHTML(user, i) {
                       ${user.emblem}
                     </div> 
                     <div class="edit-contact-name" >${user.name}</div> 
-                    <input class="edit-user-checkbox" onclick="showEditUsersEmblem()" type="checkbox" id="editCheckbox${i}" data-userid="${user.userId}">          
+                    <input class="edit-user-checkbox" onclick="showEditUsersEmblem(event)" type="checkbox" id="editCheckbox${i}" data-userid="${user.userId}">          
                 </li>
             </label> `;
 }

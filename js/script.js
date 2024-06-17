@@ -87,15 +87,6 @@ async function includeHTML() {
 }
 
 /**
- * Logs an error message to the console.
- *
- * @return {undefined} This function does not return a value.
- */
-function errorFunction() {
-  console.log('Fehler aufgetreten');
-}
-
-/**
  * Focuses on the sidebar link that corresponds to the current page.
  *
  * @return {undefined} This function does not return a value.

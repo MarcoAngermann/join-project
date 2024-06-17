@@ -6,7 +6,7 @@
 function renderBoardAddTaskHTML(boardStatus) {
   return /*html*/ `
 
-  <div id="addTaskMainContainer" class="add-task-main-container" onclick="dontClose()">
+  <div id="addTaskMainContainer" class="add-task-main-container" onclick="dontCloseTask(event)">
   <div id="taskAddedToBoard" class="task-added-to-board dnone">
     <div class="task-added-to-board-style">
       <span>Task added to board</span>
@@ -29,7 +29,7 @@ function renderBoardAddTaskHTML(boardStatus) {
       <span>Description</span>
       <textarea name="" id="description" cols="30" rows="5"></textarea>
       <span>Assigned to</span>
-      <div onclick="showUsers()" class="contact-container">
+      <div onclick="showUsers(event)" class="contact-container">
         <span>Select user to assign</span>
         <img id="arrowDownUser" src="../assets/icons/arrow_down_icon.svg" alt="">
         <img id="arrowUpUser" src="../assets/icons/arrow_up_icon.svg" style="display: none;">

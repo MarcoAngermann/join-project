@@ -128,6 +128,7 @@ function renderCategorys() {
  * @return {void} This function does not return a value.
  */
 function showCategories() {
+  event.stopPropagation();
   resetCategoryErrorMessage();
   if (document.getElementById('boardTasks').classList.contains('show')) {
     document.getElementById('boardTasks').classList.remove('show');
@@ -204,10 +205,11 @@ function showUsersEmblem() {
 
 /**
  * Toggles the visibility of the 'users' element and updates the display style of the 'arrowDownUser' and 'arrowUpUser' elements accordingly.
- *
+ * @param {Event} event - The event object that triggered the function.
  * @return {void} This function does not return a value.
  */
 function showUsers() {
+  event.stopPropagation();
   if (document.getElementById('users').classList.contains('show')) {
     document.getElementById('users').classList.remove('show');
     document.getElementById('arrowDownUser').style.display = 'block';

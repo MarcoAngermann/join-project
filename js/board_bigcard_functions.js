@@ -47,10 +47,48 @@ async function renderBigSubtasks(cardId) {
 
 /**
  * Prevents the default event propagation.
+ *
  * @return {void} This function does not return a value.
  */
 function dontClose() {
   event.stopPropagation();
+}
+
+/**
+ * Prevents the default event propagation.
+ * @return {void} This function does not return a value.
+ */
+function dontCloseTask() {
+  event.stopPropagation();
+
+  let boardTasks = document.getElementById('boardTasks');
+  let arrowDownCategory = document.getElementById('arrowDownCategory');
+  let arrowUpCategory = document.getElementById('arrowUpCategory');
+  let users = document.getElementById('users');
+  let arrowDownUser = document.getElementById('arrowDownUser');
+  let arrowUpUser = document.getElementById('arrowUpUser');
+
+  boardTasks.classList.remove('show');
+  arrowDownCategory.style.display = 'block';
+  arrowUpCategory.style.display = 'none';
+  users.classList.remove('show');
+  arrowDownUser.style.display = 'block';
+  arrowUpUser.style.display = 'none';
+}
+
+/**
+ * Prevents the default event propagation, hides the 'editUsers' element, and updates the arrow icons.
+ *
+ * @return {void} This function does not return a value.
+ */
+function dontCloseEdit() {
+  event.stopPropagation();
+  let editUser = document.getElementById('editUsers');
+  let arrowDownUser = document.getElementById('arrowDownUser');
+  let arrowUpUser = document.getElementById('arrowUpUser');
+  editUser.classList.remove('show');
+  arrowDownUser.style.display = 'block';
+  arrowUpUser.style.display = 'none';
 }
 
 /**

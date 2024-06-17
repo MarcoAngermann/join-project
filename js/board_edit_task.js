@@ -55,6 +55,7 @@ function renderInformation(cardId) {
  * @return {void} This function does not return a value.
  */
 function showEditUsers() {
+  event.stopPropagation();
   if (document.getElementById('editUsers').classList.contains('show')) {
     document.getElementById('editUsers').classList.remove('show');
     document.getElementById('arrowDownUser').style.display = 'block';

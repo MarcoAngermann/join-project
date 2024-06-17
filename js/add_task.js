@@ -132,7 +132,6 @@ document.addEventListener('click', function (event) {
   let tasksContainer = document.getElementById('tasks');
   let arrowDownCategory = document.getElementById('arrowDownCategory');
   let arrowUpCategory = document.getElementById('arrowUpCategory');
-
   if (!categoryContainer.contains(event.target)) {
     if (tasksContainer.classList.contains('show')) {
       tasksContainer.classList.remove('show');
@@ -305,7 +304,6 @@ function getSelectedUserIds() {
 
 /**
  * Generates a new card ID based on the existing tasks.
- *
  * @param {Array<Object>} tasks - An array of task objects containing cardId.
  * @return {number} The new card ID.
  */
