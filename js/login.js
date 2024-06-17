@@ -199,7 +199,6 @@ async function doLogin(event) {
   let email = document.getElementById('email').value;
   let password = document.getElementById('password').value;
   if (checkUserExist(email, password)) {
-    console.log('Login successful');
     showLoginDialog();
     await sleep(3000);
     window.location.href = './templates/summary.html';

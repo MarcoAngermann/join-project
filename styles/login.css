@@ -561,7 +561,7 @@ form label {
 
 .icon-container {
   position: absolute;
-  animation: moveIcon 2s forwards;
+  animation: moveIcon 4s forwards;
   width: 200px;
   height: 200px;
   z-index: 1;

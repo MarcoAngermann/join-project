@@ -252,7 +252,6 @@ async function deleteTask(cardId) {
     let task = tasksJSON[key];
     if (task.cardId == cardId) {
       await deleteData(`tasks/${key}`);
-      console.log('Deleted task:', task);
     }
   }
 }

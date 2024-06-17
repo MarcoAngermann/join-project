@@ -20,7 +20,6 @@ async function initSummary() {
 function getGreeting(isGuest) {
   let time = new Date().getHours();
   let greeting;
-  console.log(time);
   if (time < 12) {
     greeting = 'Good Morning';
   } else if (time < 18) {

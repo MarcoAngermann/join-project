@@ -19,7 +19,6 @@ function editTaskOfBoard(cardId) {
     subtask: task.subtask,
   };
   boardEdit.push(information);
-  console.log(boardEdit);
   document.getElementById('showBigCard').innerHTML = boardAddTaskEdit(cardId);
   renderInformation(cardId);
 }
