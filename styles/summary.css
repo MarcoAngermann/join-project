@@ -234,7 +234,6 @@
 }
 
 .greeting-container {
-  width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -341,7 +340,7 @@
 
 @media (max-width: 900px) {
   .summary-main-container {
-    margin-left: 20px;
+    margin-left: 0px;
     gap: 15px;
   }
 
@@ -361,7 +360,8 @@
   .summary-main-container {
     display: flex;
     flex-direction: column-reverse;
-    margin-top: 130px;
+    align-items: center;
+    margin-top: 90px;
   }
 
   .greeting-container {
