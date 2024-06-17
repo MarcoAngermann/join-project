@@ -301,7 +301,7 @@ progress[value]::-webkit-progress-value {
 
 @media (max-width: 1350px) {
   .edit-main {
-    flex-direction: column;
+    overflow-x: auto;
     padding-bottom: 100px;
   }
 }
@@ -309,6 +309,9 @@ progress[value]::-webkit-progress-value {
 @media (max-width: 1050px) {
   .board-container {
     margin-left: 50px;
+  }
+  .edit-main {
+    flex-direction: column;
   }
 }
 
